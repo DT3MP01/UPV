@@ -1,0 +1,65 @@
+;If result is false, press the Esc key and load the file SimplexMethod.mth
+IF(LOAD("SimplexMethod.mth"), true, LOAD("..\Users\SimplexMethod\SimplexMethod.mth"))
+
+;min=700/3:  x=5/3, y=0, z=10/3
+MINIMIZE(40*x+60*y+50*z,[4*x+y+z<30,2*x+y+5*z>20,6*x-y=10])
+
+;min=199/70:  x=0, y=11/70, z=59/70
+MINIMIZE(6*x+2*y+3*z,[30*x+20*y+40*z>34,x+y+z<1,x+y+z>1,10*x+70*y<11])
+
+;The objective function is unbounded. The values for x and y are irrelevant!
+MAXIMIZE(x+y,[x-2y<2,x+y>3])
+
+
+;The domain is void. The values for x and y are irrelevant!
+MAXIMIZE(x+y,[x+2y<3,2x+3y>10])
+
+;The objective function and the constraints must be linear!
+MINIMIZE(x+y^2,[x+y>1,y-x<5])
+
+;Irrational numbers are allowed: max=pi*(SQRT(3)+2)+6*SQRT(3)
+MAXIMIZE(x+SQRT(3)*y+2*z,[x-y<SQRT(2),x+y-z<6,z<pi])
+
+;To approximate the previous call the variable eps_ must be modified
+eps_:=10^(-7)
+
+; max=22.11688824 ,x=0, y=9.141592653, z=3.141592653
+APPROX(MAXIMIZE(x+SQRT(3)*y+2*z,[x-y<SQRT(2),x+y-z<6,z<pi]))
+
+; Restore eps_ for exact computations
+eps_:=0
+
+;To allow the names x1,x2,... for variables.
+InputMode:=Word
+
+;max=203500/3:  x1=75/2, x2=100, x3=175/3, x4=100, x5=100
+MAXIMIZE(100*x1+200*x2+70*x3+150*x4+250*x5,[x1<100,x2<100,x3<100,x4+x5<200,0.~
+6*x1+0.5*x2+0.3*x3+0.4*x4+0.4*x5<170,0.1*x1+0.2*x2+0.3*x3+0.2*x4+0.2*x5<85,0.~
+2*x1+0.2*x2+0.3*x3+0.3*x4+0.1*x5<85,0.2*x5<20])
+
+;max=203500/3:  x1=75/2,x10=0,x11=15/4,x12=0,x13=0,x2=100,x3=175/3,x4=100,x5=100,x6=125/2,x7=0,x8=125/3,x9=0
+MAXIMIZE(100*x1+200*x2+70*x3+150*x4+250*x5,[x1+x6=100,x2+x7=100,x3+x8=100,x4+~
+x5+x9=200,0.6*x1+0.5*x2+0.3*x3+0.4*x4+0.4*x5+x10=170,0.1*x1+0.2*x2+0.3*x3+0.2~
+*x4+0.2*x5+x11=85,0.2*x1+0.2*x2+0.3*x3+0.3*x4+0.1*x5+x12=85,0.2*x5+x13=20])
+
+;Let's run again the first example, generating all the simplex tables
+simplextables:=[]
+
+;min=700/3:  x=5/3, y=0, z=10/3
+MINIMIZE(40*x+60*y+50*z,[4*x+y+z<30,2*x+y+5*z>20,6*x-y=10])
+
+;The simplex tables; each one is preceeded by the row and column of the pivot
+simplextables
+
+;Thank you!
+"":='~
+["                Ok, end of the demo!               ";~
+" ";~
+"Author:  Valeriu Anisiu,    anisiu@math.ubbcluj.ro  ";~
+"address: Faculty of Mathematics and Computer Science";~
+"         Babes-Bolyai University                    ";~
+"         Kogalniceanu 1 Street                      ";~
+"         3400 Cluj-Napoca, Romania                  "]
+
+
+

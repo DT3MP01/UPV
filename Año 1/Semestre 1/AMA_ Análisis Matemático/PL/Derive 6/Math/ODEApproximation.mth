@@ -1,0 +1,52 @@
+"ODEApproximation.mth -- Copyright (c) 1990-2003 by Texas Instruments Incorpo~
+rated"
+
+TAYLOR_ODE1(r,x,y,x0,y0,n,v_):=ELEMENT(ITERATE([v_ SUB 1+1,DIF(v_ SUB 2,x)+r*~
+DIF(v_ SUB 2,y),v_ SUB 3+(x-x0)^v_ SUB 1*LIM(v_ SUB 2,[x,y],[x0,y0])/v_ SUB 1~
+!],v_,[1,r,y0],n),3)
+
+TAY_ODE1(r,x,y,x0,y0,n,v_):=TAYLOR_ODE1(r,x,y,x0,y0,n,v_)
+
+PICARD(r,p,x,y,x0,y0):=y0+INT(LIM(r,y,p),x,x0,x)
+
+TAYLOR_ODES(r,x,y,x0,y0,n):=ELEMENT(ITERATE([v_ SUB 1+1,DIF(v_ SUB 2,x)+r . G~
+RAD(v_ SUB 2,y),v_ SUB 3+(x-x0)^v_ SUB 1*LIM(LIM(v_ SUB 2,y,y0),x,x0)/v_ SUB ~
+1!],v_,[1,r,y0],n),3)
+
+TAY_ODES(r,x,y,x0,y0,n):=TAYLOR_ODES(r,x,y,x0,y0,n)
+
+"Following definition of TAYLOR_ODE2 contributed by Dr. Wolfram Koepf:"
+
+TAYLOR_ODE2_AUX(x,y,v,x0,y0,v0,n,aux):=y0+v0*(x-x0)+SUM(LIM(aux SUB (k_-1),[v~
+,y,x],[v0,y0,x0])/k_!*(x-x0)^k_,k_,2,n)
+
+TAYLOR_ODE2(r,x,y,v,x0,y0,v0,n):=TAYLOR_ODE2_AUX(x,y,v,x0,y0,v0,n,ITERATES(DI~
+F(g_,v)*r+DIF(g_,y)*v+DIF(g_,x),g_,r,n-2))
+
+EULER_ODE(r,x,y,x0,y0,h,n):=ITERATES(v_+h*[1,LIM(r,[x,y],v_)],v_,[x0,y0],n)
+
+EXTRACT_2_ELEMENTS(v,p,q):=[v SUB p,v SUB q]
+
+EXTRACT_2_COLUMNS(a,c1,c2):=EXTRACT_2_ELEMENTS(a`,c1,c2)`
+
+RK_AUX3(p,v,u_,c1,c2,c3):=(c1+LIM(p,v,u_+c3)+2*(c2+c3))/6
+
+RK_AUX2(p,v,u_,c1,c2):=RK_AUX3(p,v,u_,c1,c2,LIM(p,v,u_+c2/2))
+
+RK_AUX1(p,v,u_,c1):=RK_AUX2(p,v,u_,c1,LIM(p,v,u_+c1/2))
+
+RK_AUX0(p,v,v0,n):=ITERATES(u_+RK_AUX1(p,v,u_,LIM(p,v,u_)),u_,v0,n)
+
+RK(r,v,v0,h,n):=RK_AUX0(h*APPEND([1],r),v,v0,n)
+
+"Adri van der Meer and David W. Cantrell contributed to DIRECTION_FIELD:"
+
+LIM2(u,x,y,x0,y0):=LIM(u,[y,x],[y0+@1*(x-x0),x0])
+
+SEG(rc,x,y,ëx,ëy):=IF(ëy<ABS(rc)*ëx,[[x-ëy/rc,y-ëy],[x+ëy/rc,y+ëy]],[[x-ëx,y-~
+rc*ëx],[x+ëx,y+rc*ëx]],?)
+
+DIRECTION_FIELD(r,x,x0,xm,m,y,y0,yn,n):=VECTOR(VECTOR(SEG(LIM2(r,x,y,x0+j*(xm~
+-x0)/m,y0+k*(yn-y0)/n),x0+j*(xm-x0)/m,y0+k*(yn-y0)/n,(xm-x0)/(4*m),(yn-y0)/(4~
+*n)),j,0,m),k,0,n)
+

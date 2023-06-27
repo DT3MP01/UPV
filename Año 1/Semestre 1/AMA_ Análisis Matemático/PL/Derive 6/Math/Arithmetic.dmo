@@ -1,0 +1,41 @@
+;Does operations on numbers like a calculator
+5 (9 - 3) / 2
+
+;Uses exact rational arithmetic
+1/2 + 1/6
+
+;Uses as many digits as necessary for exact arithmetic
+5^99
+
+;Press the Esc key, issue a Factor command, then a Transfer Demo command
+54!
+
+;Returns the principal root of square roots
+SQRT 9
+
+;Simplifies fractional powers
+(2/27)^(2/3)
+
+;Some of these simplifications are tricky
+SQRT (4 - 2 * SQRT (3))
+
+;Some of these simplifications are tricky
+SQRT (5 + SQRT 24) + SQRT (5 - SQRT 24)
+
+;i with a hat represents the imaginary SQRT(-1)
+SQRT (-1)
+
+;You can enter i-hat as #i and do complex arithmetic
+(1 + 2 #i) (3 + #i)
+
+;Complex denominators are automatically rationalized
+(2 + #i) / (#i + 1)
+
+;Fractional powers default to the principal root
+(-8)^(1/3)
+
+;Fractional powers of complex numbers are simplified
+SQRT (55/36 + 4/3 #i)
+
+;You can enter infinity as inf and combine it with itself or numbers
+inf + inf + 5

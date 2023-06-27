@@ -1,0 +1,25 @@
+* C:\Users\david\Downloads\archivospract7\ej2\ej2pract7.sch
+
+* Schematics Version 9.1 - Web Update 1
+* Mon May 20 15:40:18 2019
+
+
+
+** Analysis setup **
+.tran 1us 1u
+.OP 
+.LIB "C:\Users\david\Downloads\archivospract7\ej2\ej2pract7.lib"
+.STMLIB "ej2pract7.stl"
+
+
+* From [PSPICE NETLIST] section of pspiceev.ini:
+.lib "nom.lib"
+
+.INC "ej2pract7.net"
+.INC "ej2pract7.als"
+
+
+.probe
+
+
+.END

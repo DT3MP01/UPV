@@ -1,0 +1,44 @@
+"FresnelIntegrals.mth -- Copyright (c) 1990-2003 by Texas Instruments Incorpo~
+rated"
+
+DAWSON(x):=-SQRT(pi)*#i*#e^(-x^2)*ERF(#i*x)/2
+
+FRESNEL_SIN(z):=INT(SIN(pi*t_^2/2),t_,0,z)
+
+FRESNEL_SIN_SERIES(z,m):=SUM(COS(pi*k_)*(pi/2)^(2*k_+1)*z^(4*k_+3)/((2*k_+1)!~
+*(4*k_+3)),k_,0,m)
+
+FRESNEL_COS(z):=INT(COS(pi*t_^2/2),t_,0,z)
+
+FRESNEL_COS_SERIES(z,m):=SUM(COS(pi*k_)*(pi/2)^(2*k_)*z^(4*k_+1)/((2*k_)!*(4*~
+k_+1)),k_,0,m)
+
+FRESNEL_AUX_F(z):=1/(pi*z)-3/(pi^3*z^5)
+
+FRESNEL_AUX_G(z):=1/(pi^2*z^3)-15/(pi^4*z^7)
+
+FRESNEL_SIN_ASYMP(z):=1/2-FRESNEL_AUX_F(z)*COS(pi*z^2/2)-FRESNEL_AUX_G(z)*SIN~
+(pi*z^2/2)
+
+FRESNEL_COS_ASYMP(z):=1/2+FRESNEL_AUX_F(z)*SIN(pi*z^2/2)-FRESNEL_AUX_G(z)*COS~
+(pi*z^2/2)
+
+SPHERICAL_BESSEL_J2(v):=v/SQRT(SUM((2*k_-1)*v SUB k_^2,k_,1,DIM(v)))
+
+SPHERICAL_BESSEL_J1(n,z):=ITERATE(APPEND([(2*(n-DIM(v_))+5)/z*v_ SUB 1-v_ SUB~
+ 2],v_),v_,[1,0],n)
+
+SPHERICAL_BESSEL_J_LIST(n,z):=SPHERICAL_BESSEL_J2(SPHERICAL_BESSEL_J1(n,z))
+
+"FRESNEL_SIN_J and FRESNEL_COS_J contributed by Jim FitzSimons."
+
+FRESNEL_COS_J_AUX(v,m):=SUM(v SUB (2*k_+1),k_,0,m)
+
+FRESNEL_COS_J(z,m):=FRESNEL_COS_J_AUX(z*SPHERICAL_BESSEL_J_LIST(2*m+2,pi*z^2/~
+2),m)
+
+FRESNEL_SIN_J_AUX(v,m):=SUM(v SUB (2*k_+2),k_,0,m)
+
+FRESNEL_SIN_J(z,m):=FRESNEL_SIN_J_AUX(z*SPHERICAL_BESSEL_J_LIST(2*m+2,pi*z^2/~
+2),m)
+

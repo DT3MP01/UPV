@@ -1,0 +1,23 @@
+* C:\Users\david\Downloads\archivospract7\pract7.sch
+
+* Schematics Version 9.1 - Web Update 1
+* Mon May 20 15:00:17 2019
+
+
+
+** Analysis setup **
+.OP 
+.LIB "C:\Users\david\Downloads\archivospract7\pract7.lib"
+
+
+* From [PSPICE NETLIST] section of pspiceev.ini:
+.lib "nom.lib"
+
+.INC "pract7.net"
+.INC "pract7.als"
+
+
+.probe
+
+
+.END

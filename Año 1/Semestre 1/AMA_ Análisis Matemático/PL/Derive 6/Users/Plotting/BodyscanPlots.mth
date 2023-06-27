@@ -1,0 +1,465 @@
+"BodyscanPlots.mth - a MTH Utility File for Plotting Derive Objects using Bas~
+ic and Advanced Bodyscanning Techniques. Peter Schofield, Trinity and All Sai~
+nts College, University of Leeds  (For Derive 6, June 2003) email: p_schofiel~
+d@tasc.ac.uk"
+
+"Consult - PlotTransformations.dfw and PlotTransformations.mth - for explanat~
+ions and demonstrations of the user-defined general-purpose transformers and ~
+standard geometrical objects used in this file."
+
+"Consult - BodyscanPlots.dfw - for explanations and further demonstrations of~
+ the bodyscanning techniques used in this file."
+
+"Settings (Rectangular Coordinates) - 2D-plot Window:  Approximate Before Plo~
+tting (ON); Options>Display>Points>Connect(Yes),Small. 3D-plot Window:  Appro~
+ximate Before Plotting (ON)."
+
+"#6-#82.  GENERAL-PURPOSE TRANSFORMERS AND GEOMETRY SETS"
+
+"General-Purpose Transformers"
+
+TRAN_R(v,a,x,y,z):=IF(VECTOR?(v),IF(VECTOR?(v SUB 1),MAP_LIST(TRAN_R(u,a,x,y,~
+z),u,v),IF(LOGICAL_TYPE?(v SUB 1),MAP_LIST(TRAN_R(u,a,x,y,z),u,v),v*a),v*a),I~
+F(DET(a)=0,IF(DIM(a)=2,[inf,inf],[inf,inf,inf]),IF(DIM(a)=2,SUBST(v,[x,y],[x,~
+y]*a^(-1)),SOLVE(SUBST(v,[x,y,z],[x,y,z]*a^(-1)),z))))
+
+TRAN(v,a,x,y,z):=TRAN_R(v,a`,x,y,z)
+
+DIS(v,d,x,y,z):=IF(VECTOR?(v),IF(VECTOR?(v SUB 1),MAP_LIST(DIS(u,d,x,y,z),u,v~
+),IF(LOGICAL_TYPE?(v SUB 1),MAP_LIST(DIS(u,d,x,y,z),u,v),IF(VECTOR?(d SUB 1),~
+v+d` SUB 1,v+d)),IF(VECTOR?(d SUB 1),v+d` SUB 1,v+d)),IF(VECTOR?(d SUB 1),IF(~
+DIM(d)=2,SUBST(v,[x,y],[x,y]-d` SUB 1),SOLVE(SUBST(v,[x,y,z],[x,y,z]-d` SUB 1~
+),z)),IF(DIM(d)=2,SUBST(v,[x,y],[x,y]-d),SOLVE(SUBST(v,[x,y,z],[x,y,z]-d),z))~
+))
+
+"Special Types"
+
+STR(v,s,x,y,z):=IF(VECTOR?(s SUB 1),IF(DIM(s)=2,TRAN_R(v,[[s SUB 1 SUB 1,0],[~
+0,s SUB 2 SUB 1]],x,y,z),TRAN_R(v,[[s SUB 1 SUB 1,0,0],[0,s SUB 2 SUB 1,0],[0~
+,0,s SUB 3 SUB 1]],x,y,z)),IF(DIM(s)=2,TRAN_R(v,[[s SUB 1,0],[0,s SUB 2]],x,y~
+,z),TRAN_R(v,[[s SUB 1,0,0],[0,s SUB 2,0],[0,0,s SUB 3]],x,y,z)))
+
+PROJ(v,k,x,y,z):=IF(VECTOR?(v),IF(VECTOR?(v SUB 1),MAP_LIST(PROJ(u,k,x,y,z),u~
+,v),IF(LOGICAL_TYPE?(v SUB 1),MAP_LIST(PROJ(u,k,x,y,z),u,v),v . k),v . k),IF(~
+MEMBER?(z,VARIABLES(v)),SOLVE(SUBST(v,[x,y,z],[x/k,y/k,z/k]),z),SUBST(v,[x,y]~
+,[x/k,y/k])))
+
+[INV(v,x,y,z):=PROJ(v,-1,x,y,z),ENLA(v,k,x,y,z):=PROJ(v,k,x,y,z)]
+
+ORTHO_(n):=IF(n SUB 1=n SUB 2=0,[[1,0,0],[0,SIGN(n SUB 3),0],[0,0,1]],[SIGN(C~
+ROSS([n SUB 2,-n SUB 1,0],n)),SIGN([n SUB 2,-n SUB 1,0]),SIGN(n)])
+
+ROT(v,03b1,03b2,x,y,z):=IF(VECTOR?(03b1),IF(VECTOR?(03b1 SUB 1),TRAN_R(v,~
+ORTHO_(03b1` SUB 1)^(-1)*[[COS(03b2),-SIN(03b2),0],[SIN(03b2),COS(03b2),~
+0],[0,0,1]]*ORTHO_(03b1` SUB 1),x,y,z),TRAN_R(v,ORTHO_(03b1)^(-1)*[[COS(03~
+b2),-SIN(03b2),0],[SIN(03b2),COS(03b2),0],[0,0,1]]*ORTHO_(03b1),x,y,z)),T~
+RAN_R(v,[[COS(03b1),SIN(03b1)],[-SIN(03b1),COS(03b1)]],x,y,z))
+
+PROT(v,03b1,03b2,x,y,z):=ROT(v,03b1,-03b2,x,y,z)
+
+REF(v,03b1,x,y,z):=IF(VECTOR?(03b1),IF(VECTOR?(03b1 SUB 1),TRAN_R(v,ORTHO_~
+(03b1)` SUB 1^(-1)*[[1,0,0],[0,1,0],[0,0,-1]]*ORTHO_(03b1)` SUB 1,x,y,z),TR~
+AN_R(v,ORTHO_(03b1)^(-1)*[[1,0,0],[0,1,0],[0,0,-1]]*ORTHO_(03b1),x,y,z)),TR~
+AN_R(v,[[COS(2*03b1),SIN(2*03b1)],[SIN(2*03b1),-COS(2*03b1)]],x,y,z))
+
+SHEAR(u,k,x,y,z):=IF(VECTOR?(k SUB 1),IF(DIM(k)=3,TRAN_R(u,[[1,k SUB 2 SUB 1,~
+0],[k SUB 1 SUB 1,1,0],[k SUB 3 SUB 1,0,1]],x,y,z),TRAN_R(u,[[1,k SUB 2 SUB 1~
+],[k SUB 1 SUB 1,1]],x,y,z)),IF(DIM(k)=3,TRAN_R(u,[[1,k SUB 2,0],[k SUB 1,1,0~
+],[k SUB 3,0,1]],x,y,z),TRAN_R(u,[[1,k SUB 2],[k SUB 1,1]],x,y,z)))
+
+"Append and plot transformers"
+
+ATRAN_R v:=VECTOR(IF(i=1,v SUB 1,TRAN_R(v SUB 1,v SUB i)),i,DIM(v))
+
+ATRAN v:=VECTOR(IF(i=1,v SUB 1,TRAN(v SUB 1,v SUB i)),i,DIM(v))
+
+[[APROJ v:=VECTOR(IF(i=1,v SUB 1,PROJ(v SUB 1,v SUB i)),i,DIM(v))],[AENLA v:=~
+VECTOR(IF(i=1,v SUB 1,PROJ(v SUB 1,v SUB i)),i,DIM(v))]]
+
+ASTR v:=VECTOR(IF(i=1,v SUB 1,STR(v SUB 1,v SUB i)),i,DIM(v))
+
+AINV v:=[v,INV(v)]
+
+AREF v:=VECTOR(IF(i=1,v SUB 1,REF(v SUB 1,v SUB i)),i,DIM(v))
+
+AROT v:=IF(VECTOR?(v SUB 2),ADJOIN(v SUB 1,MAP_LIST(ROT(v SUB 1,v SUB 2,m),m,~
+VECTOR(v SUB i,i,3,DIM(v)))),VECTOR(IF(i=1,v SUB 1,ROT(v SUB 1,v SUB i)),i,DI~
+M(v)))
+
+APROT v:=IF(VECTOR?(v SUB 2),ADJOIN(v SUB 1,MAP_LIST(PROT(v SUB 1,v SUB 2,m),~
+m,VECTOR(v SUB i,i,3,DIM(v)))),VECTOR(IF(i=1,v SUB 1,PROT(v SUB 1,v SUB i)),i~
+,DIM(v)))
+
+ADIS v:=ADJOIN(v SUB 1,MAP_LIST(DIS(v SUB 1,m),m,VECTOR(v SUB i,i,2,DIM(v))))
+
+ADIS v:=VECTOR(IF(i=1,v SUB 1,DIS(v SUB 1,v SUB i)),i,DIM(v))
+
+ASHEAR v:=VECTOR(IF(i=1,v SUB 1,SHEAR(v SUB 1,v SUB i)),i,DIM(v))
+
+"Selecting parameter limits"
+
+PARA(u,a:=false,b:=true):=IF(VECTOR?(u SUB 1),IF(a=false,MAP_LIST(PARA(v SUB ~
+1,v SUB 2,v SUB 3),v,u),MAP_LIST(PARA(v,a,b),v,u)),IF(VECTOR?(a) AND VECTOR?(~
+b),SUBST(u,VARIABLES(u),[((VARIABLES(u)) SUB 1*(a SUB 2-a SUB 1)+[0,pi,5] SUB~
+ DIM(u)*(a SUB 2+a SUB 1))/[0,2*pi,10] SUB DIM(u),((VARIABLES(u)) SUB 2*(b SU~
+B 2-b SUB 1)+[0,pi,5] SUB DIM(u)*(b SUB 2+b SUB 1))/[0,2*pi,10] SUB DIM(u)]),~
+IF(VECTOR?(a),SUBST(u,VARIABLES(u),[((VARIABLES(u)) SUB 1*(a SUB 2-a SUB 1)+[~
+0,pi,5] SUB DIM(u)*(a SUB 2+a SUB 1))/[0,2*pi,10] SUB DIM(u)]),SUBST(u,VARIAB~
+LES(u),[((VARIABLES(u)) SUB 1*(b-a)+[0,pi,5] SUB DIM(u)*(b+a))/[0,2*pi,10] SU~
+B DIM(u)]))))
+
+"Basic Bodyscans"
+
+"(The current version of ORPLOT was suggested by Albert D Rich.)"
+
+ORPLOT(v):=SUM(IF(v SUB i,1,0),i,1,DIM(v))>0
+
+FILL__2(p,q):=(p SUB 1-q SUB 1)*(y-q SUB 3)/(p SUB 3-q SUB 3)+q SUB 1<=x<=(y-~
+q SUB 3)*(p SUB 2-q SUB 2)/(p SUB 3-q SUB 3)+q SUB 2 AND IF(p SUB 3<=q SUB 3,~
+p SUB 3<=y<=q SUB 3,q SUB 3<=y<=p SUB 3)
+
+[[XXYSCAN(v):=IF(VECTOR?(v SUB 1 SUB 1),MAP_LIST(XXYSCAN(z),z,v),VECTOR(FILL_~
+_2(v SUB i,v SUB (i+1)),i,DIM(v)-1))],[ZSCAN(u,v):=MAP_LIST(MAP_LIST([y SUB 1~
+*x SUB 1,y SUB 1*x SUB 2,y SUB 2],x,u),y,v)]]
+
+BSCAN__(n,v):=ZSCAN(VECTOR([COS(2*pi*03b8/n),SIN(2*pi*03b8/n)],03b8,0,n),v~
+)
+
+"A Geometry Set of unit 2D and 3D Laminas"
+
+UNIT_RPOLY2(n):=[ORPLOT(XXYSCAN(VECTOR([-COS((2*k+1)*pi/n-pi/2),COS((2*k+1)*p~
+i/n-pi/2),SIN((2*k+1)*pi/n-pi/2)],k,0,(n-1)/2))),VECTOR([COS((2*k+1)*pi/n-pi/~
+2),SIN((2*k+1)*pi/n-pi/2)],k,0,n)]
+
+UNIT_RPOLY3(n):=BSCAN__(n,[[0,0],[1,0]])
+
+[[UNIT_CIRCLE2:=[x^2+y^2<1,x^2+y^2=1]],[UNIT_CIRCLE3:=UNIT_RPOLY3(20)]]
+
+[[UNIT_SQUARE2:=[0<x<1 AND 0<y<1,[[0,0],[1,0],[1,1],[0,1],[0,0]]]],[UNIT_SQUA~
+RE3:=[[[0,0,0],[1,0,0]],[[0,1,0],[1,1,0]]]]]
+
+[[UNIT_TRIANGLE2:=[x<1-y AND 0<x<1 AND 0<y<1,[[0,0],[1,0],[0,1],[0,0]]]],[UNI~
+T_TRIANGLE3:=[[[0,1,0],[0,1,0]],[[0,0,0],[1,0,0]]]]]
+
+"A Geometry Set of unit 3D-Objects"
+
+UNIT_CUBE:=[[[[0,0,1],[1,0,1],[1,1,1],[0,1,1],[0,0,1]],[[0,0,0],[1,0,0],[1,1,~
+0],[0,1,0],[0,0,0]]],[[[0,0,0],[1,0,0]],[[0,1,0],[1,1,0]]],[[[0,0,1],[0,1,1]]~
+,[[1,0,1],[1,1,1]]]]
+
+UNIT_PYRAMID:=[[[[0,0,1],[0,0,1],[0,0,1],[0,0,1],[0,0,1]],[[0,0,0],[1,0,0],[1~
+,1,0],[0,1,0],[0,0,0]]],[[[0,0,0],[1,0,0]],[[0,1,0],[1,1,0]]]]
+
+UNIT_TETRAHEDRON:=[[[0,0,1],[0,0,1],[0,0,1],[0,0,1]],[[0,0,0],[1,0,0],[0,1,0]~
+,[0,0,0]],[[0,0,0],[0,0,0],[0,0,0],[0,0,0]]]
+
+UNIT_PRISM:=[[[[0,0,0],[1,0,0],[0,1,0],[0,0,0]],[[0,0,1],[1,0,1],[0,1,1],[0,0~
+,1]]],[[[[0,1,0],[0,1,0]],[[0,0,0],[1,0,0]]],[[[0,0,1],[1,0,1]],[[0,1,1],[0,1~
+,1]]]]]
+
+UNIT_SPHERE:=[COS(pi*03c6___/10)*COS(pi*03b8___/5),COS(pi*03c6___/10)*SIN(~
+pi*03b8___/5),SIN(pi*03c6___/10)]
+
+UNIT_HEMISPHERE:=BSCAN__(20,APPEND(VECTOR([SIN(03c6),COS(03c6)],03c6,0,pi/~
+2,pi/20),[[0,0]]))
+
+UNIT_CYLINDER:=BSCAN__(20,[[0,1],[1,1],[1,0],[0,0]])
+
+UNIT_CONE:=BSCAN__(20,[[0,1],[1,0],[0,0]])
+
+UNIT_DCONE:=BSCAN__(20,[[0,1],[1,0],[0,-1]])
+
+"More Laminas and 3D-Objects"
+
+STR_AND_DIS(v,s,c):=IF(DIM(s)=2,IF(DIM(c)=2,DIS(STR(v SUB 1,s),c),DIS(STR(v S~
+UB 2,[s SUB 1,s SUB 2,1]),c)),DIS(STR(v,s),c))
+
+TRANS_UNIT_VECTORS2(v,a):=IF(DIM(a SUB 1)=2,DIS(TRAN_R(v SUB 1,[a SUB 2-a SUB~
+ 1,a SUB 3-a SUB 1]),a SUB 1),DIS(TRAN_R(v SUB 2,[a SUB 2-a SUB 1,a SUB 3-a S~
+UB 1,CROSS(a SUB 2-a SUB 1,a SUB 3-a SUB 1)]),a SUB 1))
+
+TRANS_UNIT_VECTORS3(v,a):=DIS(TRAN_R(v,[a SUB 2-a SUB 1,a SUB 3-a SUB 1,a SUB~
+ 4-a SUB 1]),a SUB 1)
+
+SRPOLY(n,s,c):=STR_AND_DIS([UNIT_RPOLY2(n),UNIT_RPOLY3(n)],s,c)
+
+RPOLY(n,r,c):=SRPOLY(n,[r,r],c)
+
+ELLIPSE(s,c):=STR_AND_DIS([UNIT_CIRCLE2,UNIT_CIRCLE3],s,c)
+
+CIRCLE(r,c):=ELLIPSE([r,r],c)
+
+RECTANGLE(s,p):=STR_AND_DIS([UNIT_SQUARE2,UNIT_SQUARE3],s,p)
+
+SQUARE(r,p):=RECTANGLE([r,r],p)
+
+PARALLELOGRAM(a):=TRANS_UNIT_VECTORS2([UNIT_SQUARE2,UNIT_SQUARE3],a)
+
+TRIANGLE(a):=TRANS_UNIT_VECTORS2([UNIT_TRIANGLE2,UNIT_TRIANGLE3],a)
+
+CUBOID(s,p):=STR_AND_DIS(UNIT_CUBE,s,p)
+
+CUBE(r,p):=CUBOID([r,r,r],p)
+
+PARALLELEPIPED(a):=TRANS_UNIT_VECTORS3(UNIT_CUBE,a)
+
+TETRAHEDRON(a):=TRANS_UNIT_VECTORS3(UNIT_TETRAHEDRON,a)
+
+PYRAMID(a):=TRANS_UNIT_VECTORS3(UNIT_PYRAMID,a)
+
+PRISM(a):=TRANS_UNIT_VECTORS3(UNIT_PRISM,a)
+
+SPHEROID(s,c):=STR_AND_DIS(UNIT_SPHERE,s,c)
+
+SPHERE_(r,c):=SPHEROID([r,r,r],c)
+
+HEMISPHEROID(s,c):=STR_AND_DIS(UNIT_HEMISPHERE,s,c)
+
+HEMISPHERE(r,c):=HEMISPHEROID([r,r,r],c)
+
+SCYLINDER(s,c):=STR_AND_DIS(UNIT_CYLINDER,s,c)
+
+CYLINDER_(r,c):=SCYLINDER([r,r,r],c)
+
+SCONE(s,c):=STR_AND_DIS(UNIT_CONE,s,c)
+
+CONE_(r,c):=SCONE([r,r,r],c)
+
+SDCONE(s,c):=STR_AND_DIS(UNIT_DCONE,s,c)
+
+DCONE(r,c):=SDCONE([r,r,r],c)
+
+" "
+
+"#85-#97  BASIC BODYSCANS"
+
+"XY 2D&3D-Bodyscans"
+
+XXYSCAN(u,z:=true):=IF(VECTOR?(u SUB 1 SUB 1),MAP_LIST(XXYSCAN(x,z),x,u),IF(z~
+=true,VECTOR(FILL__2(u SUB i,u SUB (i+1)),i,DIM(u)-1),IF(VECTOR?(z),VECTOR(IF~
+(z SUB j SUB 1>=0,VECTOR([[z SUB j SUB 1*u SUB i SUB 1,z SUB j SUB 1*u SUB i ~
+SUB 3,z SUB j SUB 2],[z SUB j SUB 1*u SUB i SUB 2,z SUB j SUB 1*u SUB i SUB 3~
+,z SUB j SUB 2]],i,DIM(u)),VECTOR([[-z SUB j SUB 1*u SUB i SUB 1,-z SUB j SUB~
+ 1*u SUB i SUB 3,z SUB j SUB 2],[-z SUB j SUB 1*u SUB i SUB 2,-z SUB j SUB 1*~
+u SUB i SUB 3,z SUB j SUB 2]],i,DIM(u),1,-1)),j,1,DIM(z)),VECTOR([[u SUB i SU~
+B 1,u SUB i SUB 3,z],[u SUB i SUB 2,u SUB i SUB 3,z]],i,DIM(u)))))
+
+POLY_FILLER(u):=VECTOR(SUBST(SUBST(x<=1 AND y<=1-x AND 0<=x AND 0<=y,[x,y],[x~
+,y]*[u SUB (i+1)-u SUB 1,u SUB (i+2)-u SUB 1]^(-1)),[x,y],[x,y]-u SUB 1),i,1,~
+DIM(u)-2)
+
+XYLISTSCAN(u,z:=true):=IF(VECTOR?(u SUB 1 SUB 1 SUB 1),MAP_LIST(XYLISTSCAN(x,~
+z),x,u),IF(z=true,VECTOR(ORPLOT(POLY_FILLER([u SUB 1 SUB i,u SUB 1 SUB (i+1),~
+u SUB 2 SUB (i+1),u SUB 2 SUB i])),i,DIM(u SUB 1)-1),IF(VECTOR?(z),VECTOR(IF(~
+z SUB j SUB 1>=0,[VECTOR([z SUB j SUB 1*u SUB 1 SUB i SUB 1,z SUB j SUB 1*u S~
+UB 1 SUB i SUB 2,z SUB j SUB 2],i,DIM(u SUB 1)),VECTOR([z SUB j SUB 1*u SUB 2~
+ SUB i SUB 1,z SUB j SUB 1*u SUB 2 SUB i SUB 2,z SUB j SUB 2],i,DIM(u SUB 1))~
+],[VECTOR([-z SUB j SUB 1*u SUB 1 SUB i SUB 1,-z SUB j SUB 1*u SUB 1 SUB i SU~
+B 2,z SUB j SUB 2],i,DIM(u SUB 1),1,-1),VECTOR([-z SUB j SUB 1*u SUB 2 SUB i ~
+SUB 1,-z SUB j SUB 1*u SUB 2 SUB i SUB 2,z SUB j SUB 2],i,DIM(u SUB 1),1,-1)]~
+),j,1,DIM(z)),[VECTOR([u SUB 1 SUB i SUB 1,u SUB 1 SUB i SUB 2,z],i,DIM(u SUB~
+ 1)),VECTOR([u SUB 2 SUB i SUB 1,u SUB 2 SUB i SUB 2,z],i,DIM(u SUB 1))])))
+
+"2D closed outlines from XYbodyscans"
+
+XXYOUTLINE(u):=IF(VECTOR?(u SUB 1 SUB 1),MAP_LIST(XXYOUTLINE(x,z),x,u),IF(u S~
+UB 1 SUB 1=u SUB 1 SUB 2,APPEND(VECTOR([u SUB i SUB 2,u SUB i SUB 3],i,DIM(u)~
+),VECTOR([u SUB i SUB 1,u SUB i SUB 3],i,DIM(u),1,-1)),APPEND([[[u SUB 1 SUB ~
+1,u SUB 1 SUB 3]],VECTOR([u SUB i SUB 2,u SUB i SUB 3],i,DIM(u)),VECTOR([u SU~
+B i SUB 1,u SUB i SUB 3],i,DIM(u),1,-1)])))
+
+XYLISTOUTLINE(u,z:=true):=IF(VECTOR?(u SUB 1 SUB 1 SUB 1),MAP_LIST(XYLISTOUTL~
+INE(z),z,u),[APPEND([u SUB 1,VECTOR(u SUB 2 SUB i,i,DIM(u SUB 1),1,-1),[u SUB~
+ 1 SUB 1]])])
+
+"3D-Bodyscan"
+
+ZSCAN(u,v,w:=0):=IF((VECTOR?(w) AND VECTOR?(u SUB 1 SUB 1 SUB 1)) OR (NOT(VEC~
+TOR?(w)) AND VECTOR?(u SUB 1 SUB 1)),MAP_LIST(ZSCAN(x,v,w),x,u),IF(w=0,IF(VEC~
+TOR?(v),MAP_LIST(MAP_LIST([x SUB 1*y SUB 1,x SUB 2*y SUB 1,y SUB 2],x,u),y,v)~
+,MAP_LIST([x SUB 1,x SUB 2,v],x,u)),IF(VECTOR?(w),VECTOR(VECTOR([v SUB j SUB ~
+1*u SUB (w SUB j SUB 1) SUB i SUB 1,v SUB j SUB 1*u SUB (w SUB j SUB 1) SUB i~
+ SUB 2,v SUB j SUB 2],i,DIM(u SUB (w SUB j SUB 1))),j,DIM(v)),MAP_LIST(MAP_LI~
+ST([(ROT(x,w*y SUB 2)) SUB 1*y SUB 1,(ROT(x,w*y SUB 2)) SUB 2*y SUB 1,y SUB 2~
+],x,u),y,v))))
+
+"Mesh lines of 3D-scans"
+
+LAT_LINES(u):=IF(VECTOR?(u SUB 1 SUB 1 SUB 1),MAP_LIST(LAT_LINES(x),x,u),MAP_~
+LIST([u__],u__,u))
+
+LONG_LINES(u):=IF(VECTOR?(u SUB 1 SUB 1 SUB 1),MAP_LIST(LONG_LINES(x),x,u),VE~
+CTOR([MAP_LIST(u__ SUB n,u__,u)],n,DIM(u SUB 1)))
+
+SEE_THROUGH(u):=[LAT_LINES(u),LONG_LINES(u)]
+
+" "
+
+"#100-#107  DEMOSTRATIONS OF BASIC BODYSCANS"
+
+"2D-plot"
+
+[XXYSCAN([[0,3,3],[-1,2,2],[-2,1,1],[-3,0,0],[0,3,-3]]),XXYOUTLINE([[0,3,3],[~
+-1,2,2],[-2,1,1],[-3,0,0],[0,3,-3]])]
+
+ORPLOT(XYLISTSCAN([[[0,3],[3,0],[0,-3],[-3,0],[0,3]],0.5*[[0,3],[3,0],[0,-3],~
+[-3,0],[0,3]]]))
+
+"3D-plot"
+
+[XXYSCAN([[0,3,3],[-1,2,2],[-2,1,1],[-3,0,0],[0,3,-3]],-3),XYLISTSCAN([[[0,3]~
+,[3,0],[0,-3],[-3,0],[0,3]],0.5*[[0,3],[3,0],[0,-3],[-3,0],[0,3]]],4)]
+
+[LONG_LINES(XXYSCAN([[0,0,3],[0,3,3],[-3,0,0],[0,3,-3],[0,0,-3]],-3)),LAT_LIN~
+ES(XYLISTSCAN([[[0,3],[3,0],[0,-3],[-3,0],[0,3]],0.5*[[0,3],[3,0],[0,-3],[-3,~
+0],[0,3]]],4))]
+
+ZSCAN([[[0,3],[3,0],[0,-3],[-3,0],[0,3]],0.5*[[0,3],[3,0],[0,-3],[-3,0],[0,3]~
+]],[[1,4],[1.5,3],[0.7,-1],[1.5,-2],[1,-4]])
+
+SEE_THROUGH(ZSCAN([[[0,3],[3,0],[0,-3],[-3,0],[0,3]],0.5*[[0,3],[3,0],[0,-3],~
+[-3,0],[0,3]]],[[1,4],[1.5,3],[0.7,-1],[1.5,-2],[1,-4]]))
+
+" "
+
+"#110-#117  ADVANCED CURVE/SURFACE SCANS"
+
+"Chasing a Parametric Curve with a Variable Cross-Section or Derive object"
+
+[ORTHO1__(n):=[ROT(SIGN(n),pi/2),SIGN(n)],ORTHO2__(n,m):=[SIGN(CROSS(n,m)),SI~
+GN(CROSS(n,CROSS(n,m))),SIGN(n)]]
+
+CURVE_CHASE(o,v,c,s,r:=0,m:=[0,0,1]):=IF(VECTOR?(c) AND VECTOR?(c SUB 1),MAP_~
+LIST(CURVE_CHASE(o,v,e,s,r,m),e,c),IF(DIM(c)=2,MAP_LIST(DIS(TRAN_R(o*i SUB 1,~
+ORTHO1__(SUBST(DIF(c,s),s,i SUB 2))),SUBST(c,s,i SUB 2)),i,v),IF(r=0,MAP_LIST~
+(DIS(TRAN_R(o*i SUB 1,ORTHO2__(SUBST(DIF(c,s),s,i SUB 2),m)),SUBST(c,s,i SUB ~
+2)),i,v),MAP_LIST(DIS(TRAN_R(ROT(o,[0,0,-1],r*i SUB 2)*i SUB 1,ORTHO2__(SUBST~
+(DIF(c,s),s,i SUB 2),m)),SUBST(c,s,i SUB 2)),i,v))))
+
+"Scanning Between Parametric Curves"
+
+PARA_SCAN(u,n:=20,r:=1):=IF(DIM(u)=1 OR VECTOR?(u SUB 1 SUB 2) OR VECTOR?(u S~
+UB 1 SUB 1 SUB 2),MAP_LIST(PARA_SCAN(v,n,r),v,u),IF(VECTOR?(u SUB 2),IF(DIM(u~
+ SUB 1 SUB 1)=2,VECTOR(VECTOR([SUBST(u SUB j SUB 1,VARIABLES(u SUB j SUB 1),u~
+ SUB j SUB 2+i*(u SUB j SUB 3-u SUB j SUB 2)/n),SUBST(u SUB (j+1) SUB 1,VARIA~
+BLES(u SUB (j+1) SUB 1),u SUB (j+1) SUB 2+i*(u SUB (j+1) SUB 3-u SUB (j+1) SU~
+B 2)/n),SUBST(u SUB (j+1) SUB 1,VARIABLES(u SUB (j+1) SUB 1),u SUB (j+1) SUB ~
+2+(i+1)*(u SUB (j+1) SUB 3-u SUB (j+1) SUB 2)/n),SUBST(u SUB j SUB 1,VARIABLE~
+S(u SUB j SUB 1),u SUB j SUB 2+(i+1)*(u SUB j SUB 3-u SUB j SUB 2)/n),SUBST(u~
+ SUB j SUB 1,VARIABLES(u SUB j SUB 1),u SUB j SUB 2+i*(u SUB j SUB 3-u SUB j ~
+SUB 2)/n)],i,0,n-1,r),j,DIM(u)-1),IF(r=1,VECTOR(VECTOR(SUBST(u SUB j SUB 1,VA~
+RIABLES(u SUB j SUB 1),u SUB j SUB 2+i*(u SUB j SUB 3-u SUB j SUB 2)/n),i,0,n~
+),j,DIM(u)),VECTOR(VECTOR([[SUBST(u SUB j SUB 1,VARIABLES(u SUB j SUB 1),u SU~
+B j SUB 2+i*(u SUB j SUB 3-u SUB j SUB 2)/n),SUBST(u SUB j SUB 1,VARIABLES(u ~
+SUB j SUB 1),u SUB j SUB 2+(i+1)*(u SUB j SUB 3-u SUB j SUB 2)/n)],[SUBST(u S~
+UB (j+1) SUB 1,VARIABLES(u SUB (j+1) SUB 1),u SUB (j+1) SUB 2+i*(u SUB (j+1) ~
+SUB 3-u SUB (j+1) SUB 2)/n),SUBST(u SUB (j+1) SUB 1,VARIABLES(u SUB (j+1) SUB~
+ 1),u SUB (j+1) SUB 2+(i+1)*(u SUB (j+1) SUB 3-u SUB (j+1) SUB 2)/n)]],i,0,n-~
+1,r),j,DIM(u)-1))),VECTOR([[SUBST(u SUB 1,VARIABLES(u SUB 1),u SUB 2+i*(u SUB~
+ 3-u SUB 2)/n),SUBST(u SUB 1,VARIABLES(u SUB 1),u SUB 2+(i+1)*(u SUB 3-u SUB ~
+2)/n)]],i,0,n-1,r)))
+
+"Surface Covering and Space Transformations"
+
+XY_COVER(o,u,v,e:=0):=IF(e=0,VECTOR(VECTOR(DIS(o,[i,j,0]),i,u SUB 1,u SUB 2,u~
+ SUB 3),j,v SUB 1,v SUB 2,v SUB 3),IF(0<e<=1,VECTOR(VECTOR(DIS(o,[i+e*u SUB 3~
+*IF(u SUB 1<i<u SUB 2,RANDOM(1)-0.5,0),j+e*v SUB 3*IF(v SUB 1<j<v SUB 2,RANDO~
+M(1)-0.5,0),0]),i,u SUB 1,u SUB 2,u SUB 3),j,v SUB 1,v SUB 2,v SUB 3),VECTOR(~
+VECTOR(DIS(o,[i,j]),i,u SUB 1,u SUB 2,u SUB 3),j,v SUB 1,v SUB 2,v SUB 3)))
+
+SPACE_TRAN(v,sp,s__,t__,u__):=IF(VECTOR?(v SUB 1),MAP_LIST(SPACE_TRAN(z,sp,s_~
+_,t__,u__),z,v),SUBST(sp,[s__,t__,u__],v))
+
+"#119-#123 are extracted from the Derive 6 file Graphics Functions.mth"
+
+POLAR(r,03b8):=r*[COS(03b8),SIN(03b8)]
+
+SPHERE(r,03b8,03c6):=r*[SIN(03c6)*COS(03b8),SIN(03c6)*SIN(03b8),COS(03~
+c6)]
+
+CYLINDER(r,03b8,z):=[r*COS(03b8),r*SIN(03b8),z]
+
+CONE(03b1,03b8,z):=[z*SIN(03b1)*COS(03b8),z*SIN(03b1)*SIN(03b8),z]
+
+TORUS(rc,rs,03b8,03c6):=[(rc-rs*SIN(03c6))*COS(03b8),(rc-rs*SIN(03c6))*S~
+IN(03b8),rs*COS(03c6)]
+
+" "
+
+"#126-#156   DEMONSTRATIONS OF ADVANCED CURVE/SURFACE SCANS"
+
+"Curve-Chasing"
+
+"First set up a cross-section in the 3D xy-plane"
+
+circ3(n):=VECTOR([COS(2*pi*03b8/n),SIN(2*pi*03b8/n),0],03b8,0,n)
+
+"then CURVE_CHASE the cross-section round a parameter circle to form a torus ~
+- 3D-plot:"
+
+CURVE_CHASE(circ3(12),VECTOR([1,i],i,-pi,pi,pi/12),[4*COS(s),4*SIN(s),0])
+
+SEE_THROUGH(CURVE_CHASE(circ3(12),VECTOR([1,i],i,-pi,pi,pi/12),[4*COS(s),4*SI~
+N(s),0]))
+
+"To CURVE_CHASE a cross-section along a parameter spiral - 3D-plot:"
+
+CURVE_CHASE(circ3(4),VECTOR([0.5,i],i,-2*pi,2*pi,pi/12),[4*COS(s),4*SIN(s),s/~
+2])
+
+"Para-Scanning"
+
+"PARA_SCAN on a single parameter curve to plot the curve between parameter li~
+mits - 3D-plot:"
+
+PARA_SCAN([[4*COS(s),4*SIN(s),s/2],-2*pi,2*pi],60)
+
+"PARA_SCAN between two or more curves to plot a ruled surface - 3D-plot:"
+
+PARA_SCAN([[[0,0,s],-5,5],[[4*COS(s),4*SIN(s),s/2],-2*pi,2*pi]],60)
+
+"PARA_SCAN can also be called with a third argument to open out the panels - ~
+3D-plot:"
+
+PARA_SCAN([[[0,0,s],-5,5],[[4*COS(s),4*SIN(s),s/2],-2*pi,2*pi]],100,2)
+
+"Surface Covering and Space Transformations"
+
+"First, make up a design (in the plane z = 5) using XY-COVER"
+
+pattern1:=XY_COVER([0,0,5],[-pi,pi,pi/15],[0,pi,pi/15])
+
+"To wrap pattern1 around a sphere use SPACE_TRAN  on a sphere parameter surfa~
+ce (note change in order of variables)- 3D-plot:"
+
+SPACE_TRAN(pattern1,SPHERE(r,03b8,03c6),03b8,03c6,r)
+
+"XY_COVER can be called with a final argument (02264_22641) for a random pa~
+ttern - 3D-plot:"
+
+SPACE_TRAN(XY_COVER([0,0,5],[-pi,pi,pi/15],[0,pi,pi/15],0.5),SPHERE(r,03b8,~
+03c6),03b8,03c6,r)
+
+"A pattern of octagons (in the plane z = 5) using XY_COVER (for wrapping arou~
+nd a cylinder - note reduction in upper limit to prevent overlap in CYLINDER ~
+transformation)"
+
+pattern2:=XY_COVER(STR(RPOLY(8,1,[0,0,5]),[0.4,0.8,1]),[-pi,3*pi/4,pi/4],[-5,~
+5,5/3])
+
+"3D-plot:"
+
+SPACE_TRAN(pattern2,CYLINDER(r,03b8,03c6),03b8,03c6,r)
+
+SEE_THROUGH(SPACE_TRAN(pattern2,CYLINDER(r,03b8,03c6),03b8,03c6,r))
+
+"A sheared pattern of stretched squares (in the plane z = 4) using XY_COVER (~
+for wrapping around a cone)"
+
+pattern3:=SHEAR(XY_COVER(STR(RPOLY(4,1,[0,0,4]),[0.2,0.4,1]),[-pi,10*pi/12,pi~
+/6],[-5,5,5/8]),[0.5,0,0])
+
+"3D-plot:"
+
+SPACE_TRAN(pattern3,CONE(r,03b8,03c6),03b8,03c6,r)
+

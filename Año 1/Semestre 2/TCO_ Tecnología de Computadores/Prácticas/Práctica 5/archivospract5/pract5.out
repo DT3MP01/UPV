@@ -1,0 +1,220 @@
+
+**** 05/19/19 22:37:11 *********** Evaluation PSpice (Nov 1999) **************
+
+ * C:\Users\david\Downloads\archivospract5\pract5.sch
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+* Schematics Version 9.1 - Web Update 1
+* Sun May 19 22:37:11 2019
+
+
+
+** Analysis setup **
+.tran 1ns 120ns
+.OP 
+.LIB "C:\Users\david\Downloads\archivospract5\pract5.lib"
+
+
+* From [PSPICE NETLIST] section of pspiceev.ini:
+.lib "nom.lib"
+
+.INC "pract5.net"
+
+**** INCLUDING pract5.net ****
+* Schematics Netlist *
+
+
+
+V_VDD         $N_0001 0 5V
+V_Ve         $N_0002 0  
++PULSE 0 5 10n 2n 2n 40n 100n
+M_M1         $N_0003 $N_0002 0 0 MbreakN-X  
++ L=1u  
++ W=2u         
+C_C1         $N_0003 0  0.1pF  
+R_RD         $N_0003 $N_0001  90k  
+
+**** RESUMING pract5.cir ****
+.INC "pract5.als"
+
+
+
+**** INCLUDING pract5.als ****
+* Schematics Aliases *
+
+.ALIASES
+V_VDD           VDD(+=$N_0001 -=0 )
+V_Ve            Ve(+=$N_0002 -=0 )
+M_M1            M1(d=$N_0003 g=$N_0002 s=0 b=0 )
+C_C1            C1(1=$N_0003 2=0 )
+R_RD            RD(1=$N_0003 2=$N_0001 )
+.ENDALIASES
+
+
+**** RESUMING pract5.cir ****
+.probe
+
+
+.END
+
+**** 05/19/19 22:37:11 *********** Evaluation PSpice (Nov 1999) **************
+
+ * C:\Users\david\Downloads\archivospract5\pract5.sch
+
+
+ ****     MOSFET MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               MbreakN-X       
+               NMOS            
+       LEVEL    1            
+           L  100.000000E-06 
+           W  100.000000E-06 
+         VTO    1            
+          KP   50.000000E-06 
+       GAMMA    0            
+         PHI     .6          
+      LAMBDA    0            
+          IS   10.000000E-15 
+          JS    0            
+          PB     .8          
+        PBSW     .8          
+          CJ    0            
+        CJSW    0            
+        CGSO    0            
+        CGDO    0            
+        CGBO    0            
+         TOX    0            
+          XJ    0            
+       UCRIT   10.000000E+03 
+      DIOMOD    1            
+         VFB    0            
+        LETA    0            
+        WETA    0            
+          U0    0            
+        TEMP    0            
+         VDD    0            
+       XPART    0            
+
+
+**** 05/19/19 22:37:11 *********** Evaluation PSpice (Nov 1999) **************
+
+ * C:\Users\david\Downloads\archivospract5\pract5.sch
+
+
+ ****     SMALL SIGNAL BIAS SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+($N_0001)    5.0000                   ($N_0002)    0.0000                       
+
+($N_0003)    5.0000                   
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_VDD       -5.010E-12
+    V_Ve         0.000E+00
+
+    TOTAL POWER DISSIPATION   2.51E-11  WATTS
+
+
+**** 05/19/19 22:37:11 *********** Evaluation PSpice (Nov 1999) **************
+
+ * C:\Users\david\Downloads\archivospract5\pract5.sch
+
+
+ ****     OPERATING POINT INFORMATION      TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+
+
+
+**** MOSFETS
+
+
+NAME         M_M1      
+MODEL        MbreakN-X 
+ID           5.01E-12 
+VGS          0.00E+00 
+VDS          5.00E+00 
+VBS          0.00E+00 
+VTH          1.00E+00 
+VDSAT        0.00E+00 
+Lin0/Sat1   -1.00E+00 
+if          -1.00E+00 
+ir          -1.00E+00 
+TAU         -1.00E+00 
+GM           0.00E+00 
+GDS          0.00E+00 
+GMB          0.00E+00 
+CBD          0.00E+00 
+CBS          0.00E+00 
+CGSOV        0.00E+00 
+CGDOV        0.00E+00 
+CGBOV        0.00E+00 
+CGS          0.00E+00 
+CGD          0.00E+00 
+CGB          0.00E+00 
+**** 05/19/19 22:37:11 *********** Evaluation PSpice (Nov 1999) **************
+
+ * C:\Users\david\Downloads\archivospract5\pract5.sch
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+($N_0001)    5.0000                   ($N_0002)    0.0000                       
+
+($N_0003)    5.0000                   
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_VDD       -5.010E-12
+    V_Ve         0.000E+00
+
+    TOTAL POWER DISSIPATION   2.51E-11  WATTS
+
+
+
+          JOB CONCLUDED
+
+          TOTAL JOB TIME             .03
+

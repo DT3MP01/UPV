@@ -1,0 +1,200 @@
+
+**** 05/20/19 15:00:17 *********** Evaluation PSpice (Nov 1999) **************
+
+ * C:\Users\david\Downloads\archivospract7\pract7.sch
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+* Schematics Version 9.1 - Web Update 1
+* Mon May 20 15:00:17 2019
+
+
+
+** Analysis setup **
+.OP 
+.LIB "C:\Users\david\Downloads\archivospract7\pract7.lib"
+
+
+* From [PSPICE NETLIST] section of pspiceev.ini:
+.lib "nom.lib"
+
+.INC "pract7.net"
+
+**** INCLUDING pract7.net ****
+* Schematics Netlist *
+
+
+
+M_M1         $N_0002 $N_0001 0 0 MbreakN-X1  
++ L=1u  
++ W=1u         
+M_M3         $N_0004 $N_0001 $N_0003 $N_0004 MbreakP-X  
++ L=1u  
++ W=1u         
+M_M4         $N_0004 $N_0005 $N_0003 $N_0004 MbreakP-X1  
++ L=1u  
++ W=1u         
+V_VDD         $N_0004 0 5V
+M_M2         $N_0003 $N_0005 $N_0002 0 MbreakN-X  
++ L=1u  
++ W=1u         
+V_VB         $N_0005 0 5V
+V_VA         $N_0001 0 5V
+
+**** RESUMING pract7.cir ****
+.INC "pract7.als"
+
+
+
+**** INCLUDING pract7.als ****
+* Schematics Aliases *
+
+.ALIASES
+M_M1            M1(d=$N_0002 g=$N_0001 s=0 b=0 )
+M_M3            M3(d=$N_0004 g=$N_0001 s=$N_0003 b=$N_0004 )
+M_M4            M4(d=$N_0004 g=$N_0005 s=$N_0003 b=$N_0004 )
+V_VDD           VDD(+=$N_0004 -=0 )
+M_M2            M2(d=$N_0003 g=$N_0005 s=$N_0002 b=0 )
+V_VB            VB(+=$N_0005 -=0 )
+V_VA            VA(+=$N_0001 -=0 )
+.ENDALIASES
+
+
+**** RESUMING pract7.cir ****
+.probe
+
+
+.END
+
+**** 05/20/19 15:00:17 *********** Evaluation PSpice (Nov 1999) **************
+
+ * C:\Users\david\Downloads\archivospract7\pract7.sch
+
+
+ ****     MOSFET MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               MbreakN-X1      MbreakP-X       MbreakP-X1      MbreakN-X       
+               NMOS            PMOS            PMOS            NMOS            
+       LEVEL    1               1               1               1            
+           L  100.000000E-06  100.000000E-06  100.000000E-06  100.000000E-06 
+           W  100.000000E-06  100.000000E-06  100.000000E-06  100.000000E-06 
+         VTO    1              -1              -1               1            
+          KP   15.000000E-06   15.000000E-06   15.000000E-06   15.000000E-06 
+       GAMMA    0               0               0               0            
+         PHI     .6              .6              .6              .6          
+      LAMBDA    0               0               0               0            
+          IS   10.000000E-15   10.000000E-15   10.000000E-15   10.000000E-15 
+          JS    0               0               0               0            
+          PB     .8              .8              .8              .8          
+        PBSW     .8              .8              .8              .8          
+          CJ    0               0               0               0            
+        CJSW    0               0               0               0            
+        CGSO    0               0               0               0            
+        CGDO    0               0               0               0            
+        CGBO    0               0               0               0            
+         TOX    0               0               0               0            
+          XJ    0               0               0               0            
+       UCRIT   10.000000E+03   10.000000E+03   10.000000E+03   10.000000E+03 
+      DIOMOD    1               1               1               1            
+         VFB    0               0               0               0            
+        LETA    0               0               0               0            
+        WETA    0               0               0               0            
+          U0    0               0               0               0            
+        TEMP    0               0               0               0            
+         VDD    0               0               0               0            
+       XPART    0               0               0               0            
+
+
+**** 05/20/19 15:00:17 *********** Evaluation PSpice (Nov 1999) **************
+
+ * C:\Users\david\Downloads\archivospract7\pract7.sch
+
+
+ ****     SMALL SIGNAL BIAS SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+($N_0001)    5.0000                   ($N_0002) 167.0E-09                       
+
+($N_0003) 334.0E-09                   ($N_0004)    5.0000                       
+
+($N_0005)    5.0000                   
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_VDD       -1.002E-11
+    V_VB         0.000E+00
+    V_VA         0.000E+00
+
+    TOTAL POWER DISSIPATION   5.01E-11  WATTS
+
+
+**** 05/20/19 15:00:17 *********** Evaluation PSpice (Nov 1999) **************
+
+ * C:\Users\david\Downloads\archivospract7\pract7.sch
+
+
+ ****     OPERATING POINT INFORMATION      TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+
+
+
+**** MOSFETS
+
+
+NAME         M_M1        M_M3        M_M4        M_M2      
+MODEL        MbreakN-X1  MbreakP-X   MbreakP-X1  MbreakN-X 
+ID           1.00E-11    0.00E+00    0.00E+00    1.00E-11 
+VGS          5.00E+00    5.00E+00    5.00E+00    5.00E+00 
+VDS          1.67E-07    5.00E+00    5.00E+00    1.67E-07 
+VBS          0.00E+00    5.00E+00    5.00E+00   -1.67E-07 
+VTH          1.00E+00   -1.00E+00   -1.00E+00    1.00E+00 
+VDSAT        4.00E+00    0.00E+00    0.00E+00    4.00E+00 
+Lin0/Sat1   -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00 
+if          -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00 
+ir          -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00 
+TAU         -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00 
+GM           2.51E-12    0.00E+00    0.00E+00    2.51E-12 
+GDS          6.00E-05    0.00E+00    0.00E+00    6.00E-05 
+GMB          0.00E+00    0.00E+00    0.00E+00    0.00E+00 
+CBD          0.00E+00    0.00E+00    0.00E+00    0.00E+00 
+CBS          0.00E+00    0.00E+00    0.00E+00    0.00E+00 
+CGSOV        0.00E+00    0.00E+00    0.00E+00    0.00E+00 
+CGDOV        0.00E+00    0.00E+00    0.00E+00    0.00E+00 
+CGBOV        0.00E+00    0.00E+00    0.00E+00    0.00E+00 
+CGS          0.00E+00    0.00E+00    0.00E+00    0.00E+00 
+CGD          0.00E+00    0.00E+00    0.00E+00    0.00E+00 
+CGB          0.00E+00    0.00E+00    0.00E+00    0.00E+00 
+
+          JOB CONCLUDED
+
+          TOTAL JOB TIME             .05
+

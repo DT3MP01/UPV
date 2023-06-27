@@ -1,0 +1,55 @@
+ACUERDO DE LICENCIA DE EVALUACIÓN DEL SOFTWARE DE TEXAS 
+INSTRUMENTS
+ 
+Texas Instruments Incorporated, actuando por medio de su sección comercial de 
+Soluciones para educación y productividad (Educational & Productivity Solutions), con 
+sede comercial principal en 7800 Banner Drive, Dallas, TX 75251, EE UU (en adelante, 
+"TI"), desea promocionar el uso de determinado software entre sus potenciales 
+compradores, y considerando que usted, la persona que recibe la presente copia de 
+evaluación del software (en adelante, "Persona autorizada") desea evaluar dicho 
+software,
+
+Acuerdan lo siguiente:
+
+Licencia: TI concede a la Persona autorizada una licencia personal no exclusiva ni 
+transferible para utilizar los programas de software y cualquier otra documentación 
+suministrada (en adelante, "Materiales autorizados") por un plazo de treinta (30) días, 
+contados a partir de la fecha de instalación, en un único ordenador y con el propósito 
+exclusivo de evaluar los Materiales autorizados. Durante la instalación, los programas de 
+software se copiarán en el disco duro del ordenador y usted no podrá hacer ninguna otra 
+copia de los Materiales autorizados.
+
+Restricciones: La Persona autorizada no podrá aplicar ingeniería inversa ni compilación 
+inversa a la parte del programa de software de los Materiales autorizados que se le 
+suministre en formato de código objeto. La Persona autorizada no podrá vender, alquilar 
+ni ceder los Materiales autorizados, ni ninguna copia de ellos, ya sea en todo o en parte.
+
+Copyright: Los Materiales autorizados son propiedad intelectual (copyright) de TI. La 
+Persona autorizada se compromete a no borrar el aviso de copyright, las marcas 
+comerciales ni las notas sobre protección de derechos de propiedad intelectual de los 
+Materiales autorizados ni de ninguna otra copia realizada durante la instalación.
+
+Servicio: TI suministra los Materiales autorizados bajo la condición de que su servicio 
+limitado sólo estará disponible para esta copia de evaluación del software.
+
+Garantía: TI no garantiza que los Materiales autorizados estén libres de errores ni 
+cumplan los requisitos específicos de la Persona autorizada. Los Materiales autorizados 
+se ofrecen "TAL CUAL" a la Persona autorizada.
+
+Limitaciones: TI no se hace responsable ni garantiza, ya sea de forma expresa o 
+implícita, incluidas pero no limitadas, cualesquiera otras garantías implícitas de 
+comerciabilidad e idoneidad para un propósito concreto que pueda haber relacionadas 
+con los Materiales autorizados. Bajo ninguna circunstancia, TI o sus proveedores serán 
+responsables de ningún daño indirecto, incidental o consecuencial, de pérdida de 
+beneficios, pérdida de uso o de datos ni de lucro cesante comercial si los daños 
+alegados se basan en reclamación de perjuicios, derechos contractuales o 
+indemnización.
+
+Derechos restringidos: Los Materiales autorizados se suministran con Derechos 
+reservados. El uso, duplicación o divulgación de los mismos por parte del Gobierno de 
+Estados Unidos está sujeto a las restricciones especificadas en el subpárrafo [c](1)(ii) de 
+la cláusula 252.227-7013 de DFARS relacionada con los Derechos de los datos técnicos 
+y el software de computadora (Rights in Technical Data and Computer Software), o en 
+los subpárrafos [c](1) y (2) de 48 CFR 52.227-19 relacionados con los Derechos 
+restringidos sobre software de computadoras comerciales (Commercial Computer 
+Software - Restricted Rights), cualquiera que sea aplicable.

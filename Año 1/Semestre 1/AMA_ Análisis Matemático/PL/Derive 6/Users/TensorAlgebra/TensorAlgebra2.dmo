@@ -1,0 +1,80 @@
+"           The Derive Tensor Algebra and Analysis Package              "
+"   Demonstration File Tensor2.dmo to derive the Schwarzschild metric   "
+"      Written by Hans A. Dudler (619 420-1787)  25 November 1994       "
+"      Updated for Derive 5                      10 November 2001       "
+"      Updated to expand utility file search     30 September 2002      "
+"     For more detailed documentation, see the text file Tensor.doc     "
+
+; Load the Tensor.mth utility file
+IF(LOAD("TensorAlgebra.mth"), true, LOAD("..\Users\TensorAlgebra\TensorAlgebra.mth"))
+
+" Problem : Find a solution of R_ij=0 with spherical spatial symmetry "
+
+;Spherical coordinate system
+x:=[r,theta,phi,t]
+
+;Flat (zero curvature) covariant metric tensor
+g_ij:=[[-1,0,0,0],[0,-r^2,0,0],[0,0,-r^2*SIN(theta)^2,0],[0,0,0,1]]
+
+;Assume modified metric with unknown functions X(r) and Y(r)
+[X(r):=,Y(r):=]
+
+;New metric; we will find X(r), Y(r) (both > 0) such that R_ij = 0.
+g_ij:=[[-X(r),0,0,0],[0,-r^2,0,0],[0,0,-r^2*SIN(theta)^2,0],[0,0,0,Y(r~
+)]]
+
+;Assign dual (inverse) to g__ij
+g__ij:=g_ij^(-1)
+
+;Compute Christoffel Symbol (2nd kind) and assign to C_ij_k (saves time)
+C_ij_k:=CHRIS2(g_ij,g__ij,x)
+
+;Computing Ricci tensor R_ij (should be zero)
+R_ij:=RICCI(C_ij_k,x)
+
+;Raising the 1st index of the covariant Ricci tensor
+R__i_j:=MI_T(R_ij,1,g__ij)
+
+;Computing RR = R__4_4 - R__1_1 (turns out to be simple)
+RR:=EL_T(R__i_j,[4,4])-EL_T(R__i_j,[1,1])
+
+;RR must be zero. We claim that X(r) = a/Y(r) will do it.
+[a:=,X(r):=a/Y(r)]
+
+;Recomputing RR in fact yields zero
+RR
+
+;Recomputing R__i_j with X(r) = a/Y(r)
+R__i_j
+
+;R_2_2 = 0 is now a differential equation for Y(r)
+DE:=a*r^2*EL_T(R__i_j,[2,2])
+
+;We claim that Y(r) = a(1-b/r) is the general solution
+[a:=,b:=,Y(r):=a*(1-b/r)]
+
+;Recomputing DE confirms this
+DE
+
+;Recomputing g_ij to determine the constants a,b
+;This is the famous Schwarzschild metric
+g_ij
+
+;For r -> inf we must have the original flat metric, hence a=1.
+;b can be found from the Newtonian limit (not done here).
+a:=1
+
+;Recomputing R_ij to verify solution: OK
+R_ij
+
+;Computing Riemann curvature tensor (2nd kind) R__i_jkl
+R__i_jkl:=RIEM2(C_ij_k,x)
+
+;Finding non-zero elements of curvature tensor
+NZEL_T(R__i_jkl)
+
+;Grouped non-zero elements (neg.indices indicate neg.value !)
+GNZE_T(R__i_jkl)
+
+" From this we see that R__i_jkl = 0, except for the elements     "
+" R__1_212 = -R__1_221 = -R__4_224 = R__4_242 = -b/(2 r)    etc.  "

@@ -1,0 +1,61 @@
+"The Simplex Method"
+
+"Author:  Valeriu Anisiu,    anisiu@math.ubbcluj.ro"
+"address: Faculty of Mathematics and Computer Science"
+"         Babe015f-Bolyai University"
+"         Kogalniceanu 1 Street"
+"         3400 Cluj-Napoca, Romania"
+
+simplexversion:=3
+
+eps_:=0
+
+simplextables:=
+
+PIVOTSIMPLEX(aa,mf,r,s,v,w,p,i,j):=PROG(p:=aa SUB r SUB s,i:=mf,LOOP(IF(i=r,i~
+:-1),IF(i=0,exit),j:=DIM(aa`),LOOP(IF(j=s,j:-1),IF(j=0,exit),aa SUB i SUB j:-~
+aa SUB i SUB s*aa SUB r SUB j/p,IF(ABS(aa SUB i SUB j)<=eps_,aa SUB i SUB j:=~
+0),j:-1),i:-1),aa SUB r:/p,MAP(aa SUB i_ SUB s:=0,i_,1,DIM(aa)),aa SUB r SUB ~
+s:=1,v SUB r:=s,w SUB s:=r,IF(VECTOR?(simplextables),simplextables:=APPEND(si~
+mplextables,[[r,s,aa]])))
+
+SIMPLEX1(aa,mf,n,nb,nc,r,s,v,w,i):=LOOP(s:=0,q_:=-eps_,IF(mf=DIM(aa),MAP(IF(a~
+a SUB mf SUB j_<q_,PROG(s:=j_,q_:=aa SUB mf SUB j_)),j_,1,nb),MAP(IF(aa SUB m~
+f SUB j_<q_ AND (w SUB j_<=n OR aa SUB (mf+1) SUB j_<=eps_),PROG(s:=j_,q_:=aa~
+ SUB mf SUB j_)),j_,1,nb)),IF(s=0,RETURN(-aa SUB mf SUB nc)),q_:=inf,i:=DIM(a~
+a)-2,LOOP(IF(i=0,exit),IF(aa SUB i SUB s>eps_,IF(aa SUB i SUB nc/aa SUB i SUB~
+ s<q_,PROG(r:=i,q_:=aa SUB i SUB nc/aa SUB i SUB s))),i:-1),IF(q_=inf,RETURN(~
+-q_)),PIVOTSIMPLEX(aa,mf,r,s,v,w))
+
+SIMPLEX(aa,n,m,nb,nc,mf,v,w,rez,ii,jj,x):=PROG(v:=VECTOR(n+i,i,1,m),w:=VECTOR~
+(i,i,1,nb),x:=VECTOR(0,i,1,n+m),mf:=DIM(aa),rez:=SIMPLEX1(aa,mf,n,nb,nc,r,s,v~
+,w),IF(ABS(rez)>eps_,RETURN([inf,[],[]])),ii:=1,LOOP(IF(ii>m,exit),IF(v SUB i~
+i>nb,PROG(IF(aa SUB ii SUB nc>eps_,RETURN([inf,[?],[]])),jj:=0,MAP(IF(ABS(aa ~
+SUB ii SUB j_)>eps_,jj:=j_),j_,1,nb),IF(jj>0,PIVOTSIMPLEX(aa,mf,ii,jj,v,w))))~
+,ii:+1),mf:=DIM(aa)-1,IF(VECTOR?(simplextables),simplextables:=APPEND(simplex~
+tables,["phase2:"])),rez:=SIMPLEX1(aa,mf,n,nb,nc,r,s,v,w),MAP(PROG(ii:=v SUB ~
+i_,x SUB ii:=aa SUB i_ SUB nc),i_,1,m),IF(ABS(rez)=inf,[rez,[],[]],[rez,x SUB~
+ [1,...,n],x SUB [n+1,...,n+m]]))
+
+SIMPLEXCALL(a,l,g,e,b,c,m,n,nb,nc,aa):=PROG(m:=DIM(a),n:=DIM(a`),nb:=n+l+g,nc~
+:=nb+e+1,IF(DIM(c)<=n,c:=APPEND(c,VECTOR(0,j,DIM(c)+1,n+1))),c:=APPEND(c SUB ~
+[1,...,n],VECTOR(0,j,1,l+g+e),[c SUB (n+1)]),aa:=APPEND(a`,IDENTITY_MATRIX(l+~
+g+e),[b])`,MAP(aa SUB (l+i_) SUB (n+l+i_):=-1,i_,1,g),aa:=APPEND(aa,[c],-[SUM~
+(aa)]),MAP(aa SUB (m+2) SUB j_:=0,j_,nb+1,nc-1),IF(VECTOR?(simplextables),sim~
+plextables:=[[aa]]),SIMPLEX(aa,n,m,nb,nc))
+
+MINIMIZE(c,a,b,ag,ae,al,u,vars,zero):=PROG(vars:=VARIABLES([a,c]),IF(NOT(VECT~
+OR?(a)) OR a=[] OR vars=[],RETURN("Use args:    (expr,[cond1,cond2,...])")),z~
+ero:=0*vars,IF([GRAD(GRAD(c,vars),vars),GRAD(GRAD(LHS(a)-RHS(a),vars),vars)],~
+"ok",RETURN("Nonlinear function or constraint"),RETURN("Nonlinear function or~
+ constraint")),c:=APPEND(GRAD(c,vars),[-SUBST(c,vars,zero)]),ag:=[],ae:=[],al~
+:=[],LOOP(IF(a=[],exit),u:=FIRST(a),a:=REST(a),b:=FIRST(STRING(u)),u:=LHS(u)-~
+RHS(u),b:=POSITION(b,["<","2264",">","2265"]),IF(b>0,b:=SIGN(b-5/2),b:=0,b:~
+=0),IF(SUBST(u,vars,zero)>0,[u:=-u,b:=-b]),IF(b=0,ae:=APPEND(ae,[u])),IF(b>0,~
+ag:=APPEND(ag,[u])),IF(b<0,al:=APPEND(al,[u]))),a:=APPEND(al,ag,ae),b:=-SUBST~
+(LHS(a),vars,zero),a:=GRAD(LHS(a)`,vars)`,u:=SIMPLEXCALL(a,DIM(al),DIM(ag),DI~
+M(ae),b,c),[u SUB 1,vars=u SUB 2,u SUB 3])
+
+MAXIMIZE(c,a,rez):=PROG(rez:=MINIMIZE(-c,a),IF(STRING?(rez),rez,[-rez SUB 1,r~
+ez SUB 2,rez SUB 3]))
+

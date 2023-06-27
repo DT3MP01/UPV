@@ -1,0 +1,31 @@
+"EquationSolving.mth -- Copyright (c) 1990-2003 by Texas Instruments Incorpor~
+ated"
+
+NEWTON(u,x,x0,n):=ITERATES(x-u/DIF(u,x),x,x0,n)
+
+NEWTON_AUX(a,x,x0,n):=ITERATES(xk-ELEMENT(ROW_REDUCE(LIM(a,x,xk))`,DIM(a)+1),~
+xk,x0,n)
+
+NEWTONS(u,x,x0,n):=NEWTON_AUX(APPEND(GRAD(u,x),[u])`,x,x0,n)
+
+FIXED_POINT(g,x,x0,n):=ITERATES(LIM(g,x,xk),xk,x0,n)
+
+"Following definitions contributed by Wolfram Koepf:"
+
+TAYLOR_SOLVE_AUX2(x,y,x0,y0,n,aux):=y0+SUM(LIM(ELEMENT(aux,k_),[y,x],[y0,x0])~
+/k_!*(x-x0)^k_,k_,1,n)
+
+TAYLOR_SOLVE_AUX(x,y,x0,y0,n,v):=TAYLOR_SOLVE_AUX2(x,y,x0,y0,n,ITERATES(DIF(g~
+_,y)*v+DIF(g_,x),g_,v,n-1))
+
+TAYLOR_SOLVE(u,x,y,x0,y0,n):=TAYLOR_SOLVE_AUX(x,y,x0,y0,n,-DIF(u,x)/DIF(u,y))
+
+"Following definitions contributed by Jim FitzSimons:"
+
+LAGRANGE_EXPANSION(u,x,y,x0,y0,n):=x0+SUM((y-y0)^k_/k_!*LIM(DIF(((x-x0)/(u-y0~
+))^k_,x,k_-1),x,x0),k_,1,n)
+
+TAYLOR_INVERSE(u,x,y,x0,n):=IF(LIM(DIF(u,x),x,x0)=0,"Taylor expansion of inve~
+rse does not exist",LAGRANGE_EXPANSION(TAYLOR(u,x,x0,n),x,y,x0,LIM(u,x,x0),n)~
+,LAGRANGE_EXPANSION(TAYLOR(u,x,x0,n),x,y,x0,LIM(u,x,x0),n))
+

@@ -1,0 +1,57 @@
+;To be invoked directly, change the next line. Otherwise FirstOrderODEs.mth must be loaded first!
+;LOAD("C:\Program Files\TI Education\Derive 6\Math\FirstOrderODEs.mth")
+
+applicable(u):=NOT(IDENTICAL?(u,"inapplicable"))
+
+WR?:=true
+
+WR_(u):=PROG(IF(WR?,WRITE(ode_type)),u)
+
+ODE1(r,x,y,li:=c_,v__,p_,q_,k_,a_,b_,rez,r1,r2,t_):=PROG(r:=SUBST(r,LHS(y)`,v~
+__),IF(FIRST(STRING(x))="=",li:=[RHS(x),RHS(y)]),x:=LHS(x),y:=LHS(y),r:=LHS(r~
+)-RHS(r),PROG(ode_type:="Clairaut",IF(DIF(r,v__,2),exit),t_:=,rez:=EXPAND(SUB~
+ST(r,x,(t_+y)/v__),t_,v__),r1:=TERMS('rez),p_:=SUM(SELECT(DIF(w_,v__),w_,r1))~
+,q_:=SUM(r1)-p_,IF(GRAD(q_,[t_,y])=[0,0] AND DIF(p_,y)=0,RETURN(WR_([SUBST(r,~
+v__,c)=0,[SUBST(DIF(p_,t_),t_,x*v__-y)*x+DIF(q_,v__)=0,r=0]]))),ode_type:="un~
+known",RETURN(WR_("inapplicable"))),p_:=SUBST(r,v__,0),q_:=DIF(r,v__),IF(q_,P~
+ROG(ode_type:="Algebraic!",RETURN(WR_(r=0)))),PROG(ode_type:="Integrating_fac~
+tor",IF(applicable(a_:=IF(VECTOR?(li),INTEGRATING_FACTOR(p_,q_,x,y,li SUB 1,l~
+i SUB 2),INTEGRATING_FACTOR_GEN(p_,q_,x,y,li))),RETURN(WR_(a_))),ode_type:="H~
+omogeneous",IF(applicable(a_:=IF(VECTOR?(li),HOMOGENEOUS(-p_/q_,x,y,li SUB 1,~
+li SUB 2),HOMOGENEOUS_GEN(-p_/q_,x,y,li))),RETURN(WR_(a_))),ode_type:="Separa~
+ble",IF(applicable(a_:=IF(VECTOR?(li),SEP(p_,q_,x,y,li SUB 1,li SUB 2),SEP_GE~
+N(p_,q_,x,y,li))),RETURN(WR_(a_))),ode_type:="Gen_hom",IF(applicable(a_:=IF(V~
+ECTOR?(li),GEN_HOM(-p_/q_,x,y,li SUB 1,li SUB 2),GEN_HOM_GEN(-p_/q_,x,y,li)))~
+,RETURN(WR_(a_)))),PROG(ode_type:="Almost_lin",rez:=TERMS(p_),r1:=SUM(SELECT(~
+DIF(w_,y)=0,w_,rez)),r2:=FACTOR(p_-r1,Rational),rez:=FACTORS(r2),b_:=SELECT(D~
+IF(w_,x),w_,rez),b_:=PRODUCT(w_ SUB 1^w_ SUB 2,w_,b_),a_:=r2/b_,IF(NOT(IDENTI~
+CAL?(DIF(a_,y),0)),exit),rez:=IF(VECTOR?(li),ALMOST_LIN(q_,b_,a_,-r1,x,y,li S~
+UB 1,li SUB 2),ALMOST_LIN_GEN(q_,b_,a_,-r1,x,y,li)),IF(applicable(rez),RETURN~
+(WR_(rez)))),r1:=-p_/q_,r2:=TERMS(EXPAND(r1,y)),IF(DIM(r2)=2,PROG(ode_type:="~
+Bernoulli",IF(DIF(r2 SUB 1,y,2),"ok",r2:=REVERSE(r2),r2:=REVERSE(r2)),a_:=SUB~
+ST(r2 SUB 1,y,1),b_:=SUBST(r2 SUB 2,y,1),k_:=FACTORS(r2 SUB 2/b_),IF(r2 SUB 1~
+=a_*y AND k_ SUB 1 SUB 1=y AND r2 SUB 2=b_*y^k_ SUB 1 SUB 2,RETURN(WR_(IF(VEC~
+TOR?(li),BERNOULLI_ODE(-a_,b_,k_ SUB 1 SUB 2,x,y,li SUB 1,li SUB 2),BERNOULLI~
+_ODE_GEN(-a_,b_,k_ SUB 1 SUB 2,x,y,li))))))),PROG(ode_type:="Fun_lin",k_:=DIF~
+(r1,x)/DIF(r1,y),IF(MEMBER?(x,VARIABLES(k_)) OR MEMBER?(y,VARIABLES(k_)),exit~
+),RETURN(WR_(IF(VECTOR?(li),FUN_LIN_CCF(r1,k_,1,0,x,y,li SUB 1,li SUB 2),FUN_~
+LIN_CCF_GEN(r1,k_,1,0,x,y,li))))),PROG(ode_type:="Lin_frac",r2:=FACTOR(DIF(r1~
+,x)/DIF(r1,y),Trivial),IF(GRAD(GRAD([NUMERATOR(r2),DENOMINATOR(r2)],[x,y]),[x~
+,y]),?,exit,exit),a_:=,b_:=,r2:=SUBST(r1,x,x+a_,y,y+b_),k_:=FACTOR(x*DIF(r2,x~
+)+y*DIF(r2,y),Trivial),k_:=SOLUTIONS([SUBST(NUMERATOR(k_),x,1,y,0),SUBST(NUME~
+RATOR(k_),x,0,y,1)],[a_,b_]),IF(k_=[],exit),r2:=SUBST(r1,[x,y],[x,y]+k_ SUB 1~
+),rez:=IF(VECTOR?(li),HOMOGENEOUS(r2,x,y,li SUB 1-k_ SUB 1 SUB 1,li SUB 2-k_ ~
+SUB 1 SUB 2),HOMOGENEOUS_GEN(r2,x,y,li)),IF(applicable(rez),RETURN(WR_(SUBST(~
+rez,[x,y],[x,y]-k_ SUB 1))))),PROG(ode_type:="Monomial_test",a_:=MONOMIAL_TES~
+T(p_,q_,x,y),IF(applicable(a_),RETURN(WR_(IF(VECTOR?(li),EXACT(a_*p_,a_*q_,x,~
+y,li SUB 1,li SUB 2),EXACT_GEN(a_*p_,a_*q_,x,y,li)))))),ode_type:="unknown","~
+inapplicable")
+
+VERIFY_ODE1(r,sol,x,y,li,v__,x1,x2,y1,r1,v1):=PROG(r:=SUBST(r,LHS(y)`,v__),IF~
+(FIRST(STRING(x))="=",li:=[RHS(x),RHS(y)]),x:=LHS(x),y:=LHS(y),sol:=LHS(sol)-~
+RHS(sol),r:=RHS(r)-LHS(r),y1:=-DIF(sol,x)/DIF(sol,y),r1:=SUBST(r,v__,y1),v1:=~
+VARIABLES(r1),LOOP(IF(v1=[] OR r1=0,exit),x1:=SOLUTIONS(sol,FIRST(v1)),IF(DIM~
+(x1)=1,PROG(x2:=STRING(FIRST(x1)),IF(FIRST(x2)="IF",x1:=[x2 SUB (-1)]),r1:=SU~
+BST(r1,FIRST(v1),FIRST(x1)))),v1:=REST(v1)),IF(VECTOR?(li),[r1,SUBST(sol,[x,y~
+],li)],r1))
+

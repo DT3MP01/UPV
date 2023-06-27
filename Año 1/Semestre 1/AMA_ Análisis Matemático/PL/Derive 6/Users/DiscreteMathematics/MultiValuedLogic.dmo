@@ -1,0 +1,81 @@
+"*****************************************************************************"
+
+"*           Constructing TRUTH TABLES and comparing propositions            *"
+
+"*             in a max/min MULTI-VALUED (w-valued) modal LOGIC              *"
+
+"* (c)Eugenio Roanes-Lozano (Dept. Algebra, Univ. Complutense Madrid) Jan 00 *"
+
+"*****************************************************************************"
+
+;If result is false, press the Esc key and load the file MultiValuedLogic.mth
+IF(LOAD("MultiValuedLogic.mth"), true, LOAD("..\Users\MultiValuedLogic\MultiValuedLogic.mth"))
+
+w:=5
+
+;Example I: Commutativity of OR in a 5-valued Logic:
+TT(2,MOR(p,q),MOR(q,p))
+
+w:=2
+
+;Example II: Associativity of AND in Boolean Logic:
+TT(3,MAND(p,MAND(q,r)),MAND(MAND(p,q),r))
+
+w:=3
+
+;Example III: Distributivity of AND w.r.t. OR in 3-valued Logic:
+TT(3,MAND(p,MOR(q,r)),MOR(MAND(p,q),MAND(p,r)))
+
+w:=5
+
+;Example IV: De Morgan's laws in 5-valued Logic:
+TT(2,MNEG(MAND(p,q)),MOR(MNEG(p),MNEG(q)))
+
+w:=3
+
+;Example V: `Not possible' compared with `necessary not' (3-valued Logic):
+TT(1,MNEG(MPOS(p)),MNEC(MNEG(p)))
+
+"----------------------------------------------------------------------------"
+
+w:=2
+
+;Example VI: `Implies' and `iff' in Boolean Logic:
+TT(2,MIMP(p,q),MIFF(p,q))
+
+w:=3
+
+;Example VI: `Implies' and `iff' in 3-valued Logic:
+TT(2,MIMP(p,q),MIFF(p,q))
+
+"-----------------------------------------------------------------------------"
+                                        
+w:=2
+
+;Example VII: Tautologies in Boolean Logic (surprise!):
+ISTAUT(1,MOR(p,MNEG(p)))
+
+w:=3
+
+;Example VII: Tautologies in 3-valued Logic (surprise!):
+ISTAUT(1,MOR(p,MNEG(p)))
+
+"-----------------------------------------------------------------------------"
+
+w:=2
+
+;Example VIII: Tautological consequences in Boolean Logic
+ISCONSTAUT(1,p,p)
+
+;Example VIII: Tautological consequences in Boolean Logic
+ISCONSTAUT(2,MAND(p,q),p)
+
+w:=7
+
+;Example VIII: Tautological consequences in 7-valued Logic
+ISCONSTAUT(1,p,p)
+
+;Example VIII: Tautological consequences in 7-valued Logic
+ISCONSTAUT(2,MAND(p,q),p)
+
+"--------------------  End of MultiValuedLogic.dmo file  ---------------------"

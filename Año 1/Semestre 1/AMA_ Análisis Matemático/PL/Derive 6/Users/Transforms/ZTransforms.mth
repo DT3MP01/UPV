@@ -1,0 +1,74 @@
+NATURAL?(n):=IF(n>=0 AND INTEGER?(n),true,false,false)
+
+REAL?(n):=IF(DIM(VARIABLES(n))=0,IF(IM(n)=0,true,false,false),false,false)
+
+PRODUCTS(f):=MAP_LIST(v SUB 1^v SUB 2,v,FACTORS(f))
+
+CONTAINS?(u,z,store):=PROG(store:=VariableOrder,VariableOrder:=[z],IF((VARIAB~
+LES(u)) SUB 1=z,(VariableOrder:=store) AND RETURN(true),(VariableOrder:=store~
+) AND RETURN(false),(VariableOrder:=store) AND RETURN(false)))
+
+SIN?(f,str):=PROG(str:=STRING(f),IF(str SUB 1="SIN",RETURN([true,str SUB 2]))~
+,[false])
+
+COS?(f,str):=PROG(str:=STRING(f),IF(str SUB 1="COS",RETURN([true,str SUB 2]))~
+,[false])
+
+POLY_EXP?(f,k,det1,det2,base,vars,const,power):=PROG(det1:=f/SUBST(f,k,k/2),d~
+et2:=SUBST(det1,k,k+1)/det1,base:=det2^2,vars:=VARIABLES(base),MAP(IF(r=k,RET~
+URN([false])),r,vars),power:=k*(DIF(f,k)/f-LN(base)),const:=f/(k^power*base^k~
+),[true,const,base,power])
+
+POLY_EXPZT(z,a,b,c):=a*ITERATE(-z*DIF(u,z),u,z/(z-b),c)
+
+LINSIN?(f,z,str,infunc):=PROG(str:=STRING(f),IF(NOT(NAME_TO_CODES(str SUB 1)=~
+[83,73,78]),RETURN([false])),infunc:=str SUB 2,IF(NOT(CONTAINS?(infunc,z)),RE~
+TURN([false])),IF(CONTAINS?(DIF(infunc,z),z),RETURN([false])),[true,DIF(infun~
+c,z),SUBST(infunc,z,0)])
+
+LINCOS?(f,z,str,infunc):=PROG(str:=STRING(f),IF(NOT(NAME_TO_CODES(str SUB 1)=~
+[67,79,83]),RETURN([false])),infunc:=str SUB 2,IF(NOT(CONTAINS?(infunc,z)),RE~
+TURN([false])),IF(CONTAINS?(DIF(infunc,z),z),RETURN([false])),[true,DIF(infun~
+c,z),SUBST(infunc,z,0)])
+
+LINSINZT(z,a,b):=#i*z*#e^(-b*#i)*(#e^(2*a*#i)+z*#e^(a*#i)*(#e^(2*b*#i)-1)-#e^~
+(2*b*#i))/(2*(#e^(a*#i)-z)*(z*#e^(a*#i)-1))
+
+LINCOSZT(z,a,b):=z*#e^(-b*#i)*(#e^(2*a*#i)-z*#e^(a*#i)*(#e^(2*b*#i)+1)+#e^(2*~
+b*#i))/(2*(#e^(a*#i)-z)*(z*#e^(a*#i)-1))
+
+PROD?(f,sf):=PROG(sf:=STRING(f),IF(sf SUB 1="ú",RETURN([true,REST(sf)])),[fal~
+se])
+
+ZT(f,k,z,transforms,terms,size,counter,term,poly,linsin,lincos,prod,prods):=P~
+ROG(transforms:=[],terms:=TERMS(EXPAND(f,k)),size:=DIM(terms),counter:=1,LOOP~
+(IF(counter>size,exit),term:=terms SUB counter,PROG(poly:=POLY_EXP?(term,k),I~
+F(poly SUB 1,IF(NATURAL?(poly SUB 4),(transforms:=ADJOIN(POLY_EXPZT(z,poly SU~
+B 2,poly SUB 3,poly SUB 4),transforms)) AND exit)),linsin:=LINSIN?(term,k),IF~
+(linsin SUB 1,(transforms:=ADJOIN(LINSINZT(z,linsin SUB 2,linsin SUB 3),trans~
+forms)) AND exit),lincos:=LINCOS?(term,k),IF(lincos SUB 1,(transforms:=ADJOIN~
+(LINCOSZT(z,lincos SUB 2,lincos SUB 3),transforms)) AND exit),prod:=PROD?(ter~
+m),IF(NOT(prod SUB 1),RETURN('ZT(f,k,z))),prod:=(DELETE(prod,1)) SUB 1,prods:~
+=[1,1],MAP(IF(CONTAINS?(v,k),prods SUB 2:*v,prods SUB 1:*v),v,prod),linsin:=L~
+INSIN?(prods SUB 2,k),IF(linsin SUB 1,(transforms:=ADJOIN(prods SUB 1*LINSINZ~
+T(z,linsin SUB 2,linsin SUB 3),transforms)) AND exit),lincos:=LINCOS?(prods S~
+UB 2,k),IF(lincos SUB 1,(transforms:=ADJOIN(prods SUB 1*LINCOSZT(z,lincos SUB~
+ 2,lincos SUB 3),transforms)) AND exit)),counter:+1),SUM(transforms))
+
+residues(f_,z,z0,m):=LIM(1/(m-1)!*DIF((z-z0)^m*f_,z,m-1),z,z0)
+
+Zero_Poles?(f,z,denoms,order,counter,size):=PROG(denoms:=FACTORS(DENOMINATOR(~
+f),Rational,z),size:=DIM(denoms),counter:=1,LOOP(IF(counter>size,RETURN([fals~
+e])),IF(denoms SUB counter SUB 1=z,RETURN([true,denoms SUB counter SUB 2])),c~
+ounter:+1))
+
+INVZT(f,z,n,denoms,size,count,sols,poles,orders,expr,ans,ZeroP):=PROG(denoms:~
+=FACTORS(DENOMINATOR(f),Complex,z),size:=DIM(denoms),count:=1,poles:=[],order~
+s:=[],LOOP(IF(count>size,exit),expr:=denoms SUB count SUB 1,IF(CONTAINS?(expr~
+,z),PROG(sols:=SOLUTIONS(expr,z),IF(sols SUB 1=0,exit),IF(DIM(sols)>1,orders:~
+=APPEND(orders,VECTOR(denoms SUB count SUB 2,r,1,DIM(sols))),orders:=APPEND(o~
+rders,[denoms SUB count SUB 2])),poles:=APPEND(poles,sols))),count:+1),size:=~
+DIM(poles),IF(DIM(orders)/=size,RETURN(false)),ans:=SUM(VECTOR(residues(f*z^(~
+n-1),z,poles SUB r,orders SUB r),r,1,size)),ZeroP:=Zero_Poles?(z^(-1)*f,z),IF~
+(ZeroP SUB 1,RETURN(ans*STEP(n-ZeroP SUB 2))),ans)
+

@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Programa
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=tabla
+comment2.target=int[]\ soloImpares(int[])
+comment3.params=tabla
+comment3.target=int[]\ soloPares(int[])
+numComments=4

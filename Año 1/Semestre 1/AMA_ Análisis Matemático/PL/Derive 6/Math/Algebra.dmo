@@ -1,0 +1,26 @@
+;Expands as necessary to simplify expressions
+(x+a)^2-2*a*x
+
+;Unnecessary top-level expansion is avoided
+2 (x^2 - y^2)^6 - (x^2 - y^2)^5(2 x^2 - 3)
+
+;Unnecessary inner-level expansion is avoided
+(x + (a + 1)^10) ^ 2  -  (a + 1)^20
+
+;This rational expression simplifies to a polynomial
+a^3/((a-b)*(a-c)) + b^3/((b-c)*(b-a)) + c^3/((c-a)*(c-b))
+
+;Fractions are reduced to lowest terms
+(x^6+a^6)(x+1)/((x^6+a^6)*(x^2-a^2)+a^2*x^2*(x^4-a^4))+a^2*x^2(x+1)/(x^6-a^6-a^2*x^2*(x^2-a^2))
+
+;Superfluous variables are eliminated
+((a*n + b*m)^2 + (a*m - b*n)^2) / ((a*p + b*q)^2 + (a*q - b*p)^2)
+
+;Cancellations can be dramatic
+((p*x^2+(k-s)*x+r)^2-(p*x^2+(k+s)*x+r)^2)/((p*x^2+(k+t)*x+r)^2-(p*x^2+(k-t)*x+r)^2)
+
+;Compound fractions are reduced to simple ones
+(1 - (1-(y+1)/(x+y+1)) / (1-x/(x+y+1))) / ((y+1)^2 - x / (1+x/(y-x+1)) (x (y+1)/(y-x+1) - x))
+
+;Compound fractions are reduced to simple ones
+((1/x^2+1/y^2)/(1/x^2-1/y^2)-(1/x^2-1/y^2)/(1/x^2+1/y^2))/((2x+y)/(((x+y)/(x-y)+(x-y)/(x+y))*(x^2/y^2+y^2/x^2-2)))

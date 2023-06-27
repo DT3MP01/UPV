@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Programa
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=c
+comment2.target=void\ leerNotas(double[])
+comment3.params=c
+comment3.target=double\ sumaNota(double[])
+numComments=4

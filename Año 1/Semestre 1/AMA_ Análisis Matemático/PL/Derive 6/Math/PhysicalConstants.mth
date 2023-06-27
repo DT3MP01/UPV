@@ -1,0 +1,79 @@
+"PhysicalConstants.mth -- Copyright (c) 1990-2003 by Texas Instruments Incorp~
+orated"
+
+"Fundamental Physical Constants -- Reference: Physics Today, August 1989"
+
+"Load METRIC.MTH when using this file."
+
+"Speed of light in vacuum:"
+
+c_:=299792458*(meter/second)
+
+"Newtonian constant of gravitation:"
+
+g_:=6.6726*10^(-14)*(meter^3/(gram*second^2))
+
+"Planck constant:"
+
+h_:=6.6260755*10^(-34)*joule*second
+
+"Elementary charge:"
+
+e_:=1.60217733*10^(-19)*coulomb
+
+"Fine structure constant:"
+
+alpha:=0.00729735308
+
+"Rydberg constant:"
+
+r_inf:=10973731.53/meter
+
+"Bohr radius:"
+
+a0:=5.29177249*10^(-11)*meter
+
+"Mass of an electron, proton, and neutron:"
+
+me:=9.1093898*10^(-28)*gram
+
+mp:=1.6726231*10^(-24)*gram
+
+mn:=1.6749286*10^(-24)*gram
+
+"Compton wavelength of an electron, proton, and neutron:"
+
+lambda_c:=2.42631058*10^(-12)*meter
+
+lambda_cp:=1.32141002*10^(-15)*meter
+
+lambda_cn:=1.3195911*10^(-15)*meter
+
+"Classical radius of an electron:"
+
+re_:=2.81794092*10^(-15)*meter
+
+"Avogadro constant:"
+
+na:=6.0221367*10^23/mole
+
+"Faraday constant:"
+
+f_:=96485.309*(coulomb/mole)
+
+"Molar gas constant:"
+
+r_:=8.314511*(joule/(mole*degree_kelvin))
+
+"Boltzmann constant:"
+
+k_:=1.380658*10^(-23)*(joule/degree_kelvin)
+
+"Stefan-Boltzmann constant:"
+
+sigma:=5.67051*10^(-8)*watt/(meter^2*degree_kelvin^4)
+
+"Standard acceleration of gravity:"
+
+gn:=9.80665*(meter/second^2)
+

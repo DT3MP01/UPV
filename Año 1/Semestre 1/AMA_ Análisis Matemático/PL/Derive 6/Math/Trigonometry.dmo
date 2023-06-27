@@ -1,0 +1,71 @@
+;Simplifies special angles, such as 17/6 pi radians
+COS (17/6 pi)
+
+;Type "DEG" after entering an angle in degrees
+SIN (-30 DEG)
+
+;A hidden opportunity for sin^2 + cos^2 --> 1
+(SIN x)^3 + SIN x + (COS x)^2 SIN x
+
+;Using different rules in different places
+(1 - (COS x)^2)^4 (1 - (SIN x)^2)^3 ((SIN x)^2 + (COS x)^2)^5
+
+;Judicious extraction of phase angles
+SIN (pi / 4 + a) - SIN (0.25 (pi - 4 a))
+
+;Judicious extraction of phase angles
+SIN (1.5 pi/2+x) / COS (pi+x) + COS ((3pi-2x)/2) / SIN (pi/2+x)
+
+;Judicious extraction of phase angles
+SIN (pi - a) / TAN (pi + a) * COT ((pi - 2 a)/2) / TAN (pi / 2 + a) * SIN (1.5 * pi + a) / SIN (- a)
+
+;Judicious use of multiple-angle expansion
+SIN (6 x) / SIN (3 x)
+
+;Judicious use of half-angle transformations
+1/(1+TAN(a)*TAN(a/2))
+
+;Judicious use of half-angle transformations
+(COS (a/2) + SIN (a/2))^2
+
+;Judicious use of half-angle transformations
+SIN((pi-t)/4)^2*SIN(pi/4+t/4)^2
+
+;Simultaneous half and multiple angles
+CSC (2x) (2 (COS (x/2))^2 - 1)
+
+;Cancellation of trigonometric GCDs
+(1 + SIN a) * (1 + SEC a) / ((1 + COS a) * (1 + CSC a))
+
+;Judicious use of half-angle transformations
+(TAN a)^2 / (1 + (TAN a)^2) * (1 + (COT a)^2) / (COT a)^2
+
+;Principal arctangent of a special ratio
+ATAN (2 + SQRT 3)
+
+;ATAN (y, x) is the angle of the point (x,y)
+ATAN (-1, -1)
+
+;Principal arcsine of a special ratio
+ASIN (-1/2)
+
+;Principal arccosine of a special ratio
+ACOS (- 1 / SQRT 2)
+
+;Judicious transformation of two-argument ATAN to ASIN
+ATAN (x,SQRT(1-x^2))
+
+;Exploitation of reciprocal arguments
+ATAN (x/2 + 3) + ATAN (2/(x + 6))
+
+;Composition of inverse functions
+TAN ATAN x
+
+;There is also an arcsecant function
+ASEC (1/x)
+
+;There is also an arccosecant function
+CSC ACSC x
+
+;There is also an arccotangent function
+ACOT t + ATAN t

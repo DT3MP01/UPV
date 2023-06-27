@@ -1,0 +1,28 @@
+"HypergeometricFunctions.mth -- Copyright (c) 1990-2003 by Texas Instruments ~
+Incorporated"
+
+"HYPERGEOMETRIC_SERIES([a1,...,ap],[b1,...,bq],z,m) computes m+1 terms"
+
+"of the generalized hypergeometric series pFq(a1,...,ap;b1,...,bq;z)."
+
+HYPERGEOMETRIC_SERIES(plist,qlist,z,m):=SUM(PRODUCT(PERM(k_+plist SUB j_-1,k_~
+),j_,1,DIM(plist))*z^k_/(PRODUCT(PERM(k_+qlist SUB j_-1,k_),j_,1,DIM(qlist))*~
+k_!),k_,0,m)
+
+KUMMER_AUX(a,b,z):=(1/2)^a/a+INT(t^(a-1)*(#e^(z*t)*(1-t)^(b-a-1)-1),t,0,1/2)
+
+KUMMER(a,b,z):=GAMMA(b)/(GAMMA(b-a)*GAMMA(a))*(KUMMER_AUX(a,b,z)+#e^z*KUMMER_~
+AUX(b-a,b,-z))
+
+KUMMER_SERIES(a,b,z,m):=HYPERGEOMETRIC_SERIES([a],[b],z,m)
+
+GAUSS_AUX(a,b,c,z):=(1/2)^b/b+INT(t^(b-1)*((1-t)^(c-b-1)*(1-t*z)^(-a)-1),t,0,~
+1/2)
+
+GAUSS(a,b,c,z):=IF(z=1,GAMMA(c)*GAMMA(c-a-b)/(GAMMA(c-a)*GAMMA(c-b)),GAMMA(c)~
+/(GAMMA(b)*GAMMA(c-b))*(GAUSS_AUX(a,b,c,z)+(1-z)^(-a)*GAUSS_AUX(a,c-b,c,z/(z-~
+1))),GAMMA(c)/(GAMMA(b)*GAMMA(c-b))*(GAUSS_AUX(a,b,c,z)+(1-z)^(-a)*GAUSS_AUX(~
+a,c-b,c,z/(z-1))))
+
+GAUSS_SERIES(a,b,c,z,m):=HYPERGEOMETRIC_SERIES([a,b],[c],z,m)
+

@@ -1,0 +1,14 @@
+"EulerMac.MTH Jim FitzSimons 25 October, 1994"
+
+"Jim FitzSimons Phone 602-488-1859 FAX 602-488-5014 E-mail cherry@neta.com"
+
+"This is the Euler-Maclaurin summation formula as described"
+
+"on page 806 23.1.30 of Handbook of Mathematical Functions by"
+
+"Milton Abramowitz and Irene A. Stegun."
+
+EULERMAC(y,k,a0,a,b,m):=SUM(y,k,a0,a-1)+(LIM(y,k,b)+LIM(y,k,a))/2+INT(y,k,a,b~
+)+SUM(ZETA(1-2*j_)/(2*j_-1)!*(LIM(DIF(y,k,2*j_-1),k,a,0)-LIM(DIF(y,k,2*j_-1),~
+k,b,0)),j_,1,m)
+

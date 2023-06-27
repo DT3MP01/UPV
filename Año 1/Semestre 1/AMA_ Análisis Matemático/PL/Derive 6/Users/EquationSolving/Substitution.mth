@@ -1,0 +1,63 @@
+"== Equations System Solving by Substitution == SUBST.MTH == 30.03.00"
+
+"Multiple Solutions Supported. Copyright(C) 2000 by Sergey V.Biryukov"
+
+"                         Email: ciprel@cityline.ru  Subject:DERIVE  "
+
+"Modified for DERIVE v.5.00                            See SUBST.DOC "
+
+"******************** Use Only in EXACT Mode !!! ********************"
+
+[Precision:=Exact,default1:=1]
+
+;Transpose matrix v even it is a matrix of equations.
+TRNSP(v):=IF(VECTOR?(v),IF(DIM(v)=1,IF(VECTOR?(v SUB 1),VECTOR([k],k,v SUB 1)~
+,v),IF(VECTOR?(v SUB 1),VECTOR(VECTOR(v SUB j SUB i,j,DIM(v)),i,DIM(v SUB 1))~
+,v)),v)
+
+;Substitute x=x0 in expr u. x & x0 - vectors or 1 column matrices of variables and its values. 
+SBST(u,x,x0):=ITERATE(u,APPEND(x),APPEND(x0),1)
+
+;Recursive function forward declaration
+SOLF1(m,vr,n,nmax):=
+
+;Solve Forward Mutual Recursive Declaration 1
+SOLF2(m,vr,n,nmax,ss):=VECTOR([ss SUB j_,LIM(m,vr SUB n,RHS(ss SUB j_)),SOLF1~
+(LIM(m,vr SUB n,RHS(ss SUB j_)),vr,nmax,n+1)],j_,DIM(ss))
+
+;Solve Forward Mutual Recursive Declaration 2
+SOLF1(m,vr,nmax,n):=IF(n=nmax,TRNSP([SOLVE(m SUB 1,vr SUB n)]),SOLF2(DELETE_E~
+LEMENT(m,1),vr,n,nmax,SOLVE(m SUB 1,vr SUB n)))
+
+;Solve Forward System m with respect to variables vr. Use default1 steps.
+SOLF(m,vr,default1):=SOLF1(m,APPEND(vr),IF(default1=1,DIM(m),default1),1)
+
+APP(v):=IF(VECTOR?(v),IF(DIM(v)=1,v SUB 1,APPEND(v)),v)
+
+;Solve Back
+SOLB(u):=IF(VECTOR?(u SUB 1 SUB 2 SUB 1),APP(VECTOR(VECTOR(APPEND([SBST(k SUB~
+ 1,LHS(t),RHS(t))],t),t,SOLB(k SUB 3)),k,u)),u)
+
+;Solve System m with respect to vr (variables)
+SOLVE_(m,vr):=TRNSP(SELECT(SBST(m,LHS(k_),RHS(k_)),k_,SOLB(SOLF(m,APPEND(vr))~
+)))
+
+"======================== Examples =============================="
+; Linear System
+SOLVE_([[2*a+3*b=8],[4*a+5*b=14],[6*a+7*b+8*c=44]],[[a],[b],[c]])=[[a=1],[b=2~
+],[c=3]]
+
+; Linear System
+SOLVE_([[2*a+3*b=8],[4*a+5*b=14]],[[a],[b]])=[[a=1],[b=2]]
+
+;Nonlinear System
+SOLVE_([[c=a/b],[b-1=c],[2*c=a-2]],[[a],[b],[c]])=[[a=6],[b=3],[c=2]]
+
+;The same Nonlinear System, but different solve variables order.
+SOLVE_([[c=a/b],[b-1=c],[2*c=a-2]],[[b],[c],[a]])=[[b=3],[c=2],[a=6]]
+
+;The same Nonlinear System, but different solve variables order.
+SOLVE_([[c=a/b],[b-1=c],[2*c=a-2]],[[c],[a],[b]])=[[c=2],[a=6],[b=3]]
+
+"========================= SUBST.MTH  END ==========================="
+

@@ -1,0 +1,33 @@
+"LinearAlgebra.mth -- Copyright (c) 1990-2003 by Texas Instruments Incorporated"
+
+SCALE_ELEMENT(v,i,s):=REPLACE(s*v SUB i,v,i)
+
+SWAP_ELEMENTS(v,i,j,t_):=PROG(t_:=v SUB i,v:=REPLACE(v SUB j,v,i),v:=REPLACE(~
+t_,v,j))
+
+SUBTRACT_ELEMENTS(v,i,j,s:=1):=REPLACE(v SUB i-s*v SUB j,v,i)
+
+FORCE0(M,i,j,p):=REPLACE(M SUB i-M SUB i SUB j/M SUB p SUB j*M SUB p,M,i)
+
+PIVOT(M,i,j):=VECTOR(IF(k_<=i,M SUB k_,M SUB k_-M SUB k_ SUB j/M SUB i SUB j*~
+M SUB i),k_,DIM(M))
+
+MINOR(M,i,j):=DELETE(DELETE(M,i)`,j)`
+
+COFACTOR(M,i,j):=COS(pi*(i+j))*DET(MINOR(M,i,j))
+
+ADJOINT(M):=VECTOR(VECTOR(COFACTOR(M,k_,n_),k_,DIM(M)),n_,DIM(M))
+
+NULL_SPACE(M,R_,b_,t_,c_,k_,id_,i_:=1,ns_:=[]):=PROG(R_:=ROW_REDUCE(M),c_:=DI~
+M(FIRST(M)),k_:=RANK(R_),IF(c_=k_,RETURN([])),b_:=VECTOR(POSITION(1,R_ SUB t_~
+),t_,1,k_),id_:=-IDENTITY_MATRIX(c_-k_),LOOP(IF(i_>c_,RETURN(REVERSE(ns_))),I~
+F(MEMBER?(i_,b_),PROG(ns_:=ADJOIN(DELETE(FIRST(R_),b_),ns_),R_:=REST(R_)),PRO~
+G(ns_:=ADJOIN(FIRST(id_),ns_),id_:=REST(id_))),i_:+1))
+
+EXACT_EIGENVECTOR(M,03bb,r_,c_,trig_):=PROG(c_:=M-03bb*IDENTITY_MATRIX(DIM(~
+M)),r_:=NULL_SPACE(c_),IF(r_=[],PROG(trig_:=Trigonometry,Trigonometry:=Collec~
+t,r_:=NULL_SPACE(c_),Trigonometry:=trig_)),r_)
+
+APPROX_EIGENVECTOR(M,03bc):=SIGN(ROW_REDUCE(M-03bc*IDENTITY_MATRIX(DIM(M)),~
+VECTOR(3000*COS(pi*k_)/k_,k_,DIM(M)))` SUB (DIM(M)+1))
+

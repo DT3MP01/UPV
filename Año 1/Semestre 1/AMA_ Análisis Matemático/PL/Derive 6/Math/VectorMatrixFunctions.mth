@@ -1,0 +1,52 @@
+"VectorMatrixFunctions.mth -- Copyright (c) 1990-2003 by Texas Instruments In~
+corporated"
+
+"Terence Etchells, Liverpool John Moores University, UK.  email: t.a.etchells~
+@livjm.ac.uk"
+
+"contributes to and maintains this file."
+
+i_:=[1,0,0]
+
+j_:=[0,1,0]
+
+k_:=[0,0,1]
+
+KRONECKER(i,j):=IF(i=j,1,0)
+
+OUTER(v,w):=MAP_LIST(r*w,r,v)
+
+ADJOIN_ELEMENT(e,v):=ADJOIN(e,v)
+
+APPEND_COLUMNS Args:=IF(DIM(Args)=1 AND VECTOR?(FIRST(Args)) AND EVERY(MATRIX~
+?(a_),a_,FIRST(Args)),APPEND(MAP_LIST(a_`,a_,FIRST(Args)))`,APPEND(MAP_LIST(a~
+_`,a_,Args))`)
+
+PARTITION(v,n,d):=IF(NUMBER?(d) AND IM(d)=0,MAP_LIST(MAP_LIST(v SUB m_,m_,n_,~
+n_+n-1),n_,1,1+d*FLOOR(DIM(v)-n,d),d),PARTITION(v,n,n))
+
+REMOVE_ELEMENTS(v,v_,places,m,c,r):=PROG(IF(NOT(VECTOR?(v_)),v_:=[v_]),places~
+:=SORT(APPEND(VECTOR(SELECT(v SUB r_=v_ SUB s_,r_,1,DIM(v)),s_,1,DIM(v_)))),m~
+:=DIM(places),c:=1,r:=0,LOOP(IF(c>m,RETURN(v)),v:=DELETE(v,places SUB c-r),c:~
++1,r:+1))
+
+MATPROD(a,b,i,j):=PROG(b:=b COL j,a:=a SUB i,a*b)
+
+cylindrical:=[[r,03b8,z],[1,r,1]]
+
+spherical:=[[r,03b8,03c6],[1,r*SIN(03c6),r]]
+
+JACOBIAN(u,03b1):=MAP_LIST(GRAD(u SUB m_,03b1),m_,DIM(u))
+
+COVARIANT_METRIC_TENSOR(a):=a` . a
+
+GEOMETRY_MATRIX(03b1,g):=[03b1,MAP_LIST(SQRT(g SUB m_ SUB m_),m_,DIM(g))]
+
+RECTANGULAR_TO_POLAR(x,y):=[SQRT(x^2+y^2),ATAN(y,x)]
+
+POLAR_TO_RECTANGULAR(r,03b8):=[r*COS(03b8),r*SIN(03b8)]
+
+POLAR_SUM(p,q):=[SQRT(2*p SUB 1*q SUB 1*COS(p SUB 2-q SUB 2)+p SUB 1^2+q SUB ~
+1^2),ATAN(p SUB 1*SIN(p SUB 2)+q SUB 1*SIN(q SUB 2),p SUB 1*COS(p SUB 2)+q SU~
+B 1*COS(q SUB 2))]
+

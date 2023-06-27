@@ -1,0 +1,217 @@
+***  Installation Started 10/02/2018 16:55  ***
+Title: Instalación de Derive 6
+Source: C:\Users\david\Downloads\Descarga\Derive\Setup Derive 6.exe | 10-02-2018 | 16:50:50 | 6182866
+File Overwrite: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Derive6.exe | 10-15-2004 | 12:00:00 | 6.0.1.0 | 1544140 | 411fb0d5
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\D6Lang.dll | 10-16-2004 | 21:45:30 | 6.0.1.0 | 544768 | fe46a96f
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Derive6.cnt | 10-16-2004 | 09:51:08 | | 20107 | f772cd73
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Derive6.hlp | 10-07-2004 | 01:20:42 | | 582164 | bb2bfc6b
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Derive6Intro.pdf | 11-04-2003 | 00:24:50 | | 1170742 | de25f66d
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\License.txt | 11-22-2000 | 10:00:00 | | 3539 | dd09f37c
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Unwise.ini | 11-24-2003 | 12:00:00 | | 6621 | 97c79b6c
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\DeriveConnect.dll | 10-11-2004 | 12:00:00 | 6.0.1.0 | 81920 | 896ecb5
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\unwise.exe | 07-26-2002 | 17:02:06 | | 153088 | 5be5019b
+Made Dir: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\Algebra.dmo | 05-06-2003 | 12:00:00 | | 1031 | 5a44cf13
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\Arithmetic.dmo | 05-06-2003 | 12:00:00 | | 957 | 397a0d7
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\BesselFunctions.mth | 05-06-2003 | 12:00:00 | | 3088 | 98657ae4
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\Calculus.dmo | 05-06-2003 | 12:00:00 | | 1674 | d391010
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\CombinatorialFunctions.mth | 05-06-2003 | 12:00:00 | | 3304 | 14cac23e
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\DifferentiationApplications.mth | 01-15-2004 | 12:00:00 | | 2823 | be86e511
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\ElementaryFunctions.dmo | 05-06-2003 | 12:00:00 | | 3151 | 6a4dc5f9
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\EllipticIntegrals.mth | 05-26-2003 | 12:00:00 | | 2096 | e51b3083
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\EnglishUnits.mth | 05-06-2003 | 12:00:00 | | 702 | 7dd23c06
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\EquationSolving.mth | 05-06-2003 | 12:00:00 | | 1099 | b993716d
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\ExponentialIntegrals.mth | 08-12-2003 | 12:00:00 | | 546 | ce99edc4
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\FirstOrderODEs.mth | 05-06-2003 | 12:00:00 | | 4883 | fe4e23c
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\FresnelIntegrals.mth | 05-06-2003 | 12:00:00 | | 1318 | cf09362c
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\GraphicsFunctions.mth | 12-08-2003 | 12:00:00 | | 2931 | 4b839a8d
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\HypergeometricFunctions.mth | 05-06-2003 | 12:00:00 | | 1077 | ff04fb53
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\IntegrationApplications.mth | 05-06-2003 | 12:00:00 | | 2816 | 2c43e798
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\LinearAlgebra.mth | 02-21-2004 | 12:00:00 | | 1357 | 703123f3
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\MetricUnits.mth | 05-06-2003 | 12:00:00 | | 929 | af05d261
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\MiscellaneousFunctions.mth | 05-06-2003 | 12:00:00 | | 2198 | 8d077a29
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\NumberTheoryFunctions.mth | 05-06-2003 | 12:00:00 | | 5043 | 175ca9c7
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\NumericalApproximation.mth | 05-26-2003 | 12:00:00 | | 1512 | 1f67e9d4
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\ODEApproximation.mth | 05-06-2003 | 12:00:00 | | 1867 | 86f448c9
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\OrthogonalPolynomials.mth | 05-06-2003 | 12:00:00 | | 4633 | e8f0c0ec
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\PhysicalConstants.mth | 05-06-2003 | 12:00:00 | | 1439 | 6fcebb8a
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\ProbabilityFunctions.mth | 02-29-2004 | 12:00:00 | | 1253 | c6972d2a
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\RationalApproximation.mth | 12-09-2003 | 12:00:00 | | 1523 | 4e436275
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\RecurrenceEquations.mth | 05-06-2003 | 12:00:00 | | 1389 | d55789d
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\SecondOrderODEs.mth | 05-06-2003 | 12:00:00 | | 2189 | fe214297
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\Support.pas | 06-17-2003 | 12:00:00 | | 2688 | e3ce54e2
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\Trigonometry.dmo | 05-06-2003 | 12:00:00 | | 1848 | 736b0727
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\VectorMatrix.dmo | 05-06-2003 | 12:00:00 | | 2157 | 2fe9f5ce
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\VectorMatrixFunctions.mth | 05-22-2003 | 12:00:00 | | 1574 | 66abf999
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Math\ZetaFunctions.mth | 09-29-2004 | 12:00:00 | | 317 | 62f77cbd
+Made Dir: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users
+Made Dir: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\ComplexAnalysis
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\ComplexAnalysis\ComplexAnalysis.dfw | 07-29-2003 | 12:00:00 | | 59554 | 6420565
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\ComplexAnalysis\ComplexAnalysis.mth | 07-29-2003 | 12:00:00 | | 19640 | f2d0342e
+Made Dir: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\DiscreteMathematics
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\DiscreteMathematics\ErrorCorrectingCodes.dfw | 07-07-2003 | 12:00:00 | | 40197 | d00dae0f
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\DiscreteMathematics\MultiValuedLogic.dmo | 06-17-2003 | 12:00:00 | | 2226 | 631e19dc
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\DiscreteMathematics\MultiValuedLogic.doc | 01-06-2000 | 12:00:00 | | 4018 | 3b7ea164
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\DiscreteMathematics\MultiValuedLogic.mth | 03-15-2000 | 12:00:00 | | 2370 | f056c639
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\DiscreteMathematics\NetworkGraphs.dfw | 07-07-2003 | 12:00:00 | | 111243 | 7c00ae52
+Made Dir: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\EquationSolving
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\EquationSolving\LinearRecurrenceEquations.dfw | 08-14-2003 | 12:00:00 | | 12561 | 8122405a
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\EquationSolving\ODE1Simple.dfw | 12-20-2003 | 12:00:00 | | 23721 | 19b812d0
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\EquationSolving\ODE1Simple.mth | 12-17-2003 | 12:00:00 | | 3835 | 7e7becc8
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\EquationSolving\SolvePlus.dfw | 08-14-2003 | 12:00:00 | | 13095 | def8999f
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\EquationSolving\Substitution.dmo | 06-23-2003 | 12:00:00 | | 2756 | 948e6271
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\EquationSolving\Substitution.doc | 03-30-2000 | 12:00:00 | | 3183 | b1b32660
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\EquationSolving\Substitution.mth | 03-30-2000 | 12:00:00 | | 2399 | e5ad3f74
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\EquationSolving\TaylorODE.dfw | 08-14-2003 | 12:00:00 | | 25271 | ae620964
+Made Dir: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Integration
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Integration\IntegrationPlus.dmo | 04-05-2004 | 12:00:00 | | 3407 | efc9ab81
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Integration\IntegrationPlus.mth | 04-05-2004 | 12:00:00 | | 2767 | 1d7d53f5
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Integration\IntegrationPlus.txt | 05-11-2004 | 12:00:00 | | 5984 | dab5c03f
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Integration\MultipleIntegration.dfw | 07-29-2003 | 12:00:00 | | 46651 | 679bc58c
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Integration\MultipleIntegration.mth | 07-29-2003 | 12:00:00 | | 11279 | 3ae265d2
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Integration\NumericIntegration.dfw | 09-09-2004 | 12:00:00 | | 11304 | 18893ad2
+Made Dir: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\LinearAlgebra
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\LinearAlgebra\LinearAlgebra.dfw | 08-14-2003 | 12:00:00 | | 14499 | afc4e939
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\LinearAlgebra\QRMethodEigenvalues.dfw | 08-14-2003 | 12:00:00 | | 8979 | 9430da91
+Made Dir: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\NumberTheory
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\NumberTheory\NumberTheoryFunctions.dfw | 08-06-2003 | 12:00:00 | | 34796 | bc12fca1
+Made Dir: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Plotting
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Plotting\2D-plotExamples.dfw | 08-14-2003 | 12:00:00 | | 6441 | f0526e2b
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Plotting\2D-plotPatterns.dfw | 07-07-2003 | 12:00:00 | | 76498 | 9e257f09
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Plotting\2DIntegralPlots.dfw | 09-06-2004 | 12:00:00 | | 20097 | de6cb42
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Plotting\3D-plotExamples.dfw | 09-05-2003 | 12:00:00 | | 7165 | 4409c774
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Plotting\3DIntegralPlots.dfw | 09-06-2004 | 12:00:00 | | 34879 | bef3f965
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Plotting\ArrowVectors.dfw | 08-14-2003 | 12:00:00 | | 51983 | 807d5159
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Plotting\BodyscanPlots.dfw | 07-07-2003 | 12:00:00 | | 66480 | 6eb1bdc9
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Plotting\BodyscanPlots.mth | 07-07-2003 | 12:00:00 | | 19018 | 99befa5a
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Plotting\PlotTransformations.dfw | 07-07-2003 | 12:00:00 | | 36024 | d31214ac
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Plotting\PlotTransformations.mth | 07-02-2003 | 12:00:00 | | 10062 | a6a5797a
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Plotting\UniformPolyhedra.dfw | 02-04-2004 | 12:00:00 | | 140907 | fa66cff3
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Plotting\VectorFields.dfw | 08-14-2003 | 12:00:00 | | 39861 | c9340340
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Plotting\VennDiagrams.dfw | 02-04-2004 | 12:00:00 | | 587002 | 93738644
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Plotting\VolumeOfRevolution.dfw | 03-16-2002 | 12:00:00 | | 3274 | b61b2b84
+Made Dir: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\ProbabilityTheory
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\ProbabilityTheory\ProbabilityDistributions.dfw | 10-10-2003 | 12:00:00 | | 16891 | f91e1426
+Made Dir: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\RegressionAnalysis
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\RegressionAnalysis\LogisticRegression.dfw | 08-14-2003 | 12:00:00 | | 18407 | 8d404c20
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\RegressionAnalysis\LogisticRegression.mth | 10-08-2002 | 12:00:00 | | 3787 | 7a27e5e6
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\RegressionAnalysis\NonlinearRegression.dfw | 09-16-2004 | 12:00:00 | | 55518 | 65e521dd
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\RegressionAnalysis\NonlinearRegression.mth | 09-16-2004 | 12:00:00 | | 13594 | cf6f78cc
+Made Dir: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\SimplexMethod
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\SimplexMethod\SimplexMethod.dmo | 06-16-2003 | 12:00:00 | | 2397 | 7c99ca08
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\SimplexMethod\SimplexMethod.mth | 06-17-2003 | 12:00:00 | | 3320 | caee5cb
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\SimplexMethod\SimplexMethod.txt | 07-29-2002 | 12:00:00 | | 3929 | c6797231
+Made Dir: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\SpecialFunctions
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\SpecialFunctions\CarlsonEllipticIntegrals.dmo | 06-17-2003 | 12:00:00 | | 3654 | da917459
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\SpecialFunctions\CarlsonEllipticIntegrals.doc | 05-18-2003 | 12:00:00 | | 1050 | 80abba62
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\SpecialFunctions\CarlsonEllipticIntegrals.mth | 08-19-2003 | 12:00:00 | | 6631 | 11133c85
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\SpecialFunctions\EulerMaclaurinSummation.dmo | 06-23-2003 | 12:00:00 | | 1906 | 6a5e599
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\SpecialFunctions\EulerMaclaurinSummation.doc | 02-02-1997 | 12:00:00 | | 931 | ad6098b0
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\SpecialFunctions\EulerMaclaurinSummation.mth | 02-02-1997 | 12:00:00 | | 481 | 47af74eb
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\SpecialFunctions\SpecialFunctions.dfw | 08-12-2003 | 12:00:00 | | 52301 | 5f4964f5
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\SpecialFunctions\SpecialFunctions.mth | 08-08-2003 | 12:00:00 | | 38857 | b7083eeb
+Made Dir: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\TensorAlgebra
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\TensorAlgebra\TensorAlgebra.doc | 05-10-2003 | 12:00:00 | | 29564 | b441ecc7
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\TensorAlgebra\TensorAlgebra.mth | 05-10-2003 | 12:00:00 | | 12467 | 9d4a9c8f
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\TensorAlgebra\TensorAlgebra1.dmo | 06-17-2003 | 12:00:00 | | 4442 | 5ba2cfd4
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\TensorAlgebra\TensorAlgebra2.dmo | 06-17-2003 | 12:00:00 | | 2508 | 8edc4e76
+Made Dir: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Transforms
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Transforms\LaplaceTransforms.dfw | 08-14-2003 | 12:00:00 | | 11406 | 928ccad8
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Transforms\ZTransforms.dfw | 08-14-2003 | 12:00:00 | | 9692 | d40d04fb
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Users\Transforms\ZTransforms.mth | 03-22-2001 | 12:00:00 | | 3935 | 89560c7f
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\RCG32.DLL | 02-16-2004 | 11:31:16 | 2.0.0.0 | 167969 | b6b74b74
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\ROBOEX32.DLL | 09-21-2002 | 00:33:28 | 11.0.228.0 | 1089536 | 839f408d
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\DerUNI_B.TTF | 08-08-2003 | 12:00:00 | | 417592 | 43f8427d
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\DerUNI_I.TTF | 08-08-2003 | 12:00:00 | | 429600 | 549fb0a5
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\DerUNI_J.TTF | 08-08-2003 | 12:00:00 | | 426028 | f6a95a7f
+File Copy: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\DerUNI_R.TTF | 08-08-2003 | 12:00:00 | | 420468 | 73ec35d3
+File Copy: C:\Windows\Fonts\DerUNI_B.TTF | 08-08-2003 | 12:00:00 | | 417592 | 43f8427d
+File Copy: C:\Windows\Fonts\DerUNI_I.TTF | 08-08-2003 | 12:00:00 | | 429600 | 549fb0a5
+File Copy: C:\Windows\Fonts\DerUNI_J.TTF | 08-08-2003 | 12:00:00 | | 426028 | f6a95a7f
+File Copy: C:\Windows\Fonts\DerUNI_R.TTF | 08-08-2003 | 12:00:00 | | 420468 | 73ec35d3
+File Copy: C:\Windows\Fonts\DfW5.TTF | 03-14-2000 | 12:00:00 | | 48860 | 3f5be68e
+Shell Link: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Derive 6 - Evaluación\Derive 6.lnk
+Link Info: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Derive6.exe | C:\Program Files (x86)\TI Education\Derive 6 - Evaluación |  | 0 | 1 | 0 | 
+Shell Link: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Derive 6 - Evaluación\Ayuda de Derive 6.lnk
+Link Info: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Derive6.hlp | C:\Program Files (x86)\TI Education\Derive 6 - Evaluación |  | 0 | 1 | 0 | 
+Shell Link: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Derive 6 - Evaluación\Desinstalación de Derive 6.lnk
+Link Info: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\unwise.exe | C:\Program Files (x86)\TI Education\Derive 6 - Evaluación |  | 0 | 1 | 0 | INSTALL.LOG
+Shell Link: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Derive 6 - Evaluación\License.lnk
+Link Info: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\License.txt | C:\Program Files (x86)\TI Education\Derive 6 - Evaluación |  | 0 | 1 | 0 | 
+Shell Link: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Derive 6 - Evaluación\Derive 6 PDF.lnk
+Link Info: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Derive6Intro.pdf | C:\Program Files (x86)\TI Education\Derive 6 - Evaluación |  | 0 | 1 | 0 | 
+Shell Link: C:\Users\Public\Desktop\Derive 6 - Evaluación.lnk
+Link Info: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Derive6.exe | C:\Program Files (x86)\TI Education\Derive 6 - Evaluación |  | 0 | 1 | 0 | 
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Derive 6 - Evaluación
+RegDB Val: 6.1
+RegDB Name: DisplayVersion
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Derive 6 - Evaluación
+RegDB Val: Texas Instruments Incorporated
+RegDB Name: Publisher
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Derive 6 - Evaluación
+RegDB Val: USA & Canada: 972-917-8324.  Others visit the Soft Warehouse Europe web site at www.derive-europe.com or email support@derive-europe.com.
+RegDB Name: HelpTelephone
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Derive 6 - Evaluación
+RegDB Val: TI Cares Technical Assistance
+RegDB Name: Contact
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Derive 6 - Evaluación
+RegDB Val: Derive 6 - Evaluación
+RegDB Name: DisplayName
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Derive 6 - Evaluación
+RegDB Val: http://education.ti.com/support
+RegDB Name: URLInfoAbout
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Derive 6 - Evaluación
+RegDB Val: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Derive6.exe,-0
+RegDB Name: DisplayIcon
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Derive 6 - Evaluación
+RegDB Val: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\unwise.exe C:\PROGRA~2\TIEDUC~1\DERIVE~1\INSTALL.LOG
+RegDB Name: UninstallString
+RegDB Root: 2
+RegDB Key: SOFTWARE\Texas Instruments\Derive 6
+RegDB Val: Espanol
+RegDB Name: Language
+RegDB Root: 2
+RegDB Key: SOFTWARE\Texas Instruments\Derive 6
+RegDB Val: 30-Day Trial
+RegDB Name: ProductKey
+RegDB Root: 2
+RegDB Key: SOFTWARE\Texas Instruments\Derive 6
+RegDB Val: davidarnalgar@gmail.com
+RegDB Name: UserName
+RegDB Root: 2
+RegDB Key: SOFTWARE\Texas Instruments\Derive 6
+RegDB Val: 6.1
+RegDB Name: CurrentVersion
+RegDB Root: 2
+RegDB Key: .mth
+RegDB Val: Derive.Math
+RegDB Key: .dfw
+RegDB Val: Derive.Worksheet
+RegDB Key: Derive.Worksheet
+RegDB Val: Derive Worksheet
+RegDB Key: Derive.Worksheet\shell\open\command
+RegDB Val: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Derive6.EXE "%1"
+RegDB Key: Derive.Worksheet\DefaultIcon
+RegDB Val: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Derive6.EXE,0
+RegDB Key: Derive.Math
+RegDB Val: Derive Math
+RegDB Key: Derive.Math\shell\open\command
+RegDB Val: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Derive6.EXE "%1"
+RegDB Key: Derive.Math\DefaultIcon
+RegDB Val: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\Derive6.EXE,0
+Self-Register: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación\DeriveConnect.dll
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\App Paths\Derive6.exe
+RegDB Val: 
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\App Paths\Derive6.exe
+RegDB Val: C:\Program Files (x86)\TI Education\Derive 6 - Evaluación
+RegDB Name: Path
+RegDB Root: 2
+User Rights: Admin

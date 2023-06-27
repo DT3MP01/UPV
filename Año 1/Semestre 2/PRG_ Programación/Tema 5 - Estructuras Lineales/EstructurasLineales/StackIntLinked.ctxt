@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=StackIntLinked
+comment0.text=\n\ StackIntLinked\:\ Implementaci\u00F3\ enlla\u00E7ada\ de\ l'estructura\ de\ dades\ \n\ lineal\ Pila\ d'enters.\n\ \n\ @author\ PRG\n\ @version\ Curs\ 2017/18\n
+comment1.params=
+comment1.target=StackIntLinked()
+comment1.text=\n\ Crea\ una\ pila\ vac\u00EDa.\n\ Constructor\ por\ defecto\n
+comment2.params=
+comment2.target=boolean\ empty()
+comment2.text=\n\ Comprova\ si\ la\ pila\ actual\ est\u00E0\ o\ no\ buida.\ \n\ @return\ boolean,\ true\ si\ la\ pila\ est\u00E0\ buida\ i\ false\ en\ cas\ contrari.\n
+comment3.params=
+comment3.target=int\ size()
+comment3.text=\n\ Torna\ el\ n\u00FAmero\ d'elements\ de\ la\ pila\ actual.\n\ @return\ int,\ n\u00FAmero\ d'elements\ de\ la\ pila\ actual.\n
+comment4.params=
+comment4.target=int\ peek()
+comment4.text=\n\ Torna\ la\ dada\ de\ l'element\ top\ de\ la\ pila\ actual.\n\ @throws\ NoSuchElementException\ si\ la\ pila\ est\u00E0\ buida.\ \n\ @return\ int,\ dada\ de\ l'element\ top\ de\ la\ pila\ actual.\n
+comment5.params=elemento
+comment5.target=void\ push(int)
+comment5.text=\n\ A\u00F1ade\ un\ nuevo\ elemento\ a\ la\ pila.\ \n\ @param\ x,\ int\ a\ empilar\ en\ la\ pila\ actual.\n
+comment6.params=
+comment6.target=int\ pop()
+comment6.text=\n\ Saca\ un\ elemento,\ devuelve\ su\ contenido\ y\ lo\ elimina.\n\ @throws\ NoSuchElementException\ si\ la\ pila\ est\u00E0\ buida.\n\ @return\ int,\ dada\ de\ l'element\ top\ desempilat\ de\ la\ pila\ actual.\n
+comment7.params=o
+comment7.target=boolean\ equals(java.lang.Object)
+comment7.text=\n\ Comprova\ si\ la\ pila\ actual\ \u00E9s\ igual\ o\ no\ a\ una\ pila\ donada.\n\ @param\ o\ Object\ que\ representa\ la\ pila\ a\ comparar.\n\ @return\ boolean,\ true\ si\ s\u00F3n\ iguals\ i\ false\ en\ cas\ contrari.\n
+comment8.params=
+comment8.target=java.lang.String\ toString()
+numComments=9

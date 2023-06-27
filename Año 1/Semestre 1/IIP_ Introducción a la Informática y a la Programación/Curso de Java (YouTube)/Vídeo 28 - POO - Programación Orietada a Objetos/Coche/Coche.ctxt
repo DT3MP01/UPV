@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Coche
+comment0.text=\r\n\ Clase\:\ Modelo\ donde\ se\ redactan\ las\ caracter\u00EDsticas\ comunes\ de\ un\ grupo\r\n\ de\ objetos.\r\n\ \r\n\ Objeto\:\ Ejemplar\ perteneciente\ a\ una\ clase.\r\n\ \ \u00B7\ Tiene\ propiedades\ (atributos)\:\r\n\ \ \u00B7\ Color,\ peso,\ alto,\ largo...\r\n\ \ \u00B7\ Accediendo\ a\ propiedades\ de\ objeto\ desde\ c\u00F3digo\ (pseudoc\u00F3digo)\:\r\n\ \ \u00B7\ nombre.propiedad\ \=\ valor;\r\n\ \ \u00B7\ Renault.color\ \=\ "rojo";\r\n\ \ \u00B7\ Renault.peso\ \=\ 1500;\r\n\ \ \u00B7\ Renault.ancho\ \=\ 2000;\r\n\ \ \r\n\ \ Tiene\ un\ comportamiento\ (\u00BFQu\u00E9\ es\ capaz\ de\ hacer?)\:\r\n\ \ \u00B7\ Arrancar,\ frenar,\ girar,\ acelerar...\r\n\ \ \u00B7\ Accediendo\ a\ comportamiento\ de\ objeto\ desde\ c\u00F3digo\ (pseudoc\u00F3digo)\:\r\n\ \ \u00B7\ nombre.m\u00E9todo();\r\n\ \ \u00B7\ Renault.arranca();\r\n\ \ \u00B7\ Renault.frena();\r\n
+comment1.params=
+comment1.target=Coche()
+comment1.text=Sintaxis\ m\u00E9todo\ constructor\:\r\n\ public\ nombre_clase\r\n
+numComments=2

@@ -1,0 +1,26 @@
+https://docs.google.com/document/d/1k9b8UYGBnJ7oVjoIHV3X4KVUSsguewB6R74PeDCaO0k/edit?usp=sharing
+
+-------
+
+Estructuras principales de Java II
+
+Tipos de datos en Java (tipos primitivos)
+
+Enteros
+Long: 8 bytes de espacio para almacenamiento. Una barbaridad. Sufijo L. Por ejemplo: 5.000.000.000L.
+Int: 4 bytes de espacio para almacenamiento. Desde -2.147.483.648 hasta 2.147.483.647.
+Short: 2 bytes de espacio para almacenamiento. Desde -32.768 hasta 32.767. 7 sería un dato de tipo tanto Int, como short. En cambio 1.500.000 sería un dato exclusivamente del tipo Int.
+Byte: 1 byte de espacio para almacenamiento. Desde -128 hasta 127. 35 podría ser considerado como byte, short, int o como long.
+Coma  flotante (decimales)
+Float: 4 bytes de espacio para almacenamiento. Aproximadamente 6 o 7 cifras decimales significativas. Sufijo F. Ejemplo: 3.25F.
+Double: 8 bytes de espacio para almacenamiento. Aproximadamente 15 cifras decimales significativas.
+Char (para representar caracteres)
+Tienen que ir los caracteres entre comillas simples. Ejemplo: ‘a’.
+Boolean: T o F.
+
+Variables en Java
+¿Qué es una variable? Es un espacio en la memoria del ordenador donde se almacenará un valor que podrá cambiar durante la ejecución del programa.
+
+¿Cómo se crea una variable en Java? Se especifica el tipo de dato que almacenará en su interior + el nombre de la variable; Ejemplo: int salario;
+
+¿Qué es iniciar una variable? Es darle un valor. Nombre_variable=valor. Ejemplo: salario=2000;

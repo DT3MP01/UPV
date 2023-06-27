@@ -1,0 +1,110 @@
+<?xml version="1.0" standalone="yes" ?>
+<grafo>
+<tipoGrafo> "0" </tipoGrafo>
+<nodos><nodo>
+<nombre> "Ripoll" </nombre>
+<posicion> (246,208) </posicion>
+</nodo>
+<nodo>
+<nombre> "Olot" </nombre>
+<posicion> (334,173) </posicion>
+</nodo>
+<nodo>
+<nombre> "Figueres" </nombre>
+<posicion> (435,126) </posicion>
+</nodo>
+<nodo>
+<nombre> "Roses" </nombre>
+<posicion> (550,128) </posicion>
+</nodo>
+<nodo>
+<nombre> "l'Escala" </nombre>
+<posicion> (551,225) </posicion>
+</nodo>
+<nodo>
+<nombre> "Girona" </nombre>
+<posicion> (431,317) </posicion>
+</nodo>
+<nodo>
+<nombre> "Vlc" </nombre>
+<posicion> (304,356) </posicion>
+</nodo>
+<nodo>
+<nombre> "Sant Celoni" </nombre>
+<posicion> (402,404) </posicion>
+</nodo>
+</nodos>
+<aristas><arista>
+<nodo1> "0" </nodo1>
+<nodo2> "1" </nodo2>
+<peso> "1.0" </peso>
+<tipo> "0" </tipo>
+</arista>
+<arista>
+<nodo1> "0" </nodo1>
+<nodo2> "6" </nodo2>
+<peso> "1.0" </peso>
+<tipo> "0" </tipo>
+</arista>
+<arista>
+<nodo1> "1" </nodo1>
+<nodo2> "2" </nodo2>
+<peso> "1.0" </peso>
+<tipo> "0" </tipo>
+</arista>
+<arista>
+<nodo1> "1" </nodo1>
+<nodo2> "5" </nodo2>
+<peso> "1.0" </peso>
+<tipo> "0" </tipo>
+</arista>
+<arista>
+<nodo1> "1" </nodo1>
+<nodo2> "6" </nodo2>
+<peso> "1.0" </peso>
+<tipo> "0" </tipo>
+</arista>
+<arista>
+<nodo1> "2" </nodo1>
+<nodo2> "3" </nodo2>
+<peso> "1.0" </peso>
+<tipo> "0" </tipo>
+</arista>
+<arista>
+<nodo1> "2" </nodo1>
+<nodo2> "4" </nodo2>
+<peso> "1.0" </peso>
+<tipo> "0" </tipo>
+</arista>
+<arista>
+<nodo1> "2" </nodo1>
+<nodo2> "5" </nodo2>
+<peso> "1.0" </peso>
+<tipo> "0" </tipo>
+</arista>
+<arista>
+<nodo1> "3" </nodo1>
+<nodo2> "4" </nodo2>
+<peso> "1.0" </peso>
+<tipo> "0" </tipo>
+</arista>
+<arista>
+<nodo1> "5" </nodo1>
+<nodo2> "6" </nodo2>
+<peso> "1.0" </peso>
+<tipo> "0" </tipo>
+</arista>
+<arista>
+<nodo1> "5" </nodo1>
+<nodo2> "7" </nodo2>
+<peso> "1.0" </peso>
+<tipo> "0" </tipo>
+</arista>
+<arista>
+<nodo1> "6" </nodo1>
+<nodo2> "7" </nodo2>
+<peso> "1.0" </peso>
+<tipo> "0" </tipo>
+</arista>
+</aristas> 
+ </grafo>

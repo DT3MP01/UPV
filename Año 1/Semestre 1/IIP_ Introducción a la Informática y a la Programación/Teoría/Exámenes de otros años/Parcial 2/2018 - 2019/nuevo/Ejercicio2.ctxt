@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Ejercicio2
+comment1.params=k\ l
+comment1.target=boolean\ ejercicio2(int,\ int)
+comment1.text=PRECONDICI\u00D3N\:\ k\ >\ 0\ AND\ l\ >\ 2
+numComments=2

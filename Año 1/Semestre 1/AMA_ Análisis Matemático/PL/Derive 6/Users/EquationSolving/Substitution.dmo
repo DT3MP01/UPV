@@ -1,0 +1,61 @@
+"    Substitution.mth - Equations System Solving by Substitution    "
+"Multiple Solutions Supported.                              30.03.00"
+"                                 Copyright (C) 2000 by S.V.Biryukov"
+"                         Email: ciprel@cityline.ru  Subject: DERIVE"
+" Uses Substitution.mth          Requires Derive version 5 or later."
+" For documentation see Substitution.doc                            "
+"                                                                   "
+"SOLVE_(m,v):=solves matrix of eq. m for variables v by substitution"
+"           m - 1 column matrix of equations,                       "
+"           v - vector (or 1 col. matrix) of solve variables.       "
+"           Eq. & variables order in m & v define substitution order"
+" ******* Use SOLVE_() function  ONLY in EXACT Mode !!! ************"
+
+;If result is false, press the Esc key and load the file Substitution.mth
+IF(LOAD("Substitution.mth"),true,LOAD("..\Users\EquationSolving\Substitution.mth"))
+
+;SOLVE_() can solve simple nonlinear eq. systems by substitution.
+SOLVE_([[c=a/b],[b-1=c],[2*c=a-2]],[a,b,c])
+
+;One column matrix of variables is also supported.
+SOLVE_([[c=a/b],[b-1=c],[2*c=a-2]],[[a],[b],[c]])
+
+;Other variables (& thus substitutions) order, but the same solution
+SOLVE_([[c=a/b],[b-1=c],[2*c=a-2]],[[b],[c],[a]])
+
+;APPEND(RHS()) combination returns a vector of variables' values.
+APPEND(RHS([[a=6],[b=3],[c=2]]))
+
+"If x and x0 are vectors or 1 column matrices of variables & values,"
+"SBST(u,x,x0) substitutes x=x0 in u."
+
+;You can use SBST() to test solutions.
+SBST([[c=a/b],[b-1=c],[2*c=a-2]],[b;c;a],[3;2;6])
+
+;Linear eq. systems. can be also solved
+SOLVE_([[2*a+3*b+4*c=12],[4*a+5*b-7*c=-7],[9*a+4*b+3*c=14.5]],[[a],[b],[c]])
+
+"===================  Inside the Utility  ======================    "
+
+;Forward substitutions. A tree of solutions & reduced eq. systems.
+SOLF([[c=a/b],[b-1=c],[2*c=a-2]],[[a],[b],[c]])
+
+;Forward substitutions. A part of a tree for 2 first variables.
+SOLF([[c=a/b],[b-1=c],[2*c=a-2]],[[a],[b],[c]],2)
+
+;2 solution vectors returned by forward/back substitutions
+SOLB(SOLF([[c=a/b],[b-1=c],[2*c=a-2]],[[a],[b],[c]]))
+
+;1st vector test. Substitute it in the eq. system.   NOT a Solution!
+SBST([[c=a/b],[b-1=c],[2*c=a-2]],[[a],[b],[c]],[[0],[0],[-1]])
+
+;2nd vector test. Valid Solution !
+SBST([[c=a/b],[b-1=c],[2*c=a-2]],[[a],[b],[c]],[[6],[3],[2]])
+
+;SOLVE_() returns only valid solutions.
+SOLVE_([[c=a/b],[b-1=c],[2*c=a-2]],[[a],[b],[c]])
+
+"****** Use SOLVE_() function  ONLY in EXACT Mode !!! *************"
+"            Additional Information is in Substition.doc           "
+"============= End Substitution.mth Demonstration ================="
+

@@ -1,0 +1,53 @@
+;Computing the slope of x^3 via a limit
+LIM (((x + h)^3 - x^3) / h, h, 0)
+;A famous limit of an indeterminate form 0/0
+LIM (SIN x / x, x, 0)
+;A limit as x approaches infinity
+LIM (x^(1/x), x, inf)
+;A limit involving extra variables
+LIM ((a^x - b^x) / x, x, 0)
+;The limit of 1/x as x approaches 0 from the left
+LIM (1/x, x, 0, -1)
+;A limit for which L'Hopital's rule would be slow
+LIM ((SIN x)^249 (LN (1 - x))^251 / (x^100 (ATAN x)^400), x, 0)
+
+;The formula for the slope of x^3
+DIF (x^3, x)
+;An illustration of the chain rule
+DIF (SIN (x^3), x)
+;A partial derivative
+DIF (x^2 y^3, y)
+
+;A 5th-order Taylor polynomial expanded about x=0
+TAYLOR (#e^x, x, 0, 5)
+;A 7th-order Taylor polynomial
+TAYLOR (LN COS (a x), x, 0, 7)
+
+;An antiderivative of x^2 with respect to x
+INT (x^2, x)
+;An antiderivative of cosine(x) with respect to x
+INT (COS x, x)
+;An antiderivative obtained by substitution
+INT (x^2 COS (a x^3 + b), x)
+;A definite integral for x going from a to b
+INT (x^2, x, a, b)
+;An integral having an infinite integration limit
+INT (1/x^2, x, a^2, inf)
+;An integral having an endpoint singularity
+INT (1/SQRT x, x, 0, b^2)
+;A 2-dimensional integral over a quarter disk
+INT (INT (x y, y, 0, SQRT (r^2 - x^2)), x, 0, r)
+
+;The formula for the sum of an arithmetic series
+SUM (k, k, 0, n)
+;The formula for the sum of successive cubes
+SUM (k^3, k, 0, n)
+;The formula for the sum of a geometric series
+SUM (a^k, k, 0, n)
+;The sum of an infinite series
+SUM (2^-k, k, 0, inf)
+;A sum for which iteration would be slow
+SUM (k/370370367, k, -123456788, 123456789)
+
+;The product of successive even integers
+PRODUCT (2 k, k, 1, n)

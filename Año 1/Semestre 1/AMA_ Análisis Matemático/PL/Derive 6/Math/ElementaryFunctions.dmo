@@ -1,0 +1,129 @@
+;LN is the principal natural logarithm, base 2.71828...
+LN 1
+
+;Logarithms of nonnegative arguments are usually collected
+LN 6 - LN 2
+
+;Logarithms of perfect powers are simplified
+LN 16 / LN 8
+
+;Logarithms can take complex arguments
+LN (1 + #i)
+
+;There are various simplifications for nonnumeric logarithms
+LN(x^2)/LN(x^(-2))
+
+;LOG (x, b) is the logarithm of x to the base b
+LOG (10^3, 10)
+
+;If omitted, the second argument defaults to #e
+LOG x
+
+;EXP is the inverse of LN
+EXP LN x
+
+;For real x, LN is also the inverse of EXP
+LN EXP x
+
+;Inversion can be applied to only part of an argument
+LN (2 x^3 EXP y)
+
+;e-hat exactly represents 2.71828... .	EXP x simplifies to e-hat ^ x
+EXP x
+
+;You can enter e-hat as #e
+#e^(3 x LN y)
+
+;Cancellations can be dramatic
+#e^(2x(y+1)+y) - #e^(2 x y+2x+y)
+
+;Other nonnumeric powers are also simplified
+4 (2^z)^2 - 4^(z+1)
+
+;The base can also be a variable
+a^(x+1) - a a^x
+
+;Exponentials of complex numbers are transformed to rectangular form
+#e^(1 + pi/4 #i)
+
+;Hyperbolic functions transform into exponentials
+COSH x
+
+;Arc-hyperbolic functions transform into logarithms
+ASINH x
+
+;For real or complex z, SIGN z is defined as z/ABS z
+SIGN 5
+
+;For real or complex z, SIGN z is defined as z/ABS z
+SIGN -3
+
+;For real or complex z, SIGN z is defined as z/ABS z
+SIGN (3 + 4 #i)
+
+;There are various simplifications for nonnumeric arguments
+SIGN SIGN z
+
+;Some simplifications are applicable only to real arguments
+SIGN ATAN x
+
+;Some simplifications are applicable only to real arguments
+SIGN LN (1 + COS x)
+
+;Absolute values also simplify for nonnumeric arguments
+ABS z SIGN z
+
+;Some simplifications are applicable only to real arguments
+ABS (x^2)
+
+;Some simplifications are applicable only to real arguments
+(ABS x)^2
+
+;Some simplifications are applicable only to real arguments
+COS ABS x
+
+;Some simplifications are applicable only to real arguments
+ABS (x ATAN x)
+
+;Some simplifications are applicable only to real arguments
+ABS (1 + COS x)
+
+;Some simplifications are applicable only to real arguments
+ABS x / SIGN x
+
+;The gamma function is transformed into a factorial
+GAMMA (x+1)
+
+;Factorials are defined even for fractional arguments
+(1/2) !
+
+;Factorials are also defined for negative arguments
+(- 1/2) !
+
+;There are factorial simplifications even for nonnumeric arguments
+(n+2)!/(n-1)!
+
+;PERM (m, n) is the number of permutations of m things taken n at a time
+PERM (m, n)
+
+;COMB (m, n) is the number of combinations of m things taken n at a time
+COMB (m, n)
+
+;AVERAGE (z1, z2, ..., zn) is the arithmetic mean of its arguments
+AVERAGE (x, y, z)
+
+;This is the exact average of the numbers 1/1, 1/2, ..., 1/10
+AVERAGE (VECTOR (1/k, k, 1, 10))
+
+;RMS (z1, z2, ..., zn) is the root mean-square of its vector argument
+RMS ([2, 3, 5])
+
+;VARIANCE (z1, z2, ..., zn) is the variance of its arguments
+VARIANCE (x, y)
+
+;STDEV (z1, z2, ..., zn) is the standard deviation of its arguments
+STDEV (x, y)
+
+;Approx this for the monthly payment on a $12,000, 2 year loan at 10% interest
+PMT (10%/12, 2*12, 12000)
+

@@ -1,0 +1,163 @@
+"Carlson.mth Carlson elliptic integrals."
+
+"These numerical algorithms are based on Numerical Algorithms 10(1995)13-26."
+
+"B.C. Carlson Numerical computation of real or complex elliptic integrals"
+
+"They have been updated to the algorithms in Journal of Computational"
+
+"and Applied Mathematics 118 (2000) 71-85"
+
+"Reduction theorems for elliptic integrands with the square root of"
+
+"two quadratic factors"
+
+"B.C. Carlson, James FitzSimons"
+
+"Algorithm for R_F"
+
+"page 16 2.3"
+
+"page 16 2.4"
+
+"Iterative definition of R_F"
+
+R_FS9(e2,e3):=195*e2^8/32768-429*e2^7/59392+e2^6*(3003*e3/63488+231/25600)-e2~
+^5*(819*e3^2+308*e3+72)/6144+e2^4*(3465*e3^2/29696+315*e3/5888+35/2176)-e2^3*~
+(1426425*e3^3+964782*e3^2+564200*e3+235600)/9800960+e2^2*(105*e3^4/1024+35*e3~
+^3/384+5*e3^2/64+e3/16+1/24)-e2*(6774075*e3^4+7592200*e3^3+8804400*e3^2+10885~
+440*e3+15965312)/159653120+63*e3^5/7936+7*e3^4/640+5*e3^3/304+3*e3^2/104+e3/1~
+4
+
+R_F(xx,yy,zz,v,v1,q,a,n,lambda,x,y,z,e2,e3):=PROG(v:=[xx,yy,zz],q:=VECTOR(ABS~
+(x),x,v),a:=MIN(q),q:=MAX(q),n:=CEILING((LN(IF(a>0,q/a,q))+LN(10)*PrecisionDi~
+gits/16)/LN(4))+4,LOOP(v1:=VECTOR(SQRT(i_),i_,v),lambda:=v1 SUB 1*v1 SUB 2+v1~
+ SUB 2*v1 SUB 3+v1 SUB 3*v1 SUB 1,v:=VECTOR(i_+lambda,i_,v)/4,n:-1,IF(n=0,exi~
+t)),a:=AVERAGE(v),x:=1-v SUB 1/a,y:=1-v SUB 2/a,z:=-x-y,e2:=x*y-z^2,e3:=x*y*z~
+,a:=1/SQRT(a),a*R_FS9(e2,e3)+a)
+
+"Algorithm for R_C"
+
+"page 17 2.10"
+
+"Iterative definition of R_C"
+
+"Add a special case when y is real and negative."
+
+"page 18 2.14"
+
+R_C_AUX2(x):=SUM((-x)^i_/(2*i_+1),i_,1,1+ABS(PrecisionDigits*LN(10)/(-LN(ABS(~
+x)+0.01))))
+
+R_C_AUX5(xx,yy,x,y,lambda):=PROG(x:=xx,y:=yy,LOOP(IF(ABS((y-x)/x)<1/64,RETURN~
+((R_C_AUX2((y-x)/x)+1)/SQRT(x))),lambda:=2*SQRT(x)*SQRT(y)+y,x:=(x+lambda)/4,~
+y:=(y+lambda)/4))
+
+R_C(x,y):=IF(IM(y)=0 AND RE(y)<0,IF(x=0,0,SQRT(x/(x-y))*R_C_AUX5(x-y,-y)),IF(~
+x=0,pi/(2*SQRT(y)),R_C_AUX5(x,y)))
+
+"Algorithm for R_J"
+
+"page 18 2.17"
+
+"page 19 2.21"
+
+"Iterative definition of R_J"
+
+S_M2(x):=IF(ABS(x)<1/64,SUM((-x/4)^i_*COMB(2*i_,i_)/(1-2*i_),i_,1,1+ABS(Preci~
+sionDigits*LN(10)/(-LN(ABS(x)+0.01)))),SQRT(1+x)-1)
+
+R_JS9(e2,e3,e4,e5):=3861*e2^8/229376-1287*e2^7/63488+e2^6*(273*e3/2048-1287*e~
+4/10240+77/3072)-9*e2^5*(8870433*e3^2+3294060*e3-4060*(759*e4-713*e5-186))/21~
+1732480+e2^4*(10395*e3^2/31744+9*e3*(3*(55*e5+14)-175*e4)/2560+297*e4^2/1024-~
+35*e4/256+945*e5/7424+105/2432)-e2^3*(119409675*e3^3+1137235*e3^2*(70-297*e4)~
+-25300*e3*(5859*e4-5481*e5-1798)+58*(1195425*e4^2-32550*e4*(69*e5+22)+7843*(1~
+35*e5^2+84*e5+40)))/291132160+e2^2*(297*e3^4/1024+945*e3^3/3712+315*e3^2*(31*~
+(69*e5+22)-2277*e4)/1003904+e3*(945*e4^2/1408-9*e4*(45*e5+14)/320+35*e5/96+45~
+/272)-27*e4^3/128+35*e4^2/192-45*e4*(133*e5+58)/17632+315*e5^2/1984+15*e5/112~
++9/88)-e2*(3056930051175*e3^4-21879326196*e3^3*(525*e4-495*e5-154)+121331210*~
+e3^2*(133893*e4^2-77140*e4+540*(133*e5+58))+116280*e3*(74939865*e4^2-953810*e~
+4*(147*e5+62)+6293*(10465*e5^2+8580*e5+6072))-57304*(47418525*e4^3-830025*e4^~
+2*(161*e5+66)+8399853*e4*(15*e5^2+12*e5+8)-46665850*e5^2-59293080*e5-95998320~
+))/25671742736640+63*e3^5/2816+e3^4*(70-243*e4)/2304+5*e3^3*(29*(147*e5+62)-4~
+557*e4)/201376+e3^2*(315*e4^2/1984-15*e4*(161*e5+66)/8096+9*e5^2/64+9*e5/80+3~
+/40)-e3*(4917675*e4^3-2781999*e4^2*(5*e5+2)+121220*e4*(85*e5+54)-1870*(2565*e~
+5^2+3132*e5+4408))/49457760+3*e4^4/128-5*e4^3/144+e4^2*(45*e5/464+9/152)-3*e4~
+*(1155*e5^2+1364*e5+1736)/38192+5*e5^3/176+9*e5^2/184+3*e5/26
+
+R_J_AUX6(v,q,a,n,v1,x,y,z,p,lambda,alpha,sm,delta,m,a1,e2,e3,e4,e5):=PROG(q:=~
+VECTOR(ABS(x),x,v),a:=MIN(q),q:=MAX(q),n:=CEILING((LN(IF(a>0,q/a,q))+LN(10)*P~
+recisionDigits/16)/LN(2))+4,x:=SQRT(v SUB 1),y:=SQRT(v SUB 2),z:=SQRT(v SUB 3~
+),p:=v SUB 4,lambda:=x*y+y*z+z*x,v1:=VECTOR(i_+lambda,i_,v)/4,alpha:=p*(x+y+z~
+)+x*y*z,delta:=PRODUCT(p-v SUB i_,i_,1,3),sm:=alpha+alpha*S_M2(delta/alpha^2)~
+/2,delta:=delta/4,m:=1/4,LOOP(x:=SQRT(v1 SUB 1),y:=SQRT(v1 SUB 2),z:=SQRT(v1 ~
+SUB 3),p:=SQRT(v1 SUB 4),lambda:=x*y+y*z+z*x,dm:=(p+x)*(p+y)*(p+z),rm:=2*sm+s~
+m*S_M2(delta/sm^2),sm:=(dm*rm-m*delta)/(2*(dm+m*rm)),delta:=delta/4,m:=m/4,v1~
+:=VECTOR(i_+lambda,i_,v1)/4,n:-1,IF(n<=0,exit)),x:=v1 SUB 1,y:=v1 SUB 2,z:=v1~
+ SUB 3,p:=v1 SUB 4,a:=(x+y+z+2*p)/5,x:=1-x/a,y:=1-y/a,z:=1-z/a,p:=(-x-y-z)/2,~
+e2:=-3*p^2+z*(y+x)+x*y,e3:=2*p*e2+4*p^3+x*y*z,e4:=p*(p*e2+3*p^3+2*x*y*z),e5:=~
+x*y*z*p^2,a:=1/a^(3/2),y:=delta/sm^2,m*(a*R_JS9(e2,e3,e4,e5)+a)+3/sm*IF(ABS(y~
+)<1/64,R_C_AUX2(y)+1,R_C_AUX5(1,1+y)))
+
+"Add a special case when p is real and negative."
+
+"page 19 2.26"
+
+SORT_RJ(v):=IF(RE(v SUB 1)>RE(v SUB 2),SORT_RJ([v SUB 2,v SUB 1,v SUB 3,v SUB~
+ 4]),IF(RE(v SUB 2)>RE(v SUB 3),SORT_RJ([v SUB 1,v SUB 3,v SUB 2,v SUB 4]),[v~
+ SUB 1,v SUB 2,v SUB 3,-v SUB 4,(v SUB 1*(v SUB 2-v SUB 3)+v SUB 2*(v SUB 3-v~
+ SUB 4))/(v SUB 2-v SUB 4)]))
+
+R_J(x,y,z,p,v):=IF(IM(p)=0 AND RE(p)<0,PROG(v:=SORT_RJ([x,y,z,p]),((v SUB 5-v~
+ SUB 2)*R_J_AUX6([v SUB 1,v SUB 2,v SUB 3,v SUB 5])-3*R_F(v SUB 1,v SUB 2,v S~
+UB 3)+3*SQRT(v SUB 1*v SUB 2*v SUB 3/(v SUB 1*v SUB 3+v SUB 5*v SUB 4))*R_C(v~
+ SUB 1*v SUB 3+v SUB 5*v SUB 4,v SUB 5*v SUB 4))/(v SUB 2+v SUB 4)),R_J_AUX6(~
+[x,y,z,p]))
+
+"Algorithm for R_D"
+
+"page 20 2.28"
+
+"page 20 2.27"
+
+"Iterative definition of R_D"
+
+R_D(xx,yy,zz,v,v1,v2,q,a,x,y,z,lambda,s,f,e2,e3,e4,e5):=PROG(v:=[xx,yy,zz],q:~
+=VECTOR(ABS(x),x,v),a:=MIN(q),q:=MAX(q),n:=CEILING((LN(IF(a>0,q/a,q))+LN(10)*~
+PrecisionDigits/16)/LN(4))+4,s:=0,f:=1,v1:=v,LOOP(x:=SQRT(v1 SUB 1),y:=SQRT(v~
+1 SUB 2),z:=SQRT(v1 SUB 3),lambda:=x*y+y*z+z*x,s:+f*3/(z*(v1 SUB 3+lambda)),v~
+1:=VECTOR(i_+lambda,i_,v1)/4,f:/4,n:-1,IF(n=0,exit)),x:=v1 SUB 1,y:=v1 SUB 2,~
+z:=v1 SUB 3,a:=(x+y+3*z)/5,x:=1-x/a,y:=1-y/a,z:=(-x-y)/3,e2:=x*y-6*z^2,e3:=(3~
+*x*y-8*z^2)*z,e4:=3*(x*y-z^2)*z^2,e5:=x*y*z^3,a:=1/a^(3/2),f*(a*R_JS9(e2,e3,e~
+4,e5)+a)+s)
+
+"Algorithm for R_G"
+
+"page 15 1.7"
+
+R_G(x,y,z):=(z*R_F(x,y,z)-(x-z)*(y-z)*R_D(x,y,z)/3+SQRT(x*y/z))/2
+
+"page 24 4. Other integrals"
+
+"These are the Legendre elliptic integrals."
+
+LEGENDRE_F(phi,m):=R_F(CSC(phi)^2-1,CSC(phi)^2-m,CSC(phi)^2)
+
+LEGENDRE_E(phi,m):=LEGENDRE_F(phi,m)-m/3*R_D(CSC(phi)^2-1,CSC(phi)^2-m,CSC(ph~
+i)^2)
+
+LEGENDRE_PI(phi,m,n):=LEGENDRE_F(phi,m)+n/3*R_J(CSC(phi)^2-1,CSC(phi)^2-m,CSC~
+(phi)^2,CSC(phi)^2-n)
+
+ELLIPTICF(x,k):=R_F(1/x^2-1,1/x^2-k^2,1/x^2)
+
+ELLIPTICE(x,k):=ELLIPTICF(x,k)-k^2/3*R_D(1/x^2-1,1/x^2-k^2,1/x^2)
+
+ELLIPTICPI(x,n,k):=ELLIPTICF(x,k)+n/3*R_J(1/x^2-1,1/x^2-k^2,1/x^2,1/x^2-n)
+
+ELLIPTICK(k):=R_F(0,1-k^2,1)
+
+ELLIPTICEK(k):=ELLIPTICK(k)-k^2/3*R_D(0,1-k^2,1)
+
+ELLIPTICPIK(n,k):=ELLIPTICK(k)+n/3*R_J(0,1-k^2,1,1-n)
+

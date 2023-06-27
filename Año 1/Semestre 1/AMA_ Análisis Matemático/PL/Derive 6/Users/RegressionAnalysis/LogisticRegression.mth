@@ -1,0 +1,61 @@
+;
+[InputMode:=Word,Precision:=Approximate,PrecisionDigits:=10,Notation:=Scienti~
+fic,NotationDigits:=8]
+
+INCOMPLETE_GAMMA(z,w):=1/GAMMA(z)*(w^z/z+INT((#e^(-t_)-1)*t_^(z-1),t_,0,w))
+
+CHI_SQUARE(x2,v):=INCOMPLETE_GAMMA(v/2,x2/2)
+
+APPEND_COLUMNS(a,b):=APPEND(a`,b`)`
+
+position(e,u,d,i_):=PROG(d:=DIM(u),i_:=1,LOOP(IF(e=u SUB i_,RETURN(i_)),IF(i_~
+>d,RETURN(0)),i_:+1))
+
+;
+normpdf(z):=SQRT(2)*#e^(-z^2/2)/(2*SQRT(pi))
+
+logistic(dvar,ivars,data,link:=1,freq:=[],nn:=30,cc:=10^(-8)):=PROG(vars:=dat~
+a SUB 1,obs_:=DIM(data)-1,ivars_:=ivars,link_:=link,data1:=data SUB [2,...,ob~
+s_+1],k_:=DIM(ivars),freq_:=DIM(freq),IF(freq_=0,wgt:=VECTOR(1,i_,1,obs_),IF(~
+freq_=1,PROG(pos_:=position(freq SUB 1,vars),wgt:=data SUB  SUB pos_),IF(freq~
+_=2,PROG(pos_:=position(freq SUB 1,vars),evt:=data1 SUB  SUB pos_,pos_:=posit~
+ion(freq SUB 2,vars),tri:=data1 SUB  SUB pos_,wgt:=APPEND(evt,tri-evt)),RETUR~
+N("Invalid frequency variable")))),IF(freq_=0 OR freq_=1,PROG(pos_:=position(~
+dvar,vars),y_:=data1 SUB  SUB pos_),IF(freq_=2,y_:=APPEND(VECTOR(1,i_,1,obs_)~
+,VECTOR(0,i_,1,obs_)))),pos_:=VECTOR(position(ivars_ SUB i_,vars),i_,1,k_),IF~
+(freq_=2,PROG(x_:=APPEND(data1 SUB  SUB pos_,data1 SUB  SUB pos_),obs_:=2*obs~
+_),x_:=data1 SUB  SUB pos_),x_:=VECTOR(SUBST(ivars,ivars_,x_ SUB i_),i_,1,obs~
+_),x1:=VECTOR(VECTOR(1,i_,1,obs_),j,1,1)`,xx_:=APPEND_COLUMNS(x1,x_),beta_:=V~
+ECTOR(0,i_,1,k_+1),oldá:=VECTOR(1,i_,1,k_+1),iter_:=0,LOOP(cc_:=MAX(VECTOR(AB~
+S(beta_ SUB i_-oldá SUB i_),i_,1,k_+1)),IF(iter_>nn OR cc_<cc,exit),oldá:=bet~
+a_,z_:=xx_ . beta_,IF(link=1,PROG(p_:=VECTOR(1/(1+#e^(-z_ SUB i_)),i_,1,obs_)~
+,f_:=VECTOR(p_ SUB i_^2*#e^(-z_ SUB i_),i_,1,obs_)),IF(link=2,PROG(p_:=VECTOR~
+(NORMAL(z_ SUB i_),i_,1,obs_),f_:=VECTOR(normpdf(z_ SUB i_),i_,1,obs_)),IF(li~
+nk=3,PROG(p_:=VECTOR(1-#e^(-#e^z_ SUB i_),i_,1,obs_),f_:=VECTOR(#e^(z_ SUB i_~
+-#e^z_ SUB i_),i_,1,obs_)),RETURN("Unknown link function"),RETURN("Unknown li~
+nk function")))),loglik:=SUM(VECTOR((y_ SUB i_*LN(p_ SUB i_)+ABS(y_ SUB i_-1)~
+*LN(1-p_ SUB i_))*wgt SUB i_,i_,1,obs_)),w_:=VECTOR(wgt SUB i_/(p_ SUB i_*(1-~
+p_ SUB i_)),i_,1,obs_),xx:=VECTOR(xx_ SUB i_*f_ SUB i_,i_,1,obs_),wxx:=VECTOR~
+(xx SUB i_*w_ SUB i_,i_,1,obs_),xpxi:=(xx` . wxx)^(-1),w1:=VECTOR(w_ SUB i_*(~
+y_ SUB i_-p_ SUB i_),i_,1,obs_),beta_:+xpxi . xx` . w1,iter_:+1),IF(iter_<=nn~
+,msg:="Convergence criteria met!",msg:="Convergence criteria not met!"),p0:=(~
+y_ . wgt)/SUM(wgt),loglik0:=(y_*LN(p0)+VECTOR(ABS(y_ SUB i_-1),i_,1,obs_)*LN(~
+1-p0)) . wgt,chisq:=2*(loglik-loglik0),prob:=1-CHI_SQUARE(chisq,k_),llratio:=~
+[["Chi^2","DF","Probability"],[chisq,k_,prob]],stderr:=VECTOR(SQRT(xpxi SUB i~
+_ SUB i_),i_,1,k_+1),wald:=VECTOR((beta_ SUB i_/stderr SUB i_)^2,i_,1,k_+1),p~
+w:=VECTOR(1-CHI_SQUARE(wald SUB i_,1),i_,1,k_+1),titl:=[["Parm"],["Value"],["~
+StdErr"],["WChi^2"],["Prob(W)"]],out:=APPEND_COLUMNS(titl,APPEND([ADJOIN("Int~
+ercept",ivars)],[beta_],[stderr],[wald],[pw]))`,feq:=beta_ . ADJOIN(1,ivars),~
+IF(link=1,func:="Logit link function",IF(link=2,func:="Probit link function",~
+func:="Complementary Log-Log link function")),[["Logistic Regression"],[" "],~
+[func],[" "],[msg],[" "],[out],[" "],[llratio],[" "],[feq]])
+
+Predicted_Values(val,ci:=0.95,l,x1,s,invn,ll,ul,l_,p,lp,up):=PROG(l:=SUBST(fe~
+q,ivars_,val),x1:=[ADJOIN(1,val)],s:=SQRT((x1 . xpxi . x1`) SUB 1 SUB 1),invn~
+:=RHS(NSOLVE(NORMAL(z)-(ci/2+0.5),z,0,inf)),ll:=l-invn*s,ul:=l+invn*s,IF(link~
+_=1,PROG(l_:="logit(prob)"=l,p:=1/(1+#e^(-l)),lp:=1/(1+#e^(-ll)),up:=1/(1+#e^~
+(-ul))),IF(link_=2,PROG(l_:="probit(prob)"=l,p:=NORMAL(l),lp:=NORMAL(ll),up:=~
+NORMAL(ul)),PROG(l_:="cloglog(prob)"=l,p:=1-#e^(-#e^l),lp:=1-#e^(-#e^ll),up:=~
+1-#e^(-#e^ul)))),[[l_,"se"=s,"prob"=p],[APPEND(STRING(ci*100),"% C.I. prob"),~
+lp,up]])
+

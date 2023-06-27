@@ -1,0 +1,25 @@
+* C:\Users\david\Downloads\pract4\pract4.sch
+
+* Schematics Version 9.1 - Web Update 1
+* Mon May 20 13:52:20 2019
+
+
+
+** Analysis setup **
+.DC LIN V_VDS 0 10 0.1 
++ LIN V_VGS 0 5 1 
+.OP 
+.LIB "C:\Users\david\Downloads\pract4\pract4.lib"
+
+
+* From [PSPICE NETLIST] section of pspiceev.ini:
+.lib "nom.lib"
+
+.INC "pract4.net"
+.INC "pract4.als"
+
+
+.probe
+
+
+.END

@@ -1,0 +1,84 @@
+"*****************************************************************************"
+
+"*           Constructing TRUTH TABLES and comparing propositions            *"
+
+"*             in a max/min MULTI-VALUED (w-valued) modal LOGIC              *"
+
+"* (c)Eugenio Roanes-Lozano (Dept. Algebra, Univ. Complutense Madrid) Jan 00 *"
+
+"*****************************************************************************"
+
+"-----------------------------------------------------------------------------"
+
+"w-valued modal Logic (w should be a prime number), 0=false, 1=true.          "
+
+"Connectives begin with an ``M'' (multivalued) not to interfere the built-in. "
+
+"-----------------------------------------------------------------------------"
+
+"The propositional variables: p,q,r,s,u,v"
+
+p:=1/(w-1)*MOD(FLOOR(j_/w^0),w)
+
+q:=1/(w-1)*MOD(FLOOR(j_/w^1),w)
+
+r:=1/(w-1)*MOD(FLOOR(j_/w^2),w)
+
+s:=1/(w-1)*MOD(FLOOR(j_/w^3),w)
+
+u:=1/(w-1)*MOD(FLOOR(j_/w^4),w)
+
+v:=1/(w-1)*MOD(FLOOR(j_/w^5),w)
+
+"List of propositional variables (more could be added above):"
+
+vp:=[p,q,r,s,u,v]
+
+"Tautology and contradiction"
+
+t:=1
+
+c:=0
+
+"Logic connectives: negation, possible, necessary, or, and (prefix form)"
+
+MNEG(a_):=1-a_
+
+MPOS(a_):=1-FLOOR(1-a_)
+
+MNEC(a_):=FLOOR(a_)
+
+MOR(a_,b_):=MAX(a_,b_)
+
+MAND(a_,b_):=MIN(a_,b_)
+
+"Truth tables: propositional variables that can be used in TT(m_,a_,b_):"
+
+"the first m_ in P,Q,R,S,U,V plus tautology (T) and contradiction (C).  "
+
+TT(m_,a_,b_):=VECTOR(APPEND(VECTOR(vp SUB i_,i_,1,m_),[a_,b_]),j_,0,w^m_-1)
+
+"-----------------------------------------------------------------------------"
+
+"Conditional and biconditional (Kleene-style)"
+
+MIMP(a_,b_):=MOR(MNEG(a_),b_)
+
+MIFF(a_,b_):=MAND(MIMP(a_,b_),MIMP(b_,a_))
+
+"-----------------------------------------------------------------------------"
+
+"Is it a tautology? (i.e.: Is it always true?). Answers: 1->yes, 0->no"
+
+ISTAUT(m_,a_):=IF(PRODUCT(a_,j_,0,w^m_-1)=1,1,0)
+
+"-----------------------------------------------------------------------------"
+
+"Is ``b'' a tautological consequence of ``a''? (i.e.: Is the consequent true"
+
+"whenever the antecedent is true?). Answers: 1->yes, 0->no"
+
+ISCONSTAUT(m_,a_,b_):=IF(PRODUCT(IF(a_=1,b_,1),j_,0,w^m_-1)=1,1,0)
+
+"---------------------------  END  OF .MTH  FILE  ---------------------------"
+

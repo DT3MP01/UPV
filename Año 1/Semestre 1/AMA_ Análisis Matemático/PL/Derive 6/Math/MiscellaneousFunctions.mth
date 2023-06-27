@@ -1,0 +1,65 @@
+"MiscellaneousFunctions.mth -- Copyright (c) 1990-2003 by Texas Instruments I~
+ncorporated"
+
+SQUARE_WAVE(x):=(-1)^FLOOR(x)
+
+RATIO_TEST(t,n):=LIM(ABS(LIM(t,n,n+1)/t),n,inf)
+
+LIM2(u,x,y,x0,y0):=LIM(u,[y,x],[y0+@1*(x-x0),x0])
+
+LEFT_RIEMANN(u,x,a,b,n):=(b-a)/n*SUM(LIM(u,x,a+(b-a)*k_/n),k_,0,n-1)
+
+INT_PARTS(u,v,x):=u*INT(v,x)-INT(INT(v,x)*DIF(u,x),x)
+
+"DEF_INT_PARTS contributed A. van der Meer:"
+
+DEF_INT_PARTS(u,v,x,a,b):=(LIM(u*INT(v,x),x,b,-1)-LIM(u*INT(v,x),x,a,1))-INT(~
+INT(v,x)*DIF(u,x),x,a,b)
+
+INVERSE(u,x):=ITERATE(u,x,x,-1)
+
+INT_SUBST(y,x,u):=LIM(INT(LIM(y,x,INVERSE(u,x))*DIF(INVERSE(u,x),x),x),x,u)
+
+DEF_INT_SUBST(y,x,u,a,b):=INT(LIM(y,x,INVERSE(u,x))*DIF(INVERSE(u,x),x),x,LIM~
+(u,x,a),LIM(u,x,b))
+
+PROVE_SUM(t,k,a,n,s):=[LIM(t,k,a)-LIM(s,n,a),s+LIM(t,k,n+1)-LIM(s,n,n+1)]
+
+POLY_COEFF(u,x,n):=SUBST(QUOTIENT(u,x^n,x),x,0)
+
+POLY_DEGREE(u,x):=PROG(IF(u=0,RETURN(-1)),IF(IDENTICAL?(u,x),RETURN(1)),IF(SU~
+M?(u),RETURN(MAX(VECTOR(POLY_DEGREE(v_,x),v_,TERMS(u))))),IF(POWER?(u) OR PRO~
+DUCT?(u),SUM(POLY_DEGREE(v_ SUB 1,x)*v_ SUB 2,v_,FACTORS(u)),0))
+
+random_sign:=2*RANDOM(2)-1
+
+RANDOM_POLY(x,d,s:=1):=x^d+SUM(random_sign*RANDOM(s)*x^j,j,0,d-1)
+
+RANDOM_VECTOR(n,s:=1):=VECTOR(random_sign*RANDOM(s),j,1,n)
+
+RANDOM_MATRIX(m,n,s:=1):=VECTOR(RANDOM_VECTOR(n,s),k,1,m)
+
+"RANDOM_NORMAL contributed by Jim FitzSimons, email cherry@neta.com"
+
+RANDOM_NORMAL(s,m):=s*SQRT(-2*LOG(RANDOM(1)))*COS(2*pi*RANDOM(1))+m
+
+GOODNESS_OF_FIT(u,x,a):=SQRT(SUM((LIM(u,x,a SUB k SUB 1)-a SUB k SUB 2)^2,k,1~
+,DIM(a))/DIM(a))
+
+"Linear correlation coefficient of a two-column x-y matrix:"
+
+LCC_AUX(x,y,n):=(n*x*y-SUM(x)*SUM(y))/SQRT((n*SUM(x SUB k_^2,k_,1,n)-SUM(x)^2~
+)*(n*SUM(y SUB k_^2,k_,1,n)-SUM(y)^2))
+
+LINEAR_CORRELATION_COEFFICIENT(a):=LCC_AUX(a` SUB 1,a` SUB 2,DIM(a))
+
+POLY_INTERPOLATE_AUX(a,x,k,n):=PRODUCT((x-a SUB j_ SUB 1)/(a SUB k SUB 1-a SU~
+B j_ SUB 1),j_,1,k-1)*PRODUCT((x-a SUB j_ SUB 1)/(a SUB k SUB 1-a SUB j_ SUB ~
+1),j_,k+1,n)
+
+POLY_INTERPOLATE(a,x):=SUM(a SUB k_ SUB 2*POLY_INTERPOLATE_AUX(a,x,k_,DIM(a))~
+,k_,1,DIM(a))
+
+POLY_INTERPOLATE_EXPRESSION(u,x,a):=POLY_INTERPOLATE(VECTOR([a SUB k_,LIM(u,x~
+,a SUB k_)],k_,1,DIM(a)),x)
+

@@ -1,0 +1,40 @@
+"RecurrenceEquations.mth -- Copyright (c) 1990-2003 by Texas Instruments Inco~
+rporated"
+
+LIN1_DIFFERENCE(p,q,x,x0,y0):=PRODUCT(p,x,x0,x-1)*(y0+SUM(q/PRODUCT(p,x,x0,x)~
+,x,x0,x-1))
+
+RECURRENCE1(r,x,y,x0,y0,n):=ITERATES([1+ELEMENT(v_,1),LIM(r,[x,y],v_)],v_,[x0~
+,y0],n)
+
+GEOMETRIC1(k,p,q,x,x0,y0):=LIM(LIN1_DIFFERENCE(LIM(p,x,k^x),LIM(q,x,k^x),x,LO~
+G(x0,k),y0),x,LOG(x,k))
+
+CLAIRAUT_DIF(p,q,d,x,y,c):=LIM(p-q,d,c)=0
+
+LIN_SOLVE(a,b):=ELEMENT(ROW_REDUCE(a,b)`,1+DIM(a))
+
+LIN2_CCF_HOM_AUX(b,x):=IF(b<0,-COS(pi*x)*(-b)^x,b^x)
+
+LIN2_CCF_HOM(p,q,d,x):=IF(d=0,[(-p/2)^x,x*(-p/2)^x],IF(d>0,[LIN2_CCF_HOM_AUX(~
+(-p+SQRT(d))/2,x),LIN2_CCF_HOM_AUX((-p-SQRT(d))/2,x)],((p^2-d)/4)^(x/2)*[SIN(~
+x*ATAN(SQRT(-d),-p)),COS(x*ATAN(SQRT(-d),-p))]),((p^2-d)/4)^(x/2)*[SIN(x*ATAN~
+(SQRT(-d),-p)),COS(x*ATAN(SQRT(-d),-p))])
+
+LIN2_CCF_PARTIC(h,r,x):=h . SUM(r*LIM([-ELEMENT(h,2),ELEMENT(h,1)]/DET([h,LIM~
+(h,x,x+1)]),x,x+1),x)
+
+LIN2_CCF_AUX(h,r,x,c):=c . h+LIN2_CCF_PARTIC(h,r,x)
+
+LIN2_CCF(p,q,r,x,c1,c2):=LIN2_CCF_AUX(LIN2_CCF_HOM(p,q,p^2-4*q,x),r,x,[c1,c2]~
+)
+
+LIN2_CCF_BV_AUX2(h,p,x,x0,y0,x2,y2):=p+h . LIN_SOLVE([LIM(h,x,x0),LIM(h,x,x2)~
+],[y0-LIM(p,x,x0),y2-LIM(p,x,x2)])
+
+LIN2_CCF_BV_AUX(h,r,x,x0,y0,x2,y2):=LIN2_CCF_BV_AUX2(h,LIN2_CCF_PARTIC(h,r,x)~
+,x,x0,y0,x2,y2)
+
+LIN2_CCF_BV(p,q,r,x,x0,y0,x2,y2):=LIN2_CCF_BV_AUX(LIN2_CCF_HOM(p,q,p^2-4*q,x)~
+,r,x,x0,y0,x2,y2)
+

@@ -1,0 +1,99 @@
+;Generate a table of squares and cubes
+VECTOR([x,x^2,x^3],x,1,8)
+
+;Define MATRIX for generating matrices
+MATRIX(z,i,m,j,n):=VECTOR(VECTOR(z,j,1,n),i,1,m)
+
+;Generate a 2 by 3 matrix
+MATRIX(i-j,i,2,j,3)
+
+;Generate the 3 by 3 identity matrix
+IDENTITY_MATRIX(3)
+
+;Element [1,2] of a matrix
+[[a,b,c],[1,2,3]] SUB 1 SUB 2
+
+;Row 2 of a matrix
+[[a,b,c],[1,2,3]] SUB 2
+
+;Matrix addition and multiplication by scalar
+2*[[a,2],[3,b]]+[[1,3],[a,-b]]
+
+;Dot product (inner product) of two vectors
+[2,a,5] . [2*a,3,-1]
+
+;Dot product of two matrices
+[[a,b],[c,d]] . [[x],[y]]
+
+;Cross product of two vectors
+CROSS([1,2,3],[a,b,c])
+
+;Number of elements of a vector
+DIM([a,b,c])
+
+;Number of rows of a matrix
+DIM([[1,2,3],[4,5,6]])
+
+;Define OUTER to compute the outer product
+OUTER(v,w):=VECTOR([v SUB i],i,DIM(v)) . [w]
+
+;The outer product of two vectors
+OUTER([a,b,c],[2,3,4])
+
+;Transpose of a matrix
+[[a,b,c],[1,2,3]]`
+
+;Column 3 of a matrix
+[[a,b,c],[1,2,3]]` SUB 3
+
+;Determinant of a square matrix
+DET([[2,3],[a,b]])
+
+;Try factoring this determinant
+DET([[1,a,a,a],[1,x,a,a],[1,a,x,a],[1,a,a,x]])
+
+;Try factoring this determinant
+DET([[x,1,1,1,1],[1,x,1,1,1],[1,1,x,1,1],[1,1,1,x,1],[1,1,1,1,x]])
+
+;Sum of the elements on the main diagonal
+TRACE([[a,b],[1,2]])
+
+;Matrix inverse
+[[a,b],[2,3]]^(-1)
+
+;A matrix dotted with its inverse is an identity matrix
+[[a,b],[c,d]] . [[a,b],[c,d]]^(-1)
+
+;Using an inverse matrix to solve the system  a x + b y = e,  c x + d y = f
+[[a,b],[c,d]]^(-1) . [[e],[f]]
+
+;Reduce matrices to row echelon form
+ROW_REDUCE([[2,4],[3,6]],[[6],[9]])
+
+;Characteristic polynomial of a square matrix
+CHARPOLY([[a,b],[b,a]],z)
+
+;Eigenvalues of a square matrix
+EIGENVALUES([[a,b],[b,a]])
+
+;Vector algebra simplification
+a . (b+c)-(b` . a`)`
+
+;Gradient of an expression
+GRAD(x+y^2+z^3)
+
+;Divergence of a vector
+DIV([1,2*y,3*z^2])
+
+;Divergence of the gradient of an expression
+LAPLACIAN(x+y^2+z^3)
+
+;Curl of a vector
+CURL([y^2,2*x*z,0])
+
+;Scalar potential of a vector
+POTENTIAL([1,2*y,3*z^2])
+
+;Vector potential of a vector
+VECTOR_POTENTIAL([-2*x,0,2*z-2*y])
+

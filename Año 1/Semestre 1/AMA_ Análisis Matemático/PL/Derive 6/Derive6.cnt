@@ -1,0 +1,451 @@
+:Base Derive6.hlp
+:Title Ayuda de Derive 6
+1 Bienvenido a Derive 6=Welcome_to_Derive_6
+1 Tabla de Contenidos=IDH_CONTENTS
+1 Recursos Adicionales=Additional_Resources
+1 Agradecimientos=Acknowledgments
+1 Soporte Técnico=Technical_Support
+1 Menú de Órdenes
+2 Ventana de Álgebra
+3 Órdenes de la ventana de Álgebra=Algebra_Window_Commands
+3 Archivo
+4 Nuevo=File_New_command
+4 Abrir=File_Open_command
+4 Cerrar=File_Close_command
+4 Guardar=File_Save_command
+4 Guardar Como=File_Save_As_command
+4 Exportar=File_Write_commands
+4 Configurar la página=File_Page_Setup_command
+4 Vista Previa=File_Print_Preview_command
+4 Imprimir=File_Print_command
+4 Salir=File_Exit_command
+4 Leer
+5 Mth=File_Load_Math_command
+5 Datos=File_Load_Data_command
+5 Demo=File_Load_Demo_command
+5 Utilidades=File_Load_Utility_command
+4 Calculadora TI
+5 Importar=File_TI_Handheld_Import_from_command
+5 Exportar=File_TI_Handheld_Export_to_command
+3 Editar
+4 Editar=Algebra_Window_Edit_commands
+4 Expresión=Edit_Expression
+4 Texto o Gráfica=Edit_Object_command
+4 Anotación=Edit_Annotation_command
+4 Vínculos con objetos OLE=Edit_Links_to_OLE_Objects_command
+4 Cortar=Edit_Cut_command
+4 Copiar=Edit_Copy_command
+4 Pegar=Edit_Paste_command
+4 Borrar=Edit_Delete_command
+4 Recuperar=Edit_Undelete_command
+4 Seleccionar todo=Edit_Select_All_command
+4 Marcar y Copiar=Edit_Mark_and_Copy_command
+3 Insertar
+4 Insertar=Algebra_Window_Insert_commands
+4 Objeto de Texto=Insert_Text_Object_command
+4 Gráfica 2D=Insert_2D_plot_Object_command
+4 Gráfica 3D=Insert_3D_plot_Object_command
+4 Objeto OLE=Insert_OLE_Object_command
+3 Introducir
+4 Introducir=Author_commands
+4 Expresión=Author_Expression_command
+4 Vector=Author_Vector_command
+4 Matriz=Author_Matrix_command
+4 Valor para una Variable=Declare_Variable_Value_command
+4 Dominio para una Variable=Declare_Variable_Domain_command
+4 Definición de una función=Declare_Function_Definition_command
+3 Simplificar
+4 Simplificar=Simplify_commands
+4 Normal=Simplify_Basic_command
+4 Mostrar pasos=Simplify_Display_Step_command
+4 Expandir=Simplify_Expand_command
+4 Factorizar=Simplify_Factor_command
+4 Aproximar=Simplify_Approximate_command
+4 Sustitución de Variable=Simplify_Variable_Substitution_command
+4 Sustitución de subexpresión=Simplify_Subexpression_Substitution_command
+3 Resolver
+4 Resolver o despejar=Solve_commands
+4 Expresión=Solve_Expression_command
+4 Sistema=Solve_System_command
+3 Cálculo
+4 Cálculo=Calculus_commands
+4 Límite=Calculus_Limit_command
+4 Derivadas=Calculus_Differentiate_command
+4 Integrales=Calculus_Integrate_command
+4 Polinomios de Taylor=Calculus_Taylor_Series_command
+4 Sumas y Series=Calculus_Sum_command
+4 Productos=Calculus_Product_command
+4 Vector=Calculus_Vector_command
+4 Tabla=Calculus_Table_command
+3 Opciones
+4 Opciones=Algebra_Window_Options_commands
+4 Inicio=Options_Startup_command
+4 Pantalla
+5 Alineación de los nuevos objetos=Options_Display_Alignment_of_New_Objects_command
+5 Fuente para las expresiones=Options_Display_Font_of_All_Expressions_command
+5 Fuente para los nuevos objetos de texto=Options_Display_Font_of_New_Text_Objects_command
+5 Color de Fondo=Options_Display_Background_Color_command
+5 Línea de entrada múltiple=Options_Display_Multi_line_Expression_Entry_command
+5 Renumerar las expresiones=Options_Renumber_Expressions_command
+4 Impresión
+5 Presentación de las expresiones=Options_Printing_Expression_Layout_command
+5 Cabecera y pie=Options_Printing_Header_and_Footer_command
+5 Configurar la página=Options_Printing_Page_Setup_command
+4 Ocultar
+5 Etiquetas=Options_Hide_Labels_command
+5 Texto=Options_Hide_Text_command
+5 Gráficos=Options_Hide_Plots_command
+5 Objetos OLE=Options_Hide_OLE_Objects_command
+4 Ajustes de Modo
+5 Entrada=Declare_Input_Settings_command
+5 Salida=Declare_Output_Settings_command
+5 Simplificación
+6 Simplificación=Declare_Simplification_Settings_command
+6 Exponenciales=Exponential_field
+6 Logarítmicas=Logarithm_field
+6 Trigonometría=Trigonometry_field
+6 Potencias trigonométricas=Trig_Powers_field
+6 Ángulos=Angular_Unit_field
+6 Rama Compleja=Branch_field
+6 Precisión=Precision_field
+6 Mostrar pasos=Display_Steps_Mode
+6 Mostrar Reglas=Display_Rules_Mode
+3 Ventana
+4 Ventana=Window_commands
+4 Cascada=Window_Cascade_command
+4 Mosaico Horizontal=Window_Tile_Horizontally_command
+4 Mosaico vertical=Window_Tile_Vertically_command
+4 Mostrar pestañas=Window_Display_Tabs_command
+4 Nueva Ventana 2D=Window_New_2D_plot_Window_command
+4 Nueva Ventana 3D=Window_New_3D_plot_Window_command
+4 Personalizar
+5 Barras de herramientas=Window_Customize_Toolbars_command
+5 Órdenes=Window_Customize_Commands_command
+5 Teclas abreviadas=Window_Customize_Shortcut_Keys_command
+3 Ayuda
+4 Ayuda=Help_commands
+4 En línea=Help_Contents_command
+4 Preguntas más frecuentes=Help_Frequently_Asked_Questions_command
+4 Recursos adicionales=Help_Additional_Resources_command
+4 Derive en la Web=Help_Link_to_DERIVE_Web_Site_command
+4 Acerca de Derive=Help_About_DERIVE_command
+2 Ventana 2D
+3 Órdenes de la Ventana 2D=TwoD_plot_Window_Commands
+3 Archivo
+4 Archivo=Plot_Window_File_commands
+4 Incrustar=File_Embed_command
+4 Actualizar=File_Update_command
+4 Cerrar=Plot_Window_File_Close_command
+4 Exportar=File_Export_commands
+4 Configurar la Página=File_Page_Setup_command
+4 Vista Previa=File_Print_Preview_command
+4 Imprimir=File_Print_command
+4 Salir=File_Exit_command
+3 Editar
+4 Editar=Plot_Window_Edit_commands
+4 Anotación=Plot_Window_Edit_Annotation_command
+4 Borrar gráfica=Edit_Delete_Plot_command
+4 Borrar todas las gráficas=Edit_Delete_All_Plots_command
+4 Borrar anotación=Edit_Delete_Annotation_command
+4 Borrar todas las anotaciones=Edit_Delete_All_Annotations_command
+4 Borrar todas las barras de deslizamiento=Edit_Delete_All_Slider_Bars_command
+4 Copiar la Ventana=Edit_Copy_Plot_Window_command
+4 Marcar y Copiar=Edit_Mark_and_Copy_command
+3 Insertar
+4 Insertar=D2_plot_Window_Insert_commands
+4 Gráfica=D2_Insert_Plot_command
+4 Anotación=D2_Insert_Annotation_command
+4 Barra de deslizamiento=Insert_Slider_Bar_command
+3 Seleccionar
+4 Seleccionar=D2_plot_Window_Set_commands
+4 Sistema de Coordenadas=D2_Set_Coordinate_System_command
+4 Posición del cursor=Set_Cross_Position_command
+4 Rango de la gráfica > Longitud/centro=D2_Set_Plot_Region_command
+4 Rango de la gráfica > Mínimo/máximo=D2_Set_Plot_Range_command
+4 Relación de aspecto=D2_Set_Aspect_Ratio_command
+3 Opciones
+4 Opciones=D2_plot_Window_Options_commands
+4 Pantalla
+5 Ejes=Options_Display_Axes_command
+5 Cursor=Options_Display_Cross_command
+5 Rejilla=Options_Display_Grids_command
+5 Puntos=Options_Display_Points_command
+5 Color=Options_Display_Plot_Color_command
+4 Impresión
+5 Cabecera y Pie=Options_Printing_Header_and_Footer_command
+5 Configuración de la página=Options_Printing_Page_Setup_command
+5 Impresión en blanco y negro=Options_Printing_Black_and_White_Only_command
+4 Ajustes varios
+5 Simplificar antes de Dibujar=Options_Simplify_Before_Plotting_command
+5 Aproximar antes de Dibujar=Options_Approximate_Before_Plotting_command
+5 Trazar las Gráficas=Options_Trace_Plots_command
+5 Identificar las nuevas gráficas=Options_Annotate_New_Plots
+5 Representar la parte real y la imaginaria=Options_Plot_Real_and_Imaginary_Parts_command
+5 Perseguir al Cursor=Options_Follow_Cross_command
+5 Autoescalar las nuevas gráficas=Options_Autoscale_New_Plots_command
+3 Ventana
+4 Ventana=Window_commands
+4 Cascada=Window_Cascade_command
+4 Mosaico Horizontal=Window_Tile_Horizontally_command
+4 Mosaico Vertical=Window_Tile_Vertically_command
+4 Mostrar pestañas=Window_Display_Tabs_command
+4 Nueva Ventana 2D=Window_New_2D_plot_Window_command
+4 Nueva Ventana 3D=Window_New_3D_plot_Window_command
+4 Personalizar
+5 Barras de herramientas=Window_Customize_Toolbars_command
+5 Órdenes=Window_Customize_Commands_command
+3 Ayuda
+4 Ayuda=Help_commands
+4 En línea=Help_Contents_command
+4 Preguntas más frecuentes=Help_Frequently_Asked_Questions_command
+4 Recursos adicionales=Help_Additional_Resources_command
+4 Derive en la Web=Help_Link_to_DERIVE_Web_Site_command
+4 Acerca de Derive=Help_About_DERIVE_command
+2 Ventana 3D
+3 Ventana 3D=ThreeD_plot_Window_Commands
+3 Archivo
+4 Archivo=Algebra_Window_File_commands
+4 Nuevo=File_New_command
+4 Abrir=File_Open_command
+4 Cerrar=File_Close_command
+4 Guardar=File_Save_command
+4 Guardar Como=File_Save_As_command
+4 Exportar=File_Write_commands
+4 Configurar la página=File_Page_Setup_command
+4 Vista Previa=File_Print_Preview_command
+4 Imprimir=File_Print_command
+4 Salir=File_Exit_command
+4 Leer
+5 Mth=File_Load_Math_command
+5 Datos=File_Load_Data_command
+5 Demo=File_Load_Demo_command
+5 Utilidades=File_Load_Utility_command
+3 Editar
+4 Editar=Plot_Window_Edit_commands
+4 Gráfica=Edit_Plot_command
+4 Anotación=Plot_Window_Edit_Annotation_command
+4 Borrar Gráfica=Edit_Delete_Plot_command
+4 Borrar todas las Gráficas=Edit_Delete_All_Plots_command
+4 Borrar anotación=Edit_Delete_Annotation_command
+4 Borrar todas las anotaciones=Edit_Delete_All_Annotations_command
+4 Borrar todas las barras de deslizamiento=Edit_Delete_All_Slider_Bars_command
+4 Copiar la Ventana=Edit_Copy_Plot_Window_command
+4 Marcar y Copiar=Edit_Mark_and_Copy_command
+3 Insertar
+4 Insertar=D3_plot_Window_Insert_commands
+4 Gráfica=D3_Insert_Plot_command
+4 Anotación=D3_Insert_Annotation_command
+4 Barra de deslizamiento=Insert_Slider_Bar_command
+3 Seleccionar
+4 Seleccionar=D3_plot_Window_Set_commands
+4 Sistema de coordenadas=D3_Set_Coordinate_System_command
+4 Posición del Ojo=Set_Eye_Position_command
+4 Rango > Longitud /centro=D3_Set_Plot_Region_command
+4 Rango > Mínimo/máximo=D3_Set_Plot_Range_command
+4 Relación de aspecto=D3_Set_Aspect_Ratio_command
+3 Opciones
+4 Opciones=D3_plot_Window_Options_commands
+4 Pantalla
+5 Ejes=D3_Options_Display_Axes_command
+5 Caja=Options_Display_Box_command
+5 Leyenda=Options_Display_Legend_command
+5 Rotación=Options_Display_Rotation_command
+5 Color=D3_Options_Display_Color_command
+4 Impresión
+5 Cabecera y Pie=Options_Printing_Header_and_Footer_command
+5 Configuración de la Página=Options_Printing_Page_Setup_command
+5 Impresión sólo en blanco y negro=Options_Printing_Black_and_White_Only_command
+4 Ajustes varios
+5 Simplificar antes de Dibujar=Options_Simplify_Before_Plotting_command
+5 Aproximar antes de Dibujar=Options_Approximate_Before_Plotting_command
+5 Trazar las gráficas=D3_Options_Trace_Plots_command
+5 Identificar las nuevas gráficas=Options_Annotate_New_Plots
+5 Rotar las gráficas=Options_Rotate_Plots_command
+5 Autoescalar las nuevas gráficas=Options_Autoscale_New_Plots_command
+3 Ventana
+4 Ventana=Window_commands
+4 Cascada=Window_Cascade_command
+4 Mosaico Horizontal=Window_Tile_Horizontally_command
+4 Mosaico Vertical=Window_Tile_Vertically_command
+4 Mostrar pestañas=Window_Display_Tabs_command
+4 Nueva Ventana 2D=Window_New_2D_plot_Window_command
+4 Nueva Ventana 3D=Window_New_3D_plot_Window_command
+4 Personalizar
+5 Barras de herramientas=Window_Customize_Toolbars_command
+5 Órdenes=Window_Customize_Commands_command
+3 Ayuda
+4 Ayuda=Help_commands
+4 En línea=Help_Contents_command
+4 Preguntas más frecuentes=Help_Frequently_Asked_Questions_command
+4 Recursos adicionales=Help_Additional_Resources_command
+4 Derive en la Web=Help_Link_to_DERIVE_Web_Site_command
+4 Acerca de Derive=Help_About_DERIVE_command
+1 Temas Complementarios
+2 Ventana de Álgebra
+3 Introducción y Edición de Expresiones
+4 Introducción de expresiones matemáticas=Entering_Mathematical_Expressions
+4 Introducción de letras griegas y caracteres matemáticos=Entering_Greek_and_Math_Characters
+4 Selección de objetos y subexpresiones=Selecting_Objects_and_Subexpressions
+3 Presentación de las Expresiones
+4 Orden de las variables en las expresiones=Ordering_Variables_in_Expressions
+4 Control de la notación=Controlling_Notation
+4 Control de la base de numeración=Controlling_Radix_Base
+4 Control del formato de las expresiones=Controlling_Expression_Format
+3 Expansión de Expresiones
+4 Expansión de Polinomios=Expanding_Polynomials
+4 Expansión de funciones racionales=Expanding_Rational_Functions
+3 Factorización de Expresiones
+4 Factorización de números=Factoring_Numbers
+4 Factorización de polinomios=Factoring_Polynomials
+4 Factorización de matrices=Factoring_Matrices
+3 Resolución de ecuaciones
+4 Resolución de ecuaciones paso a paso=Step_by_Step_Equation_Solving
+4 Resolución de ecuaciones e inecuaciones algebraicamente=Solving_Equations_and_Inequalities_Algebraically
+4 Resolución de ecuaciones numéricmente=Solving_Equations_Numerically
+4 Resolución de sistemas de ecuaciones=Solving_Systems_of_Equations
+3 Vectores y Matrices
+4 Vectores y Matrices=Vectors_and_Matrices
+4 Generación de Vectores y Matrices=Generating_Vectors_and_Matrices
+4 Funciones para manipular vectores=Vector_Manipulation_Functions
+4 Funciones para procesar cadenas=String_Processing_Functions
+4 Operaciones de vectores=Vector_Operations
+4 Operaciones con matrices=Matrix_Operations
+4 Forma escalonada por filas=Row_Echelon_Form
+4 Baeses de Gröbner=Groebner_Basis
+4 Autovalores=Eigenvalues
+4 Álgebra de vectores y matrices=Vector_and_Matrix_Algebra
+4 Cálculo diferencial vectorial=Differential_Vector_Calculus
+4 Cálculo integral vectorial=Integral_Vector_Calculus
+3 Variables de estado
+4 Significado del dominio de las variables=Significance_of_Domain_Declarations
+4 Uso y conservación de las variables de estado=Using_and_Saving_State_Variables
+4 Archivo de configuración de Derive=DERIVE_Initialization_File
+2 Ventana 2D
+3 Gráficas múltiples=Multiple_Plots
+3 Gráficas en coordenadas polares=Polar_Plots
+3 Gráficas en paramétricas=Parametric_Plots
+3 Gráficas de puntos de datos=D2_Data_Point_Plots
+3 Gráficas de curvas en forma implícita=Implicit_Plots
+3 Representación en paramétricas=Parametric_Plot_Parameters
+2 Ventana 3D
+3 Gráficas de puntos de datos=D3_Data_Point_Plots
+3 Encuadre de las gráficas 3D=Framing_3D_Plots
+2 Derive y programación
+3 Programación con Derive=Programming
+3 La función ITERATES=The_ITERATES_Function
+3 La función ITERATE=The_ITERATE_Function
+3 Expresiones IF=IF_Expressions
+3 IF anidadas=Nested_IF_Expressions
+3 Sentencias boolenaas=Boolean_Test_Clauses
+3 Funciones recursivas=Recursive_Functions
+3 Recursión mútua=Mutual_Recursion
+3 Programación por procedimientos=Procedural_Programming
+3 Funciones de programación=Programming_Functions
+3 Epílogo=Epilogue
+2 Fuente Unicode de Derive
+3 Derive Unicode=Derive_Unicode
+3 Introducción de caracteres Unicode=Entering_Unicode_Characters
+3 Caracteres Unicode reservados=Reserved_Unicode_Characters
+3 Bibliografía sobre Unicode=Unicode_Bibliography
+1 Funciones y constantes internas
+2 Funciones y constantes internas=Built_in_Functions_and_Constants
+2 Funciones exponenciales=Exponential_Functions
+2 Funciones logarítimicas=Logarithmic_Functions
+2 Funciones Trigonométricas=Trigonometric_Functions
+2 Funciones Trigonométricas Inversas=Inverse_Trigonometric_Functions
+2 Funciones Hiperbólicas=Hyperbolic_Functions
+2 Funciones Hiperbólicas Inversas=Inverse_Hyperbolic_Functions
+2 Funciones Continuas a Trozos=Piecewise_Continuous_Functions
+2 Funciones de variable compleja=Complex_Variable_Functions
+2 Funciones de Probabilidad=Probability_Functions
+2 Funciones Estadísticas=Statistical_Functions
+2 Funciones de Error=Error_Functions
+2 Funciones Zeta=Zeta_Functions
+2 Funciones Financieras=Financial_Functions
+2 Funciones para Toería de Números=Number_Theory_Functions
+2 Funciones para tipos de expresiones=Expression_Type_Functions
+2 Funciones para descomponer expresiones=Expression_Decomposition_Functions
+2 Funciones de Expansión=Expansion_Functions
+2 Funciones para factorizar=Factoring_Functions
+2 Operadores numéricos=Numerical_Operators
+2 Operadores de relación=Relational_Operators
+2 Funciones y operadores de conjuntos=Set_Operators
+2 Operadores y constantes booleanos=Boolean_Constants_and_Operators
+2 Funciones booleanas=Boolean_Functions
+2 Tablas de verdad=Truth_Table_Functions
+1 Archivos de Utilidades
+2 Archivos de Utilidades=Utility_File_Functions
+2 Funciones de Combinatoria=COMBINAT.MTH_Combinatorial_Functions
+2 Resolución de ecuaciones=SOLVE_MTH
+2 Álgebra Lineal=Linear_Algebra
+2 Teoría de Números=NUMBER_MTH_Number_Theory_Functions
+2 Aproximación Racional=APPROX_MTH
+2 Vectores y Matrices=VECTOR_MTH
+2 Funciones diversas=MISC_MTH_Miscellaneous_Utility_Functions
+2 Cálculo
+3 Aplicaciones de las Derivadas=DIF_APPS_MTH
+3 Aplicaciones de las Integrales=INT_APPS_MTH
+3 Aproximación numérica=NUMERIC_MTH
+2 Ecuaciones Diferenciales y en Diferencias
+3 Ecuaciones Diferenciales de primer orden=ODE1_MTH
+3 Ecuaciones Diferenciales de segundo orden=ODE2_MTH
+3 Soluciones aproximadas para Ecuaciones Diferenciales=ODE_APPR_MTH
+3 Ecuaciones en diferencias=RECUREQN_MTH
+2 Funciones para representar gráficamente
+3 Representación gráfica=GRAPHICS_MTH_Plotting_Space_Curves_Complex_Functions
+3 Representación de áreas e integrales=Plotting_Areas_and_Integrals
+3 Representación de curvas en el espacio y superficies paramétricas=Plotting_Spaces_Curves_and_Parametric_Surfaces
+3 Representación de funciones con valores complejos=Plotting_Complex_valued_Expressions
+3 Representación de puntos y mallas=Plotting_Grid_Lines_and_Points
+3 Sombreado de polígonos=Filling_Polygons
+2 Unidades y constantes físicas
+3 Conversión de unidades inglesas=ENGLISH.MTH_English_Units_Conversion
+3 Conversión al sistema métrico decimal=METRIC.MTH_Metric_Units_Conversion
+3 Constantes Físicas=PHYSICAL.MTH_Physical_Constants
+2 Funciones especiales
+3 Funciones de Bessel=BESSEL_MTH_Bessel_and_Airy_Functions
+3 Integrales Elípticas=ELLIPTIC_MTH_Elliptic_Integrals
+3 Integrales Exponenciales=EXP_INT_MTH
+3 Integrales de Fresnel=FRESNEL_MTH_Fresnel_Integrals
+3 Funciones Hipergeométricas=HYPERGEO_MTH_Hypergeometric_Functions
+3 Polinomios Ortogonales=ORTH_POL_MTH_Orthogonal_Polynomials
+3 Funciones de Probabilidad=PROBABIL_MTH
+3 Funciones Zeta de Riemann=ZETA_MTH_Generalized_Zeta_Functions
+1 Archivos suministrados por usuarios
+2 Archivos suministrados por usuarios=User_Contributed_Math_Packages
+2 Análisis Complejo=Complex_Analysis_Packages
+2 Matemática Discreta=Discrete_Mathematics_Packages
+2 Resolución de Ecuaciones=Equation_Solving_Packages
+2 Integración=Integration_Packages
+2 Álgebra Lineal=Linear_Algebra_Packages
+2 Teoría de números=Number_Theory_Packages
+2 Representación gráfica=Plotting_Packages
+2 Análisis de Regresión=Regression_Analysis_Packages
+2 Método del Símplex=Simplex_Method_Packages
+2 Funciones especiales=Special_Functions_Packages
+2 Álgebra tensoial=Tensor_Algebra_Packages
+2 Transformada de Laplace=Transforms_Packages
+1 Preguntas más frecuentes
+2 Preguntas más frecuentes=Frequently_Asked_Questions_and_Answers
+2 Cuestiones de uso=User_Interface_Questions
+2 Cuestiones de Simplificación=Simplification_Questions
+2 Cuestiones gráficas=Plotting_Questions
+2 Cuestiones de impresión=Printing_Questions
+2 Requisitos del Sistema=System_Requirement_Questions
+2 Instalación en Red Local=Network_Installation_Questions
+1 Resumen de las mejoras de Derive
+2 Resumen de las mejoras de Derive=Revision_Summary
+2 Derive 5.01 - Resumen de las mejoras=Derive_501_Revision_Summary
+2 Derive 5.02 - Resumen de las mejoras=Derive_502_Revision_Summary
+2 Derive 5.03 - Resumen de las mejoras=Derive_503_Revision_Summary
+2 Derive 5.04 - Resumen de las mejoras=Derive_504_Revision_Summary
+2 Derive 5.05 - Resumen de las mejoras=Derive_505_Revision_Summary
+2 Derive 5.06 - Resumen de las mejoras=Derive_506_Revision_Summary
+2 Derive 6.01 - Resumen de las mejoras=Derive_6_01_Revision_Summary
+2 Derive 6.10 - Resumen de las mejoras=Version_6_10_Revision_Summary
+1 Índices
+2 Constantes=DERIVE_Constants
+2 Operadores=DERIVE_Operators
+2 Funciones internas=Built_in_Functions
+2 Archivos de utilidades=DERIVE_Functions
+2 Nombres reservados=DERIVE_Reserved_System_Names

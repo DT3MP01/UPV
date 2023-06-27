@@ -1,0 +1,54 @@
+"Continuous antiderivatives, integration by parts and change of variable in i~
+ntegrals"
+
+"Author:  Valeriu Anisiu,    anisiu@math.ubbcluj.ro"
+
+"address: Faculty of Mathematics and Computer Science"
+
+"         Babe015f-Bolyai University"
+
+"         Kogalniceanu 1 Street"
+
+"         3400 Cluj-Napoca, Romania"
+
+IntPlusVersion:=3
+
+MAKECONT(u,x,v:=[],a):=LOOP(IF(v=[],RETURN(u)),a:=FIRST(v),u:+STEP(x-a)*(LIM(~
+u,x,a,-1)-LIM(u,x,a,1)),v:=REST(v))
+
+CONT_INT(u,x,v:=[],a:="_",b,w):=PROG(w:=MAKECONT(INT(u,x),x,v),IF(a="_",RETUR~
+N(w)),LIM(w,x,b,a-b)-LIM(w,x,a,b-a))
+
+INTPARTS(w,v,x,n:=1,u,s,t,x_,a_,b_):=PROG(IF(VECTOR?(x),[x_:=FIRST(x),a_:=x S~
+UB 2,b_:=x SUB 3],x_:=x),u:=DIF(w,x_,-n),s:=SUM(DIF(u,x_,n-k_-1)*DIF(v,x_,k_)~
+*(-1)^k_,k_,0,n-1),t:=(-1)^n*u*DIF(v,x_,n),IF(VECTOR?(x),LIM(s,x_,b_,a_-b_)-L~
+IM(s,x_,a_,b_-a_)+'INT(t,x_,a_,b_),s+'INT(t,x_)))
+
+INTSUBST_(y,vx,rx,t:=t_,rt:="_",x,w,ux,ut,e3:=0,a_:="_",b_):=PROG(IF(NOT(VECT~
+OR?(vx)),vx:=[vx]),x:=FIRST(vx),IF(NOT(MEMBER?(x,VARIABLES(rx))),PROG(IF(VECT~
+OR?(t),[a_:=t SUB 2,b_:=t SUB 3,t:=FIRST(t)]),w:=SUBST(y,x,rx)*DIF(rx,t),RETU~
+RN(IF(IDENTICAL?(a_,"_"),'INT(w,t),'INT(w,t,a_,b_))))),IF(MEMBER?("euler1",VA~
+RIABLES(rx)),PROG(w:=RHS(SOLVE(rx,"euler1")),rx:=SQRT(w)=SQRT(LIM(w/x^2,x,inf~
+))*x+t,rt:=LHS(rx)^2=RHS(rx)^2)),IF(MEMBER?("euler2",VARIABLES(rx)),PROG(w:=R~
+HS(SOLVE(rx,"euler2")),rx:=SQRT(w)=SQRT(LIM(w,x,0))+x*t,rt:=LHS(rx)^2/x=RHS(r~
+x)^2/x)),IF(MEMBER?("euler3",VARIABLES(rx)),PROG(w:=RHS(SOLVE(rx,"euler3")),r~
+t:=FACTORS(w,Complex,x),rx:=SQRT(LIM(w/x^2,x,inf)*rt SUB 1 SUB 1/rt SUB 2 SUB~
+ 1)=t,e3:=[SQRT(w),t*ABS(rt SUB 2 SUB 1)],rt:=LHS(rx)^2=RHS(rx)^2)),IF(NOT(ID~
+ENTICAL?(FIRST(STRING(rx)),"=")),rx:=rx=t),IF(rt="_",rt:=rx),rt:=EXPAND(rt),u~
+t:=FIRST(RHS(SOLVE([rt],x))),w:=STRING(ut),IF(w SUB 1="IF",ut:=w SUB (-1)),ux~
+:=FIRST(RHS(SOLVE([rx],t))),IF(NOT(MEMBER?(x,VARIABLES(ux)) AND MEMBER?(t,VAR~
+IABLES(ut))),RETURN("inapplicable")),IF(VECTOR?(e3),y:=SUBST(y,e3 SUB 1,e3 SU~
+B 2)),w:=SUBST(y,LHS(rx),RHS(rx),x,ut)*DIF(ut,t),IF(DIM(vx)=1,PROG(w:='INT(w,~
+t),'LIM(w,t,ux)),PROG(a_:=LIM(ux,x,vx SUB 2,vx SUB 3-vx SUB 2),b_:=LIM(ux,x,v~
+x SUB 3,vx SUB 2-vx SUB 3),'INT(w,t,a_,b_))))
+
+INTSUBST(y,vx,rx,t:=t_,rt:="_",ans):=PROG(ans:=INTSUBST_(y,vx,rx,t,rt),EXPAND~
+(ans,"__"))
+
+intsubst?:=[['INT(y,x,a,b)],["INTSUBST(y, [x,a,b], r1(x)=t, t, x=r2(t))   ;la~
+st arg optional             "],["INTSUBST(y, [x,a,b], ax^2+bx+c=0022euler10~
+022)    ;also euler2,3                 "],["INTSUBST(y, x, u(t), [t,a,b])    ~
+                                          "],["     "],["- For an antiderivat~
+ive [x,a,b] must be replaced with x and [t,a,b] with t."],["- Any relation wh~
+ich can be solved with respect to t may replace r1(x)=t.  "]]
+

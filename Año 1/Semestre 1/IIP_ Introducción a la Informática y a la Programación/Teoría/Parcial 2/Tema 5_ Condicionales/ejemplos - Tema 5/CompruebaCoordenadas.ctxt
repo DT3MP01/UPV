@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=CompruebaCoordenadas
+comment0.text=\n\ Clase\ Programa\ que\ lee\ las\ coordenadas\ (double)\ de\ un\ punto\ \ \n\ y\ muestra\ por\ pantalla\ su\ posicion\ en\ el\ plano\n\ \n\ @version\ Octubre\ 2017\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+numComments=2

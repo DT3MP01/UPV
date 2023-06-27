@@ -1,0 +1,51 @@
+"EulerMaclaurinSummation.dmo - Euler-Maclaurin Summation Formula Demonstration"
+
+"	     Contributed by Jim FitzSimons of Cave Creek, Arizona"
+
+"Phone: 602-488-1859	     Fax: 602-488-5014	       E-mail: cherry@neta.com"
+
+"The Euler-Maclaurin summation formula can be used to find asymptotic"
+
+"expansions of finite or infinite sums."
+
+"It is described in Section 23.1.30 on page 806 of the Handbook of"
+
+"Mathematical Functions by Milton Abramowitz and Irene A. Stegun."
+
+;If result is false, press the Esc key and load the file CarlsonEllipticIntegrals.mth
+IF(LOAD("EulerMaclaurinSummation.mth"), true, LOAD("..\Users\SpecialFunctions\EulerMaclaurinSummation.mth"))
+
+"The first argument, y, of EULERMAC should be an expression which is a"
+
+"function of the second argument, k, the index variable of the sum."
+
+"a0 and b are the starting and ending indexes of the sum, respectively."
+
+"a is the start of the Euler-Maclaurin asymptotic expansion.  m is the"
+
+"order of the expansion.  Choose a and m to give the desired accuracy."
+
+;The Euler-Mascheroni Gamma constant defined as the limit of an infinite sum
+LIM(SUM(1/(k+1),k,0,b-1)-LN(b),b,inf,1)
+
+"EULERMAC can approximate the Gamma constant to any desired degree of precision."
+
+;The Gamma constant approximated to 32 digits of precision using a0=0, a=64, and n=9
+APPROX(LIM(EULERMAC(1/(k+1),k,0,64,b-1,9)-LN(b),b,inf),32)
+
+;Declare z>1
+z:epsilon Real(1,inf)
+
+;If the real part of z>1, Zeta(z,q) can be defined as the infinite sum:"
+SUM(1/(q+k)^z,k,0,inf)
+
+"EULERMAC can be used to approximate the Riemann Zeta function to any desired"
+
+"degree of precision in exact mode after setting decimal notation mode."
+
+;Set 32 digit decimal notation mode
+[Notation:=Decimal,NotationDigits:=32]
+
+;Zeta(2,1) approximated to 32 digits of precision using a0=0, a=64, b=inf, and m=9
+EULERMAC(1/(1+k)^2,k,0,64,inf,9)
+

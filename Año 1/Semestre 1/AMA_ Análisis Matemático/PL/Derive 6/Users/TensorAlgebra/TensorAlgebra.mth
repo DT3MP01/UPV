@@ -1,0 +1,333 @@
+"	     The Derive Tensor Algebra and Analysis Package		"
+
+"			Utility File Tensor.mth 			"
+
+"      Written by Hans A. Dudler (619 420-1787)   2 December 1994	"
+
+"      Updated for Derive 5			 10 November 2001	"
+
+"	For detailed documentation, see the text file Tensor.doc	"
+
+[InputMode:=Word,CaseMode:=Sensitive]
+
+;Expand tensor (rank r) into linear array
+lInarx(A,r):=IF(r>1,lInarx(APPEND(A),r-1),A)
+
+;Aux.fct.for iVl(L,r,d)
+iVlx(L,L1,iv,d,n):=IF(n<1,iv,iVlx(L1,FLOOR(L1,d),APPEND([L+1-d*L1],iv),d,n-1))
+
+;Index vector from lin.index "L"
+iVl(L,r,d):=iVlx(L-1,FLOOR(L-1,d),[],d,r)
+
+;Locate last "e" in "v"
+lOel(v,e,n):=IF(v SUB n=e OR n<1,n,lOel(v,e,n-1),lOel(v,e,n-1))
+
+;General vector nesting function
+vNestx(P,ivP,d,n):=IF(n<1,P,vNestx(VECTOR(P,ivP SUB n,d),ivP,d,n-1))
+
+;Aux.fct.for PERM_EL(v)
+aUgvp(v,e):=VECTOR(VECTOR(IF(iIp<jJp,v SUB iIp,IF(iIp>jJp,v SUB (iIp-1),e)),iI~
+p,DIM(v)+1),jJp,DIM(v)+1,1,-1)
+
+;Aux.fct.for PERM_EL(v)
+pVae(M,e,P,d,n):=IF(n>d,P,pVae(M,e,APPEND(P,aUgvp(M SUB n,e)),d,n+1))
+
+;Aux.fct.for PERM_EL(v)
+pErme(v,P,n):=IF(n>DIM(v),P,pErme(v,pVae(P,v SUB n,[],DIM(P),1),n+~
+1))
+
+;All permutations of elem.of "v"
+PERM_EL(v):=pErme(v,[[]],1)
+
+;List of dummy index names
+iNdxa:=[iA1_,iA2_,iA3_,iA4_,iA5_,iA6_,iA7_,iA8_,iA9_,iAa_,iAb_,iAc_,iAd_,iAe_,~
+iAf_]
+
+;Dummy index vector
+iVa_(n):=VECTOR(iNdxa SUB iNd_,iNd_,n)
+
+;List of dummy index names
+iNdxb:=[iB1_,iB2_,iB3_,iB4_,iB5_,iB6_,iB7_,iB8_,iB9_,iBa_,iBb_,iBc_,iBd_,iBe_,~
+iBf_]
+
+;Dummy index vector
+iVb_(n):=VECTOR(iNdxb SUB iNd_,iNd_,n)
+
+;Elem.of Kronecker Delta
+EL_D(i,j):=IF(i=j,1,0)
+
+;Aux.fct.for EL_GD
+cEpm(iv1,iv2,pv,m,n):=IF(n>DIM(iv1),pv,IF(iv2 SUB m=iv1 SUB n,cEpm(iv1,i~
+v2,APPEND(pv,[m]),1,n+1),cEpm(iv1,iv2,pv,IF(m<DIM(iv1),m+1,1),IF(m<DIM~
+(iv1),n,m+1))))
+
+;Aux.fct.for EL_GD
+eOpi(v,i,m,n):=IF(n=DIM(v),i,IF(v SUB m=v SUB n,0,eOpi(v,IF(v SUB m>v SU~
+B n,i,-i),IF(m<DIM(v),m+1,n+2),IF(m<DIM(v),n,n+1))))
+
+;Aux.fct.for EL_GD
+eGdx(v,d):=IF(DIM(v)<d,0,eOpi(v,1,2,1))
+
+;Elem.of Generalized Kronecker Delta
+EL_GD(iv1,iv2):=eGdx(cEpm(iv1,iv2,[],1,1),DIM(iv1))
+
+;Elem.of permutation symbol (epsilon)
+EL_E(iv):=eOpi(iv,1,2,1)
+
+;Dimension of a tensor
+DIM_T(A):=IF(DIM(A)=4,4,DIM(A),0)
+
+;Rank of a tensor
+RANK_T(A,n:=0):=LOOP(IF(NOT(VECTOR?(A)),RETURN(n)),A:=A SUB 1,n:+1)
+
+;Aux.fct.for EL_T(A,iv)
+eLt(A,iv,n):=IF(n>DIM(iv),A,eLt(A SUB (iv SUB n),iv,n+1))
+
+;Extract elem.from tensor (iv:index vect.)
+EL_T(A,iv):=eLt(A,iv,1)
+
+;Kronecker Delta (tensor)
+DELTA(dim):=IDENTITY_MATRIX(dim)
+
+;Epsilon (permutation) tensor
+EPS(d):=LIM(vNestx(eOpi(iVa_(d),1,2,1),iVa_(d),dIm,d),dIm,d)
+
+;Generalized Kronecker Delta (tensor)
+GDELTA(ncov,d):=LIM(vNestx(eGdx(cEpm(iVa_(ncov),iVb_(ncov),[],1,1),ncov),APPEN~
+D(iVa_(ncov),iVb_(ncov)),dIm,2*ncov),dIm,d)
+
+;Inner prod.of two tensors
+IP_T(A,ivA,B,ivB,ivP):=vNestx(SUM(eLt(A,ivA,1)*eLt(B,ivB,1),sS,1,DIM(A))~
+,ivP,DIM(A),DIM(ivP))
+
+;Inner prod.of two tensors (short form)
+I_T(A,sA,B,sB):=IP_T(A,REPLACE_ELEMENT(sS,iVa_(RANK_T(A)),sA),B,REPLACE_ELEMEN~
+T(sS,iVb_(RANK_T(B)),sB),APPEND(DELETE_ELEMENT(iVa_(RANK_T(A)),sA),DELETE_ELEM~
+ENT(iVb_(RANK_T(B)),sB)))
+
+;Move (raise or lower) index
+MI_T(A,n,metric):=IP_T(metric,[iNdxa SUB n,sS],A,REPLACE_ELEMENT(sS,iVa_(RANK_~
+T(A)),n),iVa_(RANK_T(A)))
+
+;Elem.of inner product
+EL_IP_T(A,ivnA,B,ivnB):=SUM(eLt(A,ivnA,1)*eLt(B,ivnB,1),sS,1,DIM(A))
+
+;Outer prod.of two tensors
+OP_T(A,ivA,B,ivB,ivP):=vNestx(IF(lOel(ivA,ivP SUB DIM(ivP),DIM(ivA~
+))=0,VECTOR(eLt(B,ivB,1),ivP SUB DIM(ivP),DIM(B))*eLt(A,ivA,1),VEC~
+TOR(eLt(A,ivA,1),ivP SUB DIM(ivP),DIM(A))*eLt(B,ivB,1)),ivP,DIM(A),DIM(ivP)-1)
+
+;Outer prod.of two tensors (short form)
+O_T(A,B):=OP_T(A,iVa_(RANK_T(A)),B,iVb_(RANK_T(B)),APPEND(iVa_(RANK_T(A)),iVb_~
+(RANK_T(B))))
+
+;Transpose of a tensor
+TP_T(A,ivA,ivT):=vNestx(eLt(A,ivA,1),ivT,DIM(A),DIM(ivT))
+
+;Contraction of a tensor
+CT_T(A,ivA,ivC):=vNestx(SUM(eLt(A,ivA,1),sS,1,DIM(A)),ivC,DIM(A),DIM(ivC))
+
+;Contraction of a tensor (short form)
+C_T(A,s1,s2):=vNestx(SUM(eLt(A,REPLACE_ELEMENT(sS,REPLACE_ELEMENT(sS,iVa_(RANK~
+_T(A)),s1),s2),1),sS,1,DIM(A)),IF(s2>s1,DELETE_ELEMENT(DELETE_ELEMENT(iV~
+a_(RANK_T(A)),s2),s1),DELETE_ELEMENT(DELETE_ELEMENT(iVa_(RANK_T(A)),s1),s2)),~
+DIM(A),RANK_T(A)-2)
+
+;Contract inner product (summ.ind.sS,tT)
+CI_T(A,ivA,B,ivB,ivP):=vNestx(SUM(SUM(eLt(A,ivA,1)*eLt(B,ivB,1),sS,1,DIM~
+(A)),tT,1,DIM(A)),ivP,DIM(A),DIM(ivP))
+
+;Contract inner product (short form)
+C_I_T(A,sA,tA,B,sB,tB):=CI_T(A,REPLACE_ELEMENT(tT,REPLACE_ELEMENT(sS,iVa_(RANK~
+_T(A)),sA),tA),B,REPLACE_ELEMENT(tT,REPLACE_ELEMENT(sS,iVb_(RANK_T(B)),sB),tB)~
+,APPEND(IF(tA>sA,DELETE_ELEMENT(DELETE_ELEMENT(iVa_(RANK_T(A)),tA),sA),DELETE_~
+ELEMENT(DELETE_ELEMENT(iVa_(RANK_T(A)),sA),tA)),IF(tB>sB,DELETE_ELEMENT(DELETE~
+_ELEMENT(iVb_(RANK_T(B)),tB),sB),DELETE_ELEMENT(DELETE_ELEMENT(iVb_(RANK_T(B))~
+,sB),tB))))
+
+;Aux.fct.for NZEL_T(A)
+nZel(A1,r,d):=(ITERATE(IF(A1 SUB v1=0,[v2,v1+1],[APPEND(v2,[[iVl(v1,r,d),A1 SU~
+B v1]]),v1+1],[APPEND(v2,[[iVl(v1,r,d),A1 SUB v1]]),v1+1]),[v2,v1],[[],1],DIM~
+(A1))) SUB 1
+
+;Extract non-zero elements from tensor
+NZEL_T(A):=nZel(lInarx(A,RANK_T(A)),RANK_T(A),DIM(A))
+
+;Aux.fct.for GNZE_T(A)
+iNze(A1):=(ITERATE(IF(A1 SUB v2=0,[v1,v2+1],[APPEND(v1,[v2]),v2+1],[APPEND(v1,~
+[v2]),v2+1]),[v1,v2],[[],1],DIM(A1))) SUB 1
+
+;Aux.fct.for GNZE_T(A)
+xNze1(A1,iNz,kEy,r,d):=ITERATE(IF(A1 SUB (iNz SUB v1)=kEy,[APPEND(v3,[iVl(iNz ~
+SUB v1,r,d)]),v2,v1+1],IF(A1 SUB (iNz SUB v1)=-kEy,[APPEND(v3,-[iVl(iNz SUB v1~
+,r,d)]),v2,v1+1],[v3,APPEND(v2,[iNz SUB v1]),v1+1]),IF(A1 SUB (iNz SUB v1)=-kE~
+y,[APPEND(v3,-[iVl(iNz SUB v1,r,d)]),v2,v1+1],[v3,APPEND(v2,[iNz SUB v1]),v1+1~
+],[v3,APPEND(v2,[iNz SUB v1]),v1+1])),[v3,v2,v1],[[],[],1],DIM(iNz))
+
+;Aux.fct.for GNZE_T(A)
+xNze2(C,Z,kEy):=[APPEND(C SUB 1,[[Z SUB 1,kEy]]),Z SUB 2]
+
+;Aux.fct.for GNZE_T(A)
+xNze(A1,C,r,d):=xNze2(C,xNze1(A1,C SUB 2,A1 SUB (C SUB 2 SUB 1),r,d),A1 SUB (C~
+ SUB 2 SUB 1))
+
+;Aux.fct.for GNZE_T(A)
+gNze1(A1,C,r,d):=IF(DIM(C SUB 2)=0,C SUB 1,gNze1(A1,xNze(A1,C,r,d),r,d))
+
+;Aux.fct.for GNZE_T(A)
+gNze(A1,r,d):=gNze1(A1,[[],iNze(A1)],r,d)
+
+;Extract and group non-zero elements
+GNZE_T(A):=gNze(lInarx(A,RANK_T(A)),RANK_T(A),DIM(A))
+
+;Aux.fct.for OD_T(A,x)
+oDaux(A,ivA,x,d):=vNestx(DIF(eLt(A,ivA,1),x SUB dD_),APPEND(ivA,[dD_]),d,DIM~
+(ivA)+1)
+
+;Ordinary derivative of a tensor
+OD_T(A,x):=LIM(oDaux(A,iVa_(RANK_T(A)),x,dIm),dIm,DIM(x))
+
+;Aux.fct.for CD_T(A,ncov,weight,x,C_ij_k)
+cDaux(A,ncov,weight,x,C_ij_k,rA,iv,ivR,dim):=OD_T(A,x)-SUM(IP_T(A,REPLACE_ELEM~
+ENT(sS,iv,iI_),C_ij_k,[iv SUB iI_,kK,sS],ivR),iI_,1,ncov)+SUM(IP_T(A,REPLACE_E~
+LEMENT(sS,iv,jJ_),C_ij_k,[sS,kK,iv SUB jJ_],ivR),jJ_,ncov+1,rA)-IF(weight=0,0,~
+weight*OP_T(A,iv,CT_T(C_ij_k,[iI,sS,sS],[iI]),[kK],ivR))
+
+;Covariant derivative of a tensor
+CD_T(A,ncov,weight,x,C_ij_k):=cDaux(A,ncov,weight,x,C_ij_k,RANK_T(A),iVa_(RANK~
+_T(A)),APPEND(iVa_(RANK_T(A)),[kK]),DIM(x))
+
+;Aux.fct.for LD_T(A,v,ncov,weight,x)
+lDaux(A,v,ncov,weight,x,odv,rA,iv):=IP_T(OD_T(A,x),APPEND(iv,[sS]),v,[sS],iv)+~
+SUM(IP_T(A,REPLACE_ELEMENT(sS,iv,iI_),odv,[sS,iv SUB iI_],iv),iI_,1,ncov)-SUM(~
+IP_T(A,REPLACE_ELEMENT(sS,iv,jJ_),odv,[iv SUB jJ_,sS],iv),jJ_,ncov+1,rA)+IF(we~
+ight=0,0,weight*TRACE(odv)*A)
+
+;Lie derivative of a tensor
+LD_T(A,v,ncov,weight,x):=lDaux(A,v,ncov,weight,x,OD_T(v,x),RANK_T(A),iVa_(RANK~
+_T(A)))
+
+;Aux.fct.for DV (iv_zZ must contain zZ_)
+dIvt(A,iv_zZ,x):=SUM(DIF(eLt(A,iv_zZ,1),x SUB zZ_),zZ_,1,DIM(x))
+
+;Aux.fct.for DV_T(A,...)
+dVrgx(A,ncov,weight,sA,x,C_ij_k,iv,ivD,C_i):=vNestx(dIvt(A,REPLACE_ELEMENT(zZ_~
+,iv,sA),x),ivD,DIM(x),DIM(ivD))-IF(ncov<1,0,SUM(CI_T(A,REPLACE_ELE~
+MENT(tT,REPLACE_ELEMENT(sS,iv,iI_),sA),C_ij_k,[iv SUB iI_,tT,sS],ivD),iI_,1,nc~
+ov))+IF(ncov<0,0,SUM(IF(jJ_=sA,0,CI_T(A,REPLACE_ELEMENT(tT,REPLACE_ELEMENT(sS,~
+iv,jJ_),sA),C_ij_k,[sS,tT,iv SUB jJ_],ivD)),jJ_,ncov+1,DIM(iv)))+IF(weig~
+ht=1,0,(1-weight)*IP_T(A,REPLACE_ELEMENT(sS,iv,sA),C_i,[sS],ivD))
+
+;Tensor divergence
+DV_T(A,ncov,weight,sA,x,C_ij_k):=dVrgx(A,ncov,weight,sA,x,C_ij_k,iVa_(RANK_T(A~
+)),DELETE_ELEMENT(iVa_(RANK_T(A)),sA),CT_T(C_ij_k,[iI,sS,sS],[iI]))
+
+;Aux.fct.for GC_T(A,x)
+eQel(v,i,n):=IF(i>0,n,IF(n<2,0,eQel(v,lOel(v,v SUB n,n-1),n-1)))
+
+;Aux.fct.for GC_T(A,x)
+sGnp(v):=SIGN(PRODUCT(PRODUCT(v SUB jJ-v SUB iI,jJ,iI+1,DIM(v)),iI,1,DIM(v)-1))
+
+;Aux.fct.for GC_T(A,x)
+dTgc(iv,A,x):=sGnp(iv)*DIF(eLt(A,DELETE_ELEMENT(iv,DIM(iv)),1),x SUB (iv~
+ SUB DIM(iv)))
+
+;Aux.fct.for GC_T(A,x)
+eLgc(Miv,A,x):=sGnp(Miv SUB 1)*SUM(dTgc(Miv SUB sSp,A,x),sSp,1,DIM(Miv))
+
+;Aux.fct.for GC_T(A,x)
+gCaux(A,x,ivD,r):=LIM(vNestx(IF(eQel(ivD,0,r)>0,0,eLgc(pErme(ivD,[[]],1),A,x))~
+,ivD,dIm,r),dIm,DIM(x))
+
+;Generalized curl of a tensor
+GC_T(A,x):=gCaux(A,x,iVa_(RANK_T(A)+1),RANK_T(A)+1)
+
+;Jacobian matrix
+JACOB(x,x_):=VECTOR(VECTOR(DIF(x SUB iI,x_ SUB jJ),jJ,DIM(x_)),iI,DIM(x))
+
+;Aux.fct.for TF_T(A,..)
+tFidx(A,JC,ivA,ivc,ic):=vNestx(SUM(JC SUB sS SUB ic*eLt(A,ivc,1),sS,1,DIM~
+(A)),ivA,DIM(A),DIM(ivA))
+
+;Aux.fct.for TF_T(A,..)
+tFaux(A,ivA,ncov,JM,JMc,n):=IF(n>DIM(ivA),A,tFaux(tFidx(A,IF(n>ncov,JMc,~
+JM),ivA,REPLACE_ELEMENT(sS,ivA,n),ivA SUB n),ivA,ncov,JM,JMc,n+1))
+
+;Transf.tensor to new coord. x_
+TF_T(A,ncov,weight,JM,JM_):=tFaux(A,iVa_(RANK_T(A)),ncov,JM,JM_`,1)*IF(weight=~
+0,1,DET(JM)^weight)
+
+;Christoffel symbol (1st kind)
+CHRIS1(g_ij,x):=1/2*VECTOR(VECTOR(VECTOR(DIF(g_ij SUB jJ SUB kK,x SUB iI)+DIF(~
+g_ij SUB kK SUB iI,x SUB jJ)-DIF(g_ij SUB iI SUB jJ,x SUB kK),kK,1,DIM(g~
+_ij)),jJ,1,DIM(g_ij)),iI,1,DIM(g_ij))
+
+;Christoffel symbol (2nd kind)
+CHRIS2(g_ij,g__ij,x):=VECTOR(1/2*(VECTOR(VECTOR(VECTOR(DIF(g_ij SUB jJ SUB kK,~
+x SUB iI)+DIF(g_ij SUB kK SUB iI,x SUB jJ)-DIF(g_ij SUB iI SUB jJ,x SUB kK),kK~
+,1,DIM(g_ij)),jJ,1,DIM(g_ij)),iI,1,DIM(g_ij))) SUB lL . g__i~
+j,lL,1,DIM(g_ij))
+
+;Elem.of Riemann curv.tensor (1st kind)
+EL_RIEM1(C_ijk,C_ij_k,x,i,j,k,l):=IF(i=j OR k=l,0,DIF(C_ijk SUB j SUB l SUB i,~
+x SUB k)-DIF(C_ijk SUB j SUB k SUB i,x SUB l)+C_ijk SUB i SUB l . C_ij_k SUB j~
+ SUB k-C_ijk SUB i SUB k . C_ij_k SUB j SUB l)
+
+;Riemann curvature tensor (1st kind)
+RIEM1(C_ijk,C_ij_k,x):=VECTOR(VECTOR(VECTOR(VECTOR(EL_RIEM1(C_ijk,C_ij_k,x,iI,~
+jJ,kK,lL),lL,DIM(C_ijk)),kK,DIM(C_ijk)),jJ,DIM(C_ijk)),iI,DIM(C_ijk))
+
+;Aux.fct.for RIEM2
+vT3i1(A1,d,i2,i3):=VECTOR(A1 SUB iI_,iI_,d*(i2-1)+i3,d^3,d^2)
+
+;Elem.of Riemann curv.tensor (2nd kind)
+EL_RIEM2(C_ij_k,x,i,j,k,l):=IF(k=l,0,DIF(C_ij_k SUB j SUB l SUB i,x SUB k)-DIF~
+(C_ij_k SUB j SUB k SUB i,x SUB l)+vT3i1(APPEND(APPEND(C_ij_k)),DIM(x),k~
+,i) . C_ij_k SUB j SUB l-vT3i1(APPEND(APPEND(C_ij_k)),DIM(x),l,i) . C_ij~
+_k SUB j SUB k)
+
+;Riemann curvature tensor (2nd kind)
+RIEM2(C_ij_k,x):=VECTOR(VECTOR(VECTOR(VECTOR(IF(kK=lL,0,DIF(C_ij_k SUB jJ SUB ~
+lL SUB iI,x SUB kK)-DIF(C_ij_k SUB jJ SUB kK SUB iI,x SUB lL)+vT3i1(APPEND(APP~
+END(C_ij_k)),DIM(x),kK,iI) . C_ij_k SUB jJ SUB lL-vT3i1(APPEND(APPEND(C_~
+ij_k)),DIM(x),lL,iI) . C_ij_k SUB jJ SUB kK),lL,DIM(x)),kK,DIM~
+(x)),jJ,DIM(x)),iI,DIM(x))
+
+;Aux.fct.for RICCI(C_ij_k,x)
+vT3i2(A1,d,i1,i3):=VECTOR(A1 SUB iI_,iI_,(i1-1)*d^2+i3,i1*d^2+i3-d,d)
+
+;Aux.fct.for RICCI(C_ij_k,x)
+rIcx(C_ij_k,x,T):=VECTOR(VECTOR(DIV(C_ij_k SUB iI SUB jJ,x)-DIF(T SUB iI,x SUB~
+ jJ)-SUM(vT3i2(APPEND(APPEND(C_ij_k)),DIM(x),iI,sS) . C_ij_k SUB sS SUB ~
+jJ,sS,1,DIM(x))+C_ij_k SUB iI SUB jJ . T,jJ,DIM(x)),iI,DIM(x~
+))
+
+;Covariant Ricci tensor
+RICCI(C_ij_k,x):=rIcx(C_ij_k,x,VECTOR(TRACE(C_ij_k SUB kK),kK,DIM(x)))
+
+;Aux.fct.for EINST(R_ij,..)
+eInstx(R_ij,g_ij,RH):=R_ij-RH*g_ij
+
+;Covariant Einstein tensor
+EINST(R_ij,g_ij,g__ij):=eInstx(R_ij,g_ij,TRACE(g__ij . R_ij)/2)
+
+;Aux.fct.for WEYL(R_ijkl,..)
+wEylx(R_ijkl,R_ij,g_ij,R,d):=VECTOR(VECTOR(VECTOR(VECTOR(eLt(R_ijkl,[iI,jJ,kK,~
+lL],1)+(g_ij SUB iI SUB lL*R_ij SUB kK SUB jJ+g_ij SUB jJ SUB kK*R_ij SUB lL S~
+UB iI-g_ij SUB iI SUB kK*R_ij SUB lL SUB jJ-g_ij SUB jJ SUB lL*R_ij SUB kK SUB~
+ iI+(g_ij SUB iI SUB kK*g_ij SUB lL SUB jJ-g_ij SUB iI SUB lL*g_ij SUB kK SUB ~
+jJ)*R/(d-1))/(d-2),lL,d),kK,d),jJ,d),iI,d)
+
+;Weyl (conformal) tensor
+WEYL(R_ijkl,R_ij,g_ij):=wEylx(R_ijkl,R_ij,g_ij,TRACE(g_ij^(-1) . R_ij),DIM~
+(g_ij))
+
+;Aux.fct.for DI_NZEL and DI_GNZE
+dEcel(v):=VECTOR(v SUB iI-SIGN(v SUB iI),iI,DIM(v))
+
+;Decrement indices in NZEL_T display
+DI_NZEL(A):=VECTOR([dEcel(A SUB kK SUB 1),A SUB kK SUB 2],kK,DIM(A))
+
+DI_GNZE(A):=VECTOR([VECTOR(dEcel(A SUB kK SUB 1 SUB jJ),jJ,DIM(A SUB kK ~
+SUB 1)),A SUB kK SUB 2],kK,DIM(A))
+

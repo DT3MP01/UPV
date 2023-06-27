@@ -1,0 +1,476 @@
+"__________________________________________________________"
+
+""
+
+"               Multiple Integration.mth                   "
+
+"        Line, double, triple and surface integrals        "
+
+"                    September, 2002                       "
+
+""
+
+"           Jose Luis Galan Garcia   (jl_galan@uma.es)     "
+
+"           Pedro Rodriguez Cielos   (prodriguez@uma.es)   "
+
+"           M. Angeles Galan Garcia                        "
+
+"           Yolanda Padilla Dominguez      "
+
+""
+
+"              Department of Applied Mathematic            "
+
+"                    University of Malaga                  "
+
+"                http://www.satd.uma.es/matap              "
+
+""
+
+"__________________________________________________________"
+
+""
+
+""
+
+""
+
+"__________________________________________________________"
+
+"               SCALAR AND VECTOR FIELDS                   "
+
+"__________________________________________________________"
+
+""
+
+""
+
+"__________________________________________________________"
+
+"                    Gamma function                         "
+
+GAMMAFUNCTION(p):=GAMMA(p)
+
+"__________________________________________________________"
+
+"                    Beta function                         "
+
+""
+
+BETAFUNCTION(p,q):=GAMMAFUNCTION(p)*GAMMAFUNCTION(q)/GAMMAFUNCTION(p+q)
+
+""
+
+"__________________________________________________________"
+
+"                Gradient of f=f(x,y,z)                    "
+
+""
+
+GRADIENT(field):=GRAD(field)
+
+""
+
+"__________________________________________________________"
+
+"        Divergence of (p(x,y,z),q(x,y,z),r(x,y,z))        "
+
+""
+
+DIVERGENCE(p,q,r):=DIV([p,q,r])
+
+""
+
+"__________________________________________________________"
+
+"                    Curl of (p,q,r)                       "
+
+""
+
+VECTORCURL(p,q,r):=CURL([p,q,r])
+
+""
+
+"__________________________________________________________"
+
+""
+
+""
+
+""
+
+"__________________________________________________________"
+
+"                    LINE INTEGRAL                         "
+
+"__________________________________________________________"
+
+""
+
+""
+
+"__________________________________________________________"
+
+"                 Exact differential in R2                 "
+
+""
+
+EXACTDIFFERENTIAL2(p,q):=IF(DIF(p,y)=DIF(q,x),"This is an exact differential"~
+,"This is not an exact differential","This is not an exact differential")
+
+""
+
+"__________________________________________________________"
+
+"                 Exact differential in R3                 "
+
+""
+
+EXACTDIFFERENTIAL3(p,q,r):=IF(DIF(p,y)=DIF(q,x) AND (DIF(p,z)=DIF(r,x) AND DI~
+F(q,z)=DIF(r,y)),"This is an exact differential","This is not an exact differ~
+ential","This is not an exact differential")
+
+""
+
+"__________________________________________________________"
+
+"                 Potential function in R2                 "
+
+""
+
+POTENTIAL2(p,q):=IF(DIF(p,y)=DIF(q,x),INT(p,x)+INT(q-DIF(INT(p,x),y),y),"This~
+ is not an exact differential","This is not an exact differential")
+
+""
+
+"__________________________________________________________"
+
+"                 Potential function in R3                 "
+
+""
+
+POTENTIAL3(p,q,r):=IF(DIF(p,y)=DIF(q,x) AND (DIF(p,z)=DIF(r,x) AND DIF(q,z)=D~
+IF(r,y)),POTENTIAL([p,q,r],[0,0,0],[x,y,z]),"This is not an exact differentia~
+l","This is not an exact differential")
+
+""
+
+"__________________________________________________________"
+
+"      Line integral of non-exact differentials in R2      "
+
+""
+
+LINEINTEGRAL2(p,q,c1,c2,a,b):=INT([LIM(p,[x,y],[c1,c2]),LIM(q,[x,y],[c1,c2])]~
+*DIF([c1,c2],t),t,a,b)
+
+""
+
+"__________________________________________________________"
+
+"      Line integral of non-exact differentials in R3      "
+
+""
+
+LINEINTEGRAL3(p,q,r,c1,c2,c3,a,b):=INT([LIM(p,[x,y,z],[c1,c2,c3]),LIM(q,[x,y,~
+z],[c1,c2,c3]),LIM(r,[x,y,z],[c1,c2,c3])]*DIF([c1,c2,c3],t),t,a,b)
+
+""
+
+"__________________________________________________________"
+
+""
+
+""
+
+""
+
+"__________________________________________________________"
+
+"   DOUBLE AND TRIPLE INTEGRALS. GREEN-RIEMANN'S THEOREM   "
+
+"__________________________________________________________"
+
+""
+
+""
+
+"__________________________________________________________"
+
+"        Double integration in cartesian coordinates       "
+
+""
+
+DOUBLE(function,y,y1,y2,x,x1,x2):=INT(INT(function,y,y1,y2),x,x1,x2)
+
+""
+
+"__________________________________________________________"
+
+"         Double integration in polar coordinates          "
+
+""
+
+DOUBLEPOLAR(function,r,r1,r2,03b8,03b81,03b82):=DOUBLE(LIM(function*r,[x,y~
+],[r*COS(03b8),r*SIN(03b8)]),r,r1,r2,03b8,03b81,03b82)
+
+DOUBLEPOLARXZ(function,r,r1,r2,03b8,03b81,03b82):=DOUBLE(LIM(function*r,[z~
+,x],[r*COS(03b8),r*SIN(03b8)]),r,r1,r2,03b8,03b81,03b82)
+
+DOUBLEPOLARYZ(function,r,r1,r2,03b8,03b81,03b82):=DOUBLE(LIM(function*r,[y~
+,z],[r*COS(03b8),r*SIN(03b8)]),r,r1,r2,03b8,03b81,03b82)
+
+""
+
+"__________________________________________________________"
+
+"       Triple integration in cartesian coordinates        "
+
+""
+
+TRIPLE(function,z,z1,z2,y,y1,y2,x,x1,x2):=INT(INT(INT(function,z,z1,z2),y,y1,~
+y2),x,x1,x2)
+
+""
+
+"__________________________________________________________"
+
+"      Triple integration in cylindrical coordinates       "
+
+""
+
+TRIPLECYLINDRICAL(function,z,z1,z2,r,r1,r2,03b8,03b81,03b82):=DOUBLEPOLAR(~
+INT(function,z,z1,z2),r,r1,r2,03b8,03b81,03b82)
+
+""
+
+"__________________________________________________________"
+
+"       Triple integration in spherical coordinates        "
+
+""
+
+TRIPLESPHERICAL(function,r,r1,r2,03b8,03b81,03b82,03b1,03b11,03b12):=TR~
+IPLE(LIM(function*r^2*COS(03b1),[x,y,z],[r*COS(03b8)*COS(03b1),r*SIN(03b8~
+)*COS(03b1),r*SIN(03b1)]),r,r1,r2,03b8,03b81,03b82,03b1,03b11,03b12)
+
+""
+
+"__________________________________________________________"
+
+"     Green-Riemann's theorem in cartesian coordinates     "
+
+""
+
+LINEGREENRIEMANN(p,q,y,y1,y2,x,x1,x2):=DOUBLE(DIF(q,x)-DIF(p,y),y,y1,y2,x,x1,~
+x2)
+
+""
+
+"__________________________________________________________"
+
+"       Green-Riemann's theorem in polar coordinates       "
+
+""
+
+LINEGREENRIEMANNPOLAR(p,q,r,r1,r2,03b8,03b81,03b82):=DOUBLEPOLAR(DIF(q,x)-~
+DIF(p,y),r,r1,r2,03b8,03b81,03b82)
+
+""
+
+"__________________________________________________________"
+
+""
+
+""
+
+""
+
+"__________________________________________________________"
+
+"            SURFACE INTEGRALS.  GAUSS' THEOREM            "
+
+"__________________________________________________________"
+
+""
+
+""
+
+"__________________________________________________________"
+
+" Surface area in cartesian coordinates in Rxy ; Rxz ; Ryz "
+
+""
+
+SURFACEAREARXY(surf,y,y1,y2,x,x1,x2):=DOUBLE(SQRT(DIF(surf,x)^2+DIF(surf,y)^2~
++1),y,y1,y2,x,x1,x2)
+
+""
+
+SURFACEAREARXZ(surf,x,x1,x2,z,z1,z2):=DOUBLE(SQRT(DIF(surf,z)^2+DIF(surf,x)^2~
++1),x,x1,x2,z,z1,z2)
+
+""
+
+SURFACEAREARYZ(surf,z,z1,z2,y,y1,y2):=DOUBLE(SQRT(DIF(surf,y)^2+DIF(surf,z)^2~
++1),z,z1,z2,y,y1,y2)
+
+""
+
+"__________________________________________________________"
+
+"      Surface integral of function in Rxy ; Rxz ; Ryz     "
+
+""
+
+SURFACERXY(function,surf,y,y1,y2,x,x1,x2):=DOUBLE(LIM(function,z,surf)*SQRT(D~
+IF(surf,x)^2+DIF(surf,y)^2+1),y,y1,y2,x,x1,x2)
+
+""
+
+SURFACERXZ(function,surf,x,x1,x2,z,z1,z2):=DOUBLE(LIM(function,y,surf)*SQRT(D~
+IF(surf,z)^2+DIF(surf,x)^2+1),x,x1,x2,z,z1,z2)
+
+""
+
+SURFACERYZ(function,surf,z,z1,z2,y,y1,y2):=DOUBLE(LIM(function,x,surf)*SQRT(D~
+IF(surf,y)^2+DIF(surf,z)^2+1),z,z1,z2,y,y1,y2)
+
+""
+
+"__________________________________________________________"
+
+"             Unit normal vector to F(x,y,z)=0             "
+
+""
+
+UNITNORMALVECTOR(vect):=[DIF(vect,x)/ABS(GRAD(vect)),DIF(vect,y)/ABS(GRAD(vec~
+t)),DIF(vect,z)/ABS(GRAD(vect))]
+
+""
+
+"__________________________________________________________"
+
+"     Flux in cartesian coordinates in Rxy ; Rxz ; Ryz     "
+
+""
+
+FLUXRXY(p,q,r,surf,y,y1,y2,x,x1,x2):=DOUBLE(LIM(p*(-DIF(surf,x))+q*(-DIF(surf~
+,y))+r,z,surf),y,y1,y2,x,x1,x2)
+
+""
+
+FLUXRXZ(p,q,r,surf,x,x1,x2,z,z1,z2):=DOUBLE(LIM(p*(-DIF(surf,z))+q+r*(-DIF(su~
+rf,x)),y,surf),x,x1,x2,z,z1,z2)
+
+""
+
+FLUXRYZ(p,q,r,surf,z,z1,z2,y,y1,y2):=DOUBLE(LIM(p+q*(-DIF(surf,y))+r*(-DIF(su~
+rf,z)),x,surf),z,z1,z2,y,y1,y2)
+
+""
+
+"__________________________________________________________"
+
+"   Surface area in polar coordinates in Rxy ; Rxz ; Ryz   "
+
+""
+
+SURFACEAREARXYPOLAR(surf,r,r1,r2,03b8,03b81,03b82):=DOUBLEPOLAR(SQRT(DIF(s~
+urf,x)^2+DIF(surf,y)^2+1),r,r1,r2,03b8,03b81,03b82)
+
+""
+
+SURFACEAREARXZPOLAR(surf,r,r1,r2,03b8,03b81,03b82):=DOUBLEPOLARXZ(SQRT(DIF~
+(surf,z)^2+DIF(surf,x)^2+1),r,r1,r2,03b8,03b81,03b82)
+
+""
+
+SURFACEAREARYZPOLAR(surf,r,r1,r2,03b8,03b81,03b82):=DOUBLEPOLARYZ(SQRT(DIF~
+(surf,y)^2+DIF(surf,z)^2+1),r,r1,r2,03b8,03b81,03b82)
+
+""
+
+"____________________________________________________________________"
+
+"Surface integral of function in polar coordinates in Rxy ; Rxz ; Ryz"
+
+""
+
+SURFACERXYPOLAR(function,surf,r,r1,r2,03b8,03b81,03b82):=DOUBLEPOLAR(LIM(f~
+unction*SQRT(DIF(surf,x)^2+DIF(surf,y)^2+1),z,surf),r,r1,r2,03b8,03b81,03b~
+82)
+
+""
+
+SURFACERXZPOLAR(function,surf,r,r1,r2,03b8,03b81,03b82):=DOUBLEPOLARXZ(LIM~
+(function*SQRT(DIF(surf,z)^2+DIF(surf,x)^2+1),y,surf),r,r1,r2,03b8,03b81,0~
+3b82)
+
+""
+
+SURFACERYZPOLAR(function,surf,r,r1,r2,03b8,03b81,03b82):=DOUBLEPOLARYZ(LIM~
+(function*SQRT(DIF(surf,y)^2+DIF(surf,z)^2+1),x,surf),r,r1,r2,03b8,03b81,0~
+3b82)
+
+""
+
+"__________________________________________________________"
+
+"       Flux in polar coordinates in Rxy ; Rxz ; Ryz       "
+
+""
+
+FLUXRXYPOLAR(p,q,k,surf,r,r1,r2,03b8,03b81,03b82):=DOUBLEPOLAR(LIM(p*(-DIF~
+(surf,x))+q*(-DIF(surf,y))+k,z,surf),r,r1,r2,03b8,03b81,03b82)
+
+""
+
+FLUXRXZPOLAR(p,q,k,surf,r,r1,r2,03b8,03b81,03b82):=DOUBLEPOLARXZ(LIM(p*(-D~
+IF(surf,x))+q+k*(-DIF(surf,z)),y,surf),r,r1,r2,03b8,03b81,03b82)
+
+""
+
+FLUXRYZPOLAR(p,q,k,surf,r,r1,r2,03b8,03b81,03b82):=DOUBLEPOLARYZ(LIM(p+q*(~
+-DIF(surf,y))+k*(-DIF(surf,z)),x,surf),r,r1,r2,03b8,03b81,03b82)
+
+""
+
+"__________________________________________________________"
+
+"    Flux in cartesian coordinates using Gauss' theorem    "
+
+""
+
+FLUXGAUSS(p,q,k,z,z1,z2,y,y1,y2,x,x1,x2):=TRIPLE(DIV([p,q,k]),z,z1,z2,y,y1,y2~
+,x,x1,x2)
+
+""
+
+"__________________________________________________________"
+
+"   Flux in cylindrical coordinates using Gauss' theorem   "
+
+""
+
+FLUXGAUSSCYLINDRICAL(p,q,k,z,z1,z2,r,r1,r2,03b8,03b81,03b82):=TRIPLECYLIND~
+RICAL(DIV([p,q,k]),z,z1,z2,r,r1,r2,03b8,03b81,03b82)
+
+""
+
+"__________________________________________________________"
+
+"    Flux in spherical coordinates using Gauss' theorem    "
+
+""
+
+FLUXGAUSSSPHERICAL(p,q,k,r,r1,r2,03b8,03b81,03b82,03b1,03b11,03b12):=TR~
+IPLESPHERICAL(DIV([p,q,k]),r,r1,r2,03b8,03b81,03b82,03b1,03b11,03b12)
+
+""
+
+"__________________________________________________________"
+
+"__________________________________________________________"
+

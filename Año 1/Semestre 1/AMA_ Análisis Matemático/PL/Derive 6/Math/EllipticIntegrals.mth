@@ -1,0 +1,68 @@
+"EllipticIntegrals.mth -- Copyright (c) 1990-2003 by Texas Instruments Incorp~
+orated"
+
+ELLIPTIC_F(03c6,m):=INT(1/SQRT(1-m*SIN(t_)^2),t_,0,03c6)
+
+ELLIPTIC_E(03c6,m):=INT(SQRT(1-m*SIN(t_)^2),t_,0,03c6)
+
+ELLIPTIC_PI(03c6,m,n):=INT(1/((1-n*SIN(t_)^2)*SQRT(1-m*SIN(t_)^2)),t_,0,03c~
+6)
+
+"The remaining functions contributed by Jim FitzSimons (cherry@neta.com)"
+
+JACOBI_AGM(m,n):=ITERATES([(v_ SUB 1+v_ SUB 2)/2,SQRT(v_ SUB 1*v_ SUB 2),(v_ ~
+SUB 1-v_ SUB 2)/2],v_,[1,SQRT(1-m),SQRT(m)],n)
+
+JACOBI_AUX(u,a,n):=ITERATE([ASIN(a SUB (v_ SUB 2) SUB 3*SIN(v_ SUB 1)/a SUB (~
+v_ SUB 2) SUB 1)/2+v_ SUB 1/2,v_ SUB 2-1],v_,[2^n*a SUB n SUB 1*u,n+1],n)
+
+"JACOBI_AM(u,m,n) is the Jacobi elliptic amplitude function."
+
+"It is the basic function needed to generate all the Jacobi elliptic function~
+s."
+
+JACOBI_AM(u,m,n):=(JACOBI_AUX(u,JACOBI_AGM(m,n),n)) SUB 1
+
+"KI(m,n) is the complete elliptic integral of the first kind."
+
+KI(m,n):=pi/(2*(JACOBI_AGM(m,n)) SUB (n+1) SUB 1)
+
+"EIF(phi,m,n) is the elliptic integral of the first kind."
+
+"This algorithm came from Numerical Recipes in C 6.11 page 261."
+
+EIF_AUX1(v,03bb):=[(v SUB 1+03bb)/4,(v SUB 2+03bb)/4,(v SUB 3+03bb)/4]
+
+EIF_AUX2(v):=SQRT(v SUB 2*v SUB 3)+SQRT(v SUB 1*v SUB 3)+SQRT(v SUB 1*v SUB 2~
+)
+
+EIF_AUX3(x,y,z,n):=ITERATE(EIF_AUX1(v_,EIF_AUX2(v_)),v_,[x,y,z],n)
+
+EIF_AUX4(ave,v):=[1,1,1]-v/ave
+
+EIF_AUX5(v):=[v SUB 1*v SUB 2-v SUB 3*v SUB 3,v SUB 1*v SUB 2*v SUB 3]
+
+EIF_AUX6(v,ave):=(1+(v SUB 1/24-1/10-3*v SUB 2/44)*v SUB 1+v SUB 2/14)/SQRT(a~
+ve)
+
+EIF_AUX7(v,ave):=EIF_AUX6(EIF_AUX5(EIF_AUX4(ave,v)),ave)
+
+EIF_AUX8(v):=EIF_AUX7(v,AVERAGE(v))
+
+EIF_AUX9(x,y,z,n):=EIF_AUX8(EIF_AUX3(x,y,z,n))
+
+EIF(03c6,m,n):=SIN(03c6)*EIF_AUX9(COS(03c6)^2,1-m*SIN(03c6)^2,1,n)
+
+"This is a test of EIF(u,m,n)."
+
+VECTOR(VECTOR(EIF(JACOBI_AM(u,m,6),m,7)-u,u,0.2,1,0.2),m,0.2,0.8,0.2)
+
+"This is a test of JACOBI_AM(u,m,n)."
+
+VECTOR(VECTOR(APPROX(ELLIPTIC_F(JACOBI_AM(u,m,6),m),6)-u,u,0.2,1,0.2),m,0.2,0~
+.8,0.2)
+
+"This is a test of KI(m,n)."
+
+VECTOR(EIF(pi/2,m,15)-KI(m,6),m,0.2,0.8,0.2)
+

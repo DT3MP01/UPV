@@ -1,0 +1,688 @@
+	   ****************************************************
+	   *  The Derive Tensor Algebra and Analysis Package  *
+	   *  Documentation for the utility file Tensor.mth   *
+	   ****************************************************
+
+	Written by Hans A. Dudler (619 420-1787)  25 November 1994
+	Updated for Derive 5			  10 November 2001
+
+
+  This text file describes the DERIVE utility file Tensor.mth which
+  provides definitions and functions for tensor algebra and analysis.
+  Tensor.mth should normally be loaded as a utility file using the
+  File > Load > Utility File command.
+  Note that Tensor.mth activates the case sensitive and word input modes.
+  As an introduction to the concepts described in this document the
+  demonstration files Tensor1.dmo and Tensor2.dmo are recommended. They
+  should be loaded using the File > Load > Demo File command.
+
+1. Tensor Representation in DERIVE.
+===================================
+  From the algebraic point-of-view tensors are an extension of the
+  vector/matrix concept to higher order arrays. Thus a tensor of rank
+  (order) 1 is a vector. A rank 2 tensor is a matrix, which DERIVE
+  treats as a vector of vectors. A rank 3 tensor is a vector of
+  matrices, a rank 4 tensor is a matrix of matrices, and so on. The
+  obvious way to handle tensors in DERIVE is therefore to extend the
+  vector concept to higher ranks (orders).
+
+  The equivalent of the ELEMENT function to extract an element from a
+  tensor is the function (see function descriptions below)
+
+		     EL_T(A,iv)   ,
+
+  where A is the name of the tensor and iv is the index 'vector'(quotes
+  used to distinguish a DERIVE vector from a rank 1 tensor). As an
+  example consider the tensor of rank (order) 3 and dimension 3
+
+		    // a b c \	 / j k l \   / s t u \\
+	       A := || d e f | , | m n o | , | v w x ||  .
+		    \\ g h i /	 \ p q r /   \ y z 0 //
+  Then
+		   EL_T(A,[2,3,2])  returns  q
+		   EL_T(A,[3,1,3])  returns  u
+
+  As is clear from the example, the first index (element 1 of the index
+  vector) selects the matrix, the second index selects the row-vector
+  in the selected matrix and the third index finally selects the element
+  in the row vector. Note that under DERIVE the indices must range from
+  1 to n (the space dimension), zero (often used in relativity) is not
+  allowed. From the above example we deduce that
+
+	EL_T(A,[i,j,k])  <=>  ELEMENT(ELEMENT(ELEMENT(A,i),j),k)
+
+  in this case, and the extension to higher ranks is obvious. Note that
+
+	  EL_T(A,[i])	 <=>  ELEMENT(A,i)
+	  EL_T(A,[i,j])  <=>  ELEMENT(A,i,j)  ,
+
+  which again demonstrates that the chosen storage philosophy is a
+  logical extension of the DERIVE vector/matrix concept.
+
+
+2. Tensor Notation.
+===================
+  Since sub- and superscripts cannot be accomodated easily in an ASCII
+  file we use the following notation for tensors, which is compatible
+  with the notational constraints of DERIVE.
+  A mixed tensor T is typically represented as
+
+			 T_ijk_lm   .
+
+  Here T (one or more, UC or LC, Roman or Greek letter) is the tensor
+  name. The LC letters i,j,k denote the subscripts (covariant indices)
+  and l,m denote the superscripts (contravariant indices).  Totally
+  covariant or contravariant tensors have the form T_ijk or T__ijk ,
+  respectively. Thus covariant indices follow the first underscore,
+  followed by contravariant indices after the second underscore. More
+  underscores followed by indices may be appended and each time the
+  underscore switches the type of indices. This method may appear
+  somewhat cumbersome but it provides the necessary flexibility and
+  permits maintaining the relative order of subscripts and superscripts,
+  when necessary. As an example consider raising the first index of the
+  Riemann curvature tensor of the first kind R_ijkl by means of the
+  contravariant metric tensor g__ij, in order to obtain the curvature
+  tensor of the second kind R__i_jkl :
+
+		    R__i_jkl = g__is R_sjkl
+
+  Note the two underscores preceding the indices "i" and "is", which
+  indicates that they are contravariant (superscripts).
+
+  The above notation corresponds to the index notation used in text
+  books but in can also be used under DERIVE with one essential
+  difference, however. When a tensor is named T_ijk in DERIVE the index
+  letters i, j ,k are part of the name and their only function is to
+  indicate the structure of the tensor.  The actual indices (variables)
+  are contained in an index vector that accompanies the name T_ijk.
+  In a text-book equation (characterized by the equal sign =) T_ijk
+  refers to element [i,j,k] of the tensor. In a DERIVE assignment
+  (characterized by the assignment operator :=) T_ijk denotes a
+  "packaged" tensor.  Under DERIVE the above tensor equation would
+  appear as follows:
+
+      R__i_jkl := IP_T(g__ij,[i,sS],R_ijkl,[sS,j,k,l],[i,j,k,l]).
+
+  Here IP_T is the inner-product function (see description below).
+  Note that each argument tensor is followed by a corresponding index
+  vector, and that the last argument is the desired index vector for the
+  result.  The summation index must be named sS but all the other
+  indices in the index vectors could have any names, as long as the
+  proper correspondences are retained and no name conflicts occur.
+
+  With this naming convention the structure of a tensor can be inferred
+  from its name and it becomes easier to keep track of things when
+  involved calculations are performed. Additional naming rules could
+  be used to distinguish between absolute and relative tensors. Thus
+  tensor densities could be characterized by an identifier consisting
+  of two identical LC letters (e.g. rr_i). It goes without saying,
+  however, that any other names may be used with the functions described
+  below.
+  In accordance with the above conventions the covariant and
+  contravariant metric tensors are normally named g_ij and g__ij,
+  respectively, with
+
+	g__ij := g_ij^(-1)   ;	 g := DET(g_ij)
+
+  The coordinates are assumed to be the elements of a 'vector'
+
+		  x := [x1,x2,x3,x4,...]
+
+  but can, of course, have arbitrary names.
+
+  The underscore (the only special character allowed in DERIVE names)
+  may also be used at the end of a name to indicate a transformation of
+  the coordinate frame. Thus, if x_(x) defines a new coordinate frame,
+  T_ij_klm_ would the name of the transformed tensor.
+
+  Note that the index vector shows no distinction between covariant and
+  contravariant indices.  For operations that treat covariant and
+  contravariant indices differently (such as coordinate transformation)
+  additional information to separate the two types of indices in the
+  index vector must be given.
+
+  When actual computations are performed on tensors the order of storage
+  becomes important. The rule adopted here is that storage of a tensor
+  follows the sequence of indices (from left to right) in the name. Thus
+  the first index ("i" in T_ijk_lm ) corresponds to the highest level of
+  vector nesting in DERIVE. Under DERIVE T_i_j and T__j_i are therefore
+  different entities although they both have a covariant index "i" and a
+  contravariant index "j". This is especially important when tensor
+  products are involved. Consider, e.g. the inner product
+
+	      A__js B_isk = C__j_ik = C_i_j_k = C_ik_j ,
+
+  which can be represented by each of the three tensors on the right.
+  To avoid this ambiguity the general product functions OP_T and IP_T
+  require the desired index vector of the result as an argument (see
+  function description below). Since this makes these functions
+  somewhat cumbersome to use, the simplified forms O_T and I_T are also
+  provided. These functions assume that the product index vector is
+  obtained by concatenating the factor index vectors with the summation
+  indices omitted. Using these functions the above example can be
+  implemented by the DERIVE expression
+
+	      C__i_jk := I_T(A__ij,2,B_ijk,2) .
+
+  Here the numbers 2 indicate the positions of the summation index in
+  the factor index vectors. Note that interchanging the arguments would
+  produce C_ik_j rather than C__i_jk !
+  Another short cut is provided by the function MI_T which is used to
+  raise or lower indices by means of the metric tensor.
+
+  Transposed Tensors (Isomers).
+  =============================
+  A tensor equation expressed in the customary index notation is,
+  in fact, a relation between tensor elements (components). Thus the
+  equation
+
+		     S_ij = A_ij + A_ji
+
+  says that element S_12 (for example) is obtained by summing elements
+  A_12 and A_21 of the tensor "A". In matrix notation the above equation
+  would be written
+			S = A + A'   ,
+
+  where "A'" is the transpose of "A". Thus, instead of a single concept
+  (matrix A_ij), we are now dealing with two different entities (A and
+  A') on the right-hand side of the equation. Note that this is a
+  consequence of "packaging" (storing) the matrix elements into an array
+  in a predetermined way (rows and columns).  According to the rules of
+  matrix algebra element (1,2) of "S" is now found by summing element
+  (1,2) of "A" and element (1,2) of "A'", or, in general,
+
+		     (S)_ij = (A)_ij + (A')_ij	 .
+
+  Thus when matrices (or tensors) are treated as "packages" it becomes
+  necessary to consider their "isomers", i.e. packages with the same
+  elements arranged (stored) differently. For matrices (rank 2 tensors)
+  there are only two isomers: the matrix itself and its transpose. A
+  tensor of rank r, on the other hand, has r! isomers (the number of
+  permutations of its indices).
+  The DERIVE tensor utility provides the function TP_T to form isomers
+  of a given tensor. Consider, for example, the well known identity
+  involving the Christoffel symbol of the first kind C_ijk and the
+  covariant metric tensor g_ij :
+
+		 d/dx__j (g_ik) = C_ijk + C_jki  .
+
+  Starting with C_ijk and its index vector [i,j,k], the second term on
+  the right is obtained from TP_T(C_ijk,[j,k,i],[i,j,k]). Note that the
+  first index vector in the function call contains the index permutation
+  of the desired isomer, whereas the second index vector shows the
+  original sequence. To understand this remember that the last index
+  vector in the general tensor functions TP_T, IP_T, OP_T and CT_T is
+  the index vector of the result of the operation. When adding tensors,
+  elements with equal indices are summed. However, the TP_T function
+  above has put element [j,k,i] into location [i,j,k] in the second
+  term. Thus when elements [i,j,k] are summed, the second term
+  contributes C_jki, as required by the above equation.
+  To evaluate the left-hand side we obtain the ordinary derivative of
+  g_ij from OD_T(g_ij,x). The index vector of the result is [i,j,k] ,
+  with the last index pertaining to the differentiation (see function
+  description). Since the equation requires the middle index to be the
+  differentiation index, we have to invoke TP_T again to obtain the
+  desired isomer. Arguing as above we find that the proper expression
+  for the left-hand side is TP_T(OD_T(g_ij,x),[i,k,j],[i,j,k]).
+  The demonstration file Tensor1.dmo illustrates this example with a
+  particular metric.
+
+
+  A Note on Name Conflicts:
+  ========================
+  The DERIVE functions VECTOR, SUM and PRODUCT can cause name conflict
+  problems. Consider, for example, the function S(V) which computes the
+  sum of the elements of a vector V :
+
+	      S(V) := SUM(ELEMENT(V,I),I,DIM(V)) .
+
+  If V:=[A,I,B] the function will return A+B+2 rather than A+B+I.
+  Since the tensor functions use VECTOR and SUM extensively, care must
+  be taken that internal loop index names do not accidentally coincide
+  with user names. In addition, auxiliary function names used in the
+  tensor utility file could also cause name conflicts.
+  In the Tensor Utility File names of auxiliary functions and loop
+  indices consistently start with a LC letter followed by an UC letter
+  (examples: sVec, sUbel, jJ).	To prevent name conflicts it is
+  therefore sufficient to avoid this combination in user-defined names.
+  On the other hand, the elements of index-vector arguments of functions
+  such as OP_T and IP_T should follow the internal name format, because
+  they are used internally as loop indices. Recommended index names are
+  iI, jJ, kK, lL, etc.
+
+
+3. Function Description.
+========================
+
+3.1 General Remarks.
+====================
+  a) The tensor representation philosophy outlined above accomodates
+     tensors of any rank and dimension. In the present implementation
+     the only limitation is the length of the index-list vectors 'iNdxa'
+     and 'iNdxb" which are used by several functions to construct dummy
+     index vectors. Enough dummy names are provided to accomodate
+     tensors of rank 12 or less. In the unlikely event that this is
+     insufficient more names can be added to the lists.
+
+  b) Since tensor calculations tend to be slow, it is good practice
+     to assign variables to intermediate results for later use. Thus,
+     starting with a metric tensor g_ij one would first compute the
+     Christoffel symbols by simplifying CHRIS1 and CHRIS2 and then
+     saving the results as C_ijk and C_ij_k, respectively. Accordingly
+     the function RIEM1 takes C_ijk and C_ij_k as arguments rather than
+     starting from the metric tensor. Note that the DERIVE expression
+     C_ijk := CHRIS1(g_ij,x)  does not save any time, since CHRIS1 is
+     re-computed each time the name C_ijk is encountered. CHRIS1 must be
+     simplified first, and then C_ijk must be assigned to the result.
+     To facilitate this assignment procedure DERIVE (starting with
+     version 3.00) provides the Simplify/Assign operator :== , which
+     simplifies the right-hand side before assigning it to the left-hand
+     side. Thus
+
+		      C_ijk :== CHRIS1(g_ij, x)
+
+     will compute the Christoffel symbol of the first kind and assign
+     the result to C_ijk.
+
+  c) In the function descriptions below the following symbols are used:
+
+	  A, B	  :  tensors of any rank (see 3.1a), any dimension
+	ivA, ivB  :  dummy index vectors corresponding to A, B , with
+		       dim(ivA) = rank(A) , dim(ivB) = rank(B)
+		     All elements of these vectors must be different
+		     undeclared variable names. Recommended: iI, jJ ,..
+	   ivN	  :  Numeric index vector pointing to a tensor element.
+		     Elements of ivN must be integers in the range 1...n
+		     (n is the dimension of the space) or variables that
+		     simplify to such integers.
+
+
+3.2 Tensor Rank, Dimension, Elements.
+=====================================
+
+  RANK_T(A) , DIM_T(A) : Find rank, dimension of a tensor. Examples:
+  ====================
+			    // a  b \ / e  f \\
+			    |\ c  d / \ g  h /|
+	   with  A_ijkl :=  |		      |
+			    |/ i  k \ / n o \ |
+			    \\ l  m / \ p q / /
+
+	   RANK_T(A_ijkl) => 4	,  DIM_T(A_ijkl) => 2
+
+    DIM_T(A) is the same as DIM(A), except that DIM_T(A) returns
+    zero when A is a scalar.
+
+  EL_T(A,ivN) : Extract an element from a tensor.
+  ===========
+     ivN : numeric index vector pointing to element, dim(ivN) = rank(A)
+	   Examples:
+
+			    // a  b \ / e  f \\
+			    |\ c  d / \ g  h /|
+	      with    A :=  |		      |
+			    |/ i  k \ / n o \ |
+			    \\ l  m / \ p q / /
+
+       EL_T(A, [2,1,1,2]) => k	,  EL_T(A, [1,2,2,2]) => h
+
+  NZEL_T(A) : Extract all non-zero elements from a tensor. Example:
+  =========
+		    // 0 0 0 \	 / 0 0 0 \   / 0 0 0 \\
+	 with  A := || 0 0 x | , | 0 y 0 | , | 0 0 0 ||
+		    \\ 0 0 0 /	 \-x 0 0 /   \ 0 0 0 //
+
+			       / [1,2,3] = x \
+		  NZEL_T(A) => | [2,2,2] = y |
+			       \ [2,3,1] =-x /
+
+  GNZE_T(A) : Grouped non-zero elements of a tensor.
+  =========
+     Displays the non-zero elements grouped together on the basis of
+     their absolute value, which shows the symmetry properties of a
+     tensor. Applied to the above example GNZE_T(A) will return (note
+     negative indices for negative values)
+
+	   / /[ 1, 2, 3]     \			    \
+	   \ \[-2,-3,-1] = x / , [ [ 2, 2, 2] = y ] /
+
+  EL_D(i,j) : Element of Kronecker Delta (1 if i=j, 0 otherwise),
+  =========
+
+  EL_GD(iv1,iv2) : Element of Generalized Kronecker Delta (GD_ij.._kl..)
+  ==============
+    iv1, iv2 : Numeric covariant, contravariant index vectors with
+	       DIM(iv1) = DIM(iv2)
+
+  EL_E(ivN) : Element of Permutation Symbol, rank=dim=dim(ivN)
+  =========
+     ivN     : Numerical index vector
+
+
+3.3 Algebraic Tensor Operations.
+================================
+     Since from the DERIVE point-of-view tensors are merely nested
+     vectors, addition and subtraction of tensors of the same type are
+     handled by DERIVE automatically. This also holds for multiplication
+     or division of a tensor by a scalar, and differentiation or
+     integration with respect to a scalar parameter. Additional tensor
+     operations are described below. See 3.1c for symbol definition.
+
+  TP_T(A,ivA,ivT) : Transpose of a tensor.
+  ===============
+     ivT is the index vector of the result and must be a permutation
+     of ivA. This function creates an isomer of A (same elements,
+     different order of indices, storage). Examples:
+
+     T_ikj_ml := TP_T(T_ijk_lm, [iI,kK,jJ,mM,lL], [iI,jJ,kK,lL,mM])
+
+     creates a tensor with indices j, k and l,m transposed.
+
+	       / a  b  c \			    / a  d  g \
+	  TP_T(| d  e  f | , [jJ,iI], [iI,jJ])	=>  | b  e  h |
+	       \ g  h  i /			    \ c  f  i /
+
+  OP_T(A,ivA,B,ivB,ivP) : Outer product of two tensors.
+  =====================
+  O_T(A,B) :  short form, assumes ivP = APPEND(ivA,ivB)
+
+     ivP : index vector of the product, dim(ivP) = rank(A)+rank(B)
+     Examples:
+
+	      with  A := [a,b,c] , B := [u,v,w]
+
+					     / a u  a v  a w \
+	    OP_T(A,[iI], B,[jJ], [iI,jJ] =>  | b u  b v  b w |
+	       or  O_T(A,B)		     \ c u  c v  c w /
+
+					     / a u  b u  c u \
+	    OP_T(A,[jJ], B,[iI], [iI,jJ] =>  | a v  b v  c v |
+	       or  O_T(B,A)		     \ a w  b w  c w /
+
+  IP_T(A,ivA,B,ivB,ivP) : Inner Product of two tensors.
+  =====================
+  I_T(A,sA,B,sB) : short form, assumes ivP = APPEND(ivA',ivB'),
+		   ivA', ivB' : ivA, ivB less summation index
+		   sA,sB : location of summation index in ivA,ivB
+
+     ivP : index vector of the product, dim(ivP) = rank(A)+rank(B)-2
+     ivA and ivB must each contain 'sS' as one element (placeholder
+     for the summation index). Examples:
+
+     The text-book formula   C_ij = A_ij_k B_k corresponds to
+
+	  C_ij := IP_T(A_ij_k,[iI,jJ,sS], B_i,[sS], [iI,jJ]).
+     or   C_ij := I_T(A_ij_k,3,B,1)
+
+     With  A := [a,b,c] , B := [u,v,w]
+
+	    IP_T(A,[sS], B,[sS], [])  =>  a u + b v + c w
+	or  I_T(A,1,B,1)
+
+  EL_IP_T(A,ivAN,B,ivBN) : One element of an inner product.
+  ======================
+     ivAN, ivBN : numeric index vectors except for the presence of sS
+		  (summation index) in one location each.   Example:
+
+	       // a b c \   / j k l \	/ s t u \\	 / P Q R \
+     with A := || d e f | , | m n o | , | v w x || , B :=| S T U |
+	       \\ g h i /   \ p q r /	\ y z 0 //	 \ V W X /
+
+	  EL_IP_T(A,[2,1,sS], B,[sS,3]) => j R + k U + l X
+
+  MI_T(A,n,metric) : Move (raise or lower) an index
+  ================
+     n	    : location of index to be moved in index vector. The raised
+	      or lowered index remains in the same location.
+     metric : g__ij to raise index, g_ij to lower index.  Example:
+
+		 R__i_jkl := MI_T(R_ijkl,1,g__ij)
+
+  CT_T(A,ivA,ivC) : Contraction of a tensor.
+  ===============
+  C_T(A,s1,s2) : short form, assumes ivC=ivA with summ.indices omitted.
+	s1, s2 : locations of summation indices in ivA.  Examples:
+
+     The text-book formula  B_ij = A_ijk_k  corresponds to
+
+	   B_ij := CT_T(A_ijk_l,[iI,jJ,sS,sS],[iI,jJ])
+
+		 / a  b  c \
+	    C_T( | d  e  f | ,1,2)  =>	a + e + i
+		 \ g  h  i /
+
+  CI_T(A,ivA,B,ivB,ivC) : Contracted Inner product (double summation)
+  =====================
+  C_I_T(A,sA,tA,B,sB,tB) : short form, assumes ivC = APPEND(ivA',ivB'),
+			   ivA', ivB' : ivA, ivB less summation indices
+			   sA,tA : location of 'sS', 'tT' in ivA
+			   sB,tB : location of 'sS', 'tT' in ivB
+
+     ivC : index vect.of contracted product, dim(ivC)=rank(A)+rank(B)-4
+	   ivA and ivB must each contain 'sS' and 'tT' (summ.indices)
+	   Example: The text-book formula  C_i = A_si_t B_t_s becomes
+
+	       C_i := CI_T(A_ij_k,[sS,iI,tT],B_i_j,[tT,sS],[iI])
+
+
+3.4 Differential Tensor Operations.
+===================================
+  Note: 'Di' stands for d/dx__i
+
+  OD_T(A,x) : Ordinary derivative of a tensor (Dm A_ij.._kl..).
+  =========
+     A may be a scalar. Note that rank(OD_T) is one higher than rank(A).
+     The new covariant index is assumed to be appended at the end of the
+     index string.  Thus A_ij.._kl.. becomes A_ij.._kl.._m .
+
+     with  A := [x1 COS(x2), x1 SIN(x2)]  ,  x := [x1, x2]  ,
+
+		       / COS(x2)  -x1 SIN(x2) \
+	 OD_T(A,x) =>  |		      |
+		       \ SIN(x2)   x1 COS(x2) /
+
+  CD_T(A,ncov,weight,x,C_ij_k) : Covariant derivative of a tensor.
+  ============================
+     A	    : mixed tensor with structure A_ij.._kl.. (covariant indices
+	      followed by contravariant indices). May be a scalar.
+     ncov   : number of covariant indices (i,j,..)
+     weight : weight of tensor ( = 0 for absolute tensor,
+	      = 1 for density, = n for relative tensor of weight n)
+     x	    : coordinate vector [x1,x2,x3,...]
+     C_ij_k : Christoffel symbol of the 2nd kind.
+
+     To handle more elaborately structured tensors (e.g. A_i_j_k_lm)
+     use TP_T to first create the required structure and use it again
+     again after CD_T to transform back to the original structure.
+
+     Note that rank(CD_T) is one higher than rank(A). The new covariant
+     index is assumed to be appended at the end of the index string.
+     Thus A_ij.._kl.. becomes A_ij.._kl.._m .
+     Example:
+
+       with  A := g__ij (contravariant metric tensor in 3 dimensions)
+
+				 // 0 0 0 \   / 0 0 0 \   / 0 0 0 \\
+	CD_T(A,0,0,x,C_ij_k) =>  || 0 0 0 | , | 0 0 0 | , | 0 0 0 ||
+				 \\ 0 0 0 /   \ 0 0 0 /   \ 0 0 0 //
+
+  LD_T(A,v,ncov,weight,x) : Lie derivative of A relative to vector v
+  =======================
+     A	    : mixed tensor with structure A_ij.._kl.. (covariant indices
+	      followed by contravariant indices). May be a scalar.
+     ncov   : number of covariant indices (i,j,..) of A
+     weight : weight of tensor A ( = 0 for absolute tensor,
+	      = 1 for density, = n for relative tensor of weight n)
+     v	    : contravariant vector
+     x	    : coordinate vector [x1,x2,x3,...]
+
+     To handle more elaborately structured tensors (e.g. A_i_j_k_lm)
+     use TP_T to first create the required structure and use it again
+     after LD_T to transform back to the original structure.
+     Note that the Lie derivative of a tensor A is a tensor of the same
+     structure and weight as A.
+
+     Example:  with
+
+     A_i := [U(X,Y),V(X,Y)] (covariant vector) , x := [X,Y] , v := x
+
+      LD_T(A,v,1,0,x) =>  [X dU/dX + Y dU/dY +U , X dV/dX + Y dV/dY +V]
+
+  DV_T(A,ncov,weight,sA,x,C_ij_k) : (Covariant) Divergence of a Tensor
+  ===============================
+     A	    : mixed tensor with structure A_ij.._kl.. and at least one
+	      contravariant index).
+     ncov   : number of covariant indices (i,j,..) of A
+     weight : weight of tensor A ( = 0 for absolute tensor,
+	      = 1 for density, = n for relative tensor of weight n)
+     sA     : location of summ.index in index vector of A ( > ncov)
+     x	    : coordinate vector [x1,x2,x3,...]
+     C_ij_k : Christoffel symbol (2nd kind)
+
+     To handle more elaborately structured tensors (e.g. A_i_j_k_lm)
+     use TP_T to first create the required structure and use it again
+     after LD_T to transform back to the original structure.
+     Note that rank(DV_T) is one lower than rank(A). The index vector of
+     the result is the index vector of A with the summ.index left out.
+     Example:  If G_i_j is the (mixed) Einstein tensor in 4-space
+
+		DV_T(G_i_j,1,0,2,x,C_ij_k) => [0,0,0,0]
+
+  GC_T(A,x) : Generalized Curl (GD_ij..r_kl..s Ds A_kl..),
+  ===========	      GD : generalized Kronecker delta
+     A : covariant tensor (or scalar).
+	 The rank of the result is one higher than the original and the
+	 new covariant index is appended at the right. Example:
+
+	 with A := [A1,A2,A3]  ,  x := [X,Y,Z]
+
+		 /	 0	   dA1/dY - dA2/dX  dA1/dZ - dA3/dX\
+    GC_T(A,x) => |dA2/dX - dA1/dY	  0	    dA2/dZ - dA3/dY|
+		 \dA3/dX - dA1/dZ  dA3/dY - dA2/dZ	   0	   /
+
+
+3.5 Coordinate Transformation.
+==============================
+  Let the new coordinate vector be x_ := [x1_,x2_,x3_,...] and let
+  x = [x(x_)] be the functions expressing the old coordinates in terms
+  of the new ones.
+
+  JACOB(x,x_) : Jacobian matrix of the transformation. Example:
+  ===========
+   with  x := [x1_ COS(x2_) , x1_ SIN(x2_)]  ,	x_ := [x1_,x2_] ,
+
+		       / COS(x2_)  -x1_ SIN(x2_) \
+       JACOB(x,x_) =>  |			 |
+		       \ SIN(x2_)   x1_ COS(x2_) /
+
+  TF_T(A,ncov,weight,JM,JM_) : Transform a tensor to new coordinates.
+  ==========================
+     A	    : mixed tensor with structure A_ij.._kl.. (covariant indices
+	      followed by contravariant indices)
+     ncov   : number of covariant indices (i,j,..)
+     weight : weight of tensor ( = 0 for absolute tensor,
+	      = 1 for density, = n for relative tensor of weight n)
+     JM     : Jacobian matrix of transformation ( := JACOB(x,x_) )
+     JM_    : Inverse Jacobian matrix ( := JM^-1 )
+
+     To handle more elaborately structured tensors (e.g. A_i_j_k_lm)
+     use TP_T to first create the required structure and use it again
+     after TF_T to transform back to the original structure.
+     Example:
+
+				 / COS(x2_)  -x1_ SIN(x2_) \
+     with  A := [a,b]  ,  JM :=  |			   |  ,
+				 \ SIN(x2_)   x1_ COS(x2_) /
+
+     TF_T(A,1,0,JM,JM_) =>
+	      [a COS(x2_) + b SIN(x2_) , b x1_ COS(x2_) - a x1_ SINx2_)]
+
+
+3.6 Special Tensors.
+====================
+  Note: Different text books use different isomers for the various
+	special tensors. Except for the Ricci and Einstein tensors (R_ij
+	and G_ij) the definitions given in Korn & Korn: Mathematical
+	Handbook for Scientists and Engineers (chapter 16) are adopted
+	here. The definitions of R_ij and G_ij were made to agree with
+	more recent texts on General Relativity, which has the effect of
+	changing the signs of these tensors.
+
+  DELTA(dim) : Kronecker Delta (D_i_j),
+  ==========
+     dim  : tensor dimension
+
+  GDELTA(ncov,dim) : Generalized Kronecker Delta (GD_ij.._kl..)
+  ================
+     ncov : number of covariant indices (= no.of contravariant indices)
+     dim  : dimension
+
+  EPS(dim) : Permutation tensor, rank = dimension (E_ij.. or E__ij..)
+  ========
+     dim  : tensor dimension
+
+  CHRIS1(g_ij,x) : Christoffel symbol of the 1st kind (C_ijk)
+  ==============
+     g_ij  : covariant metric tensor
+     x	   : coordinate 'vector'.
+
+  CHRIS2(g_ij,g__ij,x) : Christoffel symbol of the 2nd kind (C_ij_k)
+  ====================
+     g_ij  : covariant metric tensor
+     g__ij : contravariant metric tensor
+     x	   : coordinate 'vector'.
+
+  RIEM1(C_ijk,C_ij_k,x) : Riemann curvature tensor of the 1st kind
+  ===================== 				     (R_ijkl)
+     C_ijk  : Christoffel symbol (1st kind)
+     C_ij_k : Christoffel symbol (2nd kind)
+     x	    : coordinate 'vector'
+
+  EL_RIEM1(C_ijk,C_ij_k,x,i,j,k,l) : Element of Riemann tens. (1st kind)
+  ================================
+     C_ijk   : Christoffel symbol (1st kind)
+     C_ij_k  : Christoffel symbol (2nd kind)
+     x	     : coordinate 'vector'
+     i,j,k,l : numeric indices of desired element R_ijkl
+
+  RIEM2(C_ij_k,x) : Riemann curvature tensor of the 2nd kind (R__i_jkl
+  ===============					= g__is R_sjkl)
+     C_ij_k : Christoffel symbol (2nd kind)
+     x	    : coordinate 'vector'
+
+  EL_RIEM2(C_ij_k,x,i,j,k,l) : Element of Riemann tensor of the 2nd kind
+  ==========================
+     C_ij_k  : Christoffel symbol (2nd kind)
+     x	     : coordinate 'vector'
+     i,j,k,l : numeric indices of desired element R_ijk_l
+
+  RICCI(C_ij_k,x) : Covariant Ricci tensor (R_ij = R__s_isj = -R__s_ijs)
+  ===============
+     C_ij_k : Christoffel symbol (2nd kind)
+
+  EINST(R_ij,g_ij,g__ij) : Covariant Einstein tensor (G_ij)
+  ======================
+     R_ij   : covariant Ricci Tensor
+     g_ij   : covariant metric tensor
+     g__ij  : contravariant metric tensor
+
+  WEYL(R_ijkl,R_ij,g_ij) : Weyl Tensor (Conformal Tensor)
+  ======================
+     R_ijkl : Riemann curvature tensor (1st kind)
+     R_ij   : covariant Ricci tensor
+     g_ij   : covariant metric tensor
+
+
+3.7 Miscellaneous Functions.
+============================
+
+  DI_NZEL( NZEL_T(A) ), DI_GNZE( GNZE(A) )
+  ========================================
+     These functions, when applied to the expressions resulting from
+     NZEL_T or GNZE_T decrement all indices in the display by 1. This
+     makes it easier to compare elements with tensors that use a
+     [0,...(dim-1)] index range rather than the DERIVE [1,...dim] range.
+
+
+	    ================== END OF FILE =================
+

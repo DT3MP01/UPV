@@ -1,0 +1,29 @@
+"RationalApproximation.mth -- Copyright (c) 1990-2003 by Texas Instruments In~
+corporated"
+
+"The following definition of PADE was contributed by Johann Wiesenbauer of th~
+e Vienna University of Technology."
+
+PADE(y,x,x0,n,d,j_:=0,t_:=0):=PROG(LOOP(t_:+LIM(y,x,x0)*x^j_,j_:+1,IF(j_>n+d,~
+exit),y:=DIF(y,x)/j_),t_:*SUM(STRING(k_+n)*x^k_,k_,1,d)+1,t_:-SUM(STRING(k_)*~
+x^k_,k_,0,n),y:=SUBST(ITERATES(DIF(u_,x),u_,t_,n+d),x,0),y:=FIRST(SOLUTIONS(y~
+,STRING([0,...,n+d]))),SUM(y SUB (k_+1)*(x-x0)^k_,k_,0,n)/(SUM(y SUB (k_+n+1)~
+*(x-x0)^k_,k_,1,d)+1))
+
+RECURRENCE(u,v,v0,m):=REVERSE(ITERATE(APPEND([u],v),v,v0,m-DIM(v0)))
+
+CHEBYSHEV_T_LIST(n,x):=RECURRENCE('(2*x*v_ SUB 1-v_ SUB 2),v_,[x,1],n)
+
+CHEBYSHEV_T_SERIES_AUX(i,n):=PROG(IF(i=0,RETURN(VECTOR(COMB(r,r/2)/2^r,r,0,n,~
+2))),VECTOR(COMB(r,(r-i)/2)/2^(r-1),r,i,n,2))
+
+CHEBYSHEV_T_SERIES(f,x,a,b,k,n,T_list,T_C,T_C_Even,T_C_Odd,s_,t_,size,list,si~
+ze_T_e,size_T_o):=PROG(IF(k>n,RETURN("k must be <= n")),f:=SUBST(f,x,a+(b-a)/~
+2*(x+1)),T_list:=CHEBYSHEV_T_LIST(k+1,x),T_C:=VECTOR(CHEBYSHEV_T_SERIES_AUX(s~
+,n),s,0,n),T_C_Even:=VECTOR(SUBST(DIF(f,x,r_),x,0)/r_!,r_,0,n,2),T_C_Odd:=VEC~
+TOR(SUBST(DIF(f,x,r_),x,0)/r_!,r_,1,n,2),s_:=1,t_:=1,c:=0,list:=[],size_T_e:=~
+DIM(T_C_Even),size_T_o:=DIM(T_C_Odd),LOOP(IF(c>k,exit),list:=APPEND(list,[T_C~
+ SUB t_*T_C_Even SUB [s_,...,size_T_e]]),c:+1,IF(c>k,exit),list:=APPEND(list,~
+[T_C SUB (t_+1)*T_C_Odd SUB [s_,...,size_T_o]]),t_:+2,s_:+1,c:+1),EXPAND(SUBS~
+T(list*T_list,x,-1+2*(x-a)/(b-a)),Rational))
+

@@ -1,0 +1,37 @@
+"NumericalApproximation.mth -- Copyright (c) 1990-2003 by Texas Instruments I~
+ncorporated"
+
+DIF_NUMERIC(y,x,x0,h,n):=IF(NUMBER(n),SUM((-1)^k*COMB(n,k)*LIM(y,x,x0-n*h/2+k~
+*h),k,0,n)/(-h)^n,DIF_NUMERIC(y,x,x0,h,1),DIF_NUMERIC(y,x,x0,h,1))
+
+DIF_NUM(y,x,x0,h,n):=DIF_NUMERIC(y,x,x0,h,n)
+
+DIF2_NUM(y,x,x0,h):=DIF_NUMERIC(y,x,x0,h,2)
+
+SMOOTH_VECTOR(v):=VECTOR(IF(m_=1 OR m_=DIM(v),v SUB m_,(v SUB (m_-1)+v SUB m_~
++v SUB (m_+1))/3),m_,DIM(v))
+
+SMOOTH_COLUMN_AUX(a,j):=VECTOR(IF(m_=j,SMOOTH_VECTOR(a SUB j),a SUB m_),m_,DI~
+M(a))
+
+SMOOTH_COLUMN(a,j):=SMOOTH_COLUMN_AUX(a`,j)`
+
+DIF_DATA_AUX(v1,v2):=(v1 SUB 1^2*v2 SUB 2-v1 SUB 2*v2 SUB 1^2)/(v1 SUB 1*v2 S~
+UB 1*(v1 SUB 1-v2 SUB 1))
+
+DIF_DATA(a):=VECTOR([a SUB m_ SUB 1,IF(m_=1,DIF_DATA_AUX(a SUB 2-a SUB 1,a SU~
+B 3-a SUB 1),IF(m_=DIM(a),DIF_DATA_AUX(a SUB (m_-1)-a SUB m_,a SUB (m_-2)-a S~
+UB m_),DIF_DATA_AUX(a SUB (m_+1)-a SUB m_,a SUB (m_-1)-a SUB m_)))],m_,DIM(a)~
+)
+
+DIF2_DATA_AUX(v1,v2):=2*(v1 SUB 1*v2 SUB 2-v1 SUB 2*v2 SUB 1)/(v1 SUB 1*v2 SU~
+B 1*(v2 SUB 1-v1 SUB 1))
+
+DIF2_DATA(a):=VECTOR([a SUB m SUB 1,IF(m=1,DIF2_DATA_AUX(a SUB 3-a SUB 2,a SU~
+B 1-a SUB 2),IF(m=DIM(a),DIF2_DATA_AUX(a SUB m-a SUB (m-1),a SUB (m-2)-a SUB ~
+(m-1)),DIF2_DATA_AUX(a SUB (m+1)-a SUB m,a SUB (m-1)-a SUB m)))],m,DIM(a))
+
+INT_DATA(a):=[ELEMENT(a`,1),ELEMENT(ITERATES([1+ELEMENT(v,1),ELEMENT(v,2)+(EL~
+EMENT(a,ELEMENT(v,1),2)+ELEMENT(a,1+ELEMENT(v,1),2))*(ELEMENT(a,1+ELEMENT(v,1~
+),1)-ELEMENT(a,ELEMENT(v,1),1))/2],v,[1,0],DIM(a)-1)`,2)]`
+

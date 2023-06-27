@@ -1,0 +1,62 @@
+"SecondOrderODEs.mth -- Copyright (c) 1990-2003 by Texas Instruments Incorpor~
+ated"
+
+LIN_SOLVE(a,b):=ELEMENT(ROW_REDUCE(a,b)`,1+DIM(a))
+
+DISC_AUX(p,q,x):=p^2/4-q+DIF(p,x)/2
+
+LIN2_HOM_AUX(d,x):=IF(d<0,[COS(SQRT(-d)*x),SIN(SQRT(-d)*x)],[#e^(SQRT(d)*x),#~
+e^(-SQRT(d)*x)],[#e^(SQRT(d)*x),#e^(-SQRT(d)*x)])
+
+LIN2_HOM(d,x):=IF(d=0,[1,x],LIN2_HOM_AUX(d,x),LIN2_HOM_AUX(d,x))
+
+LIN2_PARTIC(h,r,x):=h . INT([-ELEMENT(h,2),ELEMENT(h,1)]*r/DET([h,DIF(h,x)]),~
+x)
+
+LIN2_AUX2(h,r,x,c):=c . h+LIN2_PARTIC(h,r,x)
+
+LIN2_AUX(d,p,r,x,c):=IF(DIF(d,x)=0,LIN2_AUX2(LIN2_HOM(d,x)*#e^(INT(p,x)/(-2))~
+,r,x,c),"inapplicable","inapplicable")
+
+DSOLVE2(p,q,r,x,c1,c2):=LIN2_AUX(DISC_AUX(p,q,x),p,r,x,[c1,c2])
+
+LIN2_BV_AUX3(h,p,x,x0,y0,x2,y2):=p+h . LIN_SOLVE([LIM(h,x,x0),LIM(h,x,x2)],[y~
+0-LIM(p,x,x0),y2-LIM(p,x,x2)])
+
+LIN2_BV_AUX2(h,r,x,x0,y0,x2,y2):=LIN2_BV_AUX3(h,LIN2_PARTIC(h,r,x),x,x0,y0,x2~
+,y2)
+
+LIN2_BV_AUX(d,p,r,x,x0,y0,x2,y2):=IF(DIF(d,x)=0,LIN2_BV_AUX2(LIN2_HOM(d,x)*#e~
+^(INT(p,x)/(-2)),r,x,x0,y0,x2,y2),"inapplicable","inapplicable")
+
+DSOLVE2_BV(p,q,r,x,x0,y0,x2,y2):=LIN2_BV_AUX(DISC_AUX(p,q,x),p,r,x,x0,y0,x2,y~
+2)
+
+LIN2_IV_AUX3(h,p,x,x0,y0,v0):=p+h . LIN_SOLVE(LIM([h,DIF(h,x)],x,x0),LIM([y0-~
+p,v0-DIF(p,x)],x,x0))
+
+LIN2_IV_AUX2(h,r,x,x0,y0,v0):=LIN2_IV_AUX3(h,LIN2_PARTIC(h,r,x),x,x0,y0,v0)
+
+LIN2_IV_AUX(d,p,r,x,x0,y0,v0):=IF(DIF(d,x)=0,LIN2_IV_AUX2(LIN2_HOM(d,x)*#e^(I~
+NT(p,x)/(-2)),r,x,x0,y0,v0),"inapplicable","inapplicable")
+
+DSOLVE2_IV(p,q,r,x,x0,y0,v0):=LIN2_IV_AUX(DISC_AUX(p,q,x),p,r,x,x0,y0,v0)
+
+AUTONOMOUS_CONSERVATIVE(q,x,y,x0,y0,v0):=x=x0+IF(v0=0,1,SIGN(v0))*INT((2*INT(~
+q,y,y0,y)+v0^2)^(-1/2),y,y0,y)
+
+LIOUVILLE(p,q,x,y,c1,c2):=INT(#e^INT(q,y),y)-c1+c2*INT(#e^INT(-p,x),x)=0
+
+AUTONOMOUS(r,v):=r/v
+
+EXACT2_AUX3(r,u,x):=r+INT(u-DIF(r,x),x)
+
+EXACT2_AUX2(r,x,y,v):=EXACT2_AUX3(INT(DIF(r,v),y),LIM(r,v,0),x)
+
+EXACT2_AUX1(p,q,x,y,v):=p+EXACT2_AUX2(q-DIF(p,x)-v*DIF(p,y),x,y,v)
+
+EXACT2(p,q,x,y,v,c):=IF((v*DIF(p,y,2)+2*DIF(DIF(p,x),y)-DIF(DIF(q,y),v))*v+DI~
+F(p,x,2)-DIF(DIF(q,x),v)+DIF(q,y)=0 AND v*DIF(DIF(p,y),v)+DIF(DIF(p,x),v)+2*D~
+IF(p,y)-DIF(q,v,2)=0,EXACT2_AUX1(INT(p,v),q,x,y,v)=c,"inapplicable","inapplic~
+able")
+

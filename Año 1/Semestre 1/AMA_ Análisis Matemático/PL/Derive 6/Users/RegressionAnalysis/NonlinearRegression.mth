@@ -1,0 +1,219 @@
+"Nonlinear Regression Routines"
+
+DisplayFormat:=Compressed
+
+InputMode:=Word
+
+Precision:=Approximate
+
+Notation:=Decimal
+
+NotationDigits:=8
+
+Label(data,var,vars,dat,pos):=PROG(vars:=FIRST(data),dat:=REST(data),pos:=VEC~
+TOR(POSITION(var SUB i,vars),i,DIM(var)),dat:=dat SUB  SUB pos,VECTOR(VECTOR(~
+var SUB i=dat SUB j SUB i,i,DIM(var)),j,DIM(dat)))
+
+CIncompleteGamma(a,x):=
+
+;
+IncompleteGamma(a,x,maxln,machep,ax,r,c,ans):=PROG(maxln:=LN(2^1024),machep:=~
+2^(-53),IF(x<=0 OR a<=0,RETURN(0)),IF(x>1 AND x>a,RETURN(1-CIncompleteGamma(a~
+,x))),ax:=a*LN(x)-x-LN(GAMMA(a)),IF(ax<-maxln,RETURN(0)),ax:=EXP(ax),r:=a,c:=~
+1,ans:=1,LOOP(r:+1,c:*x/r,ans:+c,IF(c/ans<=machep,RETURN(ans*ax/a))))
+
+;
+CIncompleteGamma(a,x,maxln,machep,big,ax,y,z,c,pkm2,qkm2,pkm1,qkm1,ans,yc,pk,~
+qk,r,t):=PROG(maxln:=LN(2^1024),machep:=2^(-53),big:=4.5035996*10^15,IF(x<=0 ~
+OR a<=0,RETURN(1)),IF(x<1 OR x<a,RETURN(1-IncompleteGamma(a,x))),ax:=a*LN(x)-~
+x-LN(GAMMA(a)),IF(ax<-maxln,RETURN(0)),ax:=EXP(ax),y:=1-a,z:=x+y+1,c:=0,pkm2:~
+=1,qkm2:=x,pkm1:=x+1,qkm1:=z*x,ans:=pkm1/qkm1,LOOP(c:+1,y:+1,z:+2,yc:=y*c,pk:~
+=pkm1*z-pkm2*yc,qk:=qkm1*z-qkm2*yc,IF(qk/=0,PROG(r:=pk/qk,t:=ABS((ans-r)/r),a~
+ns:=r),t:=1),pkm2:=pkm1,pkm1:=pk,qkm2:=qkm1,qkm1:=qk,IF(ABS(pk)>big,PROG(pkm2~
+:/big,pkm1:/big,qkm2:/big,qkm1:/big)),IF(t<machep,RETURN(ans*ax))))
+
+InverseCIGamma(a,y0,maxn,maxln,machep,x0,y1,x1,yh,dit,d,z,y,x,lgm,i,dir):=PRO~
+G(maxn:=2^1024,maxln:=LN(2^1024),machep:=2^(-53),x0:=maxn,y1:=0,x1:=0,yh:=1,d~
+it:=5*machep,d:=1/(9*a),z:=IF(y0=0.5,0,RHS(NSOLVE(NORMAL(z_)-y0,z_))),y:=1-d-~
+z*SQRT(d),x:=a*y^3,lgm:=LN(GAMMA(a)),i:=0,LOOP(IF(i>=10,exit),IF(x>x0 OR x<x1~
+,exit),y:=CIncompleteGamma(a,x),IF(y<y1 OR y>yh,exit),IF(y<y0,PROG(x0:=x,y1:=~
+y),PROG(x1:=x,yh:=y)),d:=(a-1)*LN(x)-x-lgm,IF(d<-maxln,exit),d:=-EXP(d),d:=(y~
+-y0)/d,IF(ABS(d/x)<machep,RETURN(x)),x:-d,i:+1),d:=0.0625,IF(x0>=maxn,PROG(IF~
+(x<0,x:=1),LOOP(IF(x0<maxn,exit),x:=(1+d)*d,y:=CIncompleteGamma(a,x),IF(y<y0,~
+PROG(x0:=x,y1:=y)),IF(y<y0,exit,d:+d)))),d:=0.5,dir:=0,i:=0,LOOP(IF(i>=400,ex~
+it),x:=x1+d*(x0-x1),y:=CIncompleteGamma(a,x),lgm:=(x0-x1)/(x1+x0),IF(ABS(lgm)~
+<dit,exit),lgm:=(y-y0)/y0,IF(ABS(lgm)<dit,exit),IF(x<0,exit),IF(y>=y0,PROG(x1~
+:=x,yh:=y,IF(dir<0,PROG(dir:=0,d:=0.5),IF(dir>1,d:=0.5*d+0.5,d:=(y0-y1)/(yh-y~
+1))),dir:+1,i:+1),PROG(x0:=x,y1:=y,IF(dir>0,PROG(dir:=0,d:=0.5),IF(dir<-1,d:/~
+2,d:=(y0-y1)/(yh-y1))),dir:-1,i:+1))),IF(x=0,RETURN("Error"),RETURN(x)))
+
+;
+03b2_aux(x,a,b,maxit:=100,eps:=10^(-16),fpmin:=10^(-30),m,m2,aa,c,d,del,h,qa~
+b,qam,qap):=PROG(qab:=a+b,qap:=a+1,qam:=a-1,c:=1,d:=1-qab*x/qap,IF(ABS(d)<fpm~
+in,d:=fpmin),d:=1/d,h:=d,m:=1,LOOP(IF(m>maxit,exit),m2:=2*m,aa:=m*(b-m)*x/((q~
+am+m2)*(a+m2)),d:=1+aa*d,IF(ABS(d)<fpmin,d:=fpmin),c:=1+aa/c,IF(ABS(c)<fpmin,~
+c:=fpmin),d:=1/d,h:*d*c,aa:=-(a+m)*(qab+m)*x/((a+m2)*(qap+m2)),d:=1+aa*d,IF(A~
+BS(d)<fpmin,d:=fpmin),c:=1+aa/c,IF(ABS(c)<fpmin,c:=fpmin),d:=1/d,del:=d*c,h:*~
+del,IF(ABS(del-1)<eps,RETURN(h)),m:+1),"MAXIT too small.")
+
+;
+Incomplete_03b2(x,a,b:=1/2,bt,betacf):=PROG(IF(x<0 OR x>1,RETURN("Bad x argu~
+ement.")),IF(x=0 OR x=1,bt:=0,bt:=x^a*(1-x)^b*GAMMA(a+b)/(GAMMA(a)*GAMMA(b)))~
+,IF(x<(a+1)/(a+b+2),PROG(betacf:=03b2_aux(x,a,b),IF(STRING?(betacf),RETURN(b~
+etacf),RETURN(bt*betacf/a))),PROG(betacf:=03b2_aux(1-x,b,a),IF(STRING?(betac~
+f),RETURN(betacf),RETURN(1-bt*betacf/b)))))
+
+;
+Inverse_I03b2(03b1,p,q:=1/2,l,u,c1,c2,c3,c4,acu,r,t,s,h,w,a,pp,qq,idx,y,ib,~
+t,yp,sq,pr,adj,g,tx,bta):=PROG(IF(p<=0 OR q<=0,RETURN("Invalid arguments!")),~
+IF(03b1<0 OR 03b1>1,RETURN("Invalid 03b1!")),bta:=LN(GAMMA(p)*GAMMA(q)/GAM~
+MA(p+q)),acu:=10^(-40),l:=0.0001,u:=0.9999,c1:=2.30753,c2:=0.27061,c3:=0.9922~
+9,c4:=0.04481,IF(03b1<1/2,PROG(a:=03b1,pp:=p,qq:=q,idx:=false),PROG(a:=1-0~
+3b1,pp:=q,qq:=p,idx:=true)),r:=SQRT(-LN(a*a)),y:=r-(c1+c2*r)/(1+(c3+c4*r)*r),~
+IF(pp>1 AND qq>1,PROG(r:=(y*y-3)/6,s:=1/(2*pp-1),t:=1/(2*qq-1),h:=2/(s+t),w:=~
+y*SQRT(h+r)/h-(t-s)*(r+5/6-2/(3*h)),ib:=pp/(pp+qq*EXP(2*w))),PROG(r:=2*qq,t:=~
+1/(9*qq),t:=r*(1-t+y*SQRT(t))^3,IF(t<=0,ib:=1-EXP((LN((1-a)*qq)+bta)/qq),PROG~
+(t:=(4*pp+r-2)/t,IF(t<=1,ib:=EXP((LN(a*pp)+bta)/pp),ib:=1-2/(t+1)))))),r:=1-p~
+p,t:=1-qq,yp:=0,sq:=1,pr:=1,IF(ib<l,ib:=l,IF(ib>u,ib:=u)),LOOP(y:=Incomplete_~
+03b2(ib,pp,qq),y:=(y-a)*EXP(bta+r*LN(ib)+t*LN(1-ib)),IF(y*yp<=0,pr:=sq),g:=1~
+,LOOP(LOOP(adj:=g*y,sq:=adj^2,IF(sq>=pr,g:/3,exit)),tx:=ib-adj,IF(tx>=0 AND t~
+x<=1,exit,g:/3)),IF(pr<=acu,exit),IF(y^2<=acu,exit),IF(tx=ib,exit),ib:=tx,yp:~
+=y),IF(idx,RETURN(1-ib),RETURN(ib)))
+
+;
+FCdf(f,v1,v2):=1-Incomplete_03b2(v2/(v2+v1*f),v2/2,v1/2)
+
+;
+Inverse_F(area,v1,v2):=RHS(SOLVE(Inverse_I03b2(1-area,v2/2,v1/2)=v2/(v2+v1*f~
+),f,Real))
+
+;
+tCdf(t,v):=IF(t<0,Incomplete_03b2(v/(v+t^2),v/2)/2,1-Incomplete_03b2(v/(v+t~
+^2),v/2)/2)
+
+;
+Inverse_t(area,v,ans):=PROG(IF(area=0.5,RETURN(0)),ans:=SOLVE(Inverse_I03b2(~
+IF(area<0.5,2*area,2*(1-area)),v/2)=v/(v+t^2),t,Real),IF(area<0.5,RETURN(RHS(~
+LHS(ans))),RETURN(RHS(RHS(ans)))))
+
+03a72(x2,v):=IncompleteGamma(v/2,x2/2)
+
+;
+InverseChi2(area,v):=2*InverseCIGamma(v/2,1-area)
+
+GaussNewton(eq,parms,data,wgt:=1,dsp:=1,n_:=30,sn_:=10,cc_:=10^(-8)):=PROG(eq~
+q:=RHS(eq),dvar:=LHS(eq),parm:=MAP_LIST(LHS(z_),z_,parms),ivars:=SELECT(NOT(M~
+EMBER?(i_,parm)),i_,VARIABLES(eqq)),vars:=FIRST(data),data_:=REST(data),obs_:~
+=DIM(data_),k_:=DIM(parm),pos_:=POSITION((VARIABLES(dvar)) SUB 1,vars),IF(pos~
+_=false,RETURN("Undefined dependent variable!"),y_:=MAP_LIST(dvar,(VARIABLES(~
+dvar)) SUB 1,data_ SUB  SUB pos_)),pos_:=VECTOR(POSITION(ivars SUB i_,vars),i~
+_,1,DIM(ivars)),IF(MEMBER?(false,pos_),RETURN("Undefined independent variable~
+(s)!"),m_:=data_ SUB  SUB pos_),IF(NUMBER?(wgt)=false,PROG(pos_:=POSITION((VA~
+RIABLES(wgt)) SUB 1,vars),IF(pos_=false,RETURN("Undefined weight variable!"),~
+wg:=MAP_LIST(wgt,(VARIABLES(wgt)) SUB 1,data_ SUB  SUB pos_)),wg:=VECTOR(VECT~
+OR(IF(i_=j_,wg SUB j_,0),j_,DIM(wg)),i_,DIM(wg))),wg:=1),ycpt:=IF(MEMBER?(1,G~
+RAD(eqq,parm)),1,0,0),k_:-ycpt,03b2_:=MAP_LIST(RHS(z_),z_,parms),eq1:=VECTOR~
+(SUBST(eqq,ivars,m_ SUB i),i,obs_),j_:=GRAD(eq1,parm)`,p_:=SUBST(eq1,parm,03~
+b2_),r_:=y_-p_,sse_:=r_ DOTPRODUCT wg DOTPRODUCT r_,tc_:=y_-VECTOR(AVERAGE(y_~
+),i,obs_),tu_:=y_,sstc_:=tc_ DOTPRODUCT wg DOTPRODUCT tc_,sstu_:=tu_ DOTPRODU~
+CT wg DOTPRODUCT tu_,iter:=[APPEND([0],03b2_,[sse_])],eps_:=1,iter_:=1,LOOP(~
+IF(iter_>n_ OR eps_<cc_,exit),x_:=SUBST(j_,parm,03b2_),lsse_:=sse_,xpxi:=(x_~
+`*wg*CONJ(x_))`^(-1),03b4_:=xpxi*CONJ(x_)`*wg*r_,old_:=03b2_,03b2_:+03b4_~
+,p_:=SUBST(eq1,parm,03b2_),r_:=y_-p_,sse_:=r_ DOTPRODUCT wg DOTPRODUCT r_,it~
+er:=APPEND(iter,[APPEND([iter_],03b2_,[sse_])]),subit_:=1,LOOP(IF(sse_<=lsse~
+_ OR subit_>sn_,exit),03b4_:/2,03b2_:=old_+03b4_,p_:=SUBST(eq1,parm,03b2_~
+),r_:=y_-p_,sse_:=r_ DOTPRODUCT wg DOTPRODUCT r_,iter:=APPEND(iter,[APPEND([i~
+ter_+subit_/100],03b2_,[sse_])]),subit_:+1),IF(subit_>sn_,exit),eps_:=ABS((l~
+sse_-sse_)/(sse_+10^(-6))),iter_:+1),IF(iter_>n_,msg:=APPEND("Convergence fai~
+led after ",n_," iterations!"),IF(subit_>sn_,msg:="SSE did not improve after ~
+10 halvings!",msg:="Convergence criteria met!")),dfe_:=obs_-k_-ycpt,mse_:=sse~
+_/dfe_,se_:=SQRT(mse_),std_:=MAP_LIST(ABS(a_),a_,VECTOR(SQRT(xpxi SUB i_ SUB ~
+i_*mse_),i_,k_+ycpt)),t_:=MAP_LIST(ABS(a_),a_,VECTOR(03b2_ SUB i_/std_ SUB i~
+_,i_,k_+ycpt)),prob_:=VECTOR(2*(1-tCdf(ABS(t_ SUB i_),dfe_)),i_,k_+ycpt),ssr_~
+:=IF(ycpt=1,sstc_,sstu_)-sse_,rsq:=1-sse_/sstc_,arsq:=1-sse_/(obs_-k_-ycpt)*(~
+(obs_-ycpt)/sstc_),fd_:=1-FCdf(ssr_*dfe_/(sse_*k_),k_,dfe_),a1_:=["Source","D~
+F","SS","MS","F","Prob(F)"],a2_:=["Reg",k_,ssr_,ssr_/k_,ssr_*dfe_/(sse_*k_),I~
+F(fd_<0,0,fd_)],a3_:=["Error",dfe_,sse_,sse_/dfe_," "," "],a4_:=[IF(ycpt=1,"C~
+orrected Total","Uncorrected Total"),dfe_+k_,IF(ycpt=1,sstc_,sstu_)," "," ","~
+ "],a5_:=["Corrected Total",dfe_+k_-1,sstc_," "," "," "],anova:=APPEND([a1_],~
+[a2_],[a3_],[a4_]),IF(ycpt=0,anova:=APPEND(anova,[a5_])),IF(dsp/=1,feq:="Equa~
+tion to big to display!",feq:=dvar=EXPAND(SUBST(eqq,parm,03b2_))),iter:=APPE~
+ND([APPEND(["Iter"],parm,["SSE"])],iter),title:=[["Parm"],["Value"],["STD"],[~
+APPEND("t(",dfe_,")")],["Prob(t)"]],output:=APPEND_COLUMNS(title,APPEND([parm~
+],[03b2_],[std_],[t_],[prob_]))`,stats:=[["SE","R^2","AdjR^2"],[se_,rsq,arsq~
+]],RETURN([["Gauss_Newton Method"],[" "],[msg],[" "],[output],[" "],[anova],[~
+" "],[stats],[" "],[feq]]))
+
+Marquardt(eq,parms,data,wgt:=1,dsp:=1,n_:=50,cc_:=10^(-8)):=PROG(eqq:=RHS(eq)~
+,dvar:=LHS(eq),parm:=MAP_LIST(LHS(z_),z_,parms),ivars:=SELECT(NOT(MEMBER?(i_,~
+parm)),i_,VARIABLES(eqq)),vars:=FIRST(data),data_:=REST(data),obs_:=DIM(data_~
+),k_:=DIM(parm),pos_:=POSITION((VARIABLES(dvar)) SUB 1,vars),IF(pos_=false,RE~
+TURN("Undefined dependent variable!"),y_:=MAP_LIST(dvar,(VARIABLES(dvar)) SUB~
+ 1,data_ SUB  SUB pos_)),pos_:=VECTOR(POSITION(ivars SUB i_,vars),i_,1,DIM(iv~
+ars)),IF(MEMBER?(false,pos_),RETURN("Undefined independent variable(s)!"),m_:~
+=data_ SUB  SUB pos_),IF(NUMBER?(wgt)=false,PROG(pos_:=POSITION((VARIABLES(wg~
+t)) SUB 1,vars),IF(pos=false,RETURN("Undefined weight variable!"),wg:=MAP_LIS~
+T(wgt,(VARIABLES(wgt)) SUB 1,data_ SUB  SUB pos_)),wg:=VECTOR(VECTOR(IF(i_=j_~
+,wg SUB j_,0),j_,DIM(wg)),i_,DIM(wg))),wg:=1),ycpt:=IF(MEMBER?(1,GRAD(eqq,par~
+m)),1,0,0),k_:-ycpt,03b2_:=MAP_LIST(RHS(z_),z_,parms),eq1:=VECTOR(SUBST(eqq,~
+ivars,m_ SUB i),i,obs_),j_:=GRAD(eq1,parm)`,p_:=SUBST(eq1,parm,03b2_),r_:=y_~
+-p_,sse_:=r_ DOTPRODUCT wg DOTPRODUCT r_,tc_:=y_-VECTOR(AVERAGE(y_),i,obs_),t~
+u_:=y_,sstc_:=tc_ DOTPRODUCT wg DOTPRODUCT tc_,sstu_:=tu_ DOTPRODUCT wg DOTPR~
+ODUCT tu_,sst_:=t_ DOTPRODUCT wg DOTPRODUCT t_,03bb_:=0.001,iter:=[APPEND([0~
+],[" "],03b2_,[sse_])],eps_:=1,iter_:=1,LOOP(IF(iter_>n_ OR eps_<cc_,exit),x~
+_:=SUBST(j_,parm,03b2_),lsse_:=sse_,xpx:=(x_`*wg*CONJ(x_))`,diag_:=VECTOR(VE~
+CTOR(IF(q_=s_,xpx SUB q_ SUB s_,0),s_,k_+ycpt),q_,k_+ycpt),xpxi:=(xpx+03bb_*~
+diag_)^(-1),03b4_:=xpxi*CONJ(x_)`*wg*r_,03b2_:+03b4_,p_:=SUBST(eq1,parm,0~
+3b2_),r_:=y_-p_,sse_:=r_ DOTPRODUCT wg DOTPRODUCT r_,iter:=APPEND(iter,[APPEN~
+D([iter_],[03bb_],03b2_,[sse_])]),IF(sse_<=lsse_,PROG(eps_:=ABS((lsse_-sse_~
+)/(sse_+10^(-6))),03bb_:/10),PROG(03b2_:-03b4_,03bb_:*10),RETURN("Cannot ~
+resolve SSE test!")),iter_:+1),IF(iter_>n_,msg:=APPEND("Convergence failed af~
+ter ",n_," iterations!"),msg:="Convergence criteria met!"),dfe_:=obs_-k_-ycpt~
+,mse_:=sse_/dfe_,se_:=SQRT(mse_),std_:=MAP_LIST(ABS(a_),a_,VECTOR(SQRT(xpxi S~
+UB i_ SUB i_*mse_),i_,k_+ycpt)),t_:=MAP_LIST(ABS(a_),a_,VECTOR(03b2_ SUB i_/~
+std_ SUB i_,i_,k_+ycpt)),prob_:=VECTOR(2*(1-tCdf(ABS(t_ SUB i_),dfe_)),i_,k_+~
+ycpt),ssr_:=IF(ycpt=1,sstc_,sstu_)-sse_,rsq:=1-sse_/sstc_,arsq:=1-sse_/(obs_-~
+k_-ycpt)/(sstc_/(obs_-ycpt)),fd_:=1-FCdf(ssr_*dfe_/(sse_*k_),k_,dfe_),a1_:=["~
+Source","DF","SS","MS","F","Prob(F)"],a2_:=["Reg",k_,ssr_,ssr_/k_,ssr_*dfe_/(~
+sse_*k_),IF(fd_<0,0,fd_)],a3_:=["Error",dfe_,sse_,sse_/dfe_," "," "],a4_:=[IF~
+(ycpt=1,"Corrected Total","Uncorrected Total"),dfe_+k_,IF(ycpt=1,sstc_,sstu_)~
+," "," "," "],a5_:=["Corrected Total",dfe_+k_-1,sstc_," "," "," "],anova:=APP~
+END([a1_],[a2_],[a3_],[a4_]),IF(ycpt=0,anova:=APPEND(anova,[a5_])),IF(dsp/=1,~
+feq:="Equation to big to display!",feq:=dvar=EXPAND(SUBST(eqq,parm,03b2_))),~
+iter:=APPEND([APPEND(["Iter"],["03bb"],parm,["SSE"])],iter),title:=[["Parm"]~
+,["Value"],["STD"],[APPEND("t(",dfe_,")")],["Prob(t)"]],output:=APPEND_COLUMN~
+S(title,APPEND([parm],[03b2_],[std_],[t_],[prob_]))`,stats:=[["SE","R^2","Ad~
+jR^2"],[se_,rsq,arsq]],RETURN([["Marquardt Method"],[" "],[msg],[" "],[output~
+],[" "],[anova],[" "],[stats],[" "],[feq]]))
+
+PVAux(x0,wgt,ci:=0.95,prd,g_,gv,i_,sep,sef,invt,cyh1,cyh2,cy01,cy02,ivars,val~
+s):=PROG(ivars:=MAP_LIST(LHS(z_),z_,x0),vals:=MAP_LIST(RHS(z_),z_,x0),prd:=SU~
+BST(RHS(feq),ivars,vals),g_:=GRAD(eqq,parm),gv:=SUBST(g_,APPEND(parm,ivars),A~
+PPEND(03b2_,vals)),i_:=gv*xpxi*gv`,sep:=se_*SQRT(i_),sef:=se_*SQRT(1/wgt+i_)~
+,invt:=Inverse_t(0.5+ci/2,dfe_),cyh1:=prd-sep*invt,cyh2:=prd+sep*invt,cy01:=p~
+rd-sef*invt,cy02:=prd+sef*invt,[prd,sep,cyh1,cyh2,sef,cy01,cy02])
+
+PredictedValues(data,wgt:=1,ci:=0.95,title,data_):=PROG(IF(NOT(MATRIX?(data))~
+,RETURN("Enter data as a matrix!"),data_:=Label(data,ivars)),IF(NOT(MATRIX?(d~
+ata_)),data_:=[data_]),IF(NUMBER?(wgt),data_:=VECTOR(ADJOIN(wgt,x_),x_,data_)~
+,data_:=APPEND_COLUMNS(MAP_LIST([wgt],(VARIABLES(wgt)) SUB 1,REST(data SUB  S~
+UB POSITION((VARIABLES(wgt)) SUB 1,FIRST(data)))),data_),RETURN("Enter weight~
+ as a number or a vector")),title:=[["Predicted Value","SE Y_hat","Lower CI Y~
+_hat","Upper CI Y_hat","SE Y0","Lower CI Y0","Upper CI Y0"]],APPEND(title,VEC~
+TOR(PVAux(REST(x_),FIRST(x_),ci),x_,data_)))
+
+SEAux(x0,wgt,prd,g_,gv,i_,sep,sef,ivars,vals):=PROG(ivars:=MAP_LIST(LHS(z_),z~
+_,x0),vals:=MAP_LIST(RHS(z_),z_,x0),prd:=SUBST(RHS(feq),ivars,vals),g_:=GRAD(~
+eqq,parm),gv:=SUBST(g_,APPEND(parm,ivars),APPEND(03b2_,vals)),i_:=gv*xpxi*gv~
+`,sep:=se_*SQRT(i_),sef:=se_*SQRT(1/wgt+i_),[prd,sep,sef])
+
+StandardErrors(data,wgt:=1,data_):=PROG(IF(NOT(MATRIX?(data)),RETURN("Enter d~
+ata as a matrix!"),data_:=Label(data,ivars)),IF(NOT(MATRIX?(data_)),data_:=[d~
+ata_]),IF(NUMBER?(wgt),data_:=VECTOR(ADJOIN(wgt,x_),x_,data_),data_:=APPEND_C~
+OLUMNS(MAP_LIST([wgt],(VARIABLES(wgt)) SUB 1,REST(data SUB  SUB POSITION((VAR~
+IABLES(wgt)) SUB 1,FIRST(data)))),data_),RETURN("Enter weight as a number or ~
+a variable!")),APPEND([["Predicted Value","SE Y_hat","SE Y0"]],VECTOR(SEAux(R~
+EST(x_),FIRST(x_)),x_,data_)))
+
+Residuals:=VECTOR([i,r_ SUB i],i,1,DIM(r_))
+

@@ -1,0 +1,71 @@
+Continuous antiderivatives, integration by parts and change of variable in integrals
+====================================================================================
+
+Author:  Valeriu Anisiu
+email:   anisiu@math.ubbcluj.ro
+address: Faculty of Mathematics and Computer Science
+         "Babes-Bolyai" University
+         Kogalniceanu 1 Street
+         3400 Cluj-Napoca, Romania
+
+
+The file IntegrationPlus.mth contains four user functions which can be used to help or correct the integration process in DERIVE.
+
+
+MAKECONT(y,x,v) := adds a locally constant function to y such that it becomes continuous at the points contained in the vector v.
+
+
+CONT_INT(y, x, v) := INT(y,x), but it is "guaranteed" to be continuous at the points contained in the vector v. This function is useful in those (rare) occasions when DERIVE does not find a continuous antiderivative.
+
+
+CONT_INT(y, x, v, a, b) := INT(y, x, a, b); the result is "guaranteed"  to be correct even if the antiderivative found by DERIVE is not continuous at the points contained in the vector v.
+
+For example, the antiderivative found by DERIVE for ASIN(2*x/(x^2+1)) is discontinuous at the points x=-1 and x=1.
+To find a continuous antiderivative, use CONT_INT(ASIN(2*x/(x^2+1)), x, [-1,1]).
+The correct integral for this function on the interval [0,2] is CONT_INT(ASIN(2*x/(x^2+1)), x, [-1,1], 0, 2) or just CONT_INT(ASIN(2*x/(x^2+1)), x, [1], 0, 2) (because -1 does not belong to the interval [0,2]).
+
+
+INTPARTS(u, v, x, n) := INT(u*v, x)  by applying the integration by parts n times (u is the factor to be integrated). It is an enhancement for the DERIVE function INT_PARTS found in the file "Math\MiscellaneousFunctions.mth" (for n=1, which is the default). Note that unlike the INT_PARTS function, the resulting integral is returned unevaluated. Without this precaution, the function could be useless because Derive may itself integrate by parts and return the original integral!
+If the third parameter x is replaced by [x,a,b] then the definite integral INT(u*v,x,a,b) is computed.
+For example, INT(SIN(x)/SQRT(x),x,1,inf) cannot be approximated by DERIVE (a completely wrong value is returned and the warning "Dubious accuracy" appears on the status bar). A preliminary integration by parts is needed but INT_PARTS is not useful because INT_PARTS(SIN(x),1/SQRT(x),x)  returns the original integral! And a _repeated_ integration by parts is anyway needed to accelerate the convergence.
+The solution is to simplify INTPARTS(SIN(x),1/SQRT(x),[x,1,inf],6) and then to approximate the result. See the demo file for details.
+
+
+INTSUBST(y, x, rx, t, rt) := the antiderivative of y(x) computed using the change of variable given by the relation rx.
+rx is a relation (equality) between x and t which can be solved (by SOLVE) with respect to t.
+   If rx in not a relation but an expression depending on x, rx=t is considered. 
+   Note that if rx is an expression which does not depend on x, then another semantics applies (see below).
+   t denotes the new (intermediate) variable, and rt is a relation equivalent to the relation rx (in a certain interval) which can be solved with respect to t. It was necesary to deal with two relations because the SOLVE function is not powerful enough.
+   If the relation rt is absent, rt:=rx.
+   As a bonus, the INTSUBST can apply on demand the well known Euler substitutions for y = R(x,SQRT(a*x^2 + b*x +c)), where R is a rational function: in this case rx must have one of the special forms
+   a*x^2 + b*x +c = "euler1",  a*x^2 + b*x +c = "euler2"  or  a*x^2 + b*x +c = "euler3"
+[As a recommandation, use "euler1" when a>0, "euler2" when c>0 and "euler3" when b^2-4ac>0].
+   Furthermore, if the second argument x is replaced with the vector [x,a,b], the definite integral is computed.
+   The user is responsible for the equivalence of the given relations in the interval where he/she wants to integrate.
+
+The INTSUBST function accepts annother semantics:
+
+INTSUBST(y, x, u(t), t) uses the substitution x=u(t), but without the inverse substitution (the result being a function of t, namely INT(y(u(t))*u'(t),t)). If the last parameter is the vector [t,a,b], then the definite integral is computed between t=a and t=b.
+The advantage here is that u(t) need not to be invertible.
+
+As one can see, the INTSUBST is very versatile, and can be even extended for other changes of variable (in order to eliminate the computation by hand of the inverse substitution). Please inspect its definition in the file MiscellaneousFunctions.mth.
+Note also that INTSUBST is "compatible" with INT_SUBST; you can simply rename the function INTSUBST to INT_SUBST and put it in the file MiscellaneousFunctions.mth after  deleting (or "quoting") the old INT_SUBST. After this change, the new INT_SUBST will be automatically loaded when invoked. (You will of course first backup the file MiscellaneousFunctions.mth!).
+The author also recommends (without taking any responsibility) to replace INT_PARTS with INTPARTS in the same way (for those users who are "brave" enough to modify the Derive original files).
+
+If you do not want to evaluate the integrals, use the function INTSUBST_() instead of INTSUBST(). You can now examine the new integrals before being computed; if simplified, the result is the same as that obtained with INTSUBST().
+
+To recall the syntax accepted by INTSUBST, simplify the variable intsubst? which is defined when the package is loaded.
+
+For example, if 
+f:= 1/(SQRT(x^2+x+4)+2*x+3)
+
+then an antiderivative for f can be computed with:
+
+INTSUBST(f, x, x^2+x+4="euler1")        or
+INTSUBST(f, x, x^2+x+4="euler2")        or
+INTSUBST(f, x, SQRT(x^2+x+4)=x+t, t, x^2+x+4=(x+t)^2).
+Note that the integral cannot be computed with INT or INT_SUBST.
+
+INTSUBST(EXP(ASIN(x)),[x,0,1],ASIN(x)) computes the integral of EXP(ASIN(x)) between x=0 and x=1. 
+
+For other examples, please load and run the demo file IntegrationPlus.dmo.

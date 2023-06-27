@@ -1,0 +1,11 @@
+"ZetaFunctions.mth -- Copyright (c) 1990-2004 by Texas Instruments Incorporat~
+ed"
+
+CatalanConstant:=(ZETA(2,1/4)-ZETA(2,3/4))/16
+
+HURWITZ_ZETA(s,a,m):=(m+a+1/2)^(1-s)/(s-1)+SUM((k+a)^(-s),k,0,m)
+
+LERCH_PHI(z,s,a,m):=SUM(z^k/(a+k)^s,k,0,m)
+
+POLYLOG(n,z,m):=IF(n=2 AND m=inf,DILOG(1-z),SUM(z^k/k^n,k,1,m))
+

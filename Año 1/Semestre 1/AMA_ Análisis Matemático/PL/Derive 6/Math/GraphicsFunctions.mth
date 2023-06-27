@@ -1,0 +1,82 @@
+"GraphicsFunctions.mth -- Copyright (c) 1990-2003 by Texas Instruments Incorp~
+orated"
+
+"Peter Schofield, Trinity and All Saints, University of Leeds. email: p_schof~
+ield@tasc.ac.uk, contributes to and maintains this file."
+
+"Integral Areas"
+
+AreaUnderCurve(u,x,a,b,y):=[u,a<=x<=b AND 0<y<u]
+
+AreaOverCurve(u,x,a,b,y):=[u,a<=x<=b AND u<y<0]
+
+AreaBetweenCurves(u,v,x,a,b,y):=[u,v,a<=x<=b AND (v-y)*(y-u)>0]
+
+PlotInt(u,x,a,b,y):=IF(a<b,[u,a<=x<=b AND 0<y<u,a<=x<=b AND u<y<0],[u,b<=x<=a~
+ AND u<y<0,b<=x<=a AND 0<y<u])
+
+"3 Dimensional Surfaces"
+
+SPHERE(r,03b8,03c6):=r*[SIN(03c6)*COS(03b8),SIN(03c6)*SIN(03b8),COS(03~
+c6)]
+
+CYLINDER(r,03b8,z):=[r*COS(03b8),r*SIN(03b8),z]
+
+CONE(03b1,03b8,z):=[z*SIN(03b1)*COS(03b8),z*SIN(03b1)*SIN(03b8),z]
+
+TORUS(rc,rs,03b8,03c6):=[(rc-rs*SIN(03c6))*COS(03b8),(rc-rs*SIN(03c6))*S~
+IN(03b8),rs*COS(03c6)]
+
+"Isometric 2D-plots and Complex Plots"
+
+axes:=[[-t_,-t_/2],[t_,-t_/2],[0,t_]]
+
+ROTATE_X(03b1):=[[1,0,0],[0,COS(03b1),-SIN(03b1)],[0,SIN(03b1),COS(03b1)~
+]]
+
+ROTATE_Y(03b2):=[[COS(03b2),0,SIN(03b2)],[0,1,0],[-SIN(03b2),0,COS(03b2)~
+]]
+
+ROTATE_Z(03c3):=[[COS(03c3),-SIN(03c3),0],[SIN(03c3),COS(03c3),0],[0,0,1~
+]]
+
+ISOMETRIC(v):=[v SUB 2-v SUB 1,v SUB 3-(v SUB 1+v SUB 2)/2]
+
+GRID(u,s,s0,sm,m,t,t0,tn,n):=VECTOR(VECTOR(LIM(u,[s,t],[s0+j*(sm-s0)/m,t0+k*(~
+tn-t0)/n]),j,0,m),k,0,n)
+
+ISOMETRICS(v,s,s0,sm,m,t,t0,tn,n):=GRID(ISOMETRIC(v),s,s0,sm,m,t,t0,tn,n)
+
+COPROJECTION(v):=VECTOR(VECTOR(u_ SUB n_,u_,v),n_,DIM(v SUB 1))
+
+POLAR(r,03b8):=r*[COS(03b8),SIN(03b8)]
+
+RE_IM(w):=[RE(w),IM(w)]
+
+RAYS(w,z,z00,zmn,m,n,x,y):=GRID([[x,y],[[x,y],[x,y]+RE_IM(LIM(w,z,x+#i*y))]],~
+x,RE(z00),RE(zmn),m,y,IM(z00),IM(zmn),n)
+
+HORIZONTALS(w,z,z00,zmn,m,n,x,y):=GRID(RE_IM(LIM(w,z,x+#i*y)),x,RE(z00),RE(zm~
+n),m,y,IM(z00),IM(zmn),n)
+
+ARCS(w,z,r0,rm,m,03b80,03b8n,n,r,03b8):=GRID(RE_IM(LIM(w,z,r*#e^(#i*03b8)~
+)),03b8,03b80,03b8n,n,r,r0,rm,m)
+
+"3D-Gridline,3D-Gridpoint and 2D/3D Polygon-Filler Plots "
+
+GRID_LINES(a,b,c:=1,o:=[0,0,0]):=VECTOR([[[[a,i,o SUB 3],[b,i,o SUB 3]]],[[[a~
+,o SUB 2,i],[b,o SUB 2,i]]],[[[o SUB 1,a,i],[o SUB 1,b,i]]],[[[i,a,o SUB 3],[~
+i,b,o SUB 3]]],[[[i,o SUB 2,a],[i,o SUB 2,b]]],[[[o SUB 1,i,a],[o SUB 1,i,b]]~
+]],i,a,b,c)
+
+GRID_POINTS(a,b,c:=1,o:=[0,0,0]):=VECTOR(VECTOR([[[s,t,o SUB 3]],[[s,o SUB 2,~
+t]],[[o SUB 1,s,t]]],s,a,b,c),t,a,b,c)
+
+POLYGON_FILL(u):=IF(DIM(u SUB 1)=2,[APPEND(u,[u SUB 1]),VECTOR(SUBST(SUBST(x<~
+=1 AND y<=1-x AND 0<=x AND 0<=y,[x,y],[x,y]*[u SUB (i+1)-u SUB 1,u SUB (i+2)-~
+u SUB 1]^(-1)),[x,y],[x,y]-u SUB 1),i,1,DIM(u)-2)],[APPEND(u,[u SUB 1]),VECTO~
+R([[[0,0,0],[1,0,0]]*[u SUB (i+1)-u SUB 1,u SUB (i+2)-u SUB 1,CROSS(u SUB (i+~
+1)-u SUB 1,u SUB (i+2)-u SUB 1)]+[u SUB 1,u SUB 1],[[0,0,0],[0,1,0]]*[u SUB (~
+i+1)-u SUB 1,u SUB (i+2)-u SUB 1,CROSS(u SUB (i+1)-u SUB 1,u SUB (i+2)-u SUB ~
+1)]+[u SUB 1,u SUB 1]],i,1,DIM(u)-2)])
+

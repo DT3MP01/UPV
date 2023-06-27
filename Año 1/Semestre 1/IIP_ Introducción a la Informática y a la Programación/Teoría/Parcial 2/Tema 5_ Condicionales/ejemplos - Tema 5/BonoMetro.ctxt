@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=BonoMetro
+comment0.text=\n\ Clase\ Tipo\ de\ Dato\ BonoMetro\n\ \n\ @author\ IIP\n\ @version\ Octubre\ 2015\n
+comment1.params=n
+comment1.target=BonoMetro(int)
+comment2.params=
+comment2.target=BonoMetro()
+comment3.params=
+comment3.target=int\ getNumeroDeTiques()
+comment4.params=cantidad
+comment4.target=void\ recargar(int)
+comment5.params=
+comment5.target=java.lang.String\ toString()
+comment6.params=
+comment6.target=java.lang.String\ picar()
+numComments=7

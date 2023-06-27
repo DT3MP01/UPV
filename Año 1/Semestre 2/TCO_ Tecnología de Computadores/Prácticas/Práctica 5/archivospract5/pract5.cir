@@ -1,0 +1,24 @@
+* C:\Users\david\Downloads\archivospract5\pract5.sch
+
+* Schematics Version 9.1 - Web Update 1
+* Sun May 19 22:37:11 2019
+
+
+
+** Analysis setup **
+.tran 1ns 120ns
+.OP 
+.LIB "C:\Users\david\Downloads\archivospract5\pract5.lib"
+
+
+* From [PSPICE NETLIST] section of pspiceev.ini:
+.lib "nom.lib"
+
+.INC "pract5.net"
+.INC "pract5.als"
+
+
+.probe
+
+
+.END

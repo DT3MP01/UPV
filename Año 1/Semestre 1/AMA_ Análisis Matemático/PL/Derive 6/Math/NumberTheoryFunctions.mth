@@ -1,0 +1,117 @@
+"NumberTheoryFunctions.mth -- Copyright (c) 1990-2003 by Texas Instruments In~
+corporated"
+
+"The functions in this file were contributed by Johann Wiesenbauer"
+
+"of Vienna, Austria (j.wiesenbauer@tuwien.ac.at)."
+
+EXTENDED_GCD(a,b,q_,r_):=PROG(a:=[a,[1,0]],b:=[b,[0,1]],LOOP(IF(FIRST(b)=0,ex~
+it),q_:=FIRST(a)/FIRST(b),q_:=ROUND(RE(q_))+ROUND(IM(q_))*#i,r_:=a-q_*b,a:=b,~
+b:=r_),IF(FIRST(a)=0,RETURN([0,[0,0]])),LOOP(IF(0<=PHASE(FIRST(a))<pi/2,RETUR~
+N(a)),a:*#i))
+
+SOLVE_MOD(u,x,m,a_,b_,d_):=PROG(a_:=DIF(LHS(u)-RHS(u),x),b_:=LIM(RHS(u)-LHS(u~
+),x,0),d_:=GCD(a_,m),IF(MOD(b_,d_)/=0,RETURN([])),m:=m/d_,VECTOR(MOD(b_/d_*IN~
+VERSE_MOD(a_/d_,m),m)+k_*m,k_,0,d_-1))
+
+CRT(a,m,m_:=1,x_:=0):=LOOP(IF(m=[],RETURN(x_)),x_:=x_+(FIRST(a)-x_)*m_*INVERS~
+E_MOD(m_,FIRST(m)),m_:*FIRST(m),x_:=MOD(x_,m_),a:=REST(a),m:=REST(m))
+
+NTH_PRIME(n):=ITERATE(NEXT_PRIME(k_),k_,1,n)
+
+PRIMEPI(x,d:=1,a:=1):=IF(d>1,SUM(IF(PRIME?(d*n_+a)),n_,0,(x-a)/d),PRIMEPI(x,6~
+,1)+PRIMEPI(x,6,5)+IF(x>=3,2,CHI(2,x,3,1)))
+
+FAREY(n,a_:=1,b_:=1,l_:=[1]):=LOOP(IF(a_=b_,IF(b_=n,RETURN(SORT(l_)),[b_:+1,a~
+_:=1])),IF(GCD(a_,b_)=1,l_:=APPEND(l_,[a_/b_])),a_:+1)
+
+PRIME_FACTORIZATION(n):=FACTORS(n)
+
+DIVISORS(n):=SORT(VECTOR(PRODUCT(u_),u_,{[1]}*PRODUCT(VECTOR(MAP_LIST([v_ SUB~
+ 1^k_],k_,{0,...,v_ SUB 2}),v_,FACTORS(n)))))
+
+DIVISOR_SIGMA(k,n):=PRODUCT(SUM(v_ SUB 1^(k*j_),j_,0,v_ SUB 2),v_,FACTORS(n))
+
+DIVISOR_TAU(n):=PRODUCT(v_ SUB 2+1,v_,FACTORS(n))
+
+EULER_PHI(n):=n*PRODUCT(1-1/v_ SUB 1,v_,FACTORS(n))
+
+PRIME_POWER?(n,k_:=1,t_:=2):=LOOP(IF(t_>n,RETURN(false)),IF(PRIME?(n^(1/k_)),~
+exit),k_:+1,t_:*2)
+
+PRIMITIVE_ROOT(n,a_:=2,n_,l_,p_):=IF(n<5,n-1,IF(MOD(n,4)>0,IF(PRIME_POWER?(n/~
+(2-MOD(n,2))),PROG(n_:=EULER_PHI(n),l_:=(FACTORS(n_)) SUB  SUB 1,LOOP(IF(GCD(~
+a_,n)=1,IF(EVERY(MOD(a_^(n_/p_),n)/=1,p_,l_),RETURN(a_))),a_:+1)))))
+
+MOEBIUS_MU(n):=PRODUCT(-MAX(2-v_ SUB 2,0),v_,FACTORS(n))
+
+SQUAREFREE(n):=EVERY(v_ SUB 2=1,v_,FACTORS(n))
+
+CYCLOTOMIC(n,x):=PRODUCT((x^(n/d_)-1)^MOEBIUS_MU(d_),d_,DIVISORS(n))
+
+GEN_LUCAS(n,p,q,l0,l1):=([[0,1],[-q,p]]^n . [l0,l1]) SUB 1
+
+U_LUCAS(n,p,q):=GEN_LUCAS(n,p,q,0,1)
+
+V_LUCAS(n,p,q):=GEN_LUCAS(n,p,q,2,p)
+
+U_MOD(n,p,q,m,l_,ll_,q_:=1):=PROG(m:=IF(m>0,m,0,0),l_:=MOD(2,m),ll_:=p,Output~
+Base:=Binary,n:=NAME_TO_CODES(STRING(n)),OutputBase:=Decimal,LOOP(IF(n=[],exi~
+t),IF(FIRST(n)=48,PROG(ll_:=POLY_MOD(l_*ll_-p*q_,m),l_:=POLY_MOD(l_^2-2*q_,m)~
+,q_:=MOD(q_^2,m)),PROG(l_:=POLY_MOD(l_*ll_-p*q_,m),ll_:=POLY_MOD(ll_^2-2*q_*q~
+,m),q_:=MOD(q*q_^2,m))),n:=REST(n)),MOD((-p*l_+2*ll_)*INVERSE_MOD(p^2-4*q,m),~
+m))
+
+V_MOD(n,p,q,m,l_,ll_,q_:=1):=PROG(m:=IF(m>0,m,0,0),l_:=MOD(2,m),ll_:=p,Output~
+Base:=Binary,n:=NAME_TO_CODES(STRING(n)),OutputBase:=Decimal,LOOP(IF(n=[],RET~
+URN(l_)),IF(FIRST(n)=48,PROG(ll_:=POLY_MOD(l_*ll_-p*q_,m),l_:=POLY_MOD(l_^2-2~
+*q_,m),q_:=MOD(q_^2,m)),PROG(l_:=POLY_MOD(l_*ll_-p*q_,m),ll_:=POLY_MOD(ll_^2-~
+2*q_*q,m),q_:=MOD(q*q_^2,m))),n:=REST(n)))
+
+LUCAS(n):=V_LUCAS(n,1,-1)
+
+FIBONACCI(n):=GEN_LUCAS(n,1,-1,0,1)
+
+PELL(n):=GEN_LUCAS(n,2,-1,1,0)
+
+LUCAS_LEHMER(p,m_):=PROG(m_:=2^p-1,SOLVE(ITERATE(MOD(s_^2-2,m_),s_,4,p-2)=0))
+
+NEXT_MERSENNE_DEGREE(n,p_):=IF(n<2,2,PROG(p_:=NEXT_PRIME(n),LOOP(IF(LUCAS_LEH~
+MER(p_),RETURN(p_)),p_:=NEXT_PRIME(p_))))
+
+MERSENNE_LIST(n):=ITERATES(NEXT_MERSENNE_DEGREE(n_),n_,2,n-1)
+
+MERSENNE(n):=2^ITERATE(NEXT_MERSENNE_DEGREE(j_),j_,1,n)-1
+
+MERSENNE_DEGREE(n):=[2,3,5,7,13,17,19,31,61,89,107,127,521,607,1279,2203,2281~
+,3217,4253,4423,9689,9941,11213,19937,21701,23209,44497,86243,110503,132049,2~
+16091,756839,859433,1257787,1398269,2976221,3021377,6972593,13466917] SUB n
+
+MERSENNE(n):=2^MERSENNE_DEGREE(n)-1
+
+PERFECT(n):=SUBST((m_+1)*m_/2,m_,MERSENNE(n))
+
+CONTINUED_FRACTION(u,n):=FLOOR(ITERATES(1/MOD(x_),x_,u,n))
+
+CONVERGENT(x,k,a_,b_:=1,c_:=1,d_:=0,e_,t_):=PROG(a_:=FLOOR(x),e_:=1/MOD(x),LO~
+OP(IF(k=0,RETURN(a_/c_)),t_:=a_,a_:=FLOOR(e_)*a_+b_,b_:=t_,t_:=c_,c_:=FLOOR(e~
+_)*c_+d_,d_:=t_,e_:=1/MOD(e_),k:-1))
+
+CONVERGENTS(x,k,a_,b_:=1,c_:=1,d_:=0,e_,l_,t_):=PROG(a_:=FLOOR(x),e_:=1/MOD(x~
+),l_:=[a_],LOOP(IF(k=0,RETURN(l_)),t_:=a_,a_:=FLOOR(e_)*a_+b_,b_:=t_,t_:=c_,c~
+_:=FLOOR(e_)*c_+d_,d_:=t_,e_:=1/MOD(e_),k:-1,l_:=INSERT(a_/c_,l_,0)))
+
+JACOBI(a,b,s_:=1,t_):=PROG(IF(b<0 OR MOD(b,2)=0,RETURN(?)),IF(GCD(a,b)>1,RETU~
+RN(0)),LOOP(IF(a=1 OR b=1,RETURN(s_)),a:=MODS(a,b),IF(a<0 AND MOD(b,4)=3,s_:=~
+-s_),a:=ABS(a),t_:=0,LOOP(IF(MOD(a,2)=1,exit),t_:+1,a:/2),IF(MOD(t_,2)=1 AND ~
+MODS(b,8)="+-"3,s_:=-s_),t_:=a,a:=b,b:=t_,IF(MOD(a,4)=3 AND MOD(b,4)=3,s_:=-s~
+_)))
+
+SQUARE_ROOT(a,p,a_:=2,b_,s_:=-2,t_):=PROG(IF(p=2 OR MOD(a,p)=0,RETURN(MOD(a,p~
+))),IF(JACOBI(a,p)=-1,RETURN(?)),IF(MOD(p,4)=3,RETURN(MOD(a^((p+1)/4),p))),IF~
+(MOD(p,8)=5,IF(MODS(a^((p-1)/4),p)=1,RETURN(MOD(a^((p+3)/8),p)),RETURN(MOD(2*~
+a*MOD((4*a)^((p-5)/8),p),p)))),LOOP(IF(JACOBI(a_,p)=-1,exit),a_:+1),t_:=p-1,L~
+OOP(s_:+1,t_:/2,IF(MOD(t_,2)=1,exit)),a_:=MOD(a_^t_,p),b_:=MOD(a^((t_+1)/2),p~
+),t_:=INVERSE_MOD(a,p),LOOP(IF(s_<0,RETURN(b_)),IF(MODS((b_^2*t_)^(2^s_),p)=-~
+1,b_:=MOD(a_*b_,p)),a_:=MOD(a_^2,p),s_:-1))
+

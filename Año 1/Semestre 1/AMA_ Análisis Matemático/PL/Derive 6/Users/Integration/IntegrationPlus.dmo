@@ -1,0 +1,110 @@
+;If result is false, press the Esc key and load the file IntegrationPlus.mth
+IF(LOAD("IntegrationPlus.mth"), true, LOAD("..\Users\Integration\IntegrationPlus.mth"))
+
+;The version number of the package
+IntPlusVersion=
+
+;Removing discontinuities at x=-1 and x=1
+MAKECONT(x^2*SIGN(x^2-1),x,[-1,1])
+
+;Fail to remove the discontinuity, because of the lack of side limits
+MAKECONT(SIN(1/x),x,[0])
+
+;DERIVE finds a discontinuous antiderivative
+INT(ASIN(2*x/(x^2+1)),x)
+
+;The correct (continuous) antiderivative
+CONT_INT(ASIN(2*x/(x^2+1)),x,[-1,1])
+
+;The result is wrong! Should be 221a3e7c2/3
+INT(ASIN(2*x/(x^2+1)),x,0,SQRT(3))
+
+;Now it is OK
+CONT_INT(ASIN(2*x/(x^2+1)),x,[-1,1],0,SQRT(3))
+
+;Trying to approximate, the result is wrong!
+APPROX(INT(SIN(x)/SQRT(x),x,1,inf))
+
+;Use first a repeated integration by parts
+exact_val:=INTPARTS(SIN(x),1/SQRT(x),[x,1,inf],6)
+
+;Then approximate the result; the exact value is 0.632777533868738047591577796...
+APPROX(exact_val)
+
+;Let us apply the same method for the very slow convergent integral:
+'INT(SIN(x)/LN(x),x,#e,inf)
+
+;Repeated integration by parts
+exact_val:=INTPARTS(SIN(x),1/LN(x),[x,#e,inf],5)
+
+;Then approximate. Note that Maple 9 and Mathematica 5 cannot directly compute the integral!
+APPROX(exact_val)
+
+;Fail to compute the antiderivative
+INT(EXP(ASIN(x)),x)
+
+;Recall the parameters for INTSUBST
+intsubst?
+
+;Trying with INTSUBST
+INTSUBST(EXP(ASIN(x)),x,ASIN(x))
+
+;Fail to compute the antiderivative
+INT((x+1)/(SQRT(x^2+x+1)+2*x+3),x)
+
+;Using the first Euler substitution
+INTSUBST((x+1)/(SQRT(x^2+x+1)+2*x+3),x,x^2+x+1="euler1")
+
+;Giving both the direct and inverse substitutions
+INTSUBST((x+1)/(SQRT(x^2+x+1)+2*x+3),x,SQRT(x^2+x+1)=x+t,t,x^2+x+1=(x+t)^2)
+
+;Using the second Euler substitution
+INTSUBST((x+1)/(SQRT(x^2+x+1)+2*x+3),x,x^2+x+1="euler2")
+
+;Using the third Euler substitution
+INTSUBST(SQRT(x^2-5*x+4),x,x^2-5*x+4="euler3")
+
+;A definite integral
+INTSUBST((x+1)/(SQRT(x^2+x-6)+2*x+3),[x,2,3],x^2+x-6="euler1")
+
+;The same integral but not evaluated
+INTSUBST_((x+1)/(SQRT(x^2+x-6)+2*x+3),[x,2,3],x^2+x-6="euler1")
+
+;An improper integral
+INTSUBST(1/(x*SQRT(x^2+x+1) + 2*x + 2), [x, 0, inf], x^2 + x + 1 = "euler1")
+
+;INTSUBST cannot automatically compute the inverse substitution 
+INTSUBST((x+1)/(SQRT(x^2+x+1)+2*x+3),x,SQRT(x^2+x+1)=x+t,t)
+
+;To compute...
+'INT(1/(SQRT(1 - x^2) + 3·x + 3), x,0,1/2)
+
+;We can use a special substition:
+INTSUBST(1/(SQRT(1 - x^2) + 3*x + 3), x, SIN(t), [t, 0, pi/6])
+
+;or we can use one of Euler's substitutions
+INTSUBST(1/(SQRT(1-x^2)+3*x+3),[x,0,1/2],1-x^2="euler3")
+
+;For the last example we shall use 2 succesive substitutions:
+'INT(1/(SQRT(1-x)+SQRT(x+1)+1),x,0,1)
+
+;The first one will eliminate one of the square roots.
+INTSUBST_(1/(SQRT(1-x)+SQRT(x+1)+1),[x,0,1],SQRT(1-x)=u,u)
+
+;One of Euler's substitions will finish the job.
+ans:=INTSUBST_(-2*u/(SQRT(2-u^2)+u+1),[u,1,0],2-u^2="euler2") 
+
+;The result after simplification
+ans
+
+
+;Thank you!
+"":='~
+["                Ok, end of the demo!               ";~
+" ";~
+"Author:  Valeriu Anisiu,    anisiu@math.ubbcluj.ro  ";~
+"address: Faculty of Mathematics and Computer Science";~
+"         Babe015f-Bolyai University                    ";~
+"         Kogalniceanu 1 Street                      ";~
+"         3400 Cluj-Napoca, Romania                  "]
+

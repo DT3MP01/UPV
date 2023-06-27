@@ -1,0 +1,59 @@
+The Simplex Method
+==================
+
+Author:  Valeriu Anisiu
+email:   anisiu@math.ubbcluj.ro
+address: Faculty of Mathematics and Computer Science
+         "Babes-Bolyai" University
+         Kogalniceanu 1 Street
+         3400 Cluj-Napoca, Romania
+
+
+The file SIMPLEX.MTH contains functions that perform the minimization and maximization of linear functions, under linear constraints:
+
+min {c1*x1+...+cn*xn + c0: x1>=0,...,xn>=0, f1(x)<=g1(x),...,fm(x)<=gm(x)}
+max {c1*x1+...+cn*xn + c0: x1>=0,...,xn>=0, f1(x)<=g1(x),...,fm(x)<=gm(x)}
+
+   where f1,...,fm,g1,...,gm are linear (in fact affine).
+
+The two main functions contained in the file are:
+
+MINIMIZE(C(x),[u1(x),...,um(x)]) 
+ --> [minC,x=xmin,v]
+
+MAXIMIZE(C(x),[u1(x),...,um(x)]) 
+ --> [maxC,x=xmax,v]
+
+If minC=inf, or maxC=-inf, then the constraints cannot be satisfied (i.e. the domain defined by the constraints is void).  minC is -inf if the function C(x) is unbounded from below and maxC is +inf if the function C(x) is unbounded from above on the (nonvoid) domain defined by the constraints.
+
+u1,...,um are linear equalities or inequalities; the inequalities are considered nonstrict, but both functions also accept < instead of <= and > instead of >=. If uk is an algebraic expression, the equality uk=0 is considered.
+C(x) is the objective function (also linear in the variables x).
+
+Note: the variables x1,...,xn are supposed to be nonnegative. The functions MINIMIZE and MAXIMIZE can be also used when xk is not restricted to be >=0:
+  - if a lower bound ak is known for xk (i.e. xk>ak) then replace xk with yk+ak. The new variable yk is now nonnegative.
+  - if such a lower bound is not known, then simply replace xk with the difference of two new nonnegative variables (xk=yk-zk).
+
+
+One can inspect the simplex tables (preceded by the row and column of the pivot), which are contained in the variable simplextable, generated after each call to MINIMIZE or MAXIMIZE. The generation of these tables is omitted if simplextables is set to hold a nonvector value (for example simplextable:= ). Use the assignment 
+  simplextables:=[]
+if you are interested in such intermediate results, because by default simplextables is not assigned and the tables are not generated.
+
+The auxiliary function SIMPLEXCALL(A,l,g,e,b,c) can be used to invoke directly the minimization; MINIMIZE and MAXIMIZE call this function and are much more convenient. Here A is the n x (l+g+e) matrix of the coefficients, l,g,e are the number of constraints  of the type '<=', '>=',  and '=' respectively. b is the vector containing the right hand side (nonnegative!) of the equalities/inequalities. c is the vector containing the coefficients of the linear function to be minimized; if it has n+1 components, the last  one is subtractive.
+
+For example, to minimize x+y+10 under the constraints x+y+z>1, x-2y=1,y-2z<5, x-2y+z>7, we can use the call
+
+MINIMIZE(x+y+10,[x+y+z>1, x-2y=1, y-2z<5, x-2y+z>7])
+
+or, 
+
+SIMPLEXCALL([0,1,-2;1,1,1;1,-2,1;1,-2,0],1,2,1,[5,1,7,1],[1,1,0,-10])
+(note the order of the constraints!)
+
+In the first case one obtains [11, x=1 AND y=0 AND z=6, [17, 6, 0, 0]], and in the second one the result is [11, [1, 0, 6], [17, 6, 0, 0]], meaning that the minimum is 11 and it is obtained for x=1, y=0, z=6; the rest of the values (17,6,0,0) correspond to the so called "artificial variables" which are associated to each constraint.
+
+The algorithm used is the simplex method (2 phases), elaborated by G. Dantzig in 1947 and presented in most books on linear programming.
+
+When working in approximate mode, the variable eps_ (which is by default 0) can be set to a (small) positive value; in this case all the entries in the simplex tables which are in absolute value less or equal to eps_ are set to 0.
+eps_ should be modified only with great care!
+
+For other examples, please load and run the demo file SIMPLEX.DMO.

@@ -1,0 +1,21 @@
+		CARLSON.DOC Carlson elliptic integrals.
+		    Jim FitzSimons cherry@neta.com
+
+The utility CARLSON.MTH contains the best way to numerically evaluate
+elliptic integrals. It contains the definition of the Carlson elliptic
+integrals RF(x,y,z), RJ(x,y,z,p), RC(x,y), RD(x,y,z), and RG(x,y,z).
+It contains the definitions of the Legendre elliptic integrals
+ELLIPTIC_F(phi,m), ELLIPTIC_E(phi,m), and ELLIPTIC_PI(phi,m,n).
+
+The numerical algorithms are based on Numerical Algorithms 10(1995)13-26.
+B.C. Carlson Numerical computation of real or complex elliptic integrals
+The numerical Carlson elliptic integral are R_F(x,y,z), R_C(x,y),
+R_J(x,y,z,p), R_D(x,y,z), and R_G(x,y,z).
+The numerical Legendre elliptic integral are LEGENDRE_F(phi,m),
+LEGENDRE_E(phi,m), and LEGENDRE_PI(phi,m,n).
+
+These algorithms are good for calculating the elliptic integrals to very
+large precision, and with both real and complex arguments.
+There is a demonstration file CARLSON.DMO which tests the elliptic integrals
+for both real and complex arguments.
+

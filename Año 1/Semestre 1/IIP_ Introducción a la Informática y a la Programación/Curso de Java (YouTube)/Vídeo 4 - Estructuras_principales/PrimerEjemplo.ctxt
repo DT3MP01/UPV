@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=PrimerEjemplo
+comment0.text=\r\n\ Introducci\u00F3n\ a\ primer\ programa\ Java\r\n\ Cosas\ a\ tener\ en\ cuenta\:\r\n\ Java\ es\ main\ sensitive,\ es\ decir,\ distingue\ entre\ may\u00FAsuculas\ y\ min\u00FAsculas.\r\n\ System.out.println,\ se\ debe\ escribir,\ pues,\ empezando\ con\ la\ "S"\ may\u00FAsucula,\r\n\ por\ ejemplo.\ Al\ igual\ que\ "main"\ debe\ ser\ escrito\ en\ min\u00FAscula.\r\n\ \r\n\ Public\:\ modificador\ de\ acceso.\r\n\ TODO\ PROGRAMA\ Java\ debe\ estar\ contenido\ dentro\ de,\ al\ menos,\ una\ clase.\r\n\ TODO\ PROGRAMA\ Java\ empieza\ con\ una\ llave\ de\ apertura\ y\ acaba\ con\ otra\ de\ cierre.\r\n\ Se\ comienzan\ los\ programas\ con\ una\ clase.\r\n\ \r\n\ Nomenclatura\ de\ clases\:\r\n\ No\ deben\ tener\ espacios\ en\ blanco.\r\n\ No\ deben\ tener\ caracteres\ especiales.\r\n\ Deeben\ de\ empezar\ por\ una\ letra\ may\u00FAscula\ y\ siempre\ por\ una\ letra,\ nunca\ por\r\n\ un\ n\u00FAmero.\r\n\ \r\n\ El\ archivo\ que\ se\ crea\ .java\ debe\ llamarse\ exactamente\ igual\ que\ la\ clase.\r\n\ \r\n\ Las\ sentencias\ terminan\ en\ ";".\ Las\ clases\ no\ terminan\ en\ ";".\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+numComments=2

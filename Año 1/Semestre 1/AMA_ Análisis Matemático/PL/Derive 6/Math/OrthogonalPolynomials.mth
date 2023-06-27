@@ -1,0 +1,127 @@
+"OrthogonalPolynomials.mth -- Copyright (c) 1990-2003 by Texas Instruments In~
+corporated"
+
+"The fast iterative algorithms for generating individual orthogonal"
+
+"polynomials in this file contributed by Wolfram Koepf."
+
+RECURRENCE(u,v,v0,m):=REVERSE(ITERATE(APPEND([u],v),v,v0,m-DIM(v0)))
+
+CHEBYCHEV_T_SYMBOLIC(n,x):=IF(n=0,1,(SUM(ITERATES([v_ SUB 1*(2*v_ SUB 2-n-1)*~
+(2*v_ SUB 2-n-2)/(4*x^2*v_ SUB 2*(v_ SUB 2-n)),v_ SUB 2+1],v_,[2^(n-1)*x^n,1]~
+,n/2))) SUB 1)
+
+CHEBYCHEV_T_NUMERIC(n,x):=IF(n=0,1,IF(n=1,x,IF(MOD(n,2)=0,2*CHEBYCHEV_T_NUMER~
+IC(n/2,x)^2-1,2*CHEBYCHEV_T_NUMERIC((n-1)/2,x)*CHEBYCHEV_T_NUMERIC((n+1)/2,x)~
+-x)))
+
+CHEBYCHEV_T(n,x):=IF(NUMBER(x),CHEBYCHEV_T_NUMERIC(n,x),CHEBYCHEV_T_SYMBOLIC(~
+n,x),CHEBYCHEV_T_SYMBOLIC(n,x))
+
+CHEBYCHEV_T_LIST(n,x):=RECURRENCE('(2*x*v_ SUB 1-v_ SUB 2),v_,[x,1],n)
+
+CHEBYCHEV_T_WEIGHT(x):=1/SQRT(1-x^2)
+
+CHEBYCHEV_T_SQUARED_NORM(n):=IF(n=0,pi,pi/2)
+
+CHEBYCHEV_U_SYMBOLIC(n,x):=IF(n=0,1,(SUM(ITERATES([(2*v_ SUB 2-n-1)*(2*v_ SUB~
+ 2-n-2)/(4*v_ SUB 2*x^2*(v_ SUB 2-n-1))*v_ SUB 1,v_ SUB 2+1],v_,[2^n*x^n,1],n~
+/2))) SUB 1)
+
+CHEBYCHEV_U_NUMERIC(n,x):=IF(n=0,1,IF(n=1,2*x,IF(MOD(n,2)=0,2*CHEBYCHEV_T_NUM~
+ERIC(n/2,x)*CHEBYCHEV_U_NUMERIC(n/2,x)-1,2*CHEBYCHEV_T_NUMERIC((n-1)/2,x)*CHE~
+BYCHEV_U_NUMERIC((n+1)/2,x)-2*x)))
+
+CHEBYCHEV_U(n,x):=IF(NUMBER(x),CHEBYCHEV_U_NUMERIC(n,x),CHEBYCHEV_U_SYMBOLIC(~
+n,x),CHEBYCHEV_U_SYMBOLIC(n,x))
+
+CHEBYCHEV_U_LIST(n,x):=RECURRENCE('(2*x*v_ SUB 1-v_ SUB 2),v_,[2*x,1],n)
+
+CHEBYCHEV_U_WEIGHT(x):=SQRT(1-x^2)
+
+CHEBYCHEV_U_SQUARED_NORM(n):=pi/2
+
+LEGENDRE_P(n,x):=2^(-n)*(SUM(ITERATES([v_ SUB 1*(2*v_ SUB 2-n-1)*(2*v_ SUB 2-~
+n-2)/(2*x^2*v_ SUB 2*(2*v_ SUB 2-2*n-1)),v_ SUB 2+1],v_,[COMB(2*n,n)*x^n,1],n~
+/2))) SUB 1
+
+LEGENDRE_P_LIST(n,x):=RECURRENCE('(2*x*v_ SUB 1-v_ SUB 2+(v_ SUB 2-x*v_ SUB 1~
+)/DIM(v_)),v_,[x,1],n)
+
+LEGENDRE_P_WEIGHT(x):=1
+
+LEGENDRE_P_SQUARED_NORM(n):=2/(2*n+1)
+
+ASSOCIATED_LEGENDRE_P(n,m,x):=(-1)^m*(1-x^2)^(m/2)*DIF(LEGENDRE_P(n,x),x,m)
+
+HERMITE_H(n,x):=(SUM(ITERATES([-v_ SUB 1*(2*v_ SUB 2-n-1)*(2*v_ SUB 2-n-2)/(4~
+*x^2*v_ SUB 2),v_ SUB 2+1],v_,[2^n*x^n,1],n/2))) SUB 1
+
+HERMITE_H_LIST(n,x):=RECURRENCE('(2*x*v_ SUB 1-2*(DIM(v_)-1)*v_ SUB 2),v_,[2*~
+x,1],n)
+
+HERMITE_H_WEIGHT(x):=#e^(-x^2)
+
+HERMITE_H_SQUARED_NORM(n):=2^n*SQRT(pi)*n!
+
+HERMITE_HE(n,x):=(SUM(ITERATES([-v_ SUB 1*(2*v_ SUB 2-n-1)*(2*v_ SUB 2-n-2)/(~
+2*x^2*v_ SUB 2),v_ SUB 2+1],v_,[x^n,1],n/2))) SUB 1
+
+HERMITE_HE_LIST(n,x):=RECURRENCE('(x*v_ SUB 1-(DIM(v_)-1)*v_ SUB 2),v_,[x,1],~
+n)
+
+HERMITE_HE_WEIGHT(x):=#e^(-x^2/2)
+
+HERMITE_HE_SQUARED_NORM(n):=SQRT(2)*SQRT(pi)*n!
+
+WEBER_D(n,x):=#e^(-x^2/4)*HERMITE_HE(n,x)
+
+LAGUERRE_L(n,x):=(SUM(ITERATES([v_ SUB 1*x*(v_ SUB 2-n-1)/(v_ SUB 2*v_ SUB 2)~
+,v_ SUB 2+1],v_,[1,1],n))) SUB 1
+
+LAGUERRE_L_LIST(n,x):=RECURRENCE('(2*v_ SUB 1-v_ SUB 2+(v_ SUB 2-(x+1)*v_ SUB~
+ 1)/DIM(v_)),v_,[1-x,1],n)
+
+LAGUERRE_L_WEIGHT(x):=#e^(-x)
+
+LAGUERRE_L_SQUARED_NORM(n):=1
+
+GENERALIZED_LAGUERRE(n,alpha,x):=(SUM(ITERATES([v_ SUB 1*x*(v_ SUB 2-n-1)/(v_~
+ SUB 2*(alpha+v_ SUB 2)),v_ SUB 2+1],v_,[PRODUCT(alpha+k_,k_,1,n)/n!,1],n))) ~
+SUB 1
+
+GENERALIZED_LAGUERRE_LIST(n,alpha,x):=RECURRENCE('(2*v_ SUB 1-v_ SUB 2+((1-al~
+pha)*v_ SUB 2-(1+x-alpha)*v_ SUB 1)/DIM(v_)),v_,[1-x+alpha,1],n)
+
+GENERALIZED_LAGUERRE_WEIGHT(alpha,x):=#e^(-x)*x^alpha
+
+GENERALIZED_LAGUERRE_SQUARED_NORM(alpha,n):=(alpha+n)!/n!
+
+JACOBI_P(n,alpha,beta,x):=(SUM(ITERATES([v_ SUB 1*(alpha+beta+v_ SUB 2+n)*(v_~
+ SUB 2-n-1)*(1-x)/(2*v_ SUB 2*(alpha+v_ SUB 2)),v_ SUB 2+1],v_,[PRODUCT(alpha~
++k_,k_,1,n)/n!,1],n))) SUB 1
+
+JACOBI_P_LIST(n,alpha,beta,x):=RECURRENCE('(((alpha+beta+2*DIM(v_)-1)*(x*(alp~
+ha+beta+2*DIM(v_))*(alpha+beta+2*(DIM(v_)-1))+alpha^2-beta^2)*v_ SUB 1-2*(alp~
+ha+beta+2*DIM(v_))*(alpha+DIM(v_)-1)*(beta+DIM(v_)-1)*v_ SUB 2)/(2*DIM(v_)*(a~
+lpha+beta+DIM(v_))*(alpha+beta+2*(DIM(v_)-1)))),v_,[(x*(alpha+beta+2)+alpha-b~
+eta)/2,1],n)
+
+JACOBI_P_WEIGHT(alpha,beta,x):=(1-x)^alpha*(1+x)^beta
+
+JACOBI_P_SQUARED_NORM(alpha,beta,n):=2^(alpha+beta+1)*(alpha+n)!*(beta+n)!/((~
+alpha+beta+2*n+1)*n!*(alpha+beta+n)!)
+
+GEGENBAUER_C(n,alpha,x):=(SUM(ITERATES([v_ SUB 1*(2*v_ SUB 2-n-1)*(2*v_ SUB 2~
+-n-2)/(4*x^2*v_ SUB 2*(v_ SUB 2-alpha-n)),v_ SUB 2+1],v_,[(2*x)^n*IF(alpha=0,~
+1/n,PRODUCT(alpha+k_-1,k_,1,n)/n!,PRODUCT(alpha+k_-1,k_,1,n)/n!),1],n/2))) SU~
+B 1
+
+GEGENBAUER_C_LIST(n,alpha,x):=RECURRENCE('((2*x*(alpha+DIM(v_)-1)*v_ SUB 1-(2~
+*alpha+DIM(v_)-2)*v_ SUB 2)/DIM(v_)),v_,[2*alpha*x,1],n)
+
+GEGENBAUER_C_WEIGHT(alpha,x):=(1-x^2)^((2*alpha-1)/2)
+
+GEGENBAUER_C_SQUARED_NORM(alpha,n):=2^(1-2*alpha)*pi*(2*alpha+n-1)!/((alpha+n~
+)*n!*(alpha-1)!^2)
+

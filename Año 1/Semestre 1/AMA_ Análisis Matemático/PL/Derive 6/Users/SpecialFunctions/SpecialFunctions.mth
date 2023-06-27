@@ -1,0 +1,1317 @@
+;	SpecialFunctions.mth, August 2003
+;	SPECIAL MATHEMATICAL FUNCTIONS with Derive 6
+
+;	George Douros
+;	Technological Education Institute of Larissa
+;	Larissa, 41110, Greece
+;	douros@teilar.gr
+
+; Auxiliary Utilities .......................................................
+
+DEPENDS(a,b):=SOME(MEMBER?(@100,VARIABLES(a)),@100,VARIABLES(b))
+
+FREE(a,b):=NOT(DEPENDS(a,b))
+
+HASNOT(u,k,L0,L1,L2,L3,L4):=~
+PROG(~
+    L0:=STRING(STRING(u)),~
+    IF(DEPENDS(L0,k),RETURN(false),1),~
+    L1:=APPEND(TERMS(EXPAND(u))),~
+    L2:=MAP_LIST(FACTORS(FACTOR(@)),@,L1),~
+    L3:=APPEND(APPEND(L2)),~
+    L4:=MAP_LIST(STRING(@),@,L3),~
+    FREE(L4,k)~
+    )
+
+SIGNUM(z):=IF(SIGN(z)=1,1,-1,IF(SUM?(z),1,IF(PRODUCT(VARIABLES(z))/z=1,1,-1,1)))
+
+; Exponential Integrals .....................................................
+
+E1(z,r:=z,o:=0):=~
+IF(~
+  VARIABLE?(r) AND INTEGER?(o) AND o>0,~
+  DIF(-#e^(-z)/z*DIF(z,r),r,o-1),~
+  'E1(z)~
+  )
+
+En v:=
+
+ExpInt_00(n,d):=~
+PROG(~
+    IF(NUMBER?(n),1,RETURN(LIM(DIF(En(n,@),@),@,0))),~
+    IF(n=1,RETURN(LN(0)),1),~
+    IF(d=1 AND n>2,RETURN(1/(2-n)),1),~
+    LIM(DIF(En(n,@),@),@,0)~
+    )
+
+ExpInt_01(n,z):=~
+PROG(~
+    IF(INTEGER?(n+1/2),RETURN(z^(n-1)*INT(@^(-n)*#e^(-@),@,z,inf)),1),~
+    IF(INTEGER?(n),1,RETURN('En(n,z))),~
+    IF(~
+      n<=0,~
+      (-n)!*z^(n-1)*#e^(-z)*SUM(z^@/@!,@,0,-n),~
+      (-z)^(n-1)/(n-1)!*(E1(z)-#e^(-z)*SUM((-1)^@*@!/z^(1+@),@,0,n-2))~
+      )~
+    )
+
+ExpInt_02(n,z):=~
+IF(~
+  NUMBER(z),~
+  IF(~
+    z<0,~
+    0,~
+    IF(z=0,IF(n>1,1/(n-1),0,1/(n-1)),ExpInt_01(n,z))~
+    ),~
+  ExpInt_01(n,z)~
+  )
+
+ExpInt_03(n,z,v,d,i):=~
+ITERATE(~
+       SUBST(~
+	    DIF(@1,v),~
+	    [E1'(z),DIF(i,z),DIF(En(n,@),@)],~
+	    [-#e^(-z)/z,(n-1)*i/z-#e^(-z)/z,(n-1)*En(n,@)/@-#e^(-@)/@]~
+	    ),~
+       @1,~
+       ((n-1)*i/z-#e^(-z)/z)*DIF(z,v),~
+       d-1~
+       )
+
+En(n,z,r:=z,o:=0,L0):=~
+PROG(~
+    IF(z=0 AND o>0,RETURN(ExpInt_00(n,o)),1),~
+    L0:=ExpInt_02(n,z),~
+    IF(o<=0,RETURN(L0),1,RETURN(DIF(L0,r,o))),~
+    IF(VARIABLE?(r),1,RETURN(L0)),~
+    ExpInt_03(n,z,r,o,L0)~
+    )
+
+; Gamma Related Functions ...................................................
+
+i_Gamma(a,z,r:=z,o:=0):=~
+IF(~
+  INTEGER?(o) AND o>0,~
+  DIF(-#e^(-z)*z^(a-1)*DIF(z,r),r,o-1),~
+  z^a*En(1-a,z)~
+  )
+
+i_gamma_s(a,z,r:=z,o:=0):=~
+IF(~
+  INTEGER?(o) AND o>0,~
+  IF(~
+    INTEGER?(a) AND a<=0,~
+    DIF(z^(-a),r,o),~
+    DIF(z^(-a),r,o)-En(1-a,z,r,o)/GAMMA(a)~
+    ),~
+  IF(INTEGER?(a) AND a<=0,z^(-a),z^(-a)-En(1-a,z)/GAMMA(a))~
+  )
+
+i_gamma(a,z,r:=z,o:=0):=~
+IF(~
+  INTEGER?(o) AND o>0,~
+  DIF(#e^(-z)*z^(a-1)*DIF(z,r),r,o-1),~
+  GAMMA(a)-z^a*En(1-a,z)~
+  )
+
+Polygamma(n,z,r:=z,o:=0,L0):=~
+PROG(~
+    L0:=n+o,~
+    IF(INTEGER?(n) AND n>-2,1,RETURN('Polygamma(L0,z))),~
+    IF(~
+      n=-1,~
+      DIF(LN(GAMMA(z)),r,o),~
+      IF(~
+	n=0,~
+	DIF(DIGAMMA(z),r,o),~
+	(-1)^(n+1)*n!*DIF(ZETA(n+1,z),r,o)~
+	)~
+      )~
+    )
+
+iBetNeg_a(x,a,b):=~
+ITERATE(~
+       [(@ SUB 3*((x+1)*@ SUB 1-@ SUB 2)+@ SUB 2+(x*(b-2)-1)*@ SUB 1)/(x*((x-b+1)*@ SUB 3-~
+		2*x+3*b-2)),@ SUB 1,@ SUB 3-1],~
+       @,~
+       [(x*(b^2-3*b+1)+b)/(x*(x-2*b+1)*(2*x-3*b+2)),(1-b)/(x-2*b+1),-1],~
+       -a-1~
+       ) SUB 2
+
+iBetNeg_b(x,a,b):=~
+ITERATE(~
+       [(@ SUB 3*(@ SUB 2+(x+a-3)*@ SUB 1)-@ SUB 2-(x+2*(a-2))*@ SUB 1)/((1-x)*((a-2)*@ SUB 3+~
+		x*(1-a)-2*a+3)),@ SUB 1,@ SUB 3-1],~
+       @,~
+       [x^a*(a-1)*(x^2-x-2*a+3)/((x+1)*(x-1)^2*(x*(a-1)+1)*(x*(a-1)+~
+		2*a-3)),x^a*(a-1)/((x+1)*(x-1)*(x*(a-1)+1)),-1],~
+       -b-1~
+       ) SUB 2
+
+i_Beta v:=
+
+iBet_Diff(z,a,b,v,d):=~
+IF(d=0,'i_Beta(z,a,b),'DIF(i_Beta(z,a,b),v,d),'DIF(i_Beta(z,a,b),v,d))
+
+F21 v:=
+
+iBet_Inte(z,a,b):=~
+IF(~
+  NUMBER?(b),~
+  1-GAMMA(a+b)/(GAMMA(a)*GAMMA(b))*INT(@^(b-1)*(1-@)^(a-1),@,0,1-z),~
+  GAMMA(a+b)/(GAMMA(a)*GAMMA(b))*INT(@^(a-1)*(1-@)^(b-1),@,0,z),~
+  GAMMA(a+b)/(GAMMA(a)*GAMMA(b))*INT(@^(a-1)*(1-@)^(b-1),@,0,z)~
+  )
+
+i_Beta(z,a,b,r:=z,o:=0,L0):=~
+PROG(~
+    IF(~
+      VARIABLE?(r) AND INTEGER?(o) AND o>0,~
+      IF(~
+	GAMMA(a)*GAMMA(b)/GAMMA(a+b)=0 OR GAMMA(a+b)/(GAMMA(a)*GAMMA(b))=0 OR z*(1-z)=0,~
+	1,~
+	RETURN(GAMMA(a+b)/(GAMMA(a)*GAMMA(b))*DIF(z^(a-1)*(1-z)^(b-1)*DIF(z,r),r,o-1)),~
+	RETURN(GAMMA(a+b)/(GAMMA(a)*GAMMA(b))*DIF(z^(a-1)*(1-z)^(b-1)*DIF(z,r),r,o-1))~
+	),~
+      1~
+      ),~
+    IF(z=0,RETURN(0),1),~
+    IF(z=1,RETURN(DIF(1,r,o)),1),~
+    IF(a=0,RETURN(DIF(1,r,o)),1),~
+    IF(a=1,RETURN(DIF(1-(1-z)^b,r,o)),1),~
+    IF(b=0,RETURN(DIF(z^a*(1-a)/(z*(a-1)+1),r,o)),1),~
+    IF(b=1,RETURN(DIF(z^a,r,o)),1),~
+    IF(INTEGER?(a) AND a>=0 AND INTEGER?(b) AND b>=1,RETURN(SUM(COMB(a+b-1,j)*z^j*(1-z)^(a+b-j-1),j,a,a+b-1)),1),~
+    IF(INTEGER?(a) AND a<=-1,RETURN(DIF(iBetNeg_a(z,a,b),r,o)),1),~
+    IF(INTEGER?(b) AND b<=-1,RETURN(DIF(iBetNeg_b(z,a,b),r,o)),1),~
+    IF(a>0 AND b>0,1,RETURN(iBet_Diff(z,a,b,r,o)),1),~
+    L0:=iBet_Inte(z,a,b),~
+    IF(HASNOT(L0,"222b"*"221e"*"?"),RETURN(DIF(L0,r,o)),1),~
+    L0:=GAMMA(a+b)*z^a/(a*(GAMMA(a)*GAMMA(b)))*F21(a,1-b,a+1,z),~
+    IF(HASNOT(L0,"F21"*"222b"*"221e"*"?"),DIF(L0,r,o),iBet_Diff(z,a,b,r,o))~
+    )
+
+; Error Integrals ...........................................................
+
+i_erf v:=
+
+ErrInt_00(n,z,j):=~
+ITERATE(~
+       [2*(@3 SUB 2*@3 SUB 3+z*@3 SUB 1),@3 SUB 1,@3 SUB 3-1],@3,~
+       [i_erf(n-1,z),i_erf(n,z),n],~
+       j-1~
+       ) SUB 1
+
+ErrInt_01(n,z,v,d):=~
+IF(~
+  INTEGER?(n) AND n>-2,~
+  IF(n=-1,DIF(2*#e^(-z^2)/SQRT(pi),v,d),DIF(-i_erf(n-1,z)*DIF(z,v),v,d-1)),~
+  SUBST(~
+       DIF(i_erf(n,z),v,d),~
+       VECTOR(DIF(i_erf(n,@),@,@2),@2,1,d),~
+       VECTOR((-1)^@2*ErrInt_00(n,@,@2),@2,1,d)~
+       )~
+  )
+
+i_erf(n,z,r:=z,o:=0):=~
+PROG(~
+    IF(z=0,RETURN(1/(2^n*GAMMA(n/2+1))),1,1),~
+    IF(~
+      VARIABLE?(r) AND INTEGER?(o) AND o>0,~
+      RETURN(ErrInt_01(n,z,r,o))~
+      ),~
+    IF(INTEGER?(n) AND n>-2,1,RETURN('i_erf(n,z))),~
+    ITERATE([(@ SUB 2-2*z*@ SUB 1)/(2*@ SUB 3),@ SUB 1,@ SUB 3+1],@,~
+	[1-ERF(z),2*#e^(-z^2)/SQRT(pi),1],n+1) SUB 2~
+    )
+
+; Legendre Polynomials ......................................................
+
+Pn(n,z):=~
+PROG(~
+    IF(z=1,RETURN(1),1,1),~
+    IF(~
+      z=0 AND (NOT(INTEGER?(n)) OR n>=0),~
+      RETURN((1+COS(pi*n))/(4*n)*COS(pi*n/2)*COMB(n,n/2)),~
+      1,~
+      1~
+      ),~
+    IF(INTEGER?(n) AND n>=0,1,RETURN('Pn(n,z))),~
+    SUM(ITERATES(~
+	[@ SUB 1*(2*@ SUB 2-n-1)*(2*@ SUB 2-n-2)/(2*z^2*@ SUB 2*(2*@ SUB 2-2*n-1)),@ SUB 2+1],~
+	@,~
+	[COMB(2*n,n)*z^n,1],~
+	n/2~
+	)) SUB 1*2^(-n)~
+    )
+
+; Hermite Polynomials .......................................................
+
+Hn(n,z):=~
+PROG(~
+    IF(~
+      z=0 AND (NOT(INTEGER?(n)) OR n>=0),~
+      RETURN((1+COS(pi*n))/(2*(n/2)!)*COS(pi*n/2)*n!),~
+      1,~
+      1~
+      ),~
+    IF(INTEGER?(n) AND n>=0,1,RETURN('Hn(n,z))),~
+    SUM(ITERATES(~
+	      [@ SUB 1*(2*@ SUB 2-n-1)*(2-2*@ SUB 2+n)/(4*z^2*@ SUB 2),@ SUB 2+1],~
+	      @,~
+	      [2^n*z^n,1],~
+	      n/2~
+	      )) SUB 1~
+    )
+
+He(n,z):=~
+PROG(~
+    IF(~
+      z=0 AND (NOT(INTEGER?(n)) OR n>=0),~
+      RETURN(2^(-n/2)*Hn(n,0)),~
+      1,~
+      1~
+      ),~
+    IF(NOT(INTEGER?(n)) OR n<0,RETURN('He(n,z)),1),~
+    2^(-n/2)*Hn(n,z/SQRT(2))~
+    )
+
+; Gegenbauer Polynomials ....................................................
+
+Tn v:=
+
+Ca(a,n,z):=~
+PROG(~
+    IF(n=0,RETURN(1),1),~
+    IF(a=0,RETURN(2/n*Tn(n,z)),1),~
+    IF(~
+      z=1 AND (NOT(INTEGER?(n)) OR n>=0) AND (NOT(NUMBER?(a)) OR a>-1/2),~
+      RETURN(COMB(n+2*a-1,n)),~
+      1,~
+      1~
+      ),~
+    IF(~
+      z=0 AND (NOT(INTEGER?(n)) OR n>=0) AND (NOT(NUMBER?(a)) OR a>-1/2),~
+      RETURN((1+COS(pi*n))/(2*GAMMA(a)*(n/2)!)*COS(pi*n/2)*GAMMA(a+n/2)),~
+      1,~
+      1~
+      ),~
+    IF(a<=-1/2,RETURN('Ca(a,n,z)),1,1),~
+    IF(INTEGER?(n) AND n>=0,1,RETURN('Ca(a,n,z))),~
+    SUM(ITERATES(~
+	      [@ SUB 1*(2*@ SUB 2-n-1)*(2*@ SUB 2-n-2)/(4*z^2*@ SUB 2*(@ SUB 2-a-n)),@ SUB 2+1],~
+	      @,~
+	      [(2*z)^n*IF(a=0,1/n,PRODUCT(a+@-1,@,1,n)/n!,PRODUCT(a+@-1,@,1,n)/n!),1],~
+	      n/2~
+	      )) SUB 1~
+    )
+
+; Chebyshev Polynomials .....................................................
+
+Tn(n,z):=~
+PROG(~
+    IF(z=1,RETURN(1),1,1),~
+    IF(~
+      z=0 AND (NOT(INTEGER?(n)) OR n>=0),~
+      RETURN((1+COS(pi*n))/2*COS(pi*n/2)),~
+      1,~
+      1~
+      ),~
+    IF(INTEGER?(n) AND n>=0,1,RETURN('Tn(n,z))),~
+    IF(n=0,RETURN(1),1,1),~
+    SUM(ITERATES(~
+	      [@ SUB 1*(2*@ SUB 2-n-1)*(2*@ SUB 2-n-2)/(4*z^2*@ SUB 2*(@ SUB 2-n)),@ SUB 2+1],~
+	      @,~
+	      [2^(n-1)*z^n,1],~
+	      n/2~
+	      )) SUB 1~
+    )
+
+Un(n,z):=~
+PROG(~
+    IF(~
+      z=0 AND (NOT(INTEGER?(n)) OR n>=0),~
+      RETURN(Ca(1,n,0)),~
+      1,~
+      1~
+      ),~
+    IF(INTEGER?(n) AND n>=0,Ca(1,n,z),'Un(n,z),'Un(n,z))~
+    )
+
+; Laguerre Polynomials ......................................................
+
+La(a,n,z):=~
+PROG(~
+    IF(~
+      z=0 AND (NOT(INTEGER?(n)) OR n>=0) AND (NOT(NUMBER?(a)) OR a>-1),~
+      RETURN(COMB(n+a,n)),~
+      1,~
+      1~
+      ),~
+    IF(a<=-1,RETURN('La(a,n,z)),1,1),~
+    IF(INTEGER?(n) AND n>=0,1,RETURN('La(a,n,z))),~
+    LIM(DIF(#e^(-@)*@^(a+n),@,n),@,z)/(#e^(-z)*z^a*n!)~
+    )
+
+; Jacobi Polynomials ........................................................
+
+Pab(a,b,n,z):=~
+PROG(~
+    IF(~
+      z=1 AND (NOT(INTEGER?(n)) OR n>=0) AND (NOT(NUMBER?(a)) OR a>-1),~
+      RETURN(COMB(n+a,n)),~
+      1,~
+      1~
+      ),~
+    IF(a<=-1 OR b<=-1,RETURN('Pab(a,b,n,z)),1,1),~
+    IF(INTEGER?(n) AND n>=0,1,RETURN('Pab(a,b,n,z))),~
+    SUM(ITERATES(~
+	      [@ SUB 1*(a+b+@ SUB 2+n)*(@ SUB 2-n-1)*(1-z)/(2*@ SUB 2*(a+@ SUB 2)),@ SUB 2+1],~
+	      @,~
+	      [PRODUCT(a+@,@,1,n)/n!,1],~
+	      n~
+	      )) SUB 1~
+    )
+
+; Elliptic Integrals ........................................................
+
+[Ef v:=,Ee v:=,iEf v:=,iEe v:=,iEp v:=]
+
+EllInt_00(a):=~
+PROG(~
+    IF(~
+      a*(a-1)*(a-1/2)*(a+12*SQRT(2)-17)*(a-12*SQRT(2)+16)=0,~
+      1,~
+      RETURN('Ef(a)),~
+      RETURN('Ef(a))~
+      ),~
+    IF(a=0,RETURN(pi/2),1),~
+    IF(a=1,RETURN(LN(0)),1),~
+    GAMMA(1/4)^2/(4*SQRT(2*pi))*IF(a=1/2,SQRT(2),IF(a=17-12*SQRT(2),(SQRT(2)+1)/2,SQRT(2)+1))~
+    )
+
+Ef(z,r:=z,o:=0):=~
+PROG(~
+    IF(z<0,RETURN(Ef(z/(z-1))/SQRT(1-z)),1),~
+    IF(VARIABLE?(r) AND (o-1)*(o-2)=0,1,RETURN(EllInt_00(z))),~
+    IF(NUMBER?(APPROX(z)),RETURN(0),1),~
+    IF(~
+      o=1,~
+      (Ee(z)/(2*z*(1-z))-Ef(z)/(2*z))*DIF(z,r),~
+      (Ee(z)/(2*z*(1-z))-Ef(z)/(2*z))*DIF(z,r,2)+((2*z-1)*Ee(z)/(2*~
+	z^2*(z-1)^2)+(3*z-2)*Ef(z)/(4*z^2*(z-1)))*DIF(z,r)^2~
+      )~
+    )
+
+EllInt_01(a):=~
+PROG(~
+    IF(~
+      a*(a-1)*(a-1/2)*(a+12*SQRT(2)-17)*(a-12*SQRT(2)+16)=0,~
+      1,~
+      RETURN('Ee(a)),~
+      RETURN('Ee(a))~
+      ),~
+    IF(a=0,RETURN(pi/2),1),~
+    IF(a=1,RETURN(1),1),~
+    (4*GAMMA(3/4)^2+GAMMA(1/4)^2)/(8*SQRT(pi))*IF(a=1/2,1,IF(a=17-12*SQRT(2),2-SQRT(2),4-2*SQRT(~
+	2)))+GAMMA(1/4)^2/(4*SQRT(2*pi))*IF(a=1/2,0,IF(a=17-12*SQRT(2),2-SQRT(2),1-SQRT(2)))~
+    )
+
+Ee(z,r:=z,o:=0):=~
+PROG(~
+    IF(z<0,RETURN(SQRT(1-z)*Ee(z/(z-1))),1),~
+    IF(VARIABLE?(r) AND (o-1)*(o-2)=0,1,RETURN(EllInt_01(z))),~
+    IF(NUMBER?(APPROX(z)),RETURN(0),1),~
+    IF(~
+      o=1,~
+      (Ee(z)-Ef(z))/(2*z)*DIF(z,r),~
+      (Ee(z)-Ef(z))/(2*z)*DIF(z,r,2)+((z-2)*Ee(z)/(4*z^2*(1-z))+~
+	Ef(z)/(2*z^2))*DIF(z,r)^2~
+      )~
+    )
+
+EllInt_02(f,a):=~
+PROG(~
+    IF(~
+      f*a*(a-1)=0,~
+      1,~
+      RETURN('iEf(f,a)),~
+      RETURN('iEf(f,a))~
+      ),~
+    IF(f=0,RETURN(0),1),~
+    IF(a=0,RETURN(f),1),~
+    IF(a=1,RETURN(LN((SIN(f)+1)/(1-SIN(f)))/2),1),~
+    'iEf(f,a)~
+    )
+
+iEf(z,a,r:=z,o:=0):=~
+PROG(~
+    IF(z=pi/2,RETURN(Ef(a,r,o)),1,1),~
+    IF(z<0,RETURN(-iEf(-z,a,r,o)),1),~
+    IF(pi/2<z<pi,RETURN(2*FLOOR(z/pi+1)*Ef(a,r,o)-~
+	iEf(MOD(-z,pi),a,r,o)),1),~
+    IF(z>=pi,RETURN(2*FLOOR(z/pi)*Ef(a,r,o)+~
+	iEf(MOD(z,pi),a,r,o)),1),~
+    IF(a<0,RETURN((Ef(a/(a-1))-iEf(pi/2-z,a/(a-1),r,o))/SQRT(1-a)),1),~
+    IF(a>1,RETURN(iEf(ASIN(SQRT(a)*SIN(z)),1/a,r,o)/SQRT(a)),1),~
+    IF(VARIABLE?(r) AND (o-1)*(o-2)=0,1,RETURN(EllInt_02(z,a))),~
+    IF(z*a*(a-1)=0,RETURN(DIF(EllInt_02(z,a),r,o)),1),~
+    IF(~
+      o=1,~
+      [1/SQRT(1-a*SIN(z)^2),iEe(z,a)/(2*a*(1-a))-iEf(z,a)/(2*a)-SIN(z)*COS(z)/~
+	(2*(1-a)*SQRT(1-a*SIN(z)^2))] . DIF([z,a],r),~
+      [1/SQRT(1-a*SIN(z)^2),iEe(z,a)/(2*a*(1-a))-iEf(z,a)/(2*a)-SIN(z)*COS(z)/~
+	(2*(1-a)*SQRT(1-a*SIN(z)^2))] . DIF([z,a],r,2)+a*SIN(z)*~
+	COS(z)/(1-a*SIN(z)^2)^(3/2)*DIF(z,r)^2+(COS(z)*(2*a^2*(2*a-1)*~
+	SIN(z)^3+a*(1-3*a)*SIN(z))+(1-a*SIN(z)^2)^(3/2)*(2*(2*a-1)*iEe(z,a)+~
+	(a-1)*(3*a-2)*iEf(z,a)))/(4*a^2*(1-a*SIN(z)^2)^(3/2)*(a-1)^2)*DIF(~
+	a,r)^2+SIN(z)^2/(1-a*SIN(z)^2)^(3/2)*DIF(a,r)*DIF(z,r)~
+      )~
+    )
+
+EllInt_03(f,a):=~
+PROG(~
+    IF(~
+      f*a*(a-1)=0,~
+      1,~
+      RETURN('iEe(f,a)),~
+      RETURN('iEe(f,a))~
+      ),~
+    IF(f=0,RETURN(0),1),~
+    IF(a=0,RETURN(f),1),~
+    IF(a=1,RETURN(SIN(f)),1),~
+    'iEe(f,a)~
+    )
+
+iEe(z,a,r:=z,o:=0):=~
+PROG(~
+    IF(z=pi/2,RETURN(Ee(a,r,o)),1,1),~
+    IF(z<0,RETURN(-iEe(-z,a,r,o)),1),~
+    IF(pi/2<z<pi,RETURN(2*FLOOR(z/pi+1)*Ee(a,r,o)-~
+	iEe(MOD(-z,pi),a,r,o)),1),~
+    IF(z>=pi,RETURN(2*FLOOR(z/pi)*Ee(a,r,o)+~
+	iEe(MOD(z,pi),a,r,o)),1),~
+    IF(a<0,RETURN(SQRT(1-a)*(Ee(a/(a-1))-iEe(pi/2-z,a/(a-1),r,o))),1),~
+    IF(a>1,RETURN(SQRT(a)*iEe(z*SQRT(a),1/a,r,o)-~
+	(a-1)*DIF(z,r,o)),1),~
+    IF(VARIABLE?(r) AND (o-1)*(o-2)=0,1,RETURN(EllInt_03(z,a))),~
+    IF(z*a*(a-1)=0,RETURN(DIF(EllInt_03(z,a),r,o)),1),~
+    IF(~
+      o=1,~
+      [SQRT(1-a*SIN(z)^2),(iEe(z,a)-iEf(z,a))/(2*a)] . DIF([z,a],r),~
+      [SQRT(1-a*SIN(z)^2),(iEe(z,a)-iEf(z,a))/(2*a)] . DIF([z,a],r,2)-~
+	a*SIN(z)*COS(z)/SQRT(1-a*SIN(z)^2)*DIF(z,r)^2+(a*SIN(z)*COS(z)+SQRT(1-~
+	a*SIN(z)^2)*((a-2)*iEe(z,a)+2*(1-a)*iEf(z,a)))/(4*a^2*(1-a)*SQRT(1-~
+	a*SIN(z)^2))*DIF(a,r)^2-SIN(z)^2/SQRT(1-a*SIN(z)^2)*~
+		DIF(z,r)*DIF(a,r)~
+      )~
+    )
+
+EllInt_04(f,a,b,L0):=~
+PROG(~
+    IF(~
+      a=b^2 OR (1-b)^2=1-a OR a=b OR b=1,~
+      1,~
+      RETURN('iEp(f,a,b)),~
+      RETURN('iEp(f,a,b))~
+      ),~
+    IF(a=1 AND b=1,RETURN(SIN(f)/(2*COS(f)^2)-LN(COT(f/2+pi/4))/2),1),~
+    L0:=SQRT(1-a*SIN(f)^2),~
+    IF(b=SQRT(a),RETURN(ATAN((SQRT(a)-1)*TAN(f)/L0)/(2*(SQRT(a)-1))+iEf(f,a)/2),1),~
+    IF(b=-SQRT(a),RETURN(ATAN((SQRT(a)+1)*TAN(f)/L0)/(2*(SQRT(a)+1))+iEf(f,a)/2),1),~
+    IF(~
+      b=1+SQRT(1-a),~
+      RETURN(LN((1+TAN(f)*L0)*(L0+SQRT(1-a)*TAN(f))/((1-TAN(f)*L0)*(L0-SQRT(1-a)*TAN(f))))/~
+		(4*SQRT(1-a))+(SQRT(1-a)-1)*iEf(f,a)/(2*SQRT(1-a))),~
+      1~
+      ),~
+    IF(~
+      b=1-SQRT(1-a),~
+      RETURN(LN((1-TAN(f)*L0)*(L0+SQRT(1-a)*TAN(f))/((1+TAN(f)*L0)*(L0-SQRT(1-a)*TAN(f))))/~
+		(4*SQRT(1-a))+(SQRT(1-a)+1)*iEf(f,a)/(2*SQRT(1-a))),~
+      1~
+      ),~
+    IF(a=b,RETURN(1/(1-a)*iEe(f,a)-a/(1-a)*SIN(2*f)*(1/(2*L0))),1),~
+    IF(b=1,RETURN(iEf(f,a)-1/(1-a)*iEe(f,a)+1/(1-a)*TAN(f)*L0),1)~
+    )
+
+EllInt_05(f,a,b):=~
+PROG(~
+    IF(~
+      f*a*(a-1)=0 OR (f=pi/2 AND a=b AND (a+1)*(a-1/2)=0),~
+      1,~
+      RETURN('iEp(f,a,b)),~
+      RETURN('iEp(f,a,b))~
+      ),~
+    IF(f=0,RETURN(0),1),~
+    IF(~
+      a=0,~
+      RETURN(~
+	    IF(~
+	      NUMBER?(b) AND b=1,~
+	      TAN(f),~
+	      ATAN(SQRT(1-b)*SIN(f)/SQRT(1-SIN(f)^2))/SQRT(1-b)~
+	      )~
+	    ),~
+      1~
+      ),~
+    IF(~
+      f=pi/2 AND a=b AND (a+1)*(a-1/2)=0,~
+      RETURN(pi^(3/2)*(9/(64*(3/4)!^2)+1/(16*(1/4)!^2))*IF(a=-1,SQRT(2)/2,2)),~
+      1~
+      ),~
+    IF(a=1,1,RETURN('iEp(f,a,b)),RETURN('iEp(f,a,b))),~
+    IF(b=1,RETURN(SIN(f)/(2*COS(f)^2)-LN(COT(f/2+pi/4))/2),1),~
+    IF(~
+      SIGNUM(b)=1,~
+      SQRT(b)*LN((1-SQRT(b)*SIN(f))/(SQRT(b)*SIN(f)+1))/(2*(1-b))+LN((1-SIN(f))/~
+	(SIN(f)+1))/(2*(b-1)),~
+      SQRT(-b)*ATAN(SQRT(-b)*SIN(f))/(1-b)+LN((1-SIN(f))/(SIN(f)+1))/(2*(b-1))~
+      )~
+    )
+
+iEp_L0(z,a,b):=~
+[~
+1/((1-b*SIN(z)^2)*SQRT(1-a*SIN(z)^2)),~
+iEe(z,a)/(2*(1-a)*(a-b))+iEp(z,a,b)/(2*(b-a))+a*SIN(z)*COS(z)/(2*SQRT(1-a*SIN(z)^2)*(a-1)*(a-b)),~
+iEe(z,a)/(2*(a-b)*(b-1))+iEf(z,a)/(2*b*(b-1))+(a-b^2)*iEp(z,a,b)/(2*b*(1-b)*(a-b))-b*SIN(2*z)*SQRT(1-a*SIN(z)^2)/(4*(1-b)*(a-b)*(b*SIN(z)^2-1))~
+]
+
+iEp_L3(z,a,b,f):=[iEe(z,f,f,1),iEe(f,a,f,1),iEf(z,f,f,1),iEf(f,a,f,1),iEp(z,f,b,f,1),iEp(z,a,f,f,1),iEp(f,a,b,f,1)]
+
+iEp_L4(z,a,b):=[DIF(iEe(z,a),a),DIF(iEe(z,a),z),DIF(iEf(z,a),a),DIF(iEf(z,a),z),DIF(iEp(z,a,b),a),DIF(iEp(z,a,b),b),DIF(iEp(z,a,b),z)]
+
+iEp_L5(z,a,b):=[iEe(z,a,a,1),iEe(z,a,z,1),iEf(z,a,a,1),iEf(z,a,z,1),iEp(z,a,b,a,1),iEp(z,a,b,b,1),iEp(z,a,b,z,1)]
+
+iEp(z,a,b,r:=z,o:=0,L0,L1,L2,L3,L4,L5,L6):=~
+PROG(~
+    IF(b=0,RETURN(iEf(z,a,r,o)),1),~
+    IF(a=b^2 OR (1-b)^2=1-a OR a=b OR b=1,RETURN(EllInt_04(z,a,b)),1),~
+    IF(VARIABLE?(r) AND (o-1)*(o-2)=0,1,RETURN(EllInt_05(z,a,b))),~
+    IF(z*a*(a-1)=0 OR (z=pi/2 AND a=b AND (a+1)*(a-1/2)=0),RETURN(DIF(EllInt_05(z,a,b),r,o)),1,1),~
+    L0:=iEp_L0(z,a,b) . DIF([z,a,b],r),~
+    IF(o=1,RETURN(L0),1),~
+    L1:=DIF(L0,r),~
+    L2:=DIF([iEe(z,@),iEe(@,a),iEf(z,@),iEf(@,a),iEp(z,@,b),iEp(z,a,@),iEp(@,a,b)],@),~
+    L3:=iEp_L3(z,a,b,@),~
+    L6:=SUBST(L1,L2,L3),~
+    IF(r=z OR r=a OR r=b,1,RETURN(L6)),~
+    L4:=iEp_L4(z,a,b),~
+    L5:=iEp_L5(z,a,b),~
+    SUBST(L6,L4,L5)~
+    )
+
+; Weierstrass' Elliptic Functions ...........................................
+
+Wp(z,a,b,r:=z,o:=0):=~
+PROG(~
+    IF(a=0 AND b=0,RETURN(DIF(1/z^2,r,o)),1,1),~
+    IF(~
+      o=0,~
+      'Wp(z,a,b),~
+      IF(~
+	o=1,~
+	SQRT(4*Wp(z,a,b)^3-a*Wp(z,a,b)-b)*DIF(z,r),~
+	IF(~
+	  o=2,~
+	  (12*Wp(z,a,b)^2-a)/2*DIF(z,r)^2+SQRT(4*Wp(z,a,b)^3-a*Wp(z,a,b)-b)*DIF(z,r,2),~
+	  DIF(Wp(z,a,b),r,o)~
+	  )~
+	),~
+      DIF(Wp(z,a,b),r,o)~
+      )~
+    )
+
+; Bessel Functions ..........................................................
+
+BesFun_00(n,z):=~
+SUM((-1)^@27*(n+2*@27)!/((2*@27)!*(n-2*@27)!*(2*z)^(2*@27)),@27,0,FLOOR(n/2))
+
+BesFun_01(n,z):=~
+SUM(~
+ (-1)^@27*(n+2*@27+1)!/((2*@27+1)!*(n-2*@27-1)!*(2*z)^(2*@27+1)),~
+ @27,~
+ 0,~
+ FLOOR(n/2-1/2)~
+ )
+
+BesFun_02(n,z):=1/z*(BesFun_00(n,z)*SIN(z-n*pi/2)+BesFun_01(n,z)*COS(z-n*pi/2))
+
+BesFun_03(n,z):=1/z*(BesFun_00(n,z)*COS(z+n*pi/2)-BesFun_01(n,z)*SIN(z+n*pi/2))
+
+Js(n,z):=IF(INTEGER?(n),IF(n<0,BesFun_03(-n-1,z),BesFun_02(n,z)),'Js(n,z))
+
+Ys(n,z):=~
+IF(INTEGER?(n),(-1)^(n+1)*IF(n<0,BesFun_02(-n-1,z),BesFun_03(n,z)),'Ys(n,z))
+
+Is_1st(n,z):=IF(INTEGER?(n),#e^(-n*pi*#i/2)*Js(n,z*#e^(#i*pi/2)),'Is_1st(n,z))
+
+Is_2nd(n,z):=IF(INTEGER?(n),#e^(3*(n+1)*pi*#i/2)*Ys(n,z*#e^(#i*pi/2)),'Is_2nd(n,z))
+
+Ks(n,z):=~
+IF(~
+  INTEGER?(n),~
+  IF(~
+    n>=0,~
+    pi*#e^(-z)/(2*z)*SUM((n+@27)!/(@27!*(n-@27)!*(2*z)^@27),@27,0,n),~
+    Ks(-n-1,z)~
+    ),~
+  'Ks(n,z)~
+  )
+
+Jn(n,z,r:=z,o:=0):=~
+PROG(~
+    IF(VARIABLE?(r) AND o=1,RETURN((n*Jn(n,z)/z-Jn(n+1,z))*DIF(z,r)),1),~
+    IF(VARIABLE?(r) AND o=2,RETURN((z*Jn(n+1,z)-(z^2-n^2+n)*Jn(n,z))/z^2*DIF(z,r)^2+~
+	(n*Jn(n,z)-z*Jn(n+1,z))/z*DIF(z,r,2)),1),~
+    IF(INTEGER?(n-1/2),SQRT(2*z)/SQRT(pi)*Js(n-1/2,z),'Jn(n,z))~
+    )
+
+Yn(n,z,r:=z,o:=0):=~
+PROG(~
+    IF(VARIABLE?(r) AND o=1,RETURN((n*Yn(n,z)/z-Yn(n+1,z))*DIF(z,r)),1),~
+    IF(VARIABLE?(r) AND o=2,RETURN((z*Yn(n+1,z)-(z^2-n^2+n)*Yn(n,z))/z^2*DIF(z,r)^2+~
+	(n*Yn(n,z)-z*Yn(n+1,z))/z*DIF(z,r,2)),1),~
+    IF(INTEGER?(n-1/2),SQRT(2*z)/SQRT(pi)*Ys(n-1/2,z),'Yn(n,z))~
+    )
+
+In(n,z,r:=z,o:=0):=~
+PROG(~
+    IF(VARIABLE?(r) AND o=1,RETURN((In(n+1,z)+n*In(n,z)/z)*DIF(z,r)),1),~
+    IF(VARIABLE?(r) AND o=2,RETURN(((z^2+n*(n-1))*In(n,z)-z*In(n+1,z))/~
+	z^2*DIF(z,r)^2+(In(n+1,z)+n*In(n,z)/z)*DIF(z,r,2)),1),~
+    IF(~
+      INTEGER?(n-1/2),~
+      SQRT(2*z/pi)*#e^(#i*pi*(1-2*n)/4)*Js(n-1/2,z*#e^(#i*pi/2)),~
+      'In(n,z)~
+      )~
+    )
+
+Kn(n,z,r:=z,o:=0):=~
+PROG(~
+    IF(VARIABLE?(r) AND o=1,RETURN((n*Kn(n,z)/z-Kn(n+1,z))*DIF(z,r)),1),~
+    IF(VARIABLE?(r) AND o=2,RETURN((z*Kn(n+1,z)+(z^2+n*(n-1))*Kn(n,z))/~
+	z^2*DIF(z,r)^2-(z*Kn(n+1,z)-n*Kn(n,z))/z*DIF(z,r,2)),1),~
+    IF(INTEGER?(n-1/2),SQRT(2*z)/SQRT(pi)*Ks(n-1/2,z),'Kn(n,z))~
+    )
+
+; Neumann Polynomials .......................................................
+
+On(n,z):=~
+PROG(~
+    IF(INTEGER?(n),1,RETURN('On(n,z))),~
+    IF(n=0,RETURN(1/z),1),~
+    IF(n<0,RETURN((-1)^n*On(-n,z)),1),~
+    SUM(n*(n-@-1)!/@!*(z/2)^(2*@-n-1),@,0,FLOOR(n/2))/4~
+    )
+
+; Schlafli Polynomials ......................................................
+
+Sn(n,z):=~
+PROG(~
+    IF(INTEGER?(n),1,RETURN('Sn(n,z))),~
+    IF(n=0,RETURN(0),1),~
+    (2*z*On(n,z)-2*COS(n*pi/2)^2)/n~
+    )
+
+; Airy Functions ............................................................
+
+Ai_diff(z):=~
+PROG(~
+    IF(SIGNUM(z)=1,RETURN(z/3*(In(2/3,2/3*z^(3/2))-In(-2/3,2/3*z^(3/2)))),1),~
+    z/3*(Jn(2/3,2*(-z)^(3/2)/3)-Jn(-2/3,2*(-z)^(3/2)/3))~
+    )
+
+Ai(z,r:=z,o:=0):=~
+PROG(~
+    IF(o=0,RETURN(IF(z=0,3^(-2/3)/GAMMA(2/3),'Ai(z),'Ai(z))),1),~
+    IF(z=0 AND o=1 AND VARIABLE?(r),RETURN(-3^(-1/3)/GAMMA(1/3)),1),~
+    IF(z=0 AND o=2 AND VARIABLE?(r),RETURN(0),1),~
+    IF(VARIABLE?(r) AND (o-1)*(o-2)=0,1,RETURN('DIF(Ai(z),r,o)),RETURN('DIF(Ai(z),r,o))),~
+    IF(o=1,Ai_diff(z)*DIF(z,r),z*Ai(z)*DIF(z,r)^2+Ai_diff(z)*DIF(z,r,2))~
+    )
+
+Bi_diff(z):=~
+PROG(~
+    IF(SIGNUM(z)=1,RETURN(z/SQRT(3)*(In(-2/3,2/3*z^(3/2))+In(2/3,2/3*z^(3/2)))),1),~
+    z/SQRT(3)*(Jn(-2/3,2/3*(-z)^(3/2))+Jn(2/3,2/3*(-z)^(3/2)))~
+    )
+
+Bi(z,r:=z,o:=0):=~
+PROG(~
+    IF(o=0,RETURN(IF(z=0,3^(-1/6)/GAMMA(2/3),'Bi(z),'Bi(z))),1),~
+    IF(z=0 AND o=1 AND VARIABLE?(r),RETURN(3^(1/6)/GAMMA(1/3)),1),~
+    IF(z=0 AND o=2 AND VARIABLE?(r),RETURN(0),1),~
+    IF(VARIABLE?(r) AND (o-1)*(o-2)=0,1,RETURN('DIF(Bi(z),r,o)),RETURN('DIF(Bi(z),r,o))),~
+    IF(o=1,Bi_diff(z)*DIF(z,r),z*Bi(z)*DIF(z,r)^2+Bi_diff(z)*DIF(z,r,2))~
+    )
+
+; Kummer's Confluent Hypergeometric Functions ...............................
+
+U11 v:=
+
+; U11(a,b,z) with half integral a, b
+
+KumFun_00(a,b,z):=(-1)^(b-1/2)*pi*#e^z/((a-1/2)!*GAMMA(a))*DIF(SQRT(z)*#e^(-z)*~
+DIF(z^(a-1)*#e^z*ERFC(SQRT(z)),z,a-1/2),z,b-1/2)
+
+KumFun_01(a,b,z):=~
+(-1)^(1/2-b)*pi*z^(1-b)/((a-b)!*GAMMA(a))*DIF(z^(a-1)*#e^z*ERFC(SQRT(z)),z,a-b)
+
+KumFun_02(a,b,z):=(-1)^(b-a)*SQRT(pi)*#e^z*z^(3/2-b)*DIF(z^(-a+b-1)*~
+DIF(ERFC(SQRT(z)),z,b-1/2),z,1/2-a)
+
+KumFun_03(a,b,z):=(-1)^(-a-b+1)*SQRT(pi)/(1/2-b)!*#e^z*z^(3/2-b)*~
+DIF(#e^(-z)*z^(-a)*DIF(#e^z*ERFC(SQRT(z))/SQRT(z),z,1/2-b),z,1/2-a)
+
+KumFun_04(a,b,z):=~
+IF(~
+  a>=1/2,~
+  IF(b>=1/2,KumFun_00(a,b,z),KumFun_01(a,b,z)),~
+  IF(b>=1/2,KumFun_02(a,b,z),KumFun_03(a,b,z))~
+  )
+
+; U11(a,b,z) with integral a
+
+KumFun_05(a,b,z):=(-1)^(b-3/2)*(SQRT(pi)*GAMMA(2-b)/((a-1)!*GAMMA(a-b+1)))*~
+DIF(z^(a-1)*#e^z*DIF(ERFC(SQRT(z))/SQRT(z),z,b-3/2),z,a-1)
+
+KumFun_06(a,b,z):=(-1)^(3/2-b)*SQRT(pi)*(2^(2*a-2*b+1)*(a-b+1/2)!/((a-1)!*~
+(2*a-2*b+1)!))*DIF(z^(a-b)*DIF(#e^z*ERFC(SQRT(z)),z,3/2-b),z,a-1)
+
+KumFun_07(a,b,z):=(-1)^(a+b-3)*(b-a-1)!/((a-1)!*(b-2)!)*DIF(z^(a-1)*#e^z*~
+DIF(#e^(-z)/z,z,b-2),z,a-1)
+
+KumFun_08(a,b,z):=~
+(-1)^(b-1)*z^(1-b)/((a-1)!*(a-b)!)*(E1(z)*DIF(z^(a-1)*#e^z,z,a-b)-~
+DIF(z^(a-1)*SUM((-1)^@28*@28!/z^(1+@28),@28,0,a-2),z,a-b)-SUM(COMB(a-b,@29)*~
+DIF(z^(a-1)*#e^z,z,@29)*DIF(#e^(-z)/z,z,a-b-1-@29),@29,0,a-b-1))
+
+KumFun_09(a,b,z):=(-1)^(1-b)/((a-1)!*(a-b)!)*(E1(z)*DIF(z^(a-b)*#e^z,z,a-1)-~
+DIF(z^(a-b)*SUM((-1)^@28*@28!/z^(1+@28),@28,0,-b),z,a-1)-SUM(COMB(a-1,@29)*~
+DIF(z^(a-b)*#e^z,z,@29)*DIF(#e^(-z)/z,z,a-@29-2),@29,0,a-2))
+
+KumFun_10(a,b,z):=(-1)^a*#e^z*z^(1-b)*DIF(#e^(-z)*z^(a+b-1),z,a)
+
+KumFun_11(a,b,z):=IF(b=2*a,1/SQRT(pi)*#e^(z/2)*z^(1/2-a)*Kn(a-1/2,z/2),?,?)
+
+KumFun_12(a,b,z):=~
+IF(~
+  a<=0,~
+  KumFun_10(-a,b,z),~
+  IF(~
+    INTEGER?(b),~
+    IF(~
+      1<=a<=b-1,~
+      KumFun_07(a,b,z),~
+      IF(1<=b-1<a,KumFun_08(a,b,z),KumFun_09(a,b,z))~
+      ),~
+    IF(b>=3/2,KumFun_05(a,b,z),KumFun_06(a,b,z))~
+    )~
+  )
+
+; U11(a,b,z) with integral a-b
+
+KumFun_13(a,b,z):=z^(1-b)/(PERM(a-1,a-b)*PERM(a-b,a-b))*(z^(1-b)*En(b,z)*~
+DIF(z^(a-1)*#e^z,z,a-b)-SUM(COMB(a-b,@27)*DIF(z^(a-1)*#e^z,z,@27)*~
+DIF(z^(-b)*#e^(-z),z,a-b-@27-1),@27,0,a-b-1))
+
+KumFun_14(a,b,z):=(-1)^(b-a)*#e^z*z*(z^(1-b)*En(b,z)*DIF(z^(b-a-1),z,b-a)-~
+SUM(~
+ COMB(b-a,@27)*DIF(z^(b-a-1),z,@27)*DIF(z^(-b)*#e^(-z),z,b-a-@27-1),~
+ @27,~
+ 0,~
+ b-a-1~
+ )~
+)
+
+KumFun_15(a,b,z):=IF(a>=b,KumFun_13(a,b,z),KumFun_14(a,b,z))
+
+; selection algorithms for U11(a,b,z)
+
+KumFun_16(a,b,z):=~
+IF(~
+  INTEGER?(a) AND (a<=0 OR (INTEGER?(b) OR INTEGER?(b-1/2))),~
+  KumFun_12(a,b,z),~
+  IF(~
+    INTEGER?(a-1/2) AND INTEGER?(b-1/2),~
+    KumFun_04(a,b,z),~
+    IF(INTEGER?(a-b),KumFun_15(a,b,z),KumFun_11(a,b,z)),~
+    IF(INTEGER?(a-b),KumFun_15(a,b,z),KumFun_11(a,b,z))~
+    )~
+  )
+
+; the transformation:  U11(a,b,z) = z^(1-b) U11(1+a-b,2-b,z)
+
+KumFun_17(a,b,z,L0):=~
+PROG(~
+    IF(b=1,RETURN(?),1),~
+    L0:=KumFun_16(1+a-b,2-b,z),~
+    IF(NOT(HASNOT(L0,"?")),?,z^(1-b)*L0)~
+    )
+
+; U11(a,b,z) for z=0
+
+KumFun_18(a,b,L0):=~
+PROG(~
+    IF(~
+      b<1 AND (NOT(INTEGER?(a)) OR a<=0),~
+      RETURN(GAMMA(1-b)/GAMMA(1+a-b)),~
+      1,~
+      RETURN(GAMMA(1-b)/GAMMA(1+a-b))~
+      ),~
+    L0:=U11(a,b,@),~
+    IF(HASNOT(L0,"221e"*"?"),LIM(L0,@,0),LN(0))~
+    )
+
+; Kummer's Confluent Hypergeometric Functions U11(a,b,z)
+
+U11_diff(a,b,z,r,o):=~
+PROG(~
+    IF(z=0,RETURN(IF(o=1,-a*U11(a+1,b+1,0),a*(a+1)*U11(a+2,b+2,0))),1),~
+    IF(~
+      o=1,~
+      -a*U11(a+1,b+1,z)*DIF(z,r),~
+      a/z*U11(a,b,z)*DIF(z,r)^2+(DIF(z,r,2)+(z-b)/z*DIF(z,r)^2)*SUBST(U11(a,b,r,r,1),r,z)~
+      )~
+    )
+
+U11(a,b,z,r:=z,o:=0,L0):=~
+PROG(~
+    IF(z=0 AND o=0,RETURN(KumFun_18(a,b)),1),~
+    IF(VARIABLE?(r) AND (o-1)*(o-2)=0,RETURN(U11_diff(a,b,z,r,o)),1),~
+    L0:=KumFun_16(a,b,@31),~
+    IF(HASNOT(L0,"?"),RETURN(LIM(L0,@31,z)),1),~
+    L0:=KumFun_17(a,b,@31),~
+    IF(HASNOT(L0,"?"),LIM(L0,@31,z),'U11(a,b,z))~
+    )
+
+; Coulomb Wave Functions ....................................................
+
+FL v:=
+
+FL_1st2nd(L,n,z,v,d):=~
+PROG(~
+    IF(d=2,RETURN(SUBST(FL(L,n,v,v,1),v,z)*DIF(z,v,2)-(1-2*n/z-L*(L+1)/z^2)*FL(L,n,z)*DIF(z,v)^2),1),~
+    IF(L=0 AND n=0,RETURN(DIF(SIN(z),v)),1),~
+    IF(z=0 AND L=0,RETURN(SQRT(2*pi*n/(#e^(2*pi*n)-1))),1),~
+    IF(z=0,RETURN(0),1),~
+    IF(n=0,RETURN(((L+1)*SQRT(pi/(2*z))*Jn(L+1/2,z)-SQRT(pi*z/2)*Jn(L+3/2,z))*DIF(z,v)),1),~
+    (SQRT(L^2+n^2)/L*FL(L-1,n,z)-(L/z+n/L)*FL(L,n,z))*DIF(z,v)~
+    )
+
+FL(L,n,z,r:=z,o:=0):=~
+PROG(~
+    IF(VARIABLE?(r) AND (o-1)*(o-2)=0,RETURN(FL_1st2nd(L,n,z,r,o)),1),~
+    IF(z=0,RETURN(0),1),~
+    IF(VARIABLE?(r) AND L=0 AND n=0,RETURN(DIF(SIN(z),r,o)),1),~
+    IF(L=0 AND n=0,RETURN(SIN(z)),1),~
+    IF(n=0,RETURN(SQRT(pi*z/2)*Jn(L+1/2,z)),1),~
+    'FL(L,n,z)~
+    )
+
+GL v:=
+
+GL_1st2nd(L,n,z,v,d):=~
+PROG(~
+    IF(L=0 AND n=0,RETURN(DIF(COS(z),v,d)),1),~
+    IF(d=2,RETURN(SUBST(GL(L,n,v,v,1),v,z)*DIF(z,v,2)-(1-2*n/z-L*(L+1)/z^2)*GL(L,n,z)*DIF(z,v)^2),1),~
+    IF(z=0,RETURN(LN(0)),1),~
+    IF(n=0,RETURN((-1)^(L+1)*(L*SQRT(pi/(2*z))*Jn(-L-1/2,z)+SQRT(pi*z/2)*Jn(1/2-L,z))*DIF(z,v)),1),~
+    (SQRT(L^2+n^2)/L*GL(L-1,n,z)-(L/z+n/L)*GL(L,n,z))*DIF(z,v)~
+    )
+
+GL(L,n,z,r:=z,o:=0):=~
+PROG(~
+    IF(VARIABLE?(r) AND (o-1)*(o-2)=0,RETURN(GL_1st2nd(L,n,z,r,o)),1),~
+    IF(z=0 AND L=0,RETURN(SQRT((#e^(2*pi*n)-1)/(2*pi*n))),1),~
+    IF(z=0,RETURN(LN(0)),1),~
+    IF(VARIABLE?(r) AND L=0 AND n=0,RETURN(DIF(COS(z),r,o)),1),~
+    IF(L=0 AND n=0,RETURN(COS(z)),1),~
+    IF(n=0,RETURN((-1)^L*SQRT(pi*z/2)*Jn(-L-1/2,z)),1),~
+    'GL(L,n,z)~
+    )
+
+; Gauss' Hypergeometric Functions ...........................................
+
+; F21(a,b,c,z) for mainly numeric a, b, c
+
+GauFun_00(a,b,c,z):=-(c-1)!/((b-1)!*(c-2)!^2*(a-1)!)*DIF(z^(a-1)*~
+DIF(z^(b-1)*(1-z)^(c-2)*DIF(LN(1-z)/z,z,c-2),z,b-1),z,a-1)
+
+GauFun_01(a,b,c,z):=2*SQRT(pi)*(c-1)!/((a-1)!*(b-1)!*(c-2)!^2)*DIF(z^(a-1)*~
+DIF(z^(b-1)*(1-z)^(c-2)*DIF(ASIN(SQRT(z))/SQRT(z),z,c-3/2),z,b-1),z,a-1)
+
+GauFun_02(a,b,c,z):=2*(c-1)!/(SQRT(pi)*(a-1)!*(b-1)!)*DIF(z^(a-1)*DIF(z^(b-c)*~
+DIF(ASIN(SQRT(z))/SQRT(1-z),z,3/2-c),z,b-1),z,a-1)
+
+GauFun_03(a,b,c,z):=SQRT(pi)*SQRT(z)*(2*c-2)/((a-1)!*(b-1)!*(c-3/2)!)*~
+DIF(z^(a-1)*DIF(z^(b-1)*(1-z)^(c-3/2)*DIF(ATAN(SQRT(-z))/~
+SQRT(-z),z,c-3/2),z,b-1),z,a-1/2)
+
+GauFun_04(a,b,c,z):=2*(c-1)!/((a-1)!*(b-1)!)*SQRT(z)*DIF(z^(a-1)*DIF(z^(b-c)*~
+DIF(SQRT(z)*(ATAN(SQRT(-z))/SQRT(-z)),z,3/2-c),z,b-1),z,a-1/2)
+
+GauFun_05(a,b,c,z):=(2*c-2)/((b-1)!*(-a+c-1)!)*z^(3/2-c)*(1-z)^(-a-b+c)*~
+DIF(z^(-a+c-1)*(1-z)^(b-c+1/2)*DIF(z^(b-1)*(1-z)^(c-3/2)*~
+DIF(ATAN(SQRT(-z))/SQRT(-z),z,c-3/2),z,b-1),z,1/2-a)
+
+GauFun_06(a,b,c,z):=2*(c-1)!*z^(3/2-c)*(1-z)^(-a-b+c)/(SQRT(pi)*(b-1)!*~
+PERM(c-a-1,1/2-a))*DIF(z^(-a+c-1)*(1-z)^(b-c+1/2)*DIF(z^(b-c)*~
+DIF(SQRT(z)*(ATAN(SQRT(-z))/SQRT(-z)),z,3/2-c),z,b-1),z,1/2-a)
+
+GauFun_07(a,b,c,z):=z^(1-c)/PERM(b-1,b-c)*DIF(z^(b-1)*(1-z)^(-a),z,b-c)
+
+GauFun_08(a,b,c):=~
+INTEGER?(b-c) AND (b>=c AND (NOT(INTEGER?(b)) OR (b<=0 OR NOT(NUMBER(b)))))
+
+GauFun_09(a,b,c,z):=~
+IF(~
+  a>=1/2,~
+  IF(c>=3/2,GauFun_03(a,b,c,z),GauFun_04(a,b,c,z)),~
+  IF(c>=3/2,GauFun_05(a,b,c,z),GauFun_06(a,b,c,z))~
+  )
+
+GauFun_10(a,b,c):=~
+INTEGER?(a-1/2) AND (INTEGER?(b) AND (b>=1 AND (INTEGER?(c-1/2) AND NOT(a<c<3/2))))
+
+GauFun_11(a,b,c,z):=~
+IF(~
+  INTEGER?(c),~
+  GauFun_00(a,b,c,z),~
+  IF(c>=3/2,GauFun_01(a,b,c,z),GauFun_02(a,b,c,z))~
+  )
+
+GauFun_12(a,b,c):=INTEGER?(a) AND (a>=1 AND (INTEGER?(b) AND (b>=~
+	1 AND (INTEGER?(c-1/2) OR INTEGER?(c) AND c>=2))))
+
+GauFun_13(a,b,c,z):=~
+IF(~
+  GauFun_08(a,b,c),~
+  GauFun_07(a,b,c,z),~
+  IF(~
+    GauFun_10(a,b,c),~
+    GauFun_09(a,b,c,z),~
+    GauFun_11(a,b,c,z),~
+    GauFun_11(a,b,c,z)~
+    ),~
+  IF(~
+    GauFun_10(a,b,c),~
+    GauFun_09(a,b,c,z),~
+    GauFun_11(a,b,c,z),~
+    GauFun_11(a,b,c,z)~
+    )~
+  )
+
+GauFun_14(a,b,c,z):=IF(a*b=0,1,GauFun_13(a,b,c,z),GauFun_13(a,b,c,z))
+
+GauFun_15(a,b,c):=~
+GauFun_10(a,b,c) OR (GauFun_12(a,b,c) OR (GauFun_08(a,b,c) OR a*b=0))
+
+; F21(a,b,c,z) for mainly symbolic a, b, c
+
+GauFun_16(a,b,c,z):=PERM(c-1,c-1/2)/(PERM(c-b-1/2,c-1/2)*PERM(a-1,a-b+1/2)*~
+PERM(c-b-1,c-1/2))*z^(3/2-b)*DIF(z^(a-1)*(1-z)^(-2*b+c+1/2)*~
+DIF((1-z)^(b-1/2)*COS((2*b-1)*ATAN(SQRT(-z))),z,c-1/2),z,a-b+1/2)
+	
+GauFun_17(a,b,c,z):=1/(PERM(-1/2,1/2-c)*PERM(a-1,a-b+1/2))*z^(1-c)*~
+DIF(z^(1-b)*DIF(z^(a-1)*((1-z)^(1/2-b)*COS((2*b-1)*~
+ATAN(SQRT(-z)))),z,a-b+1/2),z,(1-2*c)/2)
+
+GauFun_18(a,b,c,z):=PERM(c-1,c-1/2)/(PERM(-a-1/2,b-a-1/2)*PERM(c-b-1,c-1/2)*~
+PERM(c-a-1,c-1/2))*(1-z)^(-a-b+c)*DIF(z^b*DIF(z^(-a-1/2)*(1-z)^(b-1/2)*~
+COS((2*b-1)*ATAN(SQRT(-z))),z,-(2*a-2*b+1)/2),z,c-1/2)
+
+GauFun_19(a,b,c,z):=1/(PERM(-1/2,1/2-c)*PERM(-a-1/2,b-a-1/2))*z^(1-c)*~
+DIF(z^(b-1/2)*(1-z)^(-a-b+1/2)*DIF(z^(-a-1/2)*(1-z)^(b-1/2)*COS((2*b-1)*~
+ATAN(SQRT(-z))),z,-(2*a-2*b+1)/2),z,(1-2*c)/2)
+
+GauFun_20(a,b,c,z):=PERM(c-1,c-1/2)/(PERM(b+c-1,c-1/2)*PERM(c-b-1,c-1/2)*~
+PERM(a-1,a+b))*z^(b+1)*DIF(z^(a-1)*(1-z)^c*DIF(COS(2*b*ASIN(SQRT(z)))/~
+SQRT(1-z),z,c-1/2),z,a+b)
+
+GauFun_21(a,b,c,z):=1/(PERM(-1/2,1/2-c)*PERM(a-1,a+b))*z^(1-c)*~
+DIF(z^(b+1/2)*DIF(z^(a-1)*COS(2*b*ASIN(SQRT(z))),z,a+b),z,1/2-c)
+
+GauFun_22(a,b,c,z):=PERM(c-1,c-1/2)/(PERM(-a-1/2,-a-b)*PERM(c-b-1,c-1/2)*~
+PERM(c-a-1,c-1/2))*(1-z)^(-a-b+c)*DIF(z^(1/2-b)*DIF(z^(-a-1/2)*~
+COS(2*b*ASIN(SQRT(z)))/SQRT(1-z),z,-a-b),z,c-1/2)
+
+GauFun_23(a,b,c,z):=1/(PERM(-1/2,1/2-c)*PERM(-a-1/2,-a-b))*z^(1-c)*~
+DIF(z^(-b)*(1-z)^(-a-b+1/2)*DIF(z^(-a-1/2)*COS(2*b*ASIN(SQRT(z)))/~
+SQRT(1-z),z,-a-b),z,1/2-c)
+
+GauFun_24(a,b,c,z):=PERM(c-1,-2*b+c+1)/(PERM(c-b-1,c-2*b+1)*~
+PERM(a-1,a-b+1/2)*PERM(c-b-1/2,c-2*b+1))*z^(3/2-b)*DIF(z^(a-1)*~
+(1-z)^(-2*b+c+1/2)*DIF(((1+SQRT(1-z))/2)^(2*(1-b)),z,-2*b+c+1),z,a-b+1/2)
+
+GauFun_25(a,b,c,z):=1/(PERM(2*b-2,2*b-c-1)*PERM(a-1,a-b+1/2))*z^(1-c)*DIF(~
+z^(b-1/2)*DIF(z^(a-1)/SQRT(1-z)*((1+SQRT(1-z))/2)^(2*(1-b)),z,a-b+1/2),z,2*b-c-1)
+
+GauFun_26(a,b,c,z):=PERM(c-1,c-2*b+1)/(PERM(c-b-1,c-2*b+1)*PERM(c-a-1,c-~
+2*b+1)*PERM(2*b-a-2,b-a-1/2))*(1-z)^(-a-b+c)*DIF(z^(3/2-b)*DIF(z^(-a+2*b-~
+2)*((1+SQRT(1-z))/2)^(2*(1-b)),z,-a+b-1/2),z,-2*b+c+1)
+
+GauFun_27(a,b,c,z):=1/(PERM(2*b-2,2*b-c-1)*PERM(2*b-a-2,b-a-1/2))*z^(1-c)*~
+DIF(z^(b-1/2)*(1-z)^(-a+b-1)*DIF(z^(-a+2*b-2)*((1+SQRT(1-z))/2)^(2*(1-b)),~
+z,-a+b-1/2),z,2*b-c-1)
+
+GauFun_28(a,b,c,z):=~
+IF(~
+  a-b+1/2>=0,~
+  IF(c-1/2>=0,GauFun_16(a,b,c,z),GauFun_17(a,b,c,z)),~
+  IF(c-1/2>=0,GauFun_18(a,b,c,z),GauFun_19(a,b,c,z))~
+  )
+
+GauFun_29(a,b,c):=INTEGER?(a-b+1/2) AND INTEGER?(c-1/2)
+
+GauFun_30(a,b,c,z):=~
+IF(~
+  a+b>=0,~
+  IF(c-1/2>=0,GauFun_20(a,b,c,z),GauFun_21(a,b,c,z)),~
+  IF(c-1/2>=0,GauFun_22(a,b,c,z),GauFun_23(a,b,c,z))~
+  )
+
+GauFun_31(a,b,c):=INTEGER?(a+b) AND INTEGER?(c-1/2)
+
+GauFun_32(a,b,c,z):=~
+IF(~
+  a-b+1/2>=0,~
+  IF(c-2*b+1>=0,GauFun_24(a,b,c,z),GauFun_25(a,b,c,z)),~
+  IF(c-2*b+1>=0,GauFun_26(a,b,c,z),GauFun_27(a,b,c,z))~
+  )
+
+GauFun_33(a,b,c):=INTEGER?(a-b+1/2) AND INTEGER?(c-2*b+1)
+
+GauFun_34(a,b,c,z):=~
+IF(~
+  GauFun_29(a,b,c),~
+  GauFun_28(a,b,c,z),~
+  IF(~
+    GauFun_31(a,b,c),~
+    GauFun_30(a,b,c,z),~
+    GauFun_32(a,b,c,z),~
+    GauFun_32(a,b,c,z)~
+    ),~
+  IF(~
+    GauFun_31(a,b,c),~
+    GauFun_30(a,b,c,z),~
+    GauFun_32(a,b,c,z),~
+    GauFun_32(a,b,c,z)~
+    )~
+  )
+
+GauFun_35(a,b,c):=GauFun_29(a,b,c) OR (GauFun_31(a,b,c) OR GauFun_33(a,b,c))
+
+; Renormalization of F21(a,b,c,z) for c<=0
+
+GauFun_36(a,b,c,z):=~
+IF(~
+  INTEGER?(a) AND (a<=0 AND (INTEGER?(c) AND a<c<=0)),~
+  PERM(a-c,1-c)*PERM(b-c,1-c)/(1-c)!*z^(1-c)*F21(a-c+1,b-c+1,2-c,z),~
+  PERM(b-c,1-c)*PERM(a-c,1-c)/(1-c)!*z^(1-c)*F21(b-c+1,a-c+1,2-c,z),~
+  PERM(b-c,1-c)*PERM(a-c,1-c)/(1-c)!*z^(1-c)*F21(b-c+1,a-c+1,2-c,z)~
+  )
+
+; Polynomial cases of F21(a,b,c,z)
+
+GauFun_37(a,b,c,z,s):=~
+SUM(PERM(@+a-1,@)*PERM(@+b-1,@)/PERM(@+c-1,@)*(z^@/@!),@,0,-s)
+
+GauFun_38(a,b,c,z,s):=~
+IF(~
+  c>0 OR (NOT(INTEGER?(c)) OR c<=s),~
+  GauFun_37(a,b,c,z,s),~
+  GauFun_36(a,b,c,z),~
+  GauFun_37(a,b,c,z,s)~
+  )
+
+GauFun_39(a,b,c,z):=~
+IF(~
+  INTEGER?(a) AND a<=0,~
+  GauFun_38(a,b,c,z,a),~
+  GauFun_38(a,b,c,z,b),~
+  GauFun_38(a,b,c,z,b)~
+  )
+
+GauFun_40(a,b,c):=INTEGER?(a) AND a<=0 OR INTEGER?(b) AND b<=0
+
+; Integral Representation of F21(a,b,c,z)
+
+GauFun_41(a,b,c,z,L0):=~
+PROG(~
+    L0:=GAMMA(c)/(GAMMA(c-a)*GAMMA(a))*INT(@^(a-1)*(1-@)^(c-a-1)*(1-@*z)^(-b),@,0,1),~
+    IF(HASNOT(L0,"222b"*"221e"*"?"),L0,'F21(a,b,c,z))~
+    )
+
+GauFun_42(a,b,c):=0<a<c AND (INTEGER?(b) AND INTEGER?(a) OR (INTEGER?(b) ~
+	AND INTEGER?(c-a) OR INTEGER?(a) AND INTEGER?(c)))
+
+; selection algorithms for F21(a,b,c,z)
+
+GauFun_43(a,b,c,z):=~
+IF(~
+  GauFun_40(a,b,c),~
+  GauFun_39(a,b,c,z),~
+  IF(GauFun_42(a,b,c),GauFun_41(a,b,c,z),?,?),~
+  IF(GauFun_42(a,b,c),GauFun_41(a,b,c,z),?,?)~
+  )
+
+GauFun_44(a,b,c,z):=~
+IF(~
+  GauFun_35(a,b,c),~
+  IF(INTEGER?(a) OR INTEGER?(a-1/2),GauFun_43(a,b,c,z),GauFun_34(a,b,c,z)),~
+  GauFun_43(a,b,c,z),~
+  GauFun_43(a,b,c,z)~
+  )
+
+GauFun_45(a,b,c,z):=~
+IF(~
+  GauFun_15(a,b,c),~
+  GauFun_14(a,b,c,z),~
+  GauFun_44(a,b,c,z),~
+  GauFun_44(a,b,c,z)~
+  )
+
+GauFun_46(a,b,c,z):=~
+IF(~
+  GauFun_15(a,b,c) OR (GauFun_35(a,b,c) OR (GauFun_40(a,b,c) OR GauFun_42(a,b,c))),~
+  GauFun_45(a,b,c,z),~
+  ?,~
+  ?~
+  )
+
+; the transformation:  F21(a,b,c,z) = (1-z)^(c-a-b) F21(c-a,c-b,c,z)
+
+GauFun_47(a,b,c,z,L0):=~
+PROG(L0:=GauFun_46(c-a,c-b,c,z),IF(NOT(HASNOT(L0,"?")),?,(1-z)^(c-a-b)*L0))
+
+; F21(a,b,c,z) for symbolic argument z
+
+GauFun_48(a,b,c,z,L0):=~
+PROG(~
+    L0:=GauFun_46(a,b,c,@32),~
+    IF(~
+      NOT(HASNOT(L0,"?")),~
+      PROG(~
+	  L0:=GauFun_47(a,b,c,@32),~
+	  IF(~
+	    NOT(HASNOT(L0,"?")),~
+	    PROG(~
+		L0:=GauFun_46(b,a,c,@32),~
+		IF(~
+		  NOT(HASNOT(L0,"?")),~
+		  'F21(a,b,c,z),~
+		  LIM(L0,@32,z)~
+		  )~
+		),~
+	    LIM(L0,@32,z)~
+	    )~
+	  ),~
+      LIM(L0,@32,z)~
+      )~
+    )
+
+; F21(a,b,c,z) for special values of z:		1, 1/9, -1, -1/2, -1/3
+
+GauFun_49(a,b,c,z):=~
+PROG(~
+    IF(~
+      z=-1 AND a=1 AND c=b+1,~
+      RETURN(b/2*(DIGAMMA((1+b)/2)-DIGAMMA(b/2))),~
+      1~
+      ),~
+    IF(~
+      z=1/9 AND (NOT(INTEGER?(5/6+2/3*a)) OR 5/6+2/3*a>0) ~
+	AND b=1/2+a AND c=5/6+a,~
+      RETURN((3/4)^a*SQRT(pi)*GAMMA(5/6+2/3*a)/(GAMMA(1/2+1/3*a)*GAMMA(5/6+1/3*a))),~
+      1~
+      ),~
+    GauFun_48(a,b,c,z)~
+    )
+
+GauFun_50(a,b,c,z):=~
+PROG(~
+    IF(b=1-a,RETURN(2^(1-c)*SQRT(pi)*GAMMA(c)/(GAMMA((a+c)/2)*GAMMA((1-a+c)/2))),1),~
+    IF(a=1 AND b=1,RETURN((c-1)*(DIGAMMA(c/2)-DIGAMMA((c-1)/2))),1),~
+    IF(~
+      b=a AND c=a+1,~
+      RETURN(2^(a-1)*a*(DIGAMMA((1+a)/2)-DIGAMMA(a/2))),~
+      1~
+      ),~
+    IF(~
+      c=(a+b+1)/2,~
+      RETURN(SQRT(pi)*GAMMA((a+b+1)/2)/(GAMMA((1+a)/2)*GAMMA((1+b)/2))),~
+      1~
+      ),~
+    IF(~
+      c=(a+b)/2+1,~
+      RETURN(2*SQRT(pi)/(a-b)*GAMMA((a+b)/2+1)*(1/(GAMMA(a/2)*GAMMA((1+b)/2))-~
+	1/(GAMMA(b/2)*GAMMA((1+a)/2)))),~
+      1~
+      ),~
+    GauFun_48(a,b,c,z)~
+    )
+
+GauFun_51(a,b,c,z):=~
+PROG(~
+    IF(c=1+a-b,RETURN(2^(-a)*SQRT(pi)*GAMMA(1+a-b)/(GAMMA(1+a/2-b)*GAMMA((1+a)/2))),1),~
+    IF(c=2+a-b,RETURN(2^(-a)*SQRT(pi)/(b-1)*GAMMA(2+a-b)*(1/(GAMMA(a/2)*~
+	GAMMA(3/2+a/2-b))-1/(GAMMA((1+a)/2)*GAMMA(1+a/2-b)))),1),~
+    GauFun_49(a,b,c,z)~
+    )
+
+GauFun_52(a,b,c,z):=~
+PROG(~
+    IF(~
+      a=1/2 AND b=1/2 AND c=1 AND z*(z-1)*(z+12*SQRT(2)-17)*(z-12*SQRT(2)+16)=0,~
+      RETURN(IF(z=1,LN(0),2/pi*Ef(z),2/pi*Ef(z))),~
+      1,~
+      1~
+      ),~
+    IF(NOT(INTEGER?(c)) OR c>0,1,RETURN(GauFun_49(a,b,c,z))),~
+    IF(z=1 AND c>a+b,RETURN(GAMMA(c)*GAMMA(c-a-b)/(GAMMA(c-a)*GAMMA(c-b))),1),~
+    IF(z=-1,RETURN(GauFun_51(a,b,c,z)),1),~
+    IF(z=1/2,RETURN(GauFun_50(a,b,c,z)),1),~
+    IF(~
+      z=-1/3 AND b=1/2+a AND c=3/2-2*a,~
+      RETURN((8/9)^(-2*a)*GAMMA(4/3)*GAMMA(3/2-2*a)/(GAMMA(3/2)*GAMMA(4/3-2*a))),~
+      1~
+      ),~
+    GauFun_49(a,b,c,z)~
+    )
+
+GauFun_53(a,b,c,z):=~
+PROG(~
+    IF(~
+      z*(z-1)*(z-1/9)*(z+1)*(z-1/2)*(z+1/3)*(z+12*SQRT(2)-17)*(z-12*SQRT(2)+16)=0,~
+      1,~
+      RETURN(GauFun_48(a,b,c,z))~
+      ),~
+    GauFun_52(a,b,c,z)~
+    )
+
+; Definition of F21(a,b,c,z)
+
+F21_1st(a,b,c,z,v):=~
+IF(~
+  c=0,~
+  IF(a*b=0,0,a*(GauFun_53(a+1,b,0,z)-GauFun_53(a,b,0,z))/z,a*(GauFun_53(a+1,b,0,z)-GauFun_53(a,b,0,z))/z),~
+  a*b/c*GauFun_53(a+1,b+1,c+1,z),~
+  a*b/c*GauFun_53(a+1,b+1,c+1,z)~
+  )*DIF(z,v)
+
+F21_2nd(a,b,c,z,v):=~
+a*b/(z*(1-z))*GauFun_53(a,b,c,z)*DIF(z,v)^2+(DIF(z,v,2)+((a+b+1)*z-c)/(z*(1-z))*DIF(z,v)^2)*F21_1st(a,b,c,z,z)
+
+F21_diff(a,b,c,z,v,d):=~
+PROG(~
+    IF(~
+      z*(z-1)*(z-1/9)*(z+1)*(z-1/2)*(z+1/3)*(z+12*SQRT(2)-17)*(z-12*SQRT(2)+16)=0,~
+      RETURN(IF(d=1,a*b/c*F21(a+1,b+1,c+1,z),a*b*(a+1)*(b+1)/(c*(c+1))*F21(a+2,b+2,c+2,z))),~
+      1~
+      ),~
+    IF(d=1,F21_1st(a,b,c,z,v),F21_2nd(a,b,c,z,v))~
+    )
+
+F21(a,b,c,z,v:=z,d:=0):=PROG(IF(VARIABLE?(v) AND (d-1)*(d-2)=0,RETURN(F21_diff(a,b,c,z,v,d)),1),GauFun_53(a,b,c,z))

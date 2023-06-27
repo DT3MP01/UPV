@@ -1,0 +1,223 @@
+
+**** 05/20/19 17:50:32 *********** Evaluation PSpice (Nov 1999) **************
+
+ * C:\Users\david\Downloads\archivospract8\pract8.sch
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+* Schematics Version 9.1 - Web Update 1
+* Mon May 20 17:50:32 2019
+
+
+
+** Analysis setup **
+.DC LIN V_Ve 0 5 0.01 
+.tran 0ns 1500ns
+.OP 
+.LIB "C:\Users\david\Downloads\archivospract8\pract8.lib"
+
+
+* From [PSPICE NETLIST] section of pspiceev.ini:
+.lib "nom.lib"
+
+.INC "pract8.net"
+
+**** INCLUDING pract8.net ****
+* Schematics Netlist *
+
+
+
+M_M2         $N_0003 $N_0001 $N_0002 $N_0003 MbreakP-X  
++ L=1u  
++ W=1u         
+M_M1         $N_0002 $N_0001 0 0 MbreakN-X  
++ L=1u  
++ W=1u         
+V_VDD         $N_0003 0 5V
+V_Ve         $N_0001 0 DC 0 AC 0
++PULSE 0 5 200n 10n 10n 700n 
+C_C1         0 $N_0002  10p  
+
+**** RESUMING pract8.cir ****
+.INC "pract8.als"
+
+
+
+**** INCLUDING pract8.als ****
+* Schematics Aliases *
+
+.ALIASES
+M_M2            M2(d=$N_0003 g=$N_0001 s=$N_0002 b=$N_0003 )
+M_M1            M1(d=$N_0002 g=$N_0001 s=0 b=0 )
+V_VDD           VDD(+=$N_0003 -=0 )
+V_Ve            Ve(+=$N_0001 -=0 )
+C_C1            C1(1=0 2=$N_0002 )
+.ENDALIASES
+
+
+**** RESUMING pract8.cir ****
+.probe
+
+
+.END
+
+**** 05/20/19 17:50:32 *********** Evaluation PSpice (Nov 1999) **************
+
+ * C:\Users\david\Downloads\archivospract8\pract8.sch
+
+
+ ****     MOSFET MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               MbreakP-X       MbreakN-X       
+               PMOS            NMOS            
+       LEVEL    1               1            
+           L  100.000000E-06  100.000000E-06 
+           W  100.000000E-06  100.000000E-06 
+         VTO   -1               1            
+          KP   15.000000E-06   15.000000E-06 
+       GAMMA    0               0            
+         PHI     .6              .6          
+      LAMBDA    0               0            
+          IS   10.000000E-15   10.000000E-15 
+          JS    0               0            
+          PB     .8              .8          
+        PBSW     .8              .8          
+          CJ    0               0            
+        CJSW    0               0            
+        CGSO    0               0            
+        CGDO    0               0            
+        CGBO    0               0            
+         TOX    0               0            
+          XJ    0               0            
+       UCRIT   10.000000E+03   10.000000E+03 
+      DIOMOD    1               1            
+         VFB    0               0            
+        LETA    0               0            
+        WETA    0               0            
+          U0    0               0            
+        TEMP    0               0            
+         VDD    0               0            
+       XPART    0               0            
+
+
+**** 05/20/19 17:50:32 *********** Evaluation PSpice (Nov 1999) **************
+
+ * C:\Users\david\Downloads\archivospract8\pract8.sch
+
+
+ ****     SMALL SIGNAL BIAS SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+($N_0001)    0.0000                   ($N_0002)    5.0000                       
+
+($N_0003)    5.0000                   
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_VDD       -5.010E-12
+    V_Ve         0.000E+00
+
+    TOTAL POWER DISSIPATION   2.51E-11  WATTS
+
+
+**** 05/20/19 17:50:32 *********** Evaluation PSpice (Nov 1999) **************
+
+ * C:\Users\david\Downloads\archivospract8\pract8.sch
+
+
+ ****     OPERATING POINT INFORMATION      TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+
+
+
+**** MOSFETS
+
+
+NAME         M_M2        M_M1      
+MODEL        MbreakP-X   MbreakN-X 
+ID           5.01E-12    5.01E-12 
+VGS         -5.00E+00    0.00E+00 
+VDS          8.35E-08    5.00E+00 
+VBS          8.35E-08    0.00E+00 
+VTH         -1.00E+00    1.00E+00 
+VDSAT       -4.00E+00    0.00E+00 
+Lin0/Sat1   -1.00E+00   -1.00E+00 
+if          -1.00E+00   -1.00E+00 
+ir          -1.00E+00   -1.00E+00 
+TAU         -1.00E+00   -1.00E+00 
+GM           1.25E-12    0.00E+00 
+GDS          6.00E-05    0.00E+00 
+GMB          0.00E+00    0.00E+00 
+CBD          0.00E+00    0.00E+00 
+CBS          0.00E+00    0.00E+00 
+CGSOV        0.00E+00    0.00E+00 
+CGDOV        0.00E+00    0.00E+00 
+CGBOV        0.00E+00    0.00E+00 
+CGS          0.00E+00    0.00E+00 
+CGD          0.00E+00    0.00E+00 
+CGB          0.00E+00    0.00E+00 
+**** 05/20/19 17:50:32 *********** Evaluation PSpice (Nov 1999) **************
+
+ * C:\Users\david\Downloads\archivospract8\pract8.sch
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+($N_0001)    0.0000                   ($N_0002)    5.0000                       
+
+($N_0003)    5.0000                   
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_VDD       -5.010E-12
+    V_Ve         0.000E+00
+
+    TOTAL POWER DISSIPATION   2.51E-11  WATTS
+
+
+
+          JOB CONCLUDED
+
+          TOTAL JOB TIME             .08
+

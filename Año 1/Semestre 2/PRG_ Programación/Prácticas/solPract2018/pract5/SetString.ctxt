@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.params=
+comment0.target=SetString()
+comment0.text=\n\ Crea\ un\ conjunto\ vacio.\n
+comment1.params=s
+comment1.target=void\ add(java.lang.String)
+comment1.text=\n\ Inserta\ s\ en\ el\ conjunto.\n\ Si\ s\ ya\ pertenece\ al\ conjunto,\ el\ conjunto\ no\ cambia.\n\n\ @param\ s\ String.\ Elemento\ que\ se\ inserta\ en\ el\ conjunto.\n
+comment2.params=s
+comment2.target=boolean\ contains(java.lang.String)
+comment2.text=\n\ Comprueba\ si\ s\ pertenece\ al\ conjunto.\n\n\ @param\ s\ String.\n\ @return\ true\ sii\ s\ pertenece\ al\ conjunto.\n
+comment3.params=s
+comment3.target=void\ remove(java.lang.String)
+comment3.text=\n\ Elimina\ s\ del\ conjunto.\n\ Si\ s\ no\ pertenece\ al\ conjunto,\ el\ conjunto\ no\ cambia.\n\n\ @param\ s\ String.\n
+comment4.params=
+comment4.target=int\ size()
+comment4.text=\n\ Devuelve\ la\ talla\ o\ cardinal\ del\ conjunto.\n\ @return\ la\ talla\ del\ conjunto.\n
+comment5.params=other
+comment5.target=SetString\ intersection(SetString)
+comment5.text=\n\ Devuelve\ el\ conjunto\ interseccion\ del\ conjunto\ y\ del\ otro\ conjunto.\n\n\ @param\ other\ SetString.\n\ @return\ el\ conjunto\ interseccion.\n
+comment6.params=other
+comment6.target=SetString\ union(SetString)
+comment6.text=\n\ Devuelve\ el\ conjunto\ union\ del\ conjunto\ y\ del\ otro\ conjunto.\n\n\ @param\ other\ SetString.\n\ @return\ el\ conjunto\ union.\n
+comment7.params=
+comment7.target=java.lang.String\ toString()
+comment7.text=\n\ Devuelve\ el\ listado\ de\ los\ Strings\ en\ el\ conjunto,\ en\ orden\n\ lexicogr\u00E1fico,\ y\ separados\ por\ saltos\ de\ linea.\n\ Si\ el\ conjunto\ es\ vacio\ devuelve\ "",\ la\ String\ vacia.\n\n\ @return\ el\ listado\ de\ los\ elementos\ del\ conjunto.\n
+numComments=8

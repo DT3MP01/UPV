@@ -1,0 +1,84 @@
+"BesselFunctions.mth -- Copyright (c) 1990-2003 by Texas Instruments Incorpor~
+ated"
+
+"Functions for computing BESSEL_J, BESSEL_J_LIST, SPHERICAL_BESSEL_J_LIST,"
+
+"and BESSEL_Y contributed by Wolfram Koepf and Jim FitzSimons"
+
+BESSEL_J2(v):=v/(v SUB 1+2*SUM(v SUB (2*k_+1),k_,1,DIM(v)/2-1))
+
+BESSEL_J1(n,z):=ITERATE(APPEND([(2*(n-DIM(v_))+4)/z*v_ SUB 1-v_ SUB 2],v_),v_~
+,[1,0],n)
+
+BESSEL_J_LIST(n,z):=BESSEL_J2(BESSEL_J1(n,z))
+
+BESSEL_J(n,z):=IF(z=0,IF(n=0,1,0),IF(MOD(n)=0,IF(n<0,(-1)^n,1)*(BESSEL_J_LIST~
+(ABS(n)+FLOOR(PrecisionDigits/2+4*ABS(z))+4,z)) SUB (ABS(n)+1),(z/2)^n/(SQRT(~
+pi)*GAMMA(n+1/2))*INT(COS(z*COS(t_))*SIN(t_)^(2*n),t_,0,pi)))
+
+BESSEL_J_SERIES(n,z,m):=(z/2)^n*SUM((-z^2/4)^k_/(k_!*(n+k_)!),k_,0,m)
+
+BESSEL_J_ASYMP(n,z):=SQRT(2/(pi*z))*COS(z-(n+1/2)*pi/2)
+
+BESSELY0_AUX(z):=ITERATE(IF(b_ SUB 2=b_ SUB 3,b_,[b_ SUB 1+1,b_ SUB 3,b_ SUB ~
+3+(-z^2/4)^b_ SUB 1/b_ SUB 1!^2*SUM(1/m_,m_,1,b_ SUB 1)]),b_,[1,1,0])
+
+BESSELY0(z):=2/pi*((LN(z/2)+euler_gamma)*BESSEL_J(0,z)-(BESSELY0_AUX(z)) SUB ~
+2)
+
+BESSELY1_AUX(z):=ITERATE(IF(b_ SUB 2=b_ SUB 3,b_,[b_ SUB 1+1,b_ SUB 3,b_ SUB ~
+3+(-z^2/4)^b_ SUB 1/(b_ SUB 1!^2*(b_ SUB 1+1))*(SUM(1/m_,m_,1,b_ SUB 1)+1/(2*~
+(b_ SUB 1+1)))]),b_,[0,1,0])
+
+BESSELY1(z):=2/pi*(-1/z+(LN(z/2)+euler_gamma)*BESSEL_J(1,z)-z/2*(BESSELY1_AUX~
+(z)) SUB 2)
+
+BESSEL_Y1(n,z):=ITERATES([w_ SUB 1+1,w_ SUB 3,2*w_ SUB 1/z*w_ SUB 3-w_ SUB 2]~
+,w_,[1,BESSELY0(z),BESSELY1(z)],n-1)
+
+BESSEL_Y(n,z):=IF(z=0,-inf,IF(n<0,(-1)^n,1)*IF(n=0,BESSELY0(z),IF(ABS(n)=1,BE~
+SSELY1(z),(BESSEL_Y1(ABS(n),z)) SUB ABS(n) SUB 3)))
+
+HARMONIC_NUMBER(n):=SUM(1/k,k,1,n)
+
+BESSEL_Y_SERIES(n,z,m):=2/pi*((euler_gamma+LN(z/2))*BESSEL_J_SERIES(n,z,m)-(S~
+UM((n-m_-1)!/m_!*(z/2)^(2*m_-n),m_,0,n-1)+SUM(COS(pi*m_)*(z/2)^(n+2*m_)/(m_!*~
+(n+m_)!)*(HARMONIC_NUMBER(m_)+HARMONIC_NUMBER(n+m_)),m_,0,m))/2)
+
+BESSEL_Y_ASYMP(n,z):=SQRT(2/(pi*z))*SIN(z-(n+1/2)*pi/2)
+
+BESSEL_I(n,z):=INT(#e^(z*COS(t))*COS(n*t),t,0,pi)/pi
+
+BESSEL_I_SERIES(n,z,m):=(z/2)^n*SUM((z^2/4)^k/(k!*(n+k)!),k,0,m)
+
+BESSEL_I_ASYMP(n,z):=#e^z/SQRT(2*pi*z)*(1-(4*n^2-1)/(8*z))
+
+BESSEL_K(n,z):=INT(#e^(-z*COSH(t))*COSH(n*t),t,0,inf)
+
+BESSEL_K_ASYMP(n,z):=#e^(-z)*SQRT(pi/(2*z))*(1+(4*n^2-1)/(8*z))
+
+SPHERICAL_BESSEL_Y(n,z):=
+
+SPHERICAL_BESSEL_J(n,z):=IF(n<0,(-1)^n*SPHERICAL_BESSEL_Y(-n-1,z),z^n*LIM(ITE~
+RATE(-1/z_*DIF(u_,z_),u_,SIN(z_)/z_,n),z_,z,0))
+
+SPHERICAL_BESSEL_Y(n,z):=IF(n<0,-(-1)^n*SPHERICAL_BESSEL_J(-n-1,z),-z^n*LIM(I~
+TERATE(-1/z_*DIF(u_,z_),u_,COS(z_)/z_,n),z_,z,0))
+
+SPHERICAL_BESSEL_J2(v):=v/SQRT(SUM((2*k_-1)*v SUB k_^2,k_,1,DIM(v)))
+
+SPHERICAL_BESSEL_J1(n,z):=ITERATE(APPEND([(2*(n-DIM(v_))+5)/z*v_ SUB 1-v_ SUB~
+ 2],v_),v_,[1,0],n)
+
+SPHERICAL_BESSEL_J_LIST(n,z):=SPHERICAL_BESSEL_J2(SPHERICAL_BESSEL_J1(n,z))
+
+AI_AUX(z,m):=SUM(3^k*GAMMA(1/3+k)*z^(3*k)/(3*k)!,k,0,m)
+
+BI_AUX(z,m):=SUM(3^k*GAMMA(2/3+k)*z^(3*k+1)/(3*k+1)!,k,0,m)
+
+AI_SERIES(z,m):=IF(z=0,3^(5/6)*(1/3)!/(2*pi),(3^(-1/6)*AI_AUX(z,m)-3^(1/6)*BI~
+_AUX(z,m))/(2*pi))
+
+BI_SERIES(z,m):=IF(z=0,3^(4/3)*(1/3)!/(2*pi),(3^(1/3)*AI_AUX(z,m)+3^(2/3)*BI_~
+AUX(z,m))/(2*pi))
+

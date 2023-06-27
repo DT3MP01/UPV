@@ -1,0 +1,142 @@
+"           The Derive Tensor Algebra and Analysis Package              "
+"   Demonstration File Tensor1.dmo to show various tensor operations    "
+"      Written by Hans A. Dudler (619 420-1787)  25 November 1994       "
+"      Updated for Derive 5                      10 November 2001       "
+"      Updated to expand utility file search     30 September 2002      "
+"     For more detailed documentation, see the text file Tensor.doc     "
+
+; Load the Tensor.mth utility file
+IF(LOAD("TensorAlgebra.mth"), true, LOAD("..\Users\TensorAlgebra\TensorAlgebra.mth"))
+
+;
+"               *** BASIC TENSOR OPERATIONS  ***                      "
+" A simple tensor of rank 3, dimension 3 is the permutation tensor:   "
+; Assign EPS(3) to E__ijk
+E__ijk:=EPS(3)
+;
+
+; Determine rank (order) of tensor
+RANK_T(E__ijk)
+
+; Determine dimension of tensor
+DIM_T(E__ijk)
+
+; Extracting non-zero elements of E__ijk
+NZEL_T(E__ijk)
+
+; Collecting non-zero elements with equal absolute value (1 in this case)
+; This shows skew symmetry (neg.indices indicate neg.value)
+GNZE_T(E__ijk)
+
+; Define a general covariant tensor T_ij (rank=2, dimension=3)
+T_ij:=[[A,B,C],[D,E,F],[G,H,I]]
+
+;
+" Implement the tensor formula  S__i = E__ijk T_jk :                  "
+" This can be done in 2 steps [there are 2 dummy (summation) indices]:"
+;Summing over index j (= sS); result is mixed tensor of rank 3: T__ij_k
+;(2 contravariant indices followed by a covariant index)
+T__ij_k:=IP_T(E__ijk,[iI,jJ,sS],T_ij,[kK,sS],[iI,jJ,kK])
+
+; Contracting indices j and k now gives the desired result
+S__i:=CT_T(T__ij_k,[iI,sS,sS],[iI])
+
+;Same thing can be done in one swoop using CI_T (contract inner product)
+S__i:=CI_T(E__ijk,[iI,sS,tT],T_ij,[sS,tT],[iI])
+
+;
+"              *** COORDINATE TRANSFORMATION  ***                     "
+" Going from X,Y,Z to spherical coordinates r,theta,phi               "
+; New coordinates
+x_:=[r,theta,phi]
+
+; Old coordinates (as functions of new coordinates)
+x:=[r*SIN(theta)*COS(phi),r*SIN(theta)*SIN(phi),r*COS(theta)]
+
+; Jacobian matrix
+JM:=JACOB(x,x_)
+
+; Assign inverse to JM_
+JM_:=JM^-1
+
+; Old metric tensor (Cartesian coordinates)
+g_ij:=DELTA(3)
+
+; Transforming this to new coord.( 2 cov.indices, weight=0)
+g_ij_:=TF_T(g_ij,2,0,JM,JM_)
+
+; Since we are starting from a Cartesian frame, this is a simpler way
+g_ij_:=JM` . JM
+
+; Assigning dual (inverse) to g__ij_
+g__ij_:=g_ij_^-1
+
+; Christoffel symbols (assign to C_ijk_ and C_ij_k_)
+C_ijk_:=CHRIS1(g_ij_,x_)
+
+; Christoffel symbols (assign to C_ijk_ and C_ij_k_)
+C_ij_k_:=CHRIS2(g_ij_,g__ij_,x_)
+
+; The Riemann curvature tensor must be zero (Euclidian space): OK
+R_ijkl_:=RIEM1(C_ijk_,C_ij_k_,x_)
+
+; Definitions for following example
+[a:=,b:=,c:=,X:=ELEMENT(x,1)]
+
+; Example: A contravariant vector V__i in the old system
+V__i:=[a*X,b,c]
+
+; Transforming to new system (no cov.indices, weight=0)
+V__i_:=TF_T(V__i,0,0,JM,JM_)
+
+; We could have regarded V__i as covariant (Cartesian system)
+; to get covariant dual of transformed vector
+V_i_:=TF_T(V__i,1,0,JM,JM_)
+
+; Vector length must be invariant: OK
+V_i_ . V__i_-V__i . V__i
+
+; Computing the covariant derivative of V_i_ (1 cov.index, 0 weight)
+DV_ij_:=CD_T(V_i_,1,0,x_,C_ij_k_)
+
+; Transforming this back to the old frame (JM and JM_ interchanged)
+; we get the gradient tensor of the original vector: OK
+DV_ij:=TF_T(DV_ij_,2,0,JM_,JM)
+
+; To verify the identity  d/dx__j_ (g_ik_) = C_ijk_ + C_jki_
+; find transpose C_jki_ (see discussion in Tensor.doc)
+C_jki_:=TP_T(C_ijk_,[jJ,kK,iI],[iI,jJ,kK])
+
+; Computing right-hand side
+rhs:=C_ijk_+C_jki_
+
+; Ordinary derivative of g_ij_
+g_ijk_:=OD_T(g_ij_,x_)
+
+; Computing left-hand side (transpose)
+lhs:=TP_T(g_ijk_,[iI,kK,jJ],[iI,jJ,kK])
+
+; Verify that lhs = rhs : OK
+lhs-rhs
+
+;
+"                *** NON-EUCLIDIAN SPACE  ***                            ":=~
+" Consider the latitude/longitude coordinates on the earth's surface :   "
+; Defining coordinate system
+x:=[theta,phi]
+
+; Line element is   ds^2 = R^2*dtheta^2 + R^2*COS(theta)*dphi^2
+; This is therefore the covariant metric tensor
+g_ij:=[[R^2,0],[0,R^2*COS(theta)^2]]
+
+; The contravariant metric tensor is the inverse
+g__ij:=g_ij^-1
+
+; Christoffel symbols
+C_ijk:=CHRIS1(g_ij,x)
+
+; Christoffel symbols
+C_ij_k:=CHRIS2(g_ij,g__ij,x)
+
+; Curvature tensor: Non-zero, non-Euclidian space !
+R_ijkl:=RIEM1(C_ijk,C_ij_k,x)

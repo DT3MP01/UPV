@@ -1,0 +1,81 @@
+"DifferentialApplications.mth -- Copyright (c) 1990-2003 by Texas Instruments~
+ Incorporated"
+
+LINE_AUX(x0,y0,d1,x):=y0+d1*(x-x0)
+
+CIRCLE_AUX(v0,r,03b1):=[v0 SUB 1+r*COS(03b1),v0 SUB 2+r*SIN(03b1)]
+
+CURVATURE_AUX(d1,d2):=d2/(1+d1^2)^(3/2)
+
+CURVATURE(y,x):=CURVATURE_AUX(DIF(y,x),DIF(y,x,2))
+
+CENTER_OF_CURVATURE_AUX(v,d1,d2):=v+[-d1,1]*(1+d1^2)/d2
+
+CENTER_OF_CURVATURE(y,x):=CENTER_OF_CURVATURE_AUX([x,y],DIF(y,x),DIF(y,x,2))
+
+TANGENT(y,x,x0):=LIM(LINE_AUX(x_,LIM(y,x,x_),LIM(IF(IDENTICAL?(ABS(x0),inf),y~
+/x,DIF(y,x)),x,x0),x),x_,x0,0)
+
+PERPENDICULAR(y,x,x0):=LIM(LINE_AUX(x_,LIM(y,x,x_),(-1)/LIM(DIF(y,x),x,x0),x)~
+,x_,x0,0)
+
+OSCULATING_CIRCLE(y,x,03b8):=CIRCLE_AUX(CENTER_OF_CURVATURE(y,x),1/CURVATURE~
+(y,x),03b8)
+
+[default1:=1,PARA_DIF(v,t,default1):=ITERATE(DIF(dk,t)/DIF(v SUB 1,t),dk,v SU~
+B 2,default1)]
+
+PARA_CURVATURE(v,t):=CURVATURE_AUX(PARA_DIF(v,t,1),PARA_DIF(v,t,2))
+
+PARA_CENTER_OF_CURVATURE(v,t):=CENTER_OF_CURVATURE_AUX(v,PARA_DIF(v,t,1),PARA~
+_DIF(v,t,2))
+
+PARA_TANGENT(v,t,t0,x):=LIM(LINE_AUX(LIM(v SUB 1,t,t_),LIM(v SUB 2,t,t_),LIM(~
+PARA_DIF(v,t,1),t,t0),x),t_,t0,0)
+
+PARA_PERPENDICULAR(v,t,t0,x):=LIM(LINE_AUX(LIM(v SUB 1,t,t_),LIM(v SUB 2,t,t_~
+),-1/LIM(PARA_DIF(v,t,1),t,t0),x),t_,t0,0)
+
+PARA_OSCULATING_CIRCLE(v,t,t0,03c6):=CIRCLE_AUX(LIM(PARA_CENTER_OF_CURVATURE~
+(v,t),t,t0),1/LIM(PARA_CURVATURE(v,t),t,t0),03c6)
+
+[default1:=1,POLAR_DIF(r,03b8,default1):=PARA_DIF([r*COS(03b8),r*SIN(03b8)~
+],03b8,default1)]
+
+POLAR_CURVATURE(r,03b8):=PARA_CURVATURE([r*COS(03b8),r*SIN(03b8)],03b8)
+
+POLAR_CENTER_OF_CURVATURE(r,03b8):=PARA_CENTER_OF_CURVATURE([r*COS(03b8),r*~
+SIN(03b8)],03b8)
+
+POLAR_TANGENT(r,03b8,03b80,x):=PARA_TANGENT([r*COS(03b8),r*SIN(03b8)],03~
+b8,03b80,x)
+
+POLAR_PERPENDICULAR(r,03b8,03b80,x):=PARA_PERPENDICULAR([r*COS(03b8),r*SIN~
+(03b8)],03b8,03b80,x)
+
+POLAR_OSCULATING_CIRCLE(r,03b8,03b80,03c6):=PARA_OSCULATING_CIRCLE([r*COS(~
+03b8),r*SIN(03b8)],03b8,03b80,03c6)
+
+IMP_DIF_AUX(d1,x,y,n):=ITERATE(DIF(dk,x)+d1*DIF(dk,y),dk,d1,n-1)
+
+[default1:=1,IMP_DIF(u,x,y,default1):=IMP_DIF_AUX(-DIF(u,x)/DIF(u,y),x,y,defa~
+ult1)]
+
+IMP_CURVATURE(u,x,y):=CURVATURE_AUX(IMP_DIF(u,x,y,1),IMP_DIF(u,x,y,2))
+
+IMP_CENTER_OF_CURVATURE(u,x,y):=CENTER_OF_CURVATURE_AUX([x,y],IMP_DIF(u,x,y,1~
+),IMP_DIF(u,x,y,2))
+
+IMP_TANGENT(u,x,y,x0,y0):=LIM(LINE_AUX(x_,y_,LIM(IMP_DIF(u,x,y,1),[x,y],[x0,y~
+0]),x),[x_,y_],[x0,y0])
+
+IMP_PERPENDICULAR(u,x,y,x0,y0):=LIM(LINE_AUX(x_,y_,-1/LIM(IMP_DIF(u,x,y,1),[x~
+,y],[x0,y0]),x),[x_,y_],[x0,y0])
+
+IMP_OSCULATING_CIRCLE(u,x,y,x0,y0,03b8):=CIRCLE_AUX(LIM(IMP_CENTER_OF_CURVAT~
+URE(u,x,y),[x,y],[x0,y0]),1/LIM(IMP_CURVATURE(u,x,y),[x,y],[x0,y0]),x,03b8)
+
+TANGENT_PLANE(u,v,v0):=LIM(GRAD(u,v),v,v0)*(v-v0)
+
+NORMAL_LINE(u,v,v0,t):=v0+t*LIM(GRAD(u,v),v,v0)
+

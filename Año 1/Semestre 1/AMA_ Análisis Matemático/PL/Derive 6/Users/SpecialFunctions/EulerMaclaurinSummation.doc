@@ -1,0 +1,22 @@
+File: EULERMAC.DOC     Euler-Maclaurin Summation Formula Documentation
+
+EULERMAC.MTH was contributed by Jim FitzSimons of Cave Creek, Arizona.
+Phone: 602-488-1859  Fax: 602-488-5014	E-mail: cherry@neta.com
+
+The Euler-Maclaurin summation formula can be used to find asymptotic
+expansions of finite or infinite sums.	It is described in Section 23.1.30
+on page 806 of the Handbook of Mathematical Functions by Milton Abramowitz
+and Irene A. Stegun.
+
+Calls to EULERMAC as defined in EULERMAC.MTH should be of the form:
+
+	EULERMAC(y,k,a0,a,b,m)
+
+y should be an expression which is a function of k, the index variable of
+the sum.  a0 and b are the starting and ending indexes of the sum,
+respectively.  a is the start of the Euler-Maclaurin asymptotic expansion.
+m is the order of the expansion.  a and m need to chosen large enough to
+give the desired accuracy.
+
+EULERMAC.DMO provides two examples using EULERMAC.
+

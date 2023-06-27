@@ -1,0 +1,859 @@
+"__________________________________________________________"
+
+""
+
+"                  Complex Analysis.mth                    "
+
+"             Complex numbers and functions                "
+
+"                    September, 2002                       "
+
+""
+
+"           Jose Luis Galan Garcia   (jl_galan@uma.es)     "
+
+"           Pedro Rodriguez Cielos   (prodriguez@uma.es)   "
+
+"           M. Angeles Galan Garcia                        "
+
+"           Yolanda Padilla Dominguez                      "
+
+"           Esther Sanchez Carrasco                        "
+
+"           Jacobo Sanchez Carrasco                        "
+
+""
+
+"              Department of Applied Mathematic            "
+
+"                    University of Malaga                  "
+
+"                http://www.satd.uma.es/matap              "
+
+""
+
+"__________________________________________________________"
+
+""
+
+""
+
+""
+
+Exponential:=Expand
+
+Trigonometry:=Expand
+
+"__________________________________________________________"
+
+z:epsilonComplex
+
+"__________________________________________________________"
+
+""
+
+""
+
+""
+
+"__________________________________________________________"
+
+"                  COMPLEX NUMBERS                         "
+
+"__________________________________________________________"
+
+""
+
+""
+
+"__________________________________________________________"
+
+"    Modulus of a complex number given in standard form    "
+
+""
+
+MODULUS(z):=ABS(z)
+
+""
+
+"__________________________________________________________"
+
+"   Real part of a complex number given in standard form   "
+
+""
+
+REALPART(z):=RE(z)
+
+""
+
+"__________________________________________________________"
+
+" Imaginary part of a complex number given in standard form "
+
+""
+
+IMAGINARYPART(z):=IM(z)
+
+""
+
+"__________________________________________________________"
+
+"   Conjugate of a complex number given in standard form   "
+
+""
+
+CONJUGATE(z):=CONJ(z)
+
+""
+
+"__________________________________________________________"
+
+"   Argument of a complex number given in cartesian form   "
+
+""
+
+CARTESIANARGUMENT(a,b):=IF(b>=0,ACOT(a,b),2*pi+ACOT(a,b))
+
+""
+
+"__________________________________________________________"
+
+"    Argument of a complex number given in standard form   "
+
+""
+
+ARGUMENT(z):=IF(PHASE(z)>=0,PHASE(z),2*pi+PHASE(z))
+
+""
+
+"__________________________________________________________"
+
+"         Conversion from polar to cartesian form          "
+
+""
+
+POLARCARTESIAN(r,03b8):=[r*COS(03b8),r*SIN(03b8)]
+
+""
+
+"__________________________________________________________"
+
+"         Conversion from polar to standard form           "
+
+""
+
+POLARSTANDARD(r,03b8):=r*COS(03b8)+#i*r*SIN(03b8)
+
+""
+
+"__________________________________________________________"
+
+"        Conversion from cartesian to standard form        "
+
+""
+
+CARTESIANSTANDARD(a,b):=a+b*#i
+
+""
+
+"__________________________________________________________"
+
+"         Conversion from cartesian to polar form          "
+
+""
+
+CARTESIANPOLAR(a,b):=["Modulus",SQRT(a^2+b^2),"Argument",CARTESIANARGUMENT(a,~
+b)]
+
+""
+
+"__________________________________________________________"
+
+"        Conversion from standard to cartesian form        "
+
+""
+
+STANDARDCARTESIAN(z):=[RE(z),IM(z)]
+
+""
+
+"__________________________________________________________"
+
+"         Conversion from standard to polar form           "
+
+""
+
+STANDARDPOLAR(z):=["Modulus",ABS(z),"Argument",ARGUMENT(z)]
+
+""
+
+"__________________________________________________________"
+
+"  Conversion from cartesian to standard and polar forms   "
+
+""
+
+CARTESIAN(a,b):=["Standard",a+b*#i,"Polar",["Modulus",SQRT(a^2+b^2),"Argument~
+",CARTESIANARGUMENT(a,b)]]
+
+""
+
+"__________________________________________________________"
+
+"  Conversion from standard to cartesian and polar forms   "
+
+""
+
+STANDARD(z):=["Cartesian",[RE(z),IM(z)],"Polar",["Modulus",ABS(z),"Argument",~
+ARGUMENT(z)]]
+
+""
+
+"__________________________________________________________"
+
+"  Conversion from polar to standard and cartesian forms   "
+
+""
+
+POLAR(r,03b8):=["Standard",r*COS(03b8)+#i*r*SIN(03b8),"Cartesian",[r*COS(~
+03b8),r*SIN(03b8)]]
+
+""
+
+"__________________________________________________________"
+
+"   Polar n-root of a complex number given in polar form   "
+
+""
+
+POLARROOT(r,03b8,n):=VECTOR(["Modulus",r^(1/n),"Argument",(03b8+2*k*pi)/n],~
+k,0,n-1)
+
+""
+
+"__________________________________________________________"
+
+"  Polar n-root of a complex number given in standard form "
+
+""
+
+STANDARDPOLARROOT(z,n):=POLARROOT((STANDARDPOLAR(z)) SUB 2,(STANDARDPOLAR(z))~
+ SUB 4,n)
+
+""
+
+"__________________________________________________________"
+
+" Polar n-root of a complex number given in cartesian form "
+
+""
+
+CARTESIANPOLARROOT(a,b,n):=POLARROOT((CARTESIANPOLAR(a,b)) SUB 2,(CARTESIANPO~
+LAR(a,b)) SUB 4,n)
+
+""
+
+"__________________________________________________________"
+
+"  Standard n-root of a complex number given in polar form "
+
+""
+
+POLARSTANDARDROOT(r,03b8,n):=VECTOR([r^(1/n)*COS((03b8+2*k*pi)/n)+#i*r^(1/n~
+)*SIN((03b8+2*k*pi)/n)],k,0,n-1)
+
+""
+
+"__________________________________________________________"
+
+"Standard n-root of a complex number given in standard form"
+
+""
+
+STANDARDROOT(z,n):=POLARSTANDARDROOT((STANDARDPOLAR(z)) SUB 2,(STANDARDPOLAR(~
+z)) SUB 4,n)
+
+""
+
+"__________________________________________________________"
+
+"Standard n-root of a complex number given in cartesian form"
+
+""
+
+CARTESIANSTANDARDROOT(a,b,n):=POLARSTANDARDROOT((CARTESIANPOLAR(a,b)) SUB 2,(~
+CARTESIANPOLAR(a,b)) SUB 4,n)
+
+""
+
+"__________________________________________________________"
+
+" Cartesian n-root of a complex number given in polar form "
+
+""
+
+POLARCARTESIANROOT(r,03b8,n):=VECTOR(["Real part",r^(1/n)*COS((03b8+2*k*pi)~
+/n),"Imaginary part",r^(1/n)*SIN((03b8+2*k*pi)/n)],k,0,n-1)
+
+""
+
+"__________________________________________________________"
+
+"Cartesian n-root of a complex number given in standard form"
+
+""
+
+STANDARDCARTESIANROOT(z,n):=POLARCARTESIANROOT((STANDARDPOLAR(z)) SUB 2,(STAN~
+DARDPOLAR(z)) SUB 4,n)
+
+""
+
+"__________________________________________________________"
+
+"Cartesian n-root of a complex number given in cartesian form"
+
+""
+
+CARTESIANROOT(a,b,n):=POLARCARTESIANROOT((CARTESIANPOLAR(a,b)) SUB 2,(CARTESI~
+ANPOLAR(a,b)) SUB 4,n)
+
+""
+
+""
+
+""
+
+""
+
+"__________________________________________________________"
+
+"           FUNCTIONS OF A COMPLEX VARIABLE                "
+
+"__________________________________________________________"
+
+""
+
+""
+
+"__________________________________________________________"
+
+"      Real and imaginary parts of a complex function      "
+
+""
+
+TRANSFORMATION(function):=LIM(function,z,x+#i*y)
+
+""
+
+"__________________________________________________________"
+
+"              Real part of a complex function             "
+
+""
+
+REAL(function):=RE(TRANSFORMATION(function))
+
+""
+
+"__________________________________________________________"
+
+"           Imaginary part of a complex function           "
+
+""
+
+IMAGINARY(function):=IM(TRANSFORMATION(function))
+
+""
+
+"__________________________________________________________"
+
+"           Evaluation of the exponential function         "
+
+""
+
+EXPONENTIALFUNCTION(function):=#e^REAL(function)*(COS(IMAGINARY(function))+#i~
+*SIN(IMAGINARY(function)))
+
+""
+
+"__________________________________________________________"
+
+"              Evaluation of the sine function             "
+
+""
+
+SINE(z):=SIN(z)
+
+""
+
+"__________________________________________________________"
+
+"             Evaluation of the cosine function            "
+
+""
+
+COSINE(z):=COS(z)
+
+""
+
+"__________________________________________________________"
+
+"            Evaluation of the tangent function            "
+
+""
+
+TANGENT(z):=TAN(z)
+
+""
+
+"__________________________________________________________"
+
+"           Evaluation of the logarithm function           "
+
+""
+
+NATURALLOGARITHM(z):=LN(ABS(z))+#i*(ARGUMENT(z)+2*k*pi)
+
+""
+
+"__________________________________________________________"
+
+"    Evaluation of the inverse trigonometric functions     "
+
+""
+
+ARCSINE(z):=IF(z=1 OR z=-1,1/#i*NATURALLOGARITHM(#i*z),[1/#i*NATURALLOGARITHM~
+(#i*z+SQRT(1-z^2)),1/#i*NATURALLOGARITHM(#i*z-SQRT(1-z^2))])
+
+""
+
+""
+
+ARCCOSINE(z):=IF(z=1 OR z=-1,1/#i*NATURALLOGARITHM(z),[1/#i*NATURALLOGARITHM(~
+z+SQRT(z^2-1)),1/#i*NATURALLOGARITHM(z-SQRT(z^2-1))])
+
+""
+
+""
+
+ARCTANGENT(z):=1/(2*#i)*NATURALLOGARITHM((1+#i*z)/(1-#i*z))
+
+""
+
+""
+
+ARCSECANT(z):=IF(z=1 OR z=-1,1/#i*NATURALLOGARITHM(1/z),[1/#i*NATURALLOGARITH~
+M((1+SQRT(1-z^2))/z),1/#i*NATURALLOGARITHM((1-SQRT(1-z^2))/z)])
+
+""
+
+""
+
+ARCCOSECANT(z):=IF(z=1 OR z=-1,1/#i*NATURALLOGARITHM(#i/z),[1/#i*NATURALLOGAR~
+ITHM((#i+SQRT(z^2-1))/z),1/#i*NATURALLOGARITHM((#i-SQRT(z^2-1))/z)])
+
+""
+
+""
+
+ARCCOTANGENT(z):=1/(2*#i)*NATURALLOGARITHM((z+#i)/(z-#i))
+
+""
+
+"__________________________________________________________"
+
+"      Evaluation of the inverse hyperbolic functions      "
+
+""
+
+ARCHYPERBOLICSINE(z):=[NATURALLOGARITHM(z+SQRT(z^2+1)),NATURALLOGARITHM(z-SQR~
+T(z^2+1))]
+
+""
+
+""
+
+ARCHYPERBOLICCOSINE(z):=IF(z=1 OR z=-1,NATURALLOGARITHM(z),[NATURALLOGARITHM(~
+z+SQRT(z^2-1)),NATURALLOGARITHM(z-SQRT(z^2-1))])
+
+""
+
+""
+
+ARCHYPERBOLICTANGENT(z):=1/2*NATURALLOGARITHM((1+z)/(1-z))
+
+""
+
+""
+
+ARCHYPERBOLICSECANT(z):=IF(z=1 OR z=-1,NATURALLOGARITHM(1/z),[NATURALLOGARITH~
+M((1+SQRT(1-z^2))/z),NATURALLOGARITHM((1-SQRT(1-z^2))/z)])
+
+""
+
+""
+
+ARCHYPERBOLICCOSECANT(z):=[NATURALLOGARITHM((1+SQRT(z^2+1))/z),NATURALLOGARIT~
+HM((1-SQRT(z^2+1))/z)]
+
+""
+
+""
+
+ARCHYPERBOLICCOTANGENT(z):=1/2*NATURALLOGARITHM((z+1)/(z-1))
+
+""
+
+"__________________________________________________________"
+
+"             Evaluation of the power function             "
+
+""
+
+COMPLEXPOWER(basefunction,exponentfunction):=EXPONENTIALFUNCTION(exponentfunc~
+tion*NATURALLOGARITHM(basefunction))
+
+""
+
+"__________________________________________________________"
+
+""
+
+""
+
+""
+
+"__________________________________________________________"
+
+"    DIFFERENTATION AND INTEGRATION OF COMPLEX FUNCTIONS   "
+
+"__________________________________________________________"
+
+""
+
+""
+
+"__________________________________________________________"
+
+"               Cauchy-Riemann's conditions                "
+
+""
+
+CRCONDITIONS(function):=IF(DIF(REAL(function),x)=DIF(IMAGINARY(function),y) A~
+ND DIF(REAL(function),y)=-DIF(IMAGINARY(function),x),"Cauchy-Riemann's condit~
+ions hold","Cauchy-Riemann's conditions don't hold",["if",DIF(REAL(function),~
+x)=DIF(IMAGINARY(function),y),"<<and>>",DIF(REAL(function),y)=-DIF(IMAGINARY(~
+function),x),"Cauchy-Riemann's conditions hold"])
+
+""
+
+"__________________________________________________________"
+
+""
+
+CRCONDITIONS2(ufunction,vfunction):=IF(DIF(ufunction,x)=DIF(vfunction,y) AND ~
+DIF(ufunction,y)=-DIF(vfunction,x),"Cauchy-Riemann's conditions hold","Cauchy~
+-Riemann's conditions don't hold",["if",DIF(ufunction,x)=DIF(vfunction,y),"<<~
+and>>",DIF(ufunction,y)=-DIF(vfunction,x),"Cauchy-Riemann's conditions hold"]~
+)
+
+""
+
+"__________________________________________________________"
+
+"Derivative of a complex function using Cauchy-Riemann's conditions"
+
+""
+
+COMPLEXDERIVATIVE(function):=[DIF(function,z),"This resoult is right in analy~
+tic points"]
+
+""
+
+""
+
+COMPLEXDERIVATIVE2(ufunction,vfunction):=[DIF(ufunction,x)+#i*DIF(vfunction,x~
+),"This resoult is right in analytic points"]
+
+""
+
+"__________________________________________________________"
+
+"                    Harmonic functions                    "
+
+""
+
+HARMONIC(function):=IF(DIF(function,x,2)+DIF(function,y,2)=0,"The function is~
+ harmonic","The function is not harmonic","The function is not harmonic")
+
+""
+
+"__________________________________________________________"
+
+"               Conjugate harmonic functions               "
+
+""
+
+CONJUGATEHARMONICU(ufunction):=IF(DIF(ufunction,x,2)+DIF(ufunction,y,2)=0,["T~
+he function is harmonic and a conjugate harmonic function is",POTENTIAL([-DIF~
+(ufunction,y),DIF(ufunction,x)],[0,0],[x,y])],"The function is not harmonic",~
+"The function is not harmonic")
+
+""
+
+""
+
+CONJUGATEHARMONICV(vfunction):=IF(DIF(vfunction,x,2)+DIF(vfunction,y,2)=0,["T~
+he function is harmonic and a conjugate harmonic function is",POTENTIAL([DIF(~
+vfunction,y),-DIF(vfunction,x)],[0,0],[x,y])],"The function is not harmonic",~
+"The function is not harmonic")
+
+""
+
+"__________________________________________________________"
+
+"                   Line complex integral                  "
+
+""
+
+COMPLEXINTEGRAL(function,curve,a,b):=INT([LIM(REAL(function),[x,y],[REAL(curv~
+e),IMAGINARY(curve)]),LIM(-IMAGINARY(function),[x,y],[REAL(curve),IMAGINARY(c~
+urve)])]*DIF([REAL(curve),IMAGINARY(curve)],t),t,a,b)+#i*INT([LIM(IMAGINARY(f~
+unction),[x,y],[REAL(curve),IMAGINARY(curve)]),LIM(REAL(function),[x,y],[REAL~
+(curve),IMAGINARY(curve)])]*DIF([REAL(curve),IMAGINARY(curve)],t),t,a,b)
+
+""
+
+""
+
+COMPLEXINTEGRAL2(ufunction,vfunction,c1,c2,a,b):=INT([LIM(ufunction,[x,y],[c1~
+,c2]),LIM(-vfunction,[x,y],[c1,c2])]*DIF([c1,c2],t),t,a,b)+#i*INT([LIM(vfunct~
+ion,[x,y],[c1,c2]),LIM(ufunction,[x,y],[c1,c2])]*DIF([c1,c2],t),t,a,b)
+
+""
+
+"__________________________________________________________"
+
+"                 Cauchy's integral formula                "
+
+""
+
+CAUCHYFORMULA(function,a,n):=2*pi*#i/n!*LIM(DIF(function,z,n),z,a)
+
+""
+
+"__________________________________________________________"
+
+"             Calculus of the residue of a pole            "
+
+""
+
+POLERESIDUE(function,a,k):=LIM(1/(k-1)!*DIF((z-a)^k*function,z,k-1),z,a)
+
+""
+
+"__________________________________________________________"
+
+""
+
+""
+
+""
+
+"__________________________________________________________"
+
+"                  CONFORMAL MAPPING                       "
+
+"__________________________________________________________"
+
+""
+
+""
+
+"__________________________________________________________"
+
+"                        Translation                       "
+
+""
+
+TRANSLATION(z,03b1):=z+03b1
+
+""
+
+"__________________________________________________________"
+
+"                         Rotation                         "
+
+""
+
+ROTATION(z,03b8):=#e^(#i*03b8)*z
+
+""
+
+"__________________________________________________________"
+
+"                       Magnification                      "
+
+""
+
+MAGNIFICATION(z,a):=a*z
+
+""
+
+"__________________________________________________________"
+
+"          Inversion of a line or a circumference          "
+
+""
+
+INVERSION(a,b,c,d):=IF(a=0,IF(d=0,["This line that crosses the origin maps in~
+to another line crossing the origin",b*u-c*v=0],["This line that does not cro~
+ss the origin maps into a circumference that contents the origin",d*(u^2+v^2)~
++b*u-c*v=0]),IF(d=0,["This circumference that contents the origin maps into a~
+ line that does not cross the origin",b*u-c*v+a=0],["This circumference that ~
+does not content the origin maps into another circumference that does not con~
+tent the origin",d*(u^2+v^2)+b*u-c*v+a=0]))
+
+""
+
+"__________________________________________________________"
+
+""
+
+XZ1_(z1,z2,z3,w1,w2,w3):=["The solution is",w=(a*z+b)/(c*z+d),"where",a=w1*w2~
+-w1*w3,b=-w1*w2*z3-w3*w2*z2+w2*w3*z3+w3*w1*z2,c=w2-w3,d=w3*z3-w2*z2+w1*z2-w1*~
+z3]
+
+""
+
+XZ2_(z1,z2,z3,w1,w2,w3):=["The solution is",w=(a*z+b)/(c*z+d),"where",a=w1*w2~
+-w3*w2,b=w3*w2*z1-w3*w1*z1-w1*w2*z3+w1*w3*z3,c=w1-w3,d=w3*z3-w2*z3+w2*z1-w1*z~
+1]
+
+""
+
+XZ3_(z1,z2,z3,w1,w2,w3):=["The solution is",w=(a*z+b)/(c*z+d),"where",a=w3*w2~
+-w1*w3,b=-w3*w2*z1-w1*w2*z2+w3*w1*z2+w1*w2*z1,c=w2-w1,d=w3*z2-w2*z2-w3*z1+w1*~
+z1]
+
+""
+
+XW1_(z1,z2,z3,w1,w2,w3):=["The solution is",w=(a*z+b)/(c*z+d),"where",a=w2*z2~
+-w2*z1+w3*z1-w3*z3,b=-w2*z3*z2+w3*z3*z2+w2*z3*z1-w3*z1*z2,c=z2-z3,d=-z1*z2+z1~
+*z3]
+
+""
+
+XW2_(z1,z2,z3,w1,w2,w3):=["The solution is",w=(a*z+b)/(c*z+d),"where",a=w3*z3~
+-w3*z2+w1*z2-w1*z1,b=w3*z1*z2-w3*z1*z3+w1*z3*z1-w1*z3*z2,c=z3-z1,d=z1*z2-z3*z~
+2]
+
+""
+
+XW3_(z1,z2,z3,w1,w2,w3):=["The solution is",w=(a*z+b)/(c*z+d),"where",a=w1*z3~
+-w2*z3-w1*z1+w2*z2,b=-w2*z1*z2+w1*z1*z2+w2*z1*z3-w1*z3*z2,c=z2-z1,d=-z3*z2+z3~
+*z1]
+
+""
+
+XZ1W1(z1,z2,z3,w1,w2,w3):=["The solution is",w=(a*z+b)/(c*z+d),"where",a=w2-w~
+3,b=w3*z2-w2*z3,c=1,d=-z2]
+
+""
+
+XZ1W2(z1,z2,z3,w1,w2,w3):=["The solution is",w=(a*z+b)/(c*z+d),"where",a=w1,b~
+=-w1*z3-w3*z2+w3*z3,c=1,d=-z2]
+
+""
+
+XZ1W3(z1,z2,z3,w1,w2,w3):=["The solution is",w=(a*z+b)/(c*z+d),"where",a=w1,b~
+=w2*z2-w1*z2-w2*z3,c=1,d=-z3]
+
+""
+
+XZ2W1(z1,z2,z3,w1,w2,w3):=["The solution is",w=(a*z+b)/(c*z+d),"where",a=w2,b~
+=w3*z3-w2*z3-w3*z1,c=1,d=-z1]
+
+""
+
+XZ2W2(z1,z2,z3,w1,w2,w3):=["The solution is",w=(a*z+b)/(c*z+d),"where",a=w1-w~
+3,b=w3*z1-w1*z3,c=0,d=z1-z3]
+
+""
+
+XZ2W3(z1,z2,z3,w1,w2,w3):=["The solution is",w=(a*z+b)/(c*z+d),"where",a=w2,b~
+=w1*z1-w2*z1-w1*z3,c=0,d=-z3]
+
+""
+
+XZ3W1(z1,z2,z3,w1,w2,w3):=["The solution is",w=(a*z+b)/(c*z+d),"where",a=w3,b~
+=w2*z2-w2*z1-w3*z2,c=1,d=-z1]
+
+""
+
+XZ3W2(z1,z2,z3,w1,w2,w3):=["The solution is",w=(a*z+b)/(c*z+d),"where",a=-w3,~
+b=w1*z2-w1*z1+w3*z1,c=-1,d=z2]
+
+""
+
+XZ3W3(z1,z2,z3,w1,w2,w3):=["The solution is",w=(a*z+b)/(c*z+d),"where",a=w2-w~
+1,b=w1*z2-w2*z1,c=0,d=z2-z1]
+
+""
+
+X_(z1,z2,z3,w1,w2,w3):=["The solution is",w=(a*z+b)/(c*z+d),"where",a=w1*w2*z~
+2-w1*w2*z1+w1*w3*z1-w3*w2*z2+w3*w2*z3-w1*w3*z3,b=-w1*w2*z3*z2+w1*w2*z3*z1+w1*~
+w3*z3*z2-w1*w3*z3*z1+w3*w2*z1*z2-w3*w2*z1*z3-w3*w1*z1*z2+w3*w1*z1*z3,c=-w3*z2~
+-w2*z1+w3*z1+w2*z3+w1*z2-w1*z3,d=-w2*z3*z2+w3*z3*z2+w2*z3*z1-w3*z3*z1+w2*z1*z~
+2-w2*z1*z3-w1*z1*z2+w1*z1*z3]
+
+""
+
+"__________________________________________________________"
+
+" Bilinear mapping that maps three points of complex plane "
+
+" in another three points of complex plane                 "
+
+""
+
+BILINEAR(z1,z2,z3,w1,w2,w3):=IF(z1=inf,IF(w1=inf,XZ1W1(z1,z2,z3,w1,w2,w3),IF(~
+w2=inf,XZ1W2(z1,z2,z3,w1,w2,w3),IF(w3=inf,XZ1W3(z1,z2,z3,w1,w2,w3),XZ1_(z1,z2~
+,z3,w1,w2,w3)))),IF(z2=inf,IF(w1=inf,XZ2W1(z1,z2,z3,w1,w2,w3),IF(w2=inf,XZ2W2~
+(z1,z2,z3,w1,w2,w3),IF(w3=inf,XZ2W3(z1,z2,z3,w1,w2,w3),XZ2_(z1,z2,z3,w1,w2,w3~
+)))),IF(z3=inf,IF(w1=inf,XZ3W1(z1,z2,z3,w1,w2,w3),IF(w2=inf,XZ3W2(z1,z2,z3,w1~
+,w2,w3),IF(w3=inf,XZ3W3(z1,z2,z3,w1,w2,w3),XZ3_(z1,z2,z3,w1,w2,w3)))),IF(w1=i~
+nf,XW1_(z1,z2,z3,w1,w2,w3),IF(w2=inf,XW2_(z1,z2,z3,w1,w2,w3),IF(w3=inf,XW3_(z~
+1,z2,z3,w1,w2,w3),X_(z1,z2,z3,w1,w2,w3)))))))
+
+""
+
+"__________________________________________________________"
+
+"   Mapping of the superior semi-plane in the unit circle  "
+
+""
+
+SEMIPLANECIRCLE(z0,z1,w1):=IF(z1=inf,["The solution is",w=(a*z+b)/(c*z+d),"wh~
+ere",a=w1,b=-w1*z0,c=1,d=-CONJ(z0)],["The solution is",w=(a*z+b)/(c*z+d),"whe~
+re",a=w1*z1-w1*CONJ(z0),b=w1*z0*CONJ(z0)-w1*z1*z0,c=z1-z0,d=z0*CONJ(z0)-z1*CO~
+NJ(z0)])
+
+""
+
+"__________________________________________________________"
+
+" Finding an harmonic function in the superior semi-plane  "
+
+" from its value in the real axis                          "
+
+""
+
+POISSON(function):=1/pi*INT(y*function/((t-x)^2+y^2),t,-inf,inf)
+
+""
+
+"__________________________________________________________"
+
+"__________________________________________________________"
+

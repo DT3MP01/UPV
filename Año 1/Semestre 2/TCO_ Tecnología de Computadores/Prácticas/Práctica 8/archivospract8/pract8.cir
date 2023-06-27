@@ -1,0 +1,25 @@
+* C:\Users\david\Downloads\archivospract8\pract8.sch
+
+* Schematics Version 9.1 - Web Update 1
+* Mon May 20 17:50:32 2019
+
+
+
+** Analysis setup **
+.DC LIN V_Ve 0 5 0.01 
+.tran 0ns 1500ns
+.OP 
+.LIB "C:\Users\david\Downloads\archivospract8\pract8.lib"
+
+
+* From [PSPICE NETLIST] section of pspiceev.ini:
+.lib "nom.lib"
+
+.INC "pract8.net"
+.INC "pract8.als"
+
+
+.probe
+
+
+.END

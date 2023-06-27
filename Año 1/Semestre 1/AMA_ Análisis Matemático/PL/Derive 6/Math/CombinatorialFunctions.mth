@@ -1,0 +1,96 @@
+"CombinatorialFunctions.mth -- Copyright (c) 1990-2003 by Texas Instruments I~
+ncorporated"
+
+CATALAN(n):=COMB(2*n,n)/(n+1)
+
+STIRLING(n,k,k_:=0,u_,v_:=[1]):=PROG(IF(n*k<0,RETURN(0)),IF(n>0,PROG(IF(n<=k,~
+RETURN(MAX(0,n-k+1))),u_:=VECTOR((-1)^(k-j_)*j_^n,j_,0,k),n:=k,LOOP(IF(k=0,RE~
+TURN(u_*v_/n!)),v_:=ADJOIN(0,v_)+APPEND(v_,[0]),k:-1))),n:=-n,k:=-k,IF(n>=k,R~
+ETURN(MAX(k-n+1,0))),IF(n=0,RETURN(0)),IF(n=1,RETURN((k-1)!)),IF(n=k-1,RETURN~
+(COMB(k,2))),IF(n>k/2,PROG(LOOP(IF(k_=k-n,exit),v_:=k_*APPEND(v_,[0])+ADJOIN(~
+0,v_),k_:+1),LOOP(IF(k_=n,exit),v_:=REST(k_*APPEND(v_,[0])+ADJOIN(0,v_)),k_:+~
+1),LOOP(IF(k_=k,RETURN(FIRST(v_))),v_:=DELETE(REST(k_*APPEND(v_,[0])+ADJOIN(0~
+,v_)),-1),k_:+1))),LOOP(IF(k_=n,exit),v_:=k_*ADJOIN(0,v_)+APPEND(v_,[0]),k_:+~
+1),LOOP(IF(k_=k-n,exit),v_:=REST(k_*ADJOIN(0,v_)+APPEND(v_,[0])),k_:+1),LOOP(~
+IF(k_=k,RETURN(FIRST(v_))),v_:=DELETE(REST(k_*ADJOIN(0,v_)+APPEND(v_,[0])),-1~
+),k_:+1))
+
+STIRLING1(n,k):=STIRLING(-k,-n)
+
+STIRLING2(n,k):=STIRLING(n,k)
+
+STIRLING_SUBSET(n,k):=STIRLING(n,k)
+
+STIRLING_CYCLE(n,k):=STIRLING(-k,-n)
+
+BERNOULLI(n):=IF(n=0,1,IF(n=1,-1/2,-n*ZETA(1-n)))
+
+BERNOULLI_POLY(n,x):=IF(n=1,x-1/2,n*LIM(SUM(k^(n-1),k,1,x_-1),x_,x)+BERNOULLI~
+(n))
+
+EULER_POLY(n,x):=2/(n+1)*(BERNOULLI_POLY(n+1,x)-2^(n+1)*BERNOULLI_POLY(n+1,x/~
+2))
+
+EULER(n):=IF(MOD(n,2)=1,0,2^n*EULER_POLY(n,1/2))
+
+PARTS_AUX(n,m):=IF(n<2*m,1,1+SUM(PARTS_AUX(n-k_,k_),k_,m,FLOOR(n,2)))
+
+PARTS(n):=IF(n<0,0,PARTS_AUX(n,1))
+
+DISTINCT_PARTS_AUX(n,m):=IF(n<2*m,1,1+SUM(DISTINCT_PARTS_AUX(n-k_,k_+1),k_,m,~
+FLOOR(n,2)))
+
+DISTINCT_PARTS(n):=IF(n<1,0,DISTINCT_PARTS_AUX(n-1,1))
+
+PARTS(n):=IF(n<2,1,FLOOR(APPROX(SUM(1/pi*SQRT(k_/2)*SUM(IF(GCD(h_,k_)=1,COS(p~
+i*(SUM((i_/k_-1/2)*(MOD(i_*h_/k_)-1/2),i_,1,k_-1)-2*n*h_/k_)),0),h_,1,k_)*(-2~
+*SQRT(6)*#e^(-pi*SQRT(24*n-1)/(6*k_))*(#e^(pi*SQRT(24*n-1)/(3*k_))*(6*k_-pi*S~
+QRT(24*n-1))-6*k_-pi*SQRT(24*n-1))/(k_*(24*n-1)^(3/2))),k_,1,SQRT(n)/LOG(n,11~
+)),LOG(1/(4*n*SQRT(3))*EXP(pi*SQRT(2*n/3)),10)+5)+0.5))
+
+PARTS_LIST(n):=REVERSE((ITERATE(IF(n<DIM(p_),[p_,v_,m_],[APPEND([p_*v_],p_),A~
+PPEND(v_,[IF((3*m_^2-m_)/2=DIM(p_)+1 OR (3*m_^2+m_)/2=DIM(p_)+1,(-1)^(m_+1),0~
+)]),IF((3*m_^2+m_)/2=DIM(p_)+1,m_+1,m_)]),[p_,v_,m_],[[1],[1],1],n)) SUB 1)
+
+DISTINCT_PARTS(n):=SUM(IF(8*n-16*i_+1=FLOOR(SQRT(8*n-16*i_+1))^2,PARTS(i_),0)~
+,i_,0,n/2)
+
+BELL(n,b:=[1],bc:=[1]):=LOOP(IF(n=0,RETURN(b SUB 1)),b:=ADJOIN(b*bc,b),bc:=AD~
+JOIN(0,bc)+INSERT(0,bc,0),n:-1)
+
+RECURRENCE(u,v,v0,m):=REVERSE(ITERATE(APPEND([u],v),v,v0,m-DIM(v0)))
+
+"The nth p-sided dth-dimensional polygonal pyramid number, p>=2:"
+
+POLYGONAL_PYRAMID(n,p,d):=COMB(n+d-2,d-1)*(n*(p-2)-p+d+2)/d
+
+"The nth p-sided polygonal number, p>=2:"
+
+POLYGONAL(n,p):=POLYGONAL_PYRAMID(n,p,2)
+
+TRIANGULAR(n):=POLYGONAL(n,3)
+
+TETRAHEDRAL(n):=POLYGONAL_PYRAMID(n,3,3)
+
+PENTATOPE(n):=POLYGONAL_PYRAMID(n,3,4)
+
+"The nth p-sided dth-dimensional centered pyramid number, p>=2:"
+
+CENTERED_PYRAMID(n,p,d):=COMB(n+d-3,d-2)+p*COMB(n+d-2,d)
+
+"The nth p-sided centered number, p>=2:"
+
+CENTERED(n,p):=CENTERED_PYRAMID(n,p,2)
+
+HEX(n):=CENTERED(n,6)
+
+STAR(n):=CENTERED(n,12)
+
+OCTAHEDRAL(n):=CENTERED_PYRAMID(n,4,3)
+
+CENTERED_CUBE(n,d):=n^d+(n-1)^d
+
+CENTERED_HEX(n,d):=n^(d+1)-(n-1)^(d+1)
+
+RHOMBIC_DODECAHEDRAL(n):=CENTERED_HEX(n,3)
+

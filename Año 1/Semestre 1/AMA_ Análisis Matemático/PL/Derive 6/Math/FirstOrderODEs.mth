@@ -1,0 +1,124 @@
+"FirstOrderODEs.mth -- Copyright (c) 1990-2003 by Texas Instruments Incorpora~
+ted"
+
+LINEAR1(p,q,x,y,x0,y0):=y=(y0+INT(q*#e^INT(p,x,x0,x),x,x0,x))/#e^INT(p,x,x0,x~
+)
+
+LINEAR1_GEN(p,q,x,y,c):=y=(c+INT(q*#e^INT(p,x),x))/#e^INT(p,x)
+
+SEPARABLE(p,q,x,y,x0,y0):=INT(1/q,y,y0,y)=INT(p,x,x0,x)
+
+SEPARABLE_GEN(p,q,x,y,c):=INT(1/q,y)=INT(p,x)+c
+
+HOMOGENEOUS(r,x,y,x0,y0):=IF(DIF(LIM(r,y,x*y),x),LIM(SEPARABLE(1/x,LIM(r,x,1)~
+-y,x,y,x0,y0/x0),y,y/x),"inapplicable","inapplicable")
+
+HOMOGENEOUS_GEN(r,x,y,c):=IF(DIF(LIM(r,y,x*y),x),LIM(SEPARABLE_GEN(1/x,LIM(r,~
+x,1)-y,x,y,c),y,y/x),"inapplicable","inapplicable")
+
+EXACT(p,q,x,y,x0,y0):=IF(DIF(q,x)=DIF(p,y),INT(LIM(q,x,x0),y,y0,y)+INT(p,x,x0~
+,x)=0,"inapplicable","inapplicable")
+
+EXACT_GEN_AUX(s,q,y):=s+INT(q-DIF(s,y),y)
+
+EXACT_GEN(p,q,x,y,c):=IF(DIF(q,x)=DIF(p,y),EXACT_GEN_AUX(INT(p,x),q,y)=c,"ina~
+pplicable","inapplicable")
+
+BERNOULLI_ODE(p,q,k,x,y,x0,y0):=LINEAR1((1-k)*p,(1-k)*q,x,y^(1-k),x0,y0^(1-k)~
+)
+
+BERNOULLI_ODE_GEN(p,q,k,x,y,c):=LINEAR1_GEN((1-k)*p,(1-k)*q,x,y^(1-k),c)
+
+INTF_AUX(mu,p,q,x,y,x0,y0):=INT(LIM(mu*q,x,x0),y,y0,y)+INT(mu*p,x,x0,x)=0
+
+INTF_HLP(p,q,x,y,x0,y0):=IF(DIF((DIF(p,y)-DIF(q,x))/q,y),INTF_AUX(#e^INT((DIF~
+(p,y)-DIF(q,x))/q,x),p,q,x,y,x0,y0),"inapplicable","inapplicable")
+
+INTEGRATING_FACTOR(p,q,x,y,x0,y0):=IF(DIF((DIF(q,x)-DIF(p,y))/p,x),INTF_AUX(#~
+e^INT((DIF(q,x)-DIF(p,y))/p,y),p,q,x,y,x0,y0),INTF_HLP(p,q,x,y,x0,y0),INTF_HL~
+P(p,q,x,y,x0,y0))
+
+INTF_GEN_AUX(mu,p,q,x,y):=EXACT_GEN_AUX(INT(mu*p,x),mu*q,y)
+
+INTF_GEN_HLP(p,q,x,y,c):=IF(DIF((DIF(p,y)-DIF(q,x))/q,y),INTF_GEN_AUX(#e^INT(~
+(DIF(p,y)-DIF(q,x))/q,x),p,q,x,y)=c,"inapplicable","inapplicable")
+
+INTEGRATING_FACTOR_GEN(p,q,x,y,c):=IF(DIF((DIF(q,x)-DIF(p,y))/p,x),INTF_GEN_A~
+UX(#e^INT((DIF(q,x)-DIF(p,y))/p,y),p,q,x,y)=c,INTF_GEN_HLP(p,q,x,y,c),INTF_GE~
+N_HLP(p,q,x,y,c))
+
+FUN_LIN_CCF(r,p,q,k,x,y,x0,y0):=LIM(SEPARABLE(1,p+q*LIM(r,y,(y-p*x-k)/q),x,y,~
+x0,p*x0+q*y0+k),y,p*x+q*y+k)
+
+FUN_LIN_CCF_GEN(r,p,q,k,x,y,c):=LIM(SEPARABLE_GEN(1,p+q*LIM(r,y,(y-p*x-k)/q),~
+x,y,c),y,p*x+q*y+k)
+
+LIN_FRAC_AUX(r,p,q,x,y,x0,y0):=LIM(HOMOGENEOUS(LIM(r,[y,x],[y+q,x+p]),x,y,x0-~
+p,y0-q),[y,x],[y-q,x-p])
+
+LIN_FRAC(r,a,b,d,p,q,k,x,y,x0,y0):=LIN_FRAC_AUX(r,(b*k-d*q)/(a*q-b*p),(d*p-a*~
+k)/(a*q-b*p),x,y,x0,y0)
+
+LIN_FRAC_AUX_GEN(r,p,q,x,y,c):=LIM(HOMOGENEOUS_GEN(LIM(r,[y,x],[y+q,x+p]),x,y~
+,c),[y,x],[y-q,x-p])
+
+LIN_FRAC_GEN(r,a,b,d,p,q,k,x,y,c):=LIN_FRAC_AUX_GEN(r,(b*k-d*q)/(a*q-b*p),(d*~
+p-a*k)/(a*q-b*p),x,y,c)
+
+GEN_HOM_AUX(k,r,x,y,x0,y0):=IF(DIF(k,x)=0 AND DIF(k,y)=0,LIM(SEPARABLE(1/x,y*~
+(k+LIM(r*x/y,y,y/x^k)),x,y,x0,y0*x0^k),y,y*x^k),"inapplicable","inapplicable"~
+)
+
+GEN_HOM(r,x,y,x0,y0):=GEN_HOM_AUX(x*DIF(x*r/y,x)/(y*DIF(x*r/y,y)),r,x,y,x0,y0~
+)
+
+GEN_HOM_AUX_GEN(k,r,x,y,c):=IF(DIF(k,x)=0 AND DIF(k,y)=0,LIM(SEPARABLE_GEN(1/~
+x,y*(k+LIM(r*x/y,y,y/x^k)),x,y,c),y,y*x^k),"inapplicable","inapplicable")
+
+GEN_HOM_GEN(r,x,y,c):=GEN_HOM_AUX_GEN(x*DIF(x*r/y,x)/(y*DIF(x*r/y,y)),r,x,y,c~
+)
+
+ALMOST_LIN(r,b,p,q,x,y,x0,y0):=IF(DIF(DIF(b,y)/r,y),LIM(LINEAR1(p*DIF(b,y)/r,~
+q*DIF(b,y)/r,x,y,x0,LIM(b,y,y0)),y,b),"inapplicable","inapplicable")
+
+ALMOST_LIN_GEN(r,b,p,q,x,y,c):=IF(DIF(DIF(b,y)/r,y),LIM(LINEAR1_GEN(p*DIF(b,y~
+)/r,q*DIF(b,y)/r,x,y,c),y,b),"inapplicable","inapplicable")
+
+TESTM2(r,s,x,y):=IF(s SUB 1*r SUB 1+s SUB 2*r SUB 2-r SUB 3=0,x^s SUB 1*y^s S~
+UB 2,"inapplicable","inapplicable")
+
+TESTM1(r,x,y):=TESTM2(r,ELEMENT(ROW_REDUCE([LIM(r,[y,x],[5,2]),LIM(r,[y,x],[3~
+,7])])`,3),x,y)
+
+MONOMIAL_TEST(p,q,x,y):=TESTM1([y*q,-x*p,x*y*(DIF(p,y)-DIF(q,x))],x,y)
+
+CLAIRAUT(p,q,x,y,v,c):=[LIM(p-q,v,c)=0,x*LIM(DIF(LIM(p,y,x*v-y),y),y,x*v-y)-D~
+IF(q,v)=0]
+
+"The following SEPARATE functions contributed by David W. Cantrell"
+
+INDEP_OF(f,x):=IF(DIM(SELECT(i_=x,i_,VARIABLES(f))),true,false)
+
+SEPARATE_AUX(f,x,y):=ITERATE(IF(INDEP_OF(f SUB n,y),[p*f SUB n,q,n+1],IF(INDE~
+P_OF(f SUB n,x),[p,q*f SUB n,n+1],[0,0,n+1])),[p,q,n],[1,1,1],DIM(f))
+
+SEPARATE(u,x,y):=SEPARATE_AUX(VECTOR(v_ SUB 1^v_ SUB 2,v_,FACTORS(u)),x,y)
+
+SEP_GEN_HELP(s,x,y,c):=IF(s SUB 2,"inapplicable",SEPARABLE_GEN(s SUB 1,s SUB ~
+2,x,y,c),SEPARABLE_GEN(s SUB 1,s SUB 2,x,y,c))
+
+SEP_GEN(p,q,x,y,c):=SEP_GEN_HELP(SEPARATE(-p/q,x,y),x,y,c)
+
+DSOLVE1_GEN(p,q,x,y,c,a_):=IF("inapplicable"=a_:=INTEGRATING_FACTOR_GEN(p,q,x~
+,y,c),IF("inapplicable"=a_:=HOMOGENEOUS_GEN(-p/q,x,y,c),IF("inapplicable"=a_:~
+=SEP_GEN(p,q,x,y,c),GEN_HOM_GEN(-p/q,x,y,c),a_,a_),a_,a_),a_,a_)
+
+SEP_HELP(s,x,y,x0,y0):=IF(s SUB 2,"inapplicable",SEPARABLE(s SUB 1,s SUB 2,x,~
+y,x0,y0),SEPARABLE(s SUB 1,s SUB 2,x,y,x0,y0))
+
+SEP(p,q,x,y,x0,y0):=SEP_HELP(SEPARATE(-p/q,x,y),x,y,x0,y0)
+
+DSOLVE1(p,q,x,y,x0,y0,a_):=IF("inapplicable"=a_:=INTEGRATING_FACTOR(p,q,x,y,x~
+0,y0),IF("inapplicable"=a_:=HOMOGENEOUS(-p/q,x,y,x0,y0),IF("inapplicable"=a_:~
+=SEP(p,q,x,y,x0,y0),GEN_HOM(-p/q,x,y,x0,y0),a_,a_),a_,a_),a_,a_)
+

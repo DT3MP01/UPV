@@ -1,0 +1,19 @@
+"ExponentialIntegrals.mth -- Copyright (c) 1990-2003 by Texas Instruments Inc~
+orporated"
+
+EI(x,m):=euler_gamma+LN(x)+SUM(x^n_/(n_*n_!),n_,1,m)
+
+LI(x,m):=EI(LN(x),m)
+
+EN(n,z):=INT(#e^(-z*t_)/t_^n,t_,1,inf)
+
+EN_ASYMP(n,z,m):=#e^(-z)/z*SUM(PERM(n+l_-1,l_)/(-z)^l_,l_,0,m)
+
+EI1(z,m):=-euler_gamma-LN(z)-SUM((-z)^n_/(n_*n_!),n_,1,m)
+
+SI(z):=PROG(IF(z=inf,RETURN(pi/2)),IF(z=-inf,RETURN(-pi/2)),INT(SIN(z*t_)/t_,~
+t_,0,1))
+
+CI(z):=PROG(IF(z=inf,RETURN(0)),IF(z=-inf,RETURN(pi*#i)),euler_gamma+LN(z)+IN~
+T((COS(z*t_)-1)/t_,t_,0,1))
+

@@ -1,0 +1,121 @@
+
+*****************************************************************************
+*           Constructing TRUTH TABLES and comparing propositions            *
+*             in a max/min MULTI-VALUED (w-valued) modal LOGIC              *
+* (c)Eugenio Roanes-Lozano (Dept. Algebra, Univ. Complutense Madrid) Jan 00 *
+*****************************************************************************
+
+
+Note: Truth tables are represented as matrices. Big ones appear nicely only
+in Dfw but not in the DOS version.
+
+
+1. REFERENCES
+
+For an introduction to modal multi-valued Logics see (for instance) chapter 3
+of:
+  R. Turner: Logics for Artificial Intelligence, Ellis Horwood Ltd., 1984.
+A similar implementation was developed by this author for the CAS Macsyma and
+is included in it (from version 2.3). Details and a Maple version can also be
+found in:
+  E. Roanes-Lozano: Introducing Propositional Multi-Valued Logics with the
+  Help of a CAS. In: Proceedings of ISAAC 97. Kluwer (to appear).
+
+
+2. GETTING STARTED
+
+We shall refer below to the the DERIVE code in the LOGIC_MU.MTH and .DMO files.
+
+``w" represents the number of truth-values in the Logic. It should be a prime
+number and should be assigned before the calculations take place. For instance
+for Boolean Logic:
+
+    w:=2
+
+and for 3-valued Logic:
+
+    w:=3
+
+Observe that 0 represents ``false", 1 represents ``true" and intermediate
+numerical values represent intermediate degrees of certainty. The truth-values
+are:
+0=0/(w-1) , 1/(w-1) , 2/(w-1) , 3/(w-1) , ... , (w-2)/(w-1) , (w-1)/(w-1)=1 .
+
+For instance in Kleene's 3-valued Logic the truth-values would be:
+0 (false), 1/2 (undecided), 1 (true).
+
+
+2.1 PROPOSITIONAL VARIABLES
+
+The names of the propositional variables to be used are: p,q,r,s,u,v (plus
+tautology and contradiction). More could be added (if necessary) just by adding
+a similar line and including its name in the definition of the list ``vp".
+
+
+2.2 CONNECTIVES
+
+The connectives are (prefix form):
+ - negation, possible, necessary (unary)
+ - or, and (binary).
+
+Connectives begin with an ``M'' (standing for ``multivalued"), not to interfere
+with the built-in boolean connectives. So they are:
+
+   MNEG(a_) , MPOS(a_) , MNEC(a_)
+   MOR(a_,b_) , MAND(a_,b_)
+
+Kleene-style conditional and biconditional are represented by MIMP(a_,b_) and
+MIFF(a_,b_), respectively.
+   
+
+3 TRUTH-TABLES
+
+Truth-tables are constructed as a matrix by function TT(m_,a_,b_).
+``m_" indicates the number of different propositional variables that appear
+altogether in propositions ``a" and ``b".
+They must be the first ``m_" names in the list:  P,Q,R,S,U,V.
+
+For instance to check the commutativity of conjunction in a three valued Logic,
+it should be typed:
+
+    w:=3
+    TT( 2 , MAND(P,Q) , MAND(Q,P) )
+
+and the two last columns of the matrix should be compared (the two first ones
+correspond to the values of P and Q).
+
+Conditional and biconditional are defined in Kleene's style.
+
+
+4 TAUTOLOGIES
+
+If a proposition ``a_" (depending on ``m_" propositional variables) is a
+tautology (i.e., if it is always true) can be checked with:
+
+    ISTAUT(m_,a_)
+
+The answer ``1" correspond to ``YES" and 0 to ``NO".
+
+Observe in the .DMO file how if w>2 this is not intuitive (it works in a very
+different way to the Boolean case). For instance ``P OR NOT P" is not a
+tautology.
+
+
+5 TAUTOLOGICAL CONSEQUENCES
+
+If a proposition ``b_" is a tautological consequence of ``a_" (i.e.: if the
+consequent is true" "whenever the antecedent is true) can be checked with:
+
+    ISCONSTAUT(m_,a_,b_)
+
+(``m_" indicates the number of different propositional variables that appear
+altogether in propositions ``a" and ``b").
+
+The answer ``1" correspond to ``YES" and 0 to ``NO".
+
+
+----------------------------  END  OF .DOC  FILE  ----------------------------
+
+
+
+
