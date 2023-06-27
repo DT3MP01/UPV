@@ -1,0 +1,7 @@
+1. Añadir palabras reservadas en el analizador léxico en src/alex.l
+2. Añadir tokens en src/asin.y 
+3. En este caso, añadir instruccionIteracion2 en la regla de instruccion en src/asin.y (línea 270)
+4. Crear regla instruccionIteracion2
+5. En parteIII hacer "make"
+6. Ejecutar ./cmc -v archivo.c
+7. Mover archivo generado a bin y ejecutar: ./mvm archivo.c3d para ver su código máquina

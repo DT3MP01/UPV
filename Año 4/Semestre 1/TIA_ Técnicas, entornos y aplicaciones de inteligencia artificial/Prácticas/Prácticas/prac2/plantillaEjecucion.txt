@@ -1,0 +1,17 @@
+Ejecución: lpg-td.exe –o myDomain.pddl –f problem.pddl–n 1 (*soluciones*)
+
+–speed: trata de encontrar una solución tan rápidamente como pueda.
+–quality: trata de encontrar una solución de buena calidad (aunque sin garantía de optimalidad).
+
+Ejemplos:
+
+lpg-td.exe –o myDomain.pddl –f problem.pddl –n 1
+lpg-td.exe –o myDomain.pddl –f problem.pddl –speed
+lpg-td.exe –o myDomain.pddl –f problem.pddl –quality
+lpg-td.exe –o myDomain.pddl –f problem.pddl –seed 1000
+
+
+Examen:
+lpg-td.exe –o examDomain.pddl –f examProblem.pddl -seed 1000 –speed
+lpg-td.exe –o examDomain.pddl –f examProblem.pddl -seed 1000 –quality
+

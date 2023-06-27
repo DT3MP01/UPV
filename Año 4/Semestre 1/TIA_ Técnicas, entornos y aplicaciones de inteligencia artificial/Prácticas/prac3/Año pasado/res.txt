@@ -1,0 +1,12 @@
+ADAM
+Tarea TINTORERIA comienza a las 10.5 y acaba a las 11.0
+Tarea PELUQUERIA comienza a las 16.5 y acaba a las 17.5
+Tarea PAQUETE comienza a las 15.0 y acaba a las 15.5
+Tarea REGALO_A comienza a las 12.5 y acaba a las 14.5
+Estará en el aeropuerto, como muy pronto, a las 18.0
+
+EVA
+Tarea FARMACIA comienza a las 19.0 y acaba a las 21.0
+Tarea AMIGA comienza a las 17.5 y acaba a las 18.5
+Tarea REGALO_E comienza a las 12.5 y acaba a las 14.5
+Estará en su casa, como muy pronto, a las 21.5

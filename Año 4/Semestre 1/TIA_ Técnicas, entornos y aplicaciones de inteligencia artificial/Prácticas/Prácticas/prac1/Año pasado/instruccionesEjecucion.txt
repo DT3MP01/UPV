@@ -1,0 +1,8 @@
+1. Abrir FuzzyClips.exe.
+2. File -> Editor.
+3. Copiar código.
+4. Buffer -> Load Buffer.
+5. (reset)
+6. (run) o Ctrl+R
+7. Para limpiar y volver a ejecutar: (clear), (reset), load buffer y (run)
+8. Para volver a ejecutar con mismo código: (reset) y (run)

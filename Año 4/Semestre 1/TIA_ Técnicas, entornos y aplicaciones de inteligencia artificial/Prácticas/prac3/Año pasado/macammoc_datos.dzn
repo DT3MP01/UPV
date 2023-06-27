@@ -1,0 +1,5 @@
+Duracion_Adam = [30, 60, 30, 120];
+Duracion_Eva = [120, 60, 120];
+N_Tareas_Adam = 4;
+N_Tareas_Eva = 3;
+Desplazamiento = 30;

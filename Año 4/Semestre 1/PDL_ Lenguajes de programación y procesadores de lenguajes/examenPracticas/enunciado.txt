@@ -1,0 +1,32 @@
+Enunciado
+=========
+
+Modificad los fuentes de vuestro compilador para incorporar una nueva
+instrucción de iteración. Esta instrucción esta inspirada en el "for"
+del lenguaje de programación PASCAL, y su sintaxis es:
+
+instruccionIteracion2 -> from id = expresion to expresion do instruccion
+
+Donde "id" es una variable de inducción. La semántica es: desde que la
+variable tenga el valor inicial (primera <expresion>) hasta que tenga
+el valor final (segunda <expresion>) se ejecutará la <instruccion>.
+En cada iteración, después de completar <instruccion>, se debe
+incrementar "id" en una unidad.
+
+NOTA.- Recordad que toda variable declarada en un bloque de código
+(semántico) solo tiene validez en ese bloque. Por otro lado, en una
+misma regla se pueden consultar la TdS para una variable las veces que
+se desee.
+
+Etapas:
+=======
+
+1. Modificad el Analizador Léxico y el Analizador Sintáctico para
+   reconocer esta nueva instrucción.
+
+2. Incorporad acciones semánticas de comprobaciones de tipos y
+   comprobad su funcionamiento con el ejemplo "ejem1.c".
+
+3. Incorporad acciones semánticas de generación de código intermedio y
+   comprobad su funcionamiento con el ejemplo "ejem2.c".
+

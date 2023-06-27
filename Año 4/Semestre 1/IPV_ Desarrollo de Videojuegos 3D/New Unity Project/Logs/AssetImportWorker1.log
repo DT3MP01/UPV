@@ -1,0 +1,1665 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.14f1 (d0d1bb862f9d) revision 13685179'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Education; OS build 18363.1801; Version 1909; 64bit' Language: 'es' Physical Memory: 16159 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.3.14f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker1
+-projectPath
+W:/Asignaturas/Semestre 1/IPV/New Unity Project
+-logFile
+Logs/AssetImportWorker1.log
+-srvPort
+61123
+Successfully changed project path to: W:/Asignaturas/Semestre 1/IPV/New Unity Project
+W:/Asignaturas/Semestre 1/IPV/New Unity Project
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 137.15 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.14f1 (d0d1bb862f9d)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.14f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path W:/Asignaturas/Semestre 1/IPV/New Unity Project/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2060 SUPER (ID=0x1f06)
+    Vendor:   
+    VRAM:     8031 MB
+    Driver:   27.21.14.6230
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.14f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.14f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.14f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56608
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.14f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.14f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001218 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 24.10 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.257 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1257ms)
+		BeginReloadAssembly (40ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (362ms)
+			LoadAssemblies (39ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (134ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (27ms)
+			SetupLoadedEditorAssemblies (137ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (24ms)
+				BeforeProcessingInitializeOnLoad (5ms)
+				ProcessInitializeOnLoadAttributes (70ms)
+				ProcessInitializeOnLoadMethodAttributes (33ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.564897 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.28 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.754 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1774ms)
+		BeginReloadAssembly (116ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (16ms)
+		EndReloadAssembly (1592ms)
+			LoadAssemblies (978ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (224ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (243ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (46ms)
+				ProcessInitializeOnLoadAttributes (186ms)
+				ProcessInitializeOnLoadMethodAttributes (3ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 0.46 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1390 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 64.8 MB.
+System memory in use after: 64.8 MB.
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 1823.
+Total: 1.792100 ms (FindLiveObjects: 0.153900 ms CreateObjectMapping: 0.043200 ms MarkObjects: 1.527500 ms  DeleteObjects: 0.066700 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Materials/m_Earth.mat
+  artifactKey: Guid(40556760217a906408223af7637ffe74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/m_Earth.mat using Guid(40556760217a906408223af7637ffe74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52233d93658a8ba51417180912fe12f9') in 0.138415 seconds 
+  Import took 0.148954 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.239935 seconds.
+  path: Assets/Materials
+  artifactKey: Guid(5ce915d63a5a45c4f9f110b8024a238b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials using Guid(5ce915d63a5a45c4f9f110b8024a238b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4e89483cb14b1aa73645385f35f9e00') in 0.041707 seconds 
+  Import took 0.056967 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.631030 seconds.
+  path: Assets/Materials/m_Sun.mat
+  artifactKey: Guid(e9cb901cac137f34ba3fab65a2c546fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/m_Sun.mat using Guid(e9cb901cac137f34ba3fab65a2c546fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '266957b27da7c5702efaa2b09440eb10') in 0.057945 seconds 
+  Import took 0.059997 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 253.066946 seconds.
+  path: Assets/Materials/Scripts
+  artifactKey: Guid(fa5036d8bd3b7584a9fe8e6ed8b70ae5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts using Guid(fa5036d8bd3b7584a9fe8e6ed8b70ae5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'abeac67d63f8c3f017fda4fdcddd1dec') in 0.178112 seconds 
+  Import took 0.203515 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 77.119411 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b5b54a198cd9b1e5abcae60d08077bd') in 0.242319 seconds 
+  Import took 0.276115 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.344596 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.41 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.428 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3428ms)
+		BeginReloadAssembly (145ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (35ms)
+		EndReloadAssembly (3208ms)
+			LoadAssemblies (2436ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (292ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (39ms)
+			SetupLoadedEditorAssemblies (338ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (79ms)
+				ProcessInitializeOnLoadAttributes (245ms)
+				ProcessInitializeOnLoadMethodAttributes (3ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.30 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1386 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.1 MB.
+System memory in use after: 68.1 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1867.
+Total: 1.808300 ms (FindLiveObjects: 0.149400 ms CreateObjectMapping: 0.043100 ms MarkObjects: 1.570400 ms  DeleteObjects: 0.044600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.351545 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.28 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.348 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2349ms)
+		BeginReloadAssembly (108ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (27ms)
+		EndReloadAssembly (2189ms)
+			LoadAssemblies (1627ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (208ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (29ms)
+			SetupLoadedEditorAssemblies (225ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (49ms)
+				ProcessInitializeOnLoadAttributes (165ms)
+				ProcessInitializeOnLoadMethodAttributes (3ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.27 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1386 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.1 MB.
+System memory in use after: 68.2 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1870.
+Total: 1.635800 ms (FindLiveObjects: 0.152900 ms CreateObjectMapping: 0.041100 ms MarkObjects: 1.397300 ms  DeleteObjects: 0.043600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 226.418089 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.001084 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002654 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.046172 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000284 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001914 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.010654 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000380 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002609 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.010611 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000347 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002219 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.013298 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000295 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001976 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008981 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000299 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002094 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009164 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000304 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002062 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011291 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000297 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002028 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009064 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000305 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001995 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008916 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000317 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002178 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011194 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000294 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001951 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009007 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000309 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002154 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009107 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000296 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001966 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.012167 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000303 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002040 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009008 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000769 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002570 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008981 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000349 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002294 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011583 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000343 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002219 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009140 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000310 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001993 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008978 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000297 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002017 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011305 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000300 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001971 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008618 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000288 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001929 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009683 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000358 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002322 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.015170 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000337 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002565 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.013672 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000294 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001955 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008932 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000303 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001992 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.010463 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000296 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002001 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008592 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000295 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001963 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008747 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000290 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001965 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.010647 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000285 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001975 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008646 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000284 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001940 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.010786 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000288 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001980 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008898 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000315 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002224 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008484 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000296 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001963 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.010841 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000296 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001962 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008911 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000299 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001975 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008798 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000318 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002089 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011512 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000302 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002046 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008851 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000295 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001978 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011067 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000314 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002106 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008582 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000292 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001959 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009057 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000307 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002113 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011529 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000415 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002353 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008477 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000292 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001970 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009557 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000305 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002010 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011298 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000294 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001980 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009035 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000336 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002137 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011038 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000305 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002060 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009421 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000294 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002466 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008628 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000316 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002071 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011051 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000301 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001986 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009044 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000298 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001986 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008828 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000295 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001975 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011301 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000313 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002103 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008751 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000301 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001976 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009101 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000300 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001990 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.012010 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000296 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002038 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009025 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000327 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002162 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008991 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000312 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002062 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011829 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000297 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001999 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009059 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000307 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002025 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008867 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000322 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002172 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011527 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000312 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002030 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009224 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000307 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002011 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009276 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000298 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001970 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.012483 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000300 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002008 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009082 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000311 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002018 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009032 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000320 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002129 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011712 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000305 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002110 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008858 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000305 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002014 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009010 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000294 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001981 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011536 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000304 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002056 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008796 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000318 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002051 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009053 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000306 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002024 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008891 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000311 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002080 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011410 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000293 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001978 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009828 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000299 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002037 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009042 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000305 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.002067 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011467 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00000000000000000000000000000000') in 0.000309 seconds  code(4) message(Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z')
+  ERROR: Build asset version error: assets/materials/scripts/rotacion.cs in SourceAssetDB has modification time of '2021-10-07T13:53:59Z' while content on disk has modification time of '2021-10-07T13:55:15Z'
+  Import took 0.001996 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.068383 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6c4af5f53848359098c1f66534f7145') in 0.057172 seconds 
+  Import took 0.085196 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.152660 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.32 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.924 seconds
+Domain Reload Profiling:
+	ReloadAssembly (925ms)
+		BeginReloadAssembly (99ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (30ms)
+		EndReloadAssembly (767ms)
+			LoadAssemblies (101ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (257ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (38ms)
+			SetupLoadedEditorAssemblies (267ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (55ms)
+				ProcessInitializeOnLoadAttributes (198ms)
+				ProcessInitializeOnLoadMethodAttributes (3ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.28 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1386 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.1 MB.
+System memory in use after: 68.2 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1873.
+Total: 1.723400 ms (FindLiveObjects: 0.154700 ms CreateObjectMapping: 0.040200 ms MarkObjects: 1.478300 ms  DeleteObjects: 0.049300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 41.750051 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9dacff94f697763b788082294329a462') in 0.059917 seconds 
+  Import took 0.081683 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.950700 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.28 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.418 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2418ms)
+		BeginReloadAssembly (104ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (26ms)
+		EndReloadAssembly (2265ms)
+			LoadAssemblies (1683ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (217ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (30ms)
+			SetupLoadedEditorAssemblies (239ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (51ms)
+				ProcessInitializeOnLoadAttributes (176ms)
+				ProcessInitializeOnLoadMethodAttributes (3ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.27 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1386 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.1 MB.
+System memory in use after: 68.2 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1876.
+Total: 1.707900 ms (FindLiveObjects: 0.146800 ms CreateObjectMapping: 0.041600 ms MarkObjects: 1.476900 ms  DeleteObjects: 0.041900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.705822 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.32 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.064 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2064ms)
+		BeginReloadAssembly (95ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (23ms)
+		EndReloadAssembly (1918ms)
+			LoadAssemblies (1358ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (208ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (29ms)
+			SetupLoadedEditorAssemblies (228ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (49ms)
+				ProcessInitializeOnLoadAttributes (167ms)
+				ProcessInitializeOnLoadMethodAttributes (3ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.36 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1386 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.1 MB.
+System memory in use after: 68.2 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1879.
+Total: 1.894000 ms (FindLiveObjects: 0.203900 ms CreateObjectMapping: 0.066900 ms MarkObjects: 1.581100 ms  DeleteObjects: 0.041600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.606838 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.35 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.957 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1957ms)
+		BeginReloadAssembly (95ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (23ms)
+		EndReloadAssembly (1813ms)
+			LoadAssemblies (1246ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (207ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (30ms)
+			SetupLoadedEditorAssemblies (237ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (54ms)
+				ProcessInitializeOnLoadAttributes (171ms)
+				ProcessInitializeOnLoadMethodAttributes (3ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.29 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1386 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.1 MB.
+System memory in use after: 68.2 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1882.
+Total: 1.682500 ms (FindLiveObjects: 0.151700 ms CreateObjectMapping: 0.045300 ms MarkObjects: 1.439300 ms  DeleteObjects: 0.045200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.989420 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.29 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.297 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2297ms)
+		BeginReloadAssembly (95ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (23ms)
+		EndReloadAssembly (2153ms)
+			LoadAssemblies (1576ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (213ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (32ms)
+			SetupLoadedEditorAssemblies (236ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (51ms)
+				ProcessInitializeOnLoadAttributes (173ms)
+				ProcessInitializeOnLoadMethodAttributes (3ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.27 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1386 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.1 MB.
+System memory in use after: 68.2 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1885.
+Total: 1.734700 ms (FindLiveObjects: 0.157300 ms CreateObjectMapping: 0.068600 ms MarkObjects: 1.451600 ms  DeleteObjects: 0.056300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.280036 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.29 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.947 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2948ms)
+		BeginReloadAssembly (101ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (23ms)
+		EndReloadAssembly (2797ms)
+			LoadAssemblies (2177ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (228ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (38ms)
+			SetupLoadedEditorAssemblies (246ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (61ms)
+				ProcessInitializeOnLoadAttributes (172ms)
+				ProcessInitializeOnLoadMethodAttributes (3ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.28 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1386 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.2 MB.
+System memory in use after: 68.2 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1888.
+Total: 2.101300 ms (FindLiveObjects: 0.146300 ms CreateObjectMapping: 0.037700 ms MarkObjects: 1.831300 ms  DeleteObjects: 0.085200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.139358 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.29 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.898 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1899ms)
+		BeginReloadAssembly (96ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (23ms)
+		EndReloadAssembly (1755ms)
+			LoadAssemblies (1193ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (208ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (31ms)
+			SetupLoadedEditorAssemblies (232ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (50ms)
+				ProcessInitializeOnLoadAttributes (171ms)
+				ProcessInitializeOnLoadMethodAttributes (3ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.28 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1386 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.2 MB.
+System memory in use after: 68.2 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1891.
+Total: 1.680700 ms (FindLiveObjects: 0.135200 ms CreateObjectMapping: 0.038600 ms MarkObjects: 1.444800 ms  DeleteObjects: 0.061400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.295860 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.29 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.807 seconds
+Domain Reload Profiling:
+	ReloadAssembly (807ms)
+		BeginReloadAssembly (98ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (23ms)
+		EndReloadAssembly (660ms)
+			LoadAssemblies (90ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (209ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (30ms)
+			SetupLoadedEditorAssemblies (239ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (52ms)
+				ProcessInitializeOnLoadAttributes (174ms)
+				ProcessInitializeOnLoadMethodAttributes (3ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.28 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1386 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.2 MB.
+System memory in use after: 68.2 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1894.
+Total: 1.761000 ms (FindLiveObjects: 0.147600 ms CreateObjectMapping: 0.042900 ms MarkObjects: 1.490800 ms  DeleteObjects: 0.079000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 878.948724 seconds.
+  path: Assets/Materials/Scripts/Rotacion.cs
+  artifactKey: Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Scripts/Rotacion.cs using Guid(c1aee2f16829c8543887a732278cad12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '869b35f8d2ec1298afac78dfb217f140') in 0.110706 seconds 
+  Import took 0.138504 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 1.220298 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.27 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.139 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3139ms)
+		BeginReloadAssembly (114ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (24ms)
+		EndReloadAssembly (2974ms)
+			LoadAssemblies (2426ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (205ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (30ms)
+			SetupLoadedEditorAssemblies (227ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (48ms)
+				ProcessInitializeOnLoadAttributes (167ms)
+				ProcessInitializeOnLoadMethodAttributes (3ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.27 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1386 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.2 MB.
+System memory in use after: 68.3 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1897.
+Total: 1.821000 ms (FindLiveObjects: 0.142700 ms CreateObjectMapping: 0.040600 ms MarkObjects: 1.581100 ms  DeleteObjects: 0.055900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 440.276628 seconds.
+  path: Assets/Materials/m_Earth.mat
+  artifactKey: Guid(40556760217a906408223af7637ffe74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/m_Earth.mat using Guid(40556760217a906408223af7637ffe74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9aeef9966d73b1873ab9df245c2e20c7') in 0.251850 seconds 
+  Import took 0.271535 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000247 seconds.
+  path: Assets/Materials/m_Sun.mat
+  artifactKey: Guid(e9cb901cac137f34ba3fab65a2c546fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/m_Sun.mat using Guid(e9cb901cac137f34ba3fab65a2c546fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1837d2bcae1852cc37968e9ee04d5aff') in 0.101472 seconds 
+  Import took 0.103344 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 33.643789 seconds.
+  path: Assets/Materials/m_Moon.mat
+  artifactKey: Guid(8ebb31a285c345d4e8ecaa7f8ef1821c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/m_Moon.mat using Guid(8ebb31a285c345d4e8ecaa7f8ef1821c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e25a919f154a6ff7301dc15c1ca27ed') in 0.119360 seconds 
+  Import took 0.134486 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.849625 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.29 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.042 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3043ms)
+		BeginReloadAssembly (129ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (25ms)
+		EndReloadAssembly (2864ms)
+			LoadAssemblies (2301ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (208ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (30ms)
+			SetupLoadedEditorAssemblies (236ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (52ms)
+				ProcessInitializeOnLoadAttributes (172ms)
+				ProcessInitializeOnLoadMethodAttributes (3ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.26 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1386 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.2 MB.
+System memory in use after: 68.3 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1901.
+Total: 1.775800 ms (FindLiveObjects: 0.140400 ms CreateObjectMapping: 0.038100 ms MarkObjects: 1.517800 ms  DeleteObjects: 0.078400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.698636 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.36 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.548 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2548ms)
+		BeginReloadAssembly (112ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (24ms)
+		EndReloadAssembly (2381ms)
+			LoadAssemblies (1786ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (227ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (31ms)
+			SetupLoadedEditorAssemblies (250ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (59ms)
+				ProcessInitializeOnLoadAttributes (177ms)
+				ProcessInitializeOnLoadMethodAttributes (3ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.27 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1386 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.2 MB.
+System memory in use after: 68.3 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1904.
+Total: 2.242100 ms (FindLiveObjects: 0.133700 ms CreateObjectMapping: 0.035100 ms MarkObjects: 1.991900 ms  DeleteObjects: 0.080800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
