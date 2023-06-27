@@ -1,0 +1,58 @@
+Entre los siguientes esquemas, elegir cuales forman parte de la arquitectura ANSI/SPARC:
+Esquema Físico, Esquema Lógico y Esquema Externo
+
+Falso respecto al esquema conceptual:
+Se describe la información y las funciones de la organizacioón desde un punto de vista informático.
+
+	Correctas: Descripción de un sistema de información desde un punto de vista organizativo independiente del SGBD.
+		Descripción de un sistema de información independiente incluso de que se utilicen técnicas de base de datos.
+
+
+La independencia de datos es la propiedad que asegura que los programas de aplicación sean independientes de:
+	los cambios realizados en datos que no usan.
+
+Los esquemas externos y los programas de aplicación no deben verse afectados por modificaciones del esquema lógico
+sobre datos que no usan -> Independencia lógica.
+
+Objetivos de técnicas de base de datos: Calidad de la información e Independencia de las apps.
+
+Falso respecto a las operaciones de definición de transacciones:
+Commit de usuario - Indica el éxito de la transacción guardando los cambios permanentemente.
+
+	Correctas: Rollback de usuario - Indica que el usuario no quiere guardar los cambios
+		   Commit de SGBD - Indica el éxito de la transacción guardando los cambios permanentemente.
+		   Rollback de SGBD - La transacción falla por algún motivo en la SGBD deshaciendo operaciones realizadas.
+
+¿Qué propiedas deben cumplir para el correcto procesamiento de las transacciones?
+Aislamiento, Persistencia y Atomicidad.
+
+La propiedad de la CONSISTENCIA dice que la transacción debe dar lugar a un estado de la base de datos en el que se cumplan todas
+las restricciones de integridad.
+
+Falsa sobre comparación de restricciones de integridad:
+Las restricciones de que no incluyen en el esquema de la base de datos se han de mantener en los sistemas de gestión de
+base de datos.
+
+	Correcta: La comprobación se realiza cuando la base de datos cambia.
+	          Las restricciones se definen en el esquema lógico y el SGBD debe velar por su cumplimiento.
+
+Afirmación correcta sobre integridad semántica: En la comprobación diferida la restricción se comprueba al finalizar la transacción.
+
+Problemas por interferencia en accesos concurrentes:
+Pérdida de actualizaciones y lectura de datos actualizados no confirmados
+
+Falsa respecto a recontrucción frente a pérdidas de memoria principal:
+Se utiliza la copia de seguridad.
+
+	Correctas: Recuperar transacciones confirmadas que no hayan sido grabadas.
+	           Anular transacciones que han fallado.
+	           Se utiliza el fichero diario o los puntos de control.
+
+Correcto respecto a actualización inmediata:
+Hay que deshacer los cambios de transacciones no confirmadas después del punto de control.
+
+Correcto respecto a actualización diferida:
+Hya que rehacer los cambios de transacciones confirmadas después del punto de control.		
+
+Para otorgar permisos a un usuario y que este lo pueda transferir:
+Hay que utiizar GRANT y GRANT OPTION	

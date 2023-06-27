@@ -1,0 +1,11 @@
+const zmq = require('zeromq')
+
+let s = zmq.socket('pull')
+
+s.bind('tcp://*:9999')
+
+s.on('message', (w, n) => {
+	console.log('worker ' + w + ' resp ' + n)
+})
+
+// Cuando recibe un mensaje en 9999, imprime por pantalla 'worker w resp n'

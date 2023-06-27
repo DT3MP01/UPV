@@ -1,0 +1,2 @@
+Se le pasa como parámetro el puerto, después un número máximo de iteraciones,
+y luego unos "tópicos", después manda los tópicos en turno rotatorio.

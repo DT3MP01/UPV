@@ -1,0 +1,1 @@
+node 5a y 5b dan lo mismo, y node 5c da diferente.

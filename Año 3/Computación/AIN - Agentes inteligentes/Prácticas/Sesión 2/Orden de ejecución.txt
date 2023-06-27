@@ -1,0 +1,11 @@
+1. Conectarse a la UPV VPN.
+
+2. Abrir tres terminales.
+
+3. Utilizar en cada una: cd C:\Users\David\Desktop\UPV - 3º\Semestre 2 - Computación\AIN - Agentes inteligentes\Prácticas\Sesión 2 
+
+4. Ejecutar en una: pygomas manager -j daargar4_manager@gtirouter.dsic.upv.es -m map_01 -sj daargar4_service@gtirouter.dsic.upv.es -np 6
+
+5. Ejecutar en otra terminal: pygomas run -g ejemplo1.json
+
+6. Ejecutar en la última terminal: pygomas render

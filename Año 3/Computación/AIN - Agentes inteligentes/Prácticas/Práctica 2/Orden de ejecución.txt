@@ -1,0 +1,9 @@
+1. Conectarse a la UPV VPN.
+
+2. Abrir tres terminales en Anaconda.
+
+3. Utilizar en la primera: pygomas manager -np 20 -j m_daargar4@gtirouter.dsic.upv.es -sj s_daargar4@gtirouter.dsic.upv.es -m map_arena
+
+4. Ejecutar en la segunda: cd C:\Users\David\Desktop\UPV - 3º\Semestre 2 - Computación\AIN - Agentes inteligentes\Prácticas\Práctica 2\contract-net && pygomas run -g pygomas_contractnet.json
+
+6. Ejecutar en la última terminal: pygomas render

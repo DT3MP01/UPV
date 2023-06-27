@@ -1,0 +1,4 @@
+Si añadimos total++ y totalW[worker]++ en los lugares correspondientes
+(donde los tengo en el código), el código funcionaría.
+
+Probado en broker router-router.

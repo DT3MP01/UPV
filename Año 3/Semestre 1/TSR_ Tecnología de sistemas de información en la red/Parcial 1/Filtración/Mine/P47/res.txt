@@ -1,0 +1,7 @@
+El a valdrá 2
+
+El b valdrá NaN
+
+El c valdrá 6
+
+El d valdrá 10 / 3 = 3.3333

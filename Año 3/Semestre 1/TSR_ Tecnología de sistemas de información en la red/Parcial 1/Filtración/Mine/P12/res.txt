@@ -1,0 +1,1 @@
+TODOS DEVUELVEN 1 ARCHIVO menos el A, que devuelve todo el DIRECTORIO.

@@ -1,0 +1,30 @@
+{
+    "host": "gtirouter.dsic.upv.es",
+    "manager": "m_daargar4",
+    "service": "s_daargar4",
+    "axis": [
+		{
+            "rank": "BDISoldier",
+            "name": "luchador_daargar4",
+            "password": "secret",
+            "amount": 11,
+            "asl": "luchador.asl"
+        }
+    ],
+     "allied": [
+                {
+            "rank": "invencibleM.BDIMInvencible",
+            "name": "medic_daargar4",
+            "password": "secret",
+            "amount": 1,
+            "asl": "medic_arena.asl"
+        }, 
+        {
+            "rank": "invencibleF.BDIFInvencible",
+            "name": "fieldop_daargar4",
+            "password": "secret",
+            "amount": 3,
+            "asl": "fieldop_arena.asl"
+        }
+   ]
+  }

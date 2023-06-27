@@ -1,0 +1,17 @@
+C:\Users\pcarsi\Source\Repos\GestDepGym\GestDep\BusinessLogicTestApp\bin\Debug\BusinessLogicTestApp.exe.config
+C:\Users\pcarsi\Source\Repos\GestDepGym\GestDep\BusinessLogicTestApp\bin\Debug\BusinessLogicTestApp.exe
+C:\Users\pcarsi\Source\Repos\GestDepGym\GestDep\BusinessLogicTestApp\bin\Debug\BusinessLogicTestApp.pdb
+C:\Users\pcarsi\Source\Repos\GestDepGym\GestDep\BusinessLogicTestApp\bin\Debug\EntityFramework.dll
+C:\Users\pcarsi\Source\Repos\GestDepGym\GestDep\BusinessLogicTestApp\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\pcarsi\Source\Repos\GestDepGym\GestDep\BusinessLogicTestApp\bin\Debug\GestDepLib.dll
+C:\Users\pcarsi\Source\Repos\GestDepGym\GestDep\BusinessLogicTestApp\bin\Debug\GestDepLib.pdb
+C:\Users\pcarsi\Source\Repos\GestDepGym\GestDep\BusinessLogicTestApp\bin\Debug\GestDepLib.dll.config
+C:\Users\pcarsi\Source\Repos\GestDepGym\GestDep\BusinessLogicTestApp\bin\Debug\EntityFramework.xml
+C:\Users\pcarsi\Source\Repos\GestDepGym\GestDep\BusinessLogicTestApp\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\pcarsi\Source\Repos\GestDepGym\GestDep\BusinessLogicTestApp\obj\Debug\3-BusinessLogicTest.csproj.CoreCompileInputs.cache
+C:\Users\pcarsi\Source\Repos\GestDepGym\GestDep\BusinessLogicTestApp\obj\Debug\3-BusinessLogicTest.csproj.CopyComplete
+C:\Users\pcarsi\Source\Repos\GestDepGym\GestDep\BusinessLogicTestApp\obj\Debug\BusinessLogicTestApp.exe
+C:\Users\pcarsi\Source\Repos\GestDepGym\GestDep\BusinessLogicTestApp\obj\Debug\BusinessLogicTestApp.pdb
+C:\Users\pcarsi\Source\Repos\GestDepGym\GestDep\BusinessLogicTestApp\obj\Debug\3-BusinessLogicTest.csprojAssemblyReference.cache
+C:\Users\David\Desktop\UPV - 3º\ISW\Prácticas\BusinessLogicTestApp\BusinessLogicTestApp\obj\Debug\BusinessLogicTestApp.exe
+C:\Users\David\Desktop\UPV - 3º\ISW\Prácticas\BusinessLogicTestApp\BusinessLogicTestApp\obj\Debug\BusinessLogicTestApp.pdb

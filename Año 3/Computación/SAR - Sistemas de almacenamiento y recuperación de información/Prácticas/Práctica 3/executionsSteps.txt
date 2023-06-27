@@ -1,0 +1,3 @@
+python SAR_p3_monkey_indexer.py file.txt [tri]
+python SAR_p3_monkey_info.py file.index
+python SAR_p3_monkey_evolved.py file.index

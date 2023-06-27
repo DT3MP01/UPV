@@ -1,0 +1,4 @@
+El d da el resultado esperado, 
+
+mientras que el a da un bucle infinito,
+el b da error de ejecución y el c no hace nada.

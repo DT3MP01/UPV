@@ -1,0 +1,2 @@
+El suscriptor recibirá un "1" a los 10 segundos, 
+y tendrán que pasar 100 para que reciba el "10" y, así, sucesivamente.

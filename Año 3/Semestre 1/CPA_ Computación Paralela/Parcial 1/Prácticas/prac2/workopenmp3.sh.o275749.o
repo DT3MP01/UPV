@@ -1,0 +1,30 @@
+The center of mass is in (3003.23, 3007.09, 2997.93).
+The planet with most neighbors is 70197 (18 neighbors).
+Spent time: 57.868288 s.
+Number of planets: 80000
+Number of threads used: 2
+
+The center of mass is in (3003.23, 3007.09, 2997.93).
+The planet with most neighbors is 70197 (18 neighbors).
+Spent time: 29.531260 s.
+Number of planets: 80000
+Number of threads used: 4
+
+The center of mass is in (3003.23, 3007.09, 2997.93).
+The planet with most neighbors is 70197 (18 neighbors).
+Spent time: 16.443395 s.
+Number of planets: 80000
+Number of threads used: 8
+
+The center of mass is in (3003.23, 3007.09, 2997.93).
+The planet with most neighbors is 70197 (18 neighbors).
+Spent time: 13.568190 s.
+Number of planets: 80000
+Number of threads used: 16
+
+The center of mass is in (3003.23, 3007.09, 2997.93).
+The planet with most neighbors is 70197 (18 neighbors).
+Spent time: 30.120372 s.
+Number of planets: 80000
+Number of threads used: 32
+

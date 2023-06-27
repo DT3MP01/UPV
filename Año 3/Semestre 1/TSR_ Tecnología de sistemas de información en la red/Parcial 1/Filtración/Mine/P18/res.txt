@@ -1,0 +1,3 @@
+C y D resultados dan lo mismo, con resultado incorrecto.
+
+A y B dan ambos el resultado correcto.

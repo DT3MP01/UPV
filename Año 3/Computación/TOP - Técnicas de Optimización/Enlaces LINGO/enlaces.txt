@@ -1,0 +1,5 @@
+https://www.lindo.com/doc/online_help/lingo15_0/reduced_cost.htm
+https://www.lindo.com/doc/online_help/lingo17_0/slack_or_surplus.htm
+https://www.lindo.com/doc/online_help/lingo17_0/dual_price.htm
+https://www.lindo.com/doc/online_help/lingo15_0/lingo_range.htm
+https://www.lindo.com/doc/online_help/lingo17_0/developing_a_lingo_model.htm

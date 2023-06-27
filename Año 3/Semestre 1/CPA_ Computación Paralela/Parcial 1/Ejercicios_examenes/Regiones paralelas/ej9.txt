@@ -1,0 +1,21 @@
+#pragma omp parallel sections
+{
+    #pragma omp section
+    {
+        minx = minimo(x,n); /* T1 */
+    }
+
+     #pragma omp section
+    {
+        maxx = maximo(x,n); /* T2 */
+    }
+
+     #pragma omp section
+    {
+        calcula_z(z,minx,maxx,n); /* T3 */
+    }
+    
+    calcula_y(y,x,n); /* T4 */
+    calcula_x(x,y,n); /* T5 */
+    calcula_v(v,z,x); /* T6 */
+}

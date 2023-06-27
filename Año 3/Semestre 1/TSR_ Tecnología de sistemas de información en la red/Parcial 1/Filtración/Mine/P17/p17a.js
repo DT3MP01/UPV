@@ -1,0 +1,30 @@
+const net = require('net')
+const prompt = "*** Write the filename: "
+
+require('net').createServer(function (c) {
+    /* COMPLETAR */
+    c.on('data', function (data) {
+        require('fs').readFile(data, function (err, data) {
+            if (err) {
+                c.write('unable to read ' + data + ' file')
+            }
+            else {
+                c.write(data)
+            }
+        })
+    })
+}).listen(9000)
+
+process.stdin.resume();
+process.stdin.setEncoding("utf8")
+process.stdout.write(prompt)
+
+process.stdin.on("data", function (str) {
+    let client = net.connect({ port: 9000 }, function () {
+        client.write(str.slice(0, str.length - 1))
+    })
+    client.on('data', function (data) {
+        console.log(data.toString());
+        process.stdout.write(prompt)
+    })
+})

@@ -1,0 +1,44 @@
+Checked with:
+
+Spam, SPAM, Spam, Egg and Spam;
+brandy and a fried egg on top and Spam
+4G and spam
+
+Result:
+
+Amspay, AMSPAY, Amspay, Eggyay andyay Amspay;
+andybray andyay ayay iedfray eggyay onyay optay andyay Amspay
+4G andyay amspay
+
+Tests of the transparencies:
+    mess: essmay
+    father: atherfay
+    Rwanda: Andarway
+    choir: oirchay
+    ant: antyay
+    4G: 4G
+
+Tested as well with:
+    All with capital letters:
+        ANT: ANTYAY
+        MESS: ESSMAY
+    First letter as capital:
+        Ant: Antyay
+        Mess: Essmay
+    All in small letters:
+        ant: antyay
+        mess: essmay
+    First char as non-letter:
+        4G: 4G
+        4g: 4g
+    Some characters as non-letters:
+        A4t: A4tyay
+        44m: 44m
+        44M: 44M
+        Hey!: Eyhay!
+        How are you?: Owhay areyay youyay?
+        I'm fine, thank you. And you?: Imyay inefay, ankthay youyay. Andyay youyay?
+
+File checks:
+py pig_latin.py test.txt: test_latin.txt
+py pig_latin.py test.s: test_latin.s

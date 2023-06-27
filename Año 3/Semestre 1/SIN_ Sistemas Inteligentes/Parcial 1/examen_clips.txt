@@ -1,0 +1,42 @@
+(defglobal ?*created-piles* = 0)
+
+(deffacts data
+	(type T1 A D)
+	(type T2 B C E)
+	(puerto A E B B C D B B A E D plataforma T1 grua T1 vacio plataforma T2 grua T2 vacio)
+)
+
+(defrule pila_inicial
+	(type T1 $?T1types)
+	(type T2 $?T2types)
+	?f1 -> (puerto $?contenedores1 ?dejoContenedor $?contenedores2
+		plataforma T1 $?pilasT1 pila ?contenedorPila $?gruaT1 $?contenidoGrua1 
+		plataforma T2 $?pilasT2 gruaT2 $?contenidoGrua2)
+ 	(test (eq (?dejoContenedor A)) or (?dejoContenedor B)))
+	(test (neq (?dejoContenedor ?contenedorPila))
+	=> 
+	(assert (puerto $?contenedores1 ?dejoContenedor $?contenedores2
+		plataforma T1 $?pilasT1 ?dejoContenedor pila ?contenedorPila $?gruaT1 $?contenidoGrua1 
+		plataforma T2 $?pilasT2 gruaT2 $?contenidoGrua2)
+	(bind ?*created-piles* (+ ?*created-piles* 1))
+)
+
+
+
+(defrule coge_contenedor
+	?f1 -> (puerto $?contenedores1 ?dejoContenedor $?contenedores2
+		$?rest1 pila ?dejoContenedor ?containersNum $?rest2)
+	(test (< ?containersNum 3))
+=> 
+	(assert ...)
+)
+
+
+
+(defrule stop
+	(declare(salience 10))
+	(puerto plataforma T1 pila A 2 pila D 2 grua T1 vacio plataforma T2 pila B 4 pila C 1 pila pila D 2 grua T2 vacio)
+=>
+	(printout t "He creado " ?*created-piles* pilas)
+	(halt)
+)

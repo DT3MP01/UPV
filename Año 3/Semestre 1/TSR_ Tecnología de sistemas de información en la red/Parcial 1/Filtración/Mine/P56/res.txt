@@ -1,0 +1,4 @@
+Si los minutos de la hora son superiores a 10,
+el programa funciona bien, y si son menores de 10,
+para que los minutos y segundos tengan un 0,
+la función dd se loa añade.

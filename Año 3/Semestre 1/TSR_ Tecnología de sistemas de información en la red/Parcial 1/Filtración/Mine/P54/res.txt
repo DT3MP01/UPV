@@ -1,0 +1,2 @@
+El c es el único que se ejecutaría, ya que es el único al que se le
+pasa una función como parámetro en setTimeout

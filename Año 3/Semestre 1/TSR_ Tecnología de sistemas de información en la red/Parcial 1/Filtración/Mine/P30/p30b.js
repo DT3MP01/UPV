@@ -1,0 +1,3 @@
+so.on('message', function () { 
+    let seg = Array.from(arguments); /*Mgmnt code */ 
+})

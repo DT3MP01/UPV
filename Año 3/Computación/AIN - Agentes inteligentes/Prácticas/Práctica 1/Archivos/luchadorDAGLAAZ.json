@@ -1,0 +1,14 @@
+{
+    "host": "gtirouter.dsic.upv.es",
+    "manager": "m_daargar4",
+    "service": "s_daargar4",
+    "axis": [
+		{
+            "rank": "BDISoldier",
+            "name": "luchador_daargar4",
+            "password": "secret",
+            "amount": 1,
+            "asl": "luchadorDAGLAAZ.asl"
+        }
+    ]
+  }

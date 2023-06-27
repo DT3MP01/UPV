@@ -1,0 +1,6 @@
+{
+    "python.pythonPath": "C:\\Users\\David\\anaconda3\\envs\\space_bdi\\python.exe",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.formatting.provider": "yapf"
+}

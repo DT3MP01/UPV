@@ -1,0 +1,19 @@
+node 4a imprimirá cada segundo un valor empezando 
+desde el 1 y cada segundo sumándole 1 hasta el infinito
+1
+2
+3
+4
+5
+6
+7
+...
+
+node 4b tendrá el mismo comportamiento que node 4a,
+pero imprimirá cada vez NaN
+
+node 4c imprimirá un valor empezando desde el 1
+hasta el 5 INMEDIATAMENTE.
+
+node 4d tendrá el mismo resultado que node 4c, pero
+los irá imprimiendo 1 por cada 2 segundos.

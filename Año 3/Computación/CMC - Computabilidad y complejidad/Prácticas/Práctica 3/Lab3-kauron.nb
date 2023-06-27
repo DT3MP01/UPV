@@ -1,0 +1,249 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8832,        241]
+NotebookOptionsPosition[      7512,        209]
+NotebookOutlinePosition[      7967,        226]
+CellTagsIndexPosition[      7924,        223]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Pr\[AAcute]ctica III", "Title",
+ CellChangeTimes->{{3.704517116985023*^9, 
+  3.704517150600971*^9}},ExpressionUUID->"c01c0844-0ce8-46b5-9ded-\
+951ee4fa011b"],
+
+Cell["\<\
+Alemany Ibor, Sergio
+Galindo Jim\[EAcute]nez, Carlos Santiago\
+\>", "Subtitle",
+ CellChangeTimes->{{3.7045171231071177`*^9, 3.7045171444236803`*^9}, {
+  3.70451721921307*^9, 
+  3.704517219733749*^9}},ExpressionUUID->"977be47f-83c8-48f7-ad89-\
+4d987ffbdbf1"],
+
+Cell[CellGroupData[{
+
+Cell["Ejercicio I : naturales calculados por sistemas P", "Section",
+ CellChangeTimes->{{3.7045171670072947`*^9, 
+  3.7045172143483*^9}},ExpressionUUID->"e9d99a7a-706c-4d6d-b2c2-9ba1d51dc35f"],
+
+Cell[TextData[{
+ "Apartado a:\n\tLa membrana 3 al deshacerse genera el siguiente lenguaje: ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["b", "x"], 
+    SuperscriptBox["f", 
+     SuperscriptBox["2", "x"]]}], TraditionalForm]],ExpressionUUID->
+  "077b990b-eca6-4027-8e08-17c8e034a9c3"],
+ ", donde x es el n\[UAcute]mero de transiciones hasta que se ejecuta la \
+regla que deshace la membrana m\[AAcute]s 1.\n\tLa membrana 2 al deshacerse \
+genera ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["d", "x"], 
+    SuperscriptBox["e", 
+     SuperscriptBox["x", "2"]]}], TraditionalForm]],ExpressionUUID->
+  "822fd001-2fa1-46ac-8ade-f397921d47f1"],
+ "\n\tLa membrana 1 expulsa al exterior todas las d, por lo tanto el conjunto \
+de naturales ser\[AAcute] el n\[UAcute]mero de e restantes, que es ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["x", "2"], TraditionalForm]],ExpressionUUID->
+  "a3fa3951-9ed4-4a85-a720-c4efb0694151"],
+ " (x>=0)\n\tResultado: el conjunto de naturales es [1, 4, 9, 16, 25...]\n\n\
+Apartado b:\n\tLa membrana 1 tiene 2 opciones:\n\t\tOpci\[OAcute]n 1: \
+introducir en la membrana 2 ",
+ StyleBox["bccbcc",
+  FontWeight->"Bold"],
+ " sin modificar su estado\n\t\tOpci\[OAcute]n 2: mover ",
+ StyleBox["aa ",
+  FontWeight->"Bold"],
+ "al exterior (borr\[AAcute]ndolo de la membrana 1)\n\tPor tanto en el \
+interior de la membrana dos tendremos ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    RowBox[{"(", "bcc", ")"}], 
+    RowBox[{"2", "n"}]], TraditionalForm]],ExpressionUUID->
+  "0214563c-a4c9-40d6-9208-97f587c1fd60"],
+ ", donde n es el n\[UAcute]mero de transiciones hasta que se ejecuta la opci\
+\[OAcute]n 2 (que termina el proceso).\n\tResultado: el conjunto de naturales \
+es [0, 6, 12, 18, 24...]"
+}], "Text",
+ CellChangeTimes->{{3.704522510306861*^9, 3.704522979997941*^9}, {
+  3.704523404685253*^9, 3.704523407863768*^9}, {3.7045236958654737`*^9, 
+  3.70452371428866*^9}, {3.704524631266062*^9, 3.704524650663217*^9}, {
+  3.7045246893398046`*^9, 3.704524770303081*^9}, {3.704524846057345*^9, 
+  3.70452488456462*^9}, {3.704525019245068*^9, 3.7045251288602467`*^9}, {
+  3.704525366894202*^9, 
+  3.704525383027165*^9}},ExpressionUUID->"89e9b005-b165-4212-9935-\
+7bf5e83c42da"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Ejercicio II : funci\[OAcute]n definida por sistema P", "Section",
+ CellChangeTimes->{{3.704517225547216*^9, 
+  3.704517257718327*^9}},ExpressionUUID->"cd13fec7-b8de-4f85-b058-\
+22845f976ecf"],
+
+Cell[TextData[{
+ "La entrada de este sistema toma la forma ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["a", "n"], 
+    SuperscriptBox["c", "k"], "d"}], TraditionalForm]],ExpressionUUID->
+  "5f0242ba-674f-47da-9625-17890f56a4b0"],
+ "\nEl sistema s\[OAcute]lo calcula \[OpenCurlyDoubleQuote]n\
+\[CloseCurlyDoubleQuote] si ",
+ StyleBox["k",
+  FontWeight->"Bold"],
+ " no es 0 y ",
+ StyleBox["n",
+  FontWeight->"Bold"],
+ " no es m\[UAcute]ltiplo de ",
+ StyleBox["k",
+  FontWeight->"Bold"],
+ "; en cualquier otro caso, devuelve \[OpenCurlyDoubleQuote]s\
+\[CloseCurlyDoubleQuote], tal y como describe el c\[OAcute]digo a continuaci\
+\[OAcute]n:"
+}], "Text",
+ CellChangeTimes->{{3.7045174015758743`*^9, 3.704517405136952*^9}, {
+  3.704519582954817*^9, 3.704519593420247*^9}, {3.704519635099689*^9, 
+  3.704519642058538*^9}, {3.7045199634951763`*^9, 3.704519969047268*^9}, {
+  3.704520002711966*^9, 3.704520221979659*^9}, {3.704520340356701*^9, 
+  3.704520496100226*^9}},ExpressionUUID->"b4adff75-7370-40e2-a2a9-\
+3552d72cc831"],
+
+Cell[BoxData[
+ RowBox[{"If", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"k", "\[NotEqual]", "0"}], "&"}], 
+     RowBox[{"Mod", "[", 
+      RowBox[{"n", ",", "k"}], "]"}]}], "\[NotEqual]", "0"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Return", "[", "\"\<n\>\"", "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"Return", "[", "\"\<s\>\"", "]"}]}], "\[IndentingNewLine]", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7045196479943123`*^9, 3.704519658436195*^9}, {
+  3.704519730445321*^9, 3.704519756024881*^9}, {3.704519806608794*^9, 
+  3.70451994133363*^9}, {3.7045202902303133`*^9, 
+  3.7045203359934807`*^9}},ExpressionUUID->"d07821d0-7deb-496e-932f-\
+23bae4e4877a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Ejercicio III : m\[OAcute]dulo que calcula transiciones de sistemas P\
+\>", "Section",
+ CellChangeTimes->{{3.704517259101972*^9, 
+  3.704517277195092*^9}},ExpressionUUID->"a8f5c6ca-cd67-47de-a74a-\
+4d193e5dfbe1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Ejercicio3", "[", "n_", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"i", ",", "res"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"res", "=", 
+       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"i", "=", "0"}], ",", 
+        RowBox[{"i", "<", "n"}], ",", 
+        RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Random", "[", 
+             RowBox[{"Integer", ",", "1"}], "]"}], "\[Equal]", "0"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"res", "=", 
+            RowBox[{"Join", "[", 
+             RowBox[{"res", ",", 
+              RowBox[{"{", 
+               RowBox[{
+               "b", ",", "c", ",", "c", ",", "b", ",", "c", ",", "c"}], 
+               "}"}]}], "]"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Return", "[", "res", "]"}], ";"}]}], 
+          "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}],
+       ";", "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", "res", "]"}], ";"}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.704522443547647*^9, 3.704522445381057*^9}, {
+   3.704546809470195*^9, 3.704546819445489*^9}, {3.704548199052125*^9, 
+   3.70454822811485*^9}, {3.7045482722340803`*^9, 3.704548330300775*^9}, {
+   3.7045483613677998`*^9, 3.704548369743799*^9}, 3.704548401567266*^9, {
+   3.7045484362638197`*^9, 3.7045484538374147`*^9}, {3.704548488741156*^9, 
+   3.7045485174838667`*^9}},ExpressionUUID->"25b35b8e-149c-4893-9baf-\
+ba563bce7650"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{955.8, 574.1999999999999},
+WindowMargins->{{
+  Automatic, 12.600000000000136`}, {-36.60000000000002, Automatic}},
+FrontEndVersion->"12.2 para Microsoft Windows (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"1dd264fe-5257-40d0-a16a-e67851a5264e"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 163, 3, 97, "Title",ExpressionUUID->"c01c0844-0ce8-46b5-9ded-951ee4fa011b"],
+Cell[746, 27, 267, 7, 85, "Subtitle",ExpressionUUID->"977be47f-83c8-48f7-ad89-4d987ffbdbf1"],
+Cell[CellGroupData[{
+Cell[1038, 38, 192, 2, 67, "Section",ExpressionUUID->"e9d99a7a-706c-4d6d-b2c2-9ba1d51dc35f"],
+Cell[1233, 42, 2232, 52, 360, "Text",ExpressionUUID->"89e9b005-b165-4212-9935-7bf5e83c42da"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3502, 99, 198, 3, 67, "Section",ExpressionUUID->"cd13fec7-b8de-4f85-b058-22845f976ecf"],
+Cell[3703, 104, 1035, 27, 81, "Text",ExpressionUUID->"b4adff75-7370-40e2-a2a9-3552d72cc831"],
+Cell[4741, 133, 695, 17, 137, "Input",ExpressionUUID->"d07821d0-7deb-496e-932f-23bae4e4877a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5473, 155, 222, 5, 67, "Section",ExpressionUUID->"a8f5c6ca-cd67-47de-a74a-4d193e5dfbe1"],
+Cell[5698, 162, 1786, 43, 320, "Input",ExpressionUUID->"25b35b8e-149c-4893-9baf-ba563bce7650",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,7 @@
+Salida por consola:
+
+Events start soon, currently x is 2
+Event one happens each 4 seconds
+Event one happens each 2 seconds
+Event one happens each 4 seconds
+No more events

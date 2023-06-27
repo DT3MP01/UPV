@@ -1,0 +1,4 @@
+Todos los tiempos son relativamente parecidos, sin ninguna diferencia destacable.
+
+Esto es debido a que la distribución de la carga de los hilos
+siempre va a ser la misma, ya que n se conoce desde el primer momento, por lo que da igual cuando se asignen las iteraciones.
