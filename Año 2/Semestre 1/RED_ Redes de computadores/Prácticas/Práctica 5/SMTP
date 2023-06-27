@@ -1,0 +1,34 @@
+220 serveis-rdc.redes.upv.es ESMTP Postfix (Ubuntu)
+EHLO [158.42.180.4]
+250-serveis-rdc.redes.upv.es
+250-PIPELINING
+250-SIZE 10240000
+250-VRFY
+250-ETRN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250 DSN
+MAIL FROM:<redes04@redes.upv.es> BODY=8BITMIME SIZE=443
+250 2.1.0 Ok
+RCPT TO:<redes04@redes.upv.es>
+250 2.1.5 Ok
+DATA
+354 End data with <CR><LF>.<CR><LF>
+To: redes04@redes.upv.es
+From: =?UTF-8?Q?David_Arnal_Garc=c3=ada?= <redes04@redes.upv.es>
+Subject: hola
+Message-ID: <5865bd4d-989b-7105-deed-372897dc6e29@redes.upv.es>
+Date: Fri, 8 Nov 2019 11:49:04 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+
+hola
+
+.
+250 2.0.0 Ok: queued as 315085F7E3
+QUIT
+221 2.0.0 Bye

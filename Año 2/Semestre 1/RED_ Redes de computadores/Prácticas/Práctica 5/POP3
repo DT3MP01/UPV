@@ -1,0 +1,53 @@
++OK Hello there.
+CAPA
++OK Here's what I can do:
+TOP
+USER
+LOGIN-DELAY 10
+PIPELINING
+UIDL
+IMPLEMENTATION Courier Mail Server
+.
+USER redes04
++OK Password required.
+PASS bloqueo
++OK logged in.
+STAT
++OK 3 2351
+LIST
++OK POP3 clients that break here, they violate STD53.
+1 753
+2 803
+3 795
+.
+UIDL
++OK
+1 1573210144.V803I1feaM209812.serveis-rdc
+2 1573210325.V803I1ff2M231762.serveis-rdc
+3 UID3-1573210340
+.
+RETR 3
++OK 795 octets follow.
+Return-Path: <redes04@redes.upv.es>
+X-Original-To: redes04@redes.upv.es
+Delivered-To: redes04@redes.upv.es
+Received: from [158.42.180.4] (rdc04.redes.upv.es [158.42.180.4])
+	by serveis-rdc.redes.upv.es (Postfix) with ESMTP id F07AB5F7E3
+	for <redes04@redes.upv.es>; Fri,  8 Nov 2019 11:54:26 +0100 (CET)
+To: redes04@redes.upv.es
+From: =?UTF-8?Q?David_Arnal_Garc=c3=ada?= <redes04@redes.upv.es>
+Subject: Este es mi tercer mensaje
+Message-ID: <a8b1f0e2-f340-1515-fc1c-d96ea0cee59e@redes.upv.es>
+Date: Fri, 8 Nov 2019 11:54:26 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+
+Eso es. Mi tercer mensaje
+
+.
+QUIT
++OK Bye-bye.

@@ -1,0 +1,18 @@
+Para temporizar Integers se debe ejecutar el metodo temporizar()
+Para temporizar Strings se debe ejecutar el metodo temporizarString()
+#----------------------------------------------
+# Comparación entre quickSort y mergeSort: 
+# Tiempos en milisegs para Integers.
+#----------------------------------------------
+#  Talla    mergeSort1   mergeSort2   quickSort
+#----------------------------------------------
+   10000       4.6058       3.9973       1.9168
+   20000       6.5183       5.5803       4.5219
+   30000      12.0777       9.1281       7.2705
+   40000      17.0827      12.9026      10.4139
+   50000      17.5103      14.3892      11.7188
+   60000      21.2201      15.4976      13.7569
+   70000      25.9672      18.9724      15.6018
+   80000      33.9721      26.2507      20.6851
+   90000      40.8790      30.5811      23.4647
+  100000      43.8462      32.1588      25.0906

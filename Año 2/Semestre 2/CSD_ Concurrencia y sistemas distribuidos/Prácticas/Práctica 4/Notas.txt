@@ -1,0 +1,3 @@
+Comando para rmiregistry: "C:\Program Files\Java\jdk1.8.0_251\bin\rmiregistry" 9000
+
+Recompilar: "C:\Program Files\Java\jdk1.8.0_251\bin\javac" *.java

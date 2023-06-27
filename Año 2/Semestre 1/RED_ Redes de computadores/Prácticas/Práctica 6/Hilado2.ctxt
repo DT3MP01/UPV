@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Hilado2
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=so
+comment2.target=Hilado2(java.net.Socket)
+comment3.params=
+comment3.target=void\ run()
+numComments=4

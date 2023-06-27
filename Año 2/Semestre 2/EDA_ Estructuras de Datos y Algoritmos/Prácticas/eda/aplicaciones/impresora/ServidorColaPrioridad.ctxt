@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=ServidorColaPrioridad
+comment0.text=\r\n\ Clase\ ServidorColaPrioridad\:\ implementa\ un\ ServidorDeImpresion\ que\ usa\ un\r\n\ modelo\ de\ maxima\ prioridad\ (ColaPrioridad)\ para\ gestionar\ los\ trabajos\ en\r\n\ espera\ que\ almacena.\r\n\r\n\ @author\ (profesores\ EDA)\r\n\ @version\ (Curso\ 2018-2019)\r\n
+comment1.params=
+comment1.target=ServidorColaPrioridad()
+comment1.text=\r\n\ Crea\ un\ Servidor\ de\ Impresion\ vacio.\r\n
+comment2.params=t
+comment2.target=void\ insertar(Trabajo)
+comment2.text=\r\n\ Incluye\ un\ nuevo\ trabajo\ en\ espera\ t\ en\ un\ ServidorDeImpresion.\r\n\r\n\ @param\ t\ Trabajo\r\n
+comment3.params=
+comment3.target=boolean\ hayTrabajos()
+comment3.text=\r\n\ Comprueba\ si\ hay\ algun\ trabajo\ en\ espera\ en\ un\ ServidorDeImpresion.\r\n\r\n\ @return\ boolean\r\n
+comment4.params=
+comment4.target=Trabajo\ getTrabajo()
+comment4.text=\r\n\ SII\ hayTrabajos()\:\ devuelve\ el\ Trabajo\ de\ un\ ServidorDeImpresion\ que\ va\ a\r\n\ ser\ impreso.\r\n\r\n\ @return\ Trabajo\r\n
+comment5.params=
+comment5.target=int\ imprimirTrabajo()
+comment5.text=\r\n\ SII\ hayTrabajos()\:\ elimina\ de\ un\ ServidorDeImpresion\ el\ trabajo\ que\ va\ a\r\n\ ser\ impreso\ y\ devuelve\ el\ tiempo\ que\ este\ tardara\ en\ imprimirse,\ en\ base\r\n\ a\ la\ velocidad\ de\ la\ impresora.\r\n\r\n\ @return\ int\ (seg.)\r\n
+numComments=6

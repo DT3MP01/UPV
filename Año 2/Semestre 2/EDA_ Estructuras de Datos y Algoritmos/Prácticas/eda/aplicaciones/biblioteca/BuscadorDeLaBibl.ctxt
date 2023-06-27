@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=BuscadorDeLaBibl
+comment0.text=\r\n\ BuscadorDeLaBibl\:\ clase\ que\ representa\ un\ Buscador\ eficiente,\ i.e.\ con\ un\r\n\ Indice,\ de\ una\ biblioteca\ digital.\ Por\ ello,\ su\ funcionalidad\ basica\ es...\r\n\ 1.-\ Crear\ el\ Indice\ de\ la\ biblioteca,\ representado\ mediante\ un\ Map\ que\ se\r\n\ implementa\ mediante\ una\ Tabla\ Hash\ Enlazada\ 2.-\ Recuperar\ la\ informacion\ que\r\n\ exista\ sobre\ una\ palabra\ dada\ (Posting\ List)\ en\ la\ biblioteca,\ buscandola\ en\r\n\ su\ Indice.\r\n\r\n\ @author\ (EDA)\r\n\ @version\ (Curso\ 2019-2020)\r\n
+comment1.params=
+comment1.target=BuscadorDeLaBibl()
+comment1.text=\r\n\ Crea\ el\ Buscador\ de\ la\ bibliotecta\ digital\ que\ forman\ los\ libros\ de\r\n\ listaLibros.\ Basicamente,\ ello\ supone\ crear\ el\ Indice\ de\ la\ biblioteca\r\n\ con,\ como\ maximo,\ maxTerminos.\ Si\ no\ encuentra\ (el\ fichero\ .txt\ de)\ un\r\n\ libroLanza\ FileNotFoundException\ para\ advertirlo.\r\n\r\n\ @throws\ java.io.FileNotFoundException\r\n
+comment2.params=fichLibro
+comment2.target=boolean\ indexarLibro(java.lang.String)
+comment2.text=\r\n\ Devuelve\ true\ tras\ actualizar\ el\ Buscador\ de\ una\ bibilioteca\ digital\ con\r\n\ los\ terminos\ que\ contiene\ fichLibro\ (fichero\ .txt).\ Basicamente,\ ello\r\n\ supone\ actualizar\ el\ Indice\ de\ la\ biblioteca\ con\ los\ terminos\ de\r\n\ fichlibro.\ El\ metodo\ devuelve\ false\ si\ fichlibro\ no\ existe.\r\n\r\n\ @param\ fichLibro\r\n\ @return\r\n
+comment3.params=unaPalabra
+comment3.target=java.lang.String\ buscar(java.lang.String)
+comment3.text=\r\n\ Devuelve\ en\ formato\ texto\ (String)\ el\ resultado\ de\ la\ busqueda\ del\r\n\ termino\ asociado\ a\ unaPalabra\ en\ el\ Indice\ de\ una\ biblioteca\ digital\r\n\ (frecuencia\ de\ aparicion\ del\ termino\ y,\ en\ su\ caso,\ el\ listado\ que\r\n\ contiene\ los\ titulos\ y\ lineas\ de\ los\ libros\ de\ la\ bibiblioteca\ en\ los\ que\r\n\ aparece,\ i.e.\ su\ Posting\ List).\r\n\r\n\ @param\ unaPalabra\r\n\ @return\r\n
+comment4.params=unaPalabra
+comment4.target=boolean\ esTermino(java.lang.String)
+comment4.text=\r\n\ Comprueba\ si\ unaPalabra\ es\ un\ termino\ del\ Indice\ de\ una\ biblioteca\r\n\ digital,\ i.e.\ si\ unaPalabra\ esta\ formada\ por\ letras\ del\ alfabeto\r\n\ castellano\ en\ minusculas.\r\n\r\n\ @param\ unaPalabra\r\n\ @return\r\n
+comment5.params=
+comment5.target=librerias.estructurasDeDatos.modelos.ListaConPI\ terminosUnicos()
+comment5.text=\r\n\ Devuelve\ una\ ListaConPI\ con\ los\ terminos\ de\ una\ biblioteca\ digital\ que\r\n\ solo\ aparecen\ una\ vez\ en\ uno\ de\ sus\ libros,\ o\ null\ si\ no\ existe\ ninguno.\r\n\r\n\ @return\r\n
+numComments=6

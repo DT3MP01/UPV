@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=ChatRobot
+comment1.params=conf\ nick
+comment1.target=ChatRobot(ChatConfiguration,\ java.lang.String)
+comment2.params=
+comment2.target=void\ doConnect()
+comment2.text=\r\n\r\n\ @throws\ java.lang.Exception\r\n
+comment3.params=msg
+comment3.target=void\ messageArrived(IChatMessage)
+comment3.text=\r\n\r\n\ @param\ msg\r\n
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+numComments=5

@@ -1,0 +1,84 @@
+### ESTRUCTURA DE COMPUTADORES (ETS Eng. Inf.)
+##  
+## marzo de 2014
+##
+## PRÁCTICA 13: SINCRONIZACI�N POR INTERRUPCIONES
+##
+## Código inicial del manejador
+
+
+##############################################################
+##              ÁREA DE DATOS DEL MANEJADOR                 ##
+##############################################################
+
+			.kdata
+var1:	.word 0xFFFFFFFF
+contexto: .word 32
+
+#############################################################
+##                  CÓDIGO DEL MANEJADOR de la EXCEPCIÓN                ##
+#############################################################
+
+          .ktext 0x80000080
+
+    ## Preserva el contexto del programa de usuario
+    ## (nada de momento)
+	.set noat
+	sw $at, 0($k1)
+	.set at
+	
+	sw $t0, 4($k1)
+	sw $a0, 8($k1)
+	sw $v0, 12($k1)
+
+    ## Identifica y trata excepciones
+	## (nada, de momento)
+	## Paso 3 -> tratamiento incorrecto de las excepciones
+		## li $a0, '*' 
+		## li $v0, 11  
+		## syscall
+		
+	## Paso 4 -> tratamiento correcto de las excepciones
+    la $t0, 0xFFFF0000
+    lw $a0, 4($t0)
+
+    ## Restaura el contexto
+    ## (nada de momento)
+	.set noat
+	lw $at, 0($k1)
+	.set at
+	
+	lw $t0, 4($k1)
+	lw $a0, 8($k1)
+	lw $v0, 12($k1)
+
+    ## Restaura el modo usuario y vuelve al programa
+	## falta algo
+    mfc0 $k0, $14 ## $k0 actuará como registro temporal del manejador y contendrá la dirección
+				  ## de retorno en el último momento
+	rfe ## return from exception
+	jr $k0 
+
+#############################################################
+##                    CÓDIGO DE INICIO                     ##
+#############################################################
+
+          .text
+          .globl __start 
+__start: 
+    ## Código de inicio
+	## (nada, de momento)
+	la $k1, contexto
+	
+    la $t0, 0xFFFF0000 ## carga de la DB de teclado
+    li $t1, 2 
+    sb $t1, 0($t0)
+    li $t0, 0x103
+    mtc0 $t0, $12
+
+    ## Salto al programa de usuario
+	jal main
+
+    ## Código de terminación
+	li $v0, 10
+	syscall	 # Función exit
