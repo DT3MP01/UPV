@@ -1,0 +1,53 @@
+B2.3 Guide
+
+NOTE: All steps are shown for Spanish (_es) tweets; you must perform them as well for Catalan (_ca) tweets
+
+A. Prepare data
+
+A.1 Put whole training in Mallet format
+
+paste -d ":" training_truth_es.txt training_tweets_es_clean.txt | awk 'BEGIN{FS=":";} {print $1"\t"$4"\t"$NF;}' > training_tweets_es_clean_mallet.txt 
+
+A.2 Split whole training in training and validation
+
+cat training_tweets_es_clean_mallet.txt | awk '{if (NR%5==0) print > "val_tweets_es_clean_mallet.txt"; else print > "tr_tweets_es_clean_mallet.txt";}'
+
+A.3 Put validation reference in eval.pl format
+
+awk '{print $1"\tX\tX\t"$2;}' val_tweets_es_clean_mallet.txt > val_tweets_es_clean_mallet.ref
+
+B. Train Mallet model with training partition ("tr_tweets_es_clean_mallet.txt", repeat it for different training options)
+
+B.1 Obtain dictionary with "csv2vectors"
+
+B.2 Convert text data to Mallet bin data witn "mallet import-file"
+
+B.3 Train model with "mallet train-classifier"
+
+C. Obtain results
+
+C.1 Decode validation set
+
+mallet classify-file --input val_tweets_es_clean_mallet.txt --output val_tweets_es_clean_mallet.out --classifier tr_tweets_es_clean_mallet.classifier 
+
+C.2 Convert classification result to eval.pl format
+
+cat val_tweets_es_clean_mallet.out | LC_NUMERIC=C awk '{l=$2; s=$3; for (i=5;i<=NF;i=i+2) if ($i>s) { s=$i; l=$(i-1); } print $1"\tX\tX\t"l; }' > val_tweets_es_clean_mallet.cl
+
+C.3 Obtain result with eval.pl
+
+perl eval.pl val_tweets_es_clean_mallet.ref val_tweets_es_clean_mallet.cl 
+
+D. Prepare blind data test in Mallet format
+
+cat test_tweets_es_clean.txt | awk '{print NR"\tXXX\t"$0;}' > test_tweets_es_clean_mallet.txt 
+
+E. Train Mallet model with the whole training set -> As in B but with "training_tweets_es_clean_mallet.txt"
+
+F. Obtain results with blind test 
+
+F.1 As in C.1 but with "test_tweets_es_clean_mallet.txt" and "training_tweets_es_clean_mallet.classifier"
+
+F.2 As in C.2 but with "test_tweets_es_clean_mallet.out"
+
+F.3 File "test_tweets_es_clean_mallet.cl" is the file you have to send in the PoliformaT task

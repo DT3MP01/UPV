@@ -1,0 +1,2315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/profile/cc/ccv1p1/ccv1p1_qtiasiv1p2p1_v1p0.xsd">
+  <assessment ident="QDB_1" title="Examen Final DGP">
+    <section ident="S_1">
+      <item ident="QUE_1_1" title="1.1">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">En la aplicación del método del Valor Ganado, para calcular el Coste Estimado a Finalización del proyecto (CEF/EAC):</mattext>
+          </material>
+          <response_lid ident="QUE_1_1_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_1_1_1">
+                <material>
+                  <mattext texttype="text/html">Se suman todos los CPTP en cada periodo considerado.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_1_2">
+                <material>
+                  <mattext texttype="text/html">Se asume la hipótesis de que el proyecto seguirá teniendo, en media, un nivel de desempeño en costes similar al mostrado hasta la fecha.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_1_3">
+                <material>
+                  <mattext texttype="text/html">Se calcula el valor medio de cada CRTR hasta el periodo considerado y se prorratea el resto de periodos hasta el final del proyecto.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_1_1_RL">QUE_1_1_2</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_1_2" title="1.2">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Si un determinado proyecto, en el momento de realizar el primer informe de seguimiento (fecha de estado), tiene una Variación del Programa (VP/SV) negativa, significa que:</mattext>
+          </material>
+          <response_lid ident="QUE_1_2_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_1_2_1">
+                <material>
+                  <mattext texttype="text/html">El proyecto se está ejecutando con retraso porque el valor  presupuestado (CPTP) es mayor que el valor ganado (CPTR).</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_2_2">
+                <material>
+                  <mattext texttype="text/html">El proyecto se está ejecutando con retraso porque el valor ganado (CPTR) es mayor que el coste presupuestado (CPTP).</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_2_3">
+                <material>
+                  <mattext texttype="text/html">El proyecto se está ejecutando con adelanto porque el coste presupuestado (CPTP) es mayor que el valor ganado (CPTR).</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_1_2_RL">QUE_1_2_1</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_1_3" title="1.3">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Una tarea requiere las horas de trabajo de los siguientes tipos de recursos: Ingeniera Nivel 1	80 h Ingeniero Nivel 2	120 h Si la jornada laboral es de 8h/d, 5 días a la semana, ¿Cuál es la asignación de recursos que hay que hacer para que la tarea tenga una duración de 5 días?</mattext>
+          </material>
+          <response_lid ident="QUE_1_3_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_1_3_1">
+                <material>
+                  <mattext texttype="text/html">Ingeniera Nivel 1 al 100%. Ingeniero Nivel 2 al 150%</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_3_2">
+                <material>
+                  <mattext texttype="text/html">Ingeniera Nivel 1 al 200%. Ingeniero Nivel 2 al 300%</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_3_3">
+                <material>
+                  <mattext texttype="text/html">Ingeniera Nivel 1 al 67%. Ingeniero Nivel 2 al 100%</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_1_3_RL">QUE_1_3_2</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_1_4" title="1.4">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">¿Cuál de las siguientes definiciones describe mejor lo que es un cronograma?</mattext>
+          </material>
+          <response_lid ident="QUE_1_4_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_1_4_1">
+                <material>
+                  <mattext texttype="text/html">Es un método que se utiliza para estimar la duración mínima del proyecto y determinar el nivel de flexibilidad en la programación de los caminos de red lógicos de las actividades del proyecto.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_4_2">
+                <material>
+                  <mattext texttype="text/html">Es una salida de un modelo de programación que representa actividades relacionadas con fechas planificadas, duraciones, hitos y recursos.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_4_3">
+                <material>
+                  <mattext texttype="text/html">Es una técnica utilizada para construir un modelo de programación en el cual las actividades se representan mediante nodos y se vinculan gráficamente mediante una o  más relaciones lógicas.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_1_4_RL">QUE_1_4_2</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_1_5" title="1.5">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Entre dos directivos que gestionan proyectos se produce la siguiente conversación: &amp;quot;He tenido que apretar en plazos al Proveedor B. Durante la programación del proyecto, le dijimos que tenía dos semanas suplementarias sobre el plazo inicial para acabar la tarea que tenía encomendada. Ahora solo le he dejado una semana de holgura sobre lo inicial. Aunque la culpa es del Proveedor A, responsable de la tarea inmediatamente anterior, que ha tardado cuatro semanas más de lo previsto&amp;quot; Señale la afirmación correcta:</mattext>
+          </material>
+          <response_lid ident="QUE_1_5_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_1_5_1">
+                <material>
+                  <mattext texttype="text/html">La holgura libre de la tarea encomendada a A era 3 semanas.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_5_2">
+                <material>
+                  <mattext texttype="text/html">La holgura libre de la tarea encomendada a B era 1 semana.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_5_3">
+                <material>
+                  <mattext texttype="text/html">La holgura total de la tarea encomendada a B era 1 semana.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_1_5_RL">QUE_1_5_1</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_1_6" title="1.6">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;p&gt;En la presente figura, la diferencia entre los puntos B y A indica:&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;https://poliformat.upv.es/access/content/attachment/CFP_442_30891/Exámenes/96decc5d-8e36-4635-986a-7ffadf3d19a4/Cursvas_20S_examen.png&quot; style=&quot;height: 357.0px;width: 599.0px;&quot; /&gt;&lt;/p&gt;
+</mattext>
+          </material>
+          <response_lid ident="QUE_1_6_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_1_6_1">
+                <material>
+                  <mattext texttype="text/html">&lt;p&gt;Que el proyecto tiene sobrecoste en el momento del análisis T.&lt;/p&gt;
+</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_6_2">
+                <material>
+                  <mattext texttype="text/html">&lt;p&gt;Que la ejecución del proyecto lleva retraso en el momento de análisis T.&lt;/p&gt;
+</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_6_3">
+                <material>
+                  <mattext texttype="text/html">&lt;p&gt;Que la ejecución del proyecto va adelantada en el momento del análisis T&lt;/p&gt;
+</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_1_6_RL">QUE_1_6_2</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_1_7" title="1.7">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;p&gt;Dada la siguiente planificación: Si la &lt;strong&gt;Tarea 1.1 &lt;/strong&gt;pasa a durar 3 días, la &lt;strong&gt;Tarea 2.2  &lt;/strong&gt;pasa a durar 5 días y la &lt;strong&gt;Tarea 3.1&lt;/strong&gt;. pasa a durar 3 días, ¿cuál de las siguientes afirmaciones no es cierta?&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&quot;&quot; src=&quot;https://poliformat.upv.es/access/content/attachment/CFP_442_30891/Exámenes/52ed11d4-294c-483d-96be-53a877f69c75/Gantt_examen.png&quot; style=&quot;height: 556.0px;width: 1047.0px;&quot; /&gt;&lt;/p&gt;
+</mattext>
+          </material>
+          <response_lid ident="QUE_1_7_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_1_7_1">
+                <material>
+                  <mattext texttype="text/html">&lt;p&gt;El proyecto seguirá durando 7 días laborables&lt;/p&gt;
+</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_7_2">
+                <material>
+                  <mattext texttype="text/html">&lt;p&gt;Las fases 2 y 3 durarán 7 días laborables &lt;/p&gt;
+</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_7_3">
+                <material>
+                  <mattext texttype="text/html">&lt;p&gt;Las fases 1 y 2 seguirán durando lo mismo&lt;/p&gt;
+</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_1_7_RL">QUE_1_7_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_1_8" title="1.8">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Supongamos que una tarea tiene un coste presupuestado (CPTP) de 100000 €. En el momento de realizar el primer informe de seguimiento (fecha de estado) se ha completado el 40%. El valor presupuestado (CPTP) para esa fecha es de 50000 €. Esto significa que:</mattext>
+          </material>
+          <response_lid ident="QUE_1_8_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_1_8_1">
+                <material>
+                  <mattext texttype="text/html">La tarea va retrasada porque se ha acumulado un valor inferior al coste real.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_8_2">
+                <material>
+                  <mattext texttype="text/html">La tarea va retrasada porque se ha acumulado un valor inferior al programado.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_8_3">
+                <material>
+                  <mattext texttype="text/html">La tarea va adelantada porque se ha acumulado un valor superior al programado.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_1_8_RL">QUE_1_8_2</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_1_9" title="1.9">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">La cantidad de tiempo que se puede retrasar una actividad sin que ello afecte al inicio previsto de la siguiente actividad es:</mattext>
+          </material>
+          <response_lid ident="QUE_1_9_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_1_9_1">
+                <material>
+                  <mattext texttype="text/html">La Holgura total de la actividad.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_9_2">
+                <material>
+                  <mattext texttype="text/html">La Holgura independiente de la actividad.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_9_3">
+                <material>
+                  <mattext texttype="text/html">La Holgura libre de la actividad.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_1_9_RL">QUE_1_9_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_1_10" title="1.10">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">La Estructura de Descomposición del Proyecto:</mattext>
+          </material>
+          <response_lid ident="QUE_1_10_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_1_10_1">
+                <material>
+                  <mattext texttype="text/html">Es una Técnica de ayuda a la Definición del Alcance del proyecto.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_10_2">
+                <material>
+                  <mattext texttype="text/html">Es una etapa de análisis del proyecto necesaria para preparar la gestión del mismo.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_10_3">
+                <material>
+                  <mattext texttype="text/html">Es una Teoría de descomposición del proyecto que se utiliza en Dirección de Proyectos.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_1_10_RL">QUE_1_10_1</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_1_11" title="1.11">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">En un instante de control del proyecto, el Coste Real (CRTR) es de 200.000 euros, y el Valor Ganado (CPTR) es de 240.000 euros. En esta situación:</mattext>
+          </material>
+          <response_lid ident="QUE_1_11_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_1_11_1">
+                <material>
+                  <mattext texttype="text/html">El IRP = 1,2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_11_2">
+                <material>
+                  <mattext texttype="text/html">El IRC = 1,2</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_11_3">
+                <material>
+                  <mattext texttype="text/html">El proyecto va mal en costes</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_1_11_RL">QUE_1_11_2</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_1_12" title="1.12">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Durante la planificación de un determinado proyecto, Ud. tiene que determinar la duración de una tarea para la que se requiere 180 horas de trabajo de ingeniería. Los recursos de que dispone son: Ingeniero 1 (Técnico Superior); Ingeniero 2 (Técnico en formación) Suponiendo que todos los recursos tienen el mismo rendimiento, pero el Ingeniero 1 tiene una disponibilidad del 50% de su capacidad, y el Ingeniero 2, el 100 % de su capacidad, la duración de la tarea será:</mattext>
+          </material>
+          <response_lid ident="QUE_1_12_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_1_12_1">
+                <material>
+                  <mattext texttype="text/html">22,5 días</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_12_2">
+                <material>
+                  <mattext texttype="text/html">15 días</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_1_12_3">
+                <material>
+                  <mattext texttype="text/html">10 días</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_1_12_RL">QUE_1_12_2</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_2_1" title="2.1">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">¿Cuál de las siguientes afirmaciones relacionadas con el riesgo es FALSA?</mattext>
+          </material>
+          <response_lid ident="QUE_2_1_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_2_1_1">
+                <material>
+                  <mattext texttype="text/html">El impacto es la consecuencia sobre el activo de la materialización de una amenaza.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_2_1_2">
+                <material>
+                  <mattext texttype="text/html">Las amenazas siguen presentes aunque se tomen medidas preventivas.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_2_1_3">
+                <material>
+                  <mattext texttype="text/html">El riesgo es la probabilidad de materialización de una amenaza.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_2_1_RL">QUE_2_1_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_2_2" title="2.2">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">La gestión de riesgos permite controlar la desviación entre:</mattext>
+          </material>
+          <response_lid ident="QUE_2_2_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_2_2_1">
+                <material>
+                  <mattext texttype="text/html">El estado inicial y el estado final conseguido.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_2_2_2">
+                <material>
+                  <mattext texttype="text/html">El estado inicial y el estado final deseado.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_2_2_3">
+                <material>
+                  <mattext texttype="text/html">El estado final deseado y el estado final conseguido.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_2_2_RL">QUE_2_2_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_2_3" title="2.3">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">En relación a las estrategias de respuesta frente a las amenazas:</mattext>
+          </material>
+          <response_lid ident="QUE_2_3_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_2_3_1">
+                <material>
+                  <mattext texttype="text/html">Siempre que sea posible lo ideal es transferir el riesgo a terceros.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_2_3_2">
+                <material>
+                  <mattext texttype="text/html">Es mejor evitar el riesgo que intentar mitigarlo.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_2_3_3">
+                <material>
+                  <mattext texttype="text/html">Van a estar marcadas por un análisis de coste / beneficio.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_2_3_RL">QUE_2_3_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_2_4" title="2.4">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Es posible que se retrase la puesta en marcha de nuestro negocio por los farragosos trámites administrativos. Para ello optamos por estudiar a la perfección todos los trámites, lo que nos permitirá presentar la documentación correcta desde el principio. Esta estrategia sería de tipo:</mattext>
+          </material>
+          <response_lid ident="QUE_2_4_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_2_4_1">
+                <material>
+                  <mattext texttype="text/html">Evitar.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_2_4_2">
+                <material>
+                  <mattext texttype="text/html">Mitigar.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_2_4_3">
+                <material>
+                  <mattext texttype="text/html">Transferir.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_2_4_RL">QUE_2_4_2</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_2_5" title="2.5">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Ante el riesgo de que los costes de envío de materiales sean excesivamente altos, la estrategia de desplazarse hasta el lugar donde se producen los materiales, utilizando un medio de transporte propio, sería:</mattext>
+          </material>
+          <response_lid ident="QUE_2_5_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_2_5_1">
+                <material>
+                  <mattext texttype="text/html">Evitar.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_2_5_2">
+                <material>
+                  <mattext texttype="text/html">Mitigar.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_2_5_3">
+                <material>
+                  <mattext texttype="text/html">Aceptar.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_2_5_RL">QUE_2_5_1</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_2_6" title="2.6">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">En la matriz utilizada por el PMI:</mattext>
+          </material>
+          <response_lid ident="QUE_2_6_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_2_6_1">
+                <material>
+                  <mattext texttype="text/html">El riesgo depende en igual medida de la probabilidad de materialización de la amenaza y del impacto sobre el activo.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_2_6_2">
+                <material>
+                  <mattext texttype="text/html">Si un riesgo tiene un impacto crítico, el riesgo será alto o crítico, aunque la probabilidad sea muy baja o baja. Sin embargo, una probabilidad alta no implica un riesgo crítico, si el impacto no es grave.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_2_6_3">
+                <material>
+                  <mattext texttype="text/html">La asimetría del riesgo se traduce en una escala lineal para el impacto, mientras que la escala de la probabilidad es una progresión geométrica de razón ½.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_2_6_RL">QUE_2_6_2</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_2_7" title="2.7">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">El umbral de riesgo:</mattext>
+          </material>
+          <response_lid ident="QUE_2_7_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_2_7_1">
+                <material>
+                  <mattext texttype="text/html">Es el valor establecido como base para decidir por comparación si el riesgo calculado es aceptable.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_2_7_2">
+                <material>
+                  <mattext texttype="text/html">Un riesgo calculado superior al umbral implica entrar en la fase de gestión del riesgo.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_2_7_3">
+                <material>
+                  <mattext texttype="text/html">Todas las afirmaciones anteriores son correctas.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_2_7_RL">QUE_2_7_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_2_8" title="2.8">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Durante el proyecto, los eventos de riesgo evolucionan:</mattext>
+          </material>
+          <response_lid ident="QUE_2_8_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_2_8_1">
+                <material>
+                  <mattext texttype="text/html">Aparecen nuevos.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_2_8_2">
+                <material>
+                  <mattext texttype="text/html">Cambia la probabilidad o el impacto de los que permanecen.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_2_8_3">
+                <material>
+                  <mattext texttype="text/html">Todas las afirmaciones anteriores son correctas.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_2_8_RL">QUE_2_8_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_2_9" title="2.9">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">El valor monetario esperado:</mattext>
+          </material>
+          <response_lid ident="QUE_2_9_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_2_9_1">
+                <material>
+                  <mattext texttype="text/html">Es una técnica de evaluación del riesgo basada en el análisis de Montecarlo.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_2_9_2">
+                <material>
+                  <mattext texttype="text/html">Toma las varianzas de un número de factores de riesgo y los suma para obtener un valor total de riesgo.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_2_9_3">
+                <material>
+                  <mattext texttype="text/html">Representa el efecto acumulativo de todos los riesgos sobre el proyecto.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_2_9_RL">QUE_2_9_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_3_1" title="3.1">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Podría ser conveniente centralizar la gestión de compras por la empresa en la que se realiza el proyecto por los siguientes motivos:</mattext>
+          </material>
+          <response_lid ident="QUE_3_1_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_3_1_1">
+                <material>
+                  <mattext texttype="text/html">Cuando se tengan muchos proyectos en marcha con necesidades materiales similares, independientemente de las necesidades de programación del proyecto.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_1_2">
+                <material>
+                  <mattext texttype="text/html">Para obtener mejores resultados en la estandarización de prácticas en la gestión de adquisiciones, incrementar la rentabilidad de la empresa y equilibrar sus flujos de caja.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_1_3">
+                <material>
+                  <mattext texttype="text/html">En general, no es una estrategia conveniente en empresas que trabajan por proyectos, ya que se pierde control sobre la gestión de compras de éste.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_3_1_RL">QUE_3_1_2</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_3_2" title="3.2">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">La gestión de compras del proyecto incluye:</mattext>
+          </material>
+          <response_lid ident="QUE_3_2_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_3_2_1">
+                <material>
+                  <mattext texttype="text/html">El conjunto de operaciones necesarias para adquirir los materiales y equipos que se precisan para la ejecución del proyecto.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_2_2">
+                <material>
+                  <mattext texttype="text/html">El conjunto de operaciones necesarias para adquirir y entregar en el lugar de la obra los materiales y equipos que se precisan para la ejecución del proyecto.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_2_3">
+                <material>
+                  <mattext texttype="text/html">La selección de proveedores y la decisión de compra.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_3_2_RL">QUE_3_2_2</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_3_3" title="3.3">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">La selección de proveedores comienza:</mattext>
+          </material>
+          <response_lid ident="QUE_3_3_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_3_3_1">
+                <material>
+                  <mattext texttype="text/html">Después de recibir todas las ofertas para un único objeto de compra.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_3_2">
+                <material>
+                  <mattext texttype="text/html">En el momento de realizar la decisión de compra en base a las cotizaciones.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_3_3">
+                <material>
+                  <mattext texttype="text/html">Con anterioridad o en paralelo a la petición de oferta.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_3_3_RL">QUE_3_3_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_3_4" title="3.4">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">La activación de pedidos se encarga de:</mattext>
+          </material>
+          <response_lid ident="QUE_3_4_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_3_4_1">
+                <material>
+                  <mattext texttype="text/html">Controlar que los suministradores cumplan las fechas que condicionan el cumplimiento de los plazos de entrega fijados.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_4_2">
+                <material>
+                  <mattext texttype="text/html">Controlar y supervisar las operaciones de embalaje, manejo, transporte y almacenamiento de equipos y materiales.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_4_3">
+                <material>
+                  <mattext texttype="text/html">Comprar un servicio consistente en la realización de tareas previstas en el proyecto.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_3_4_RL">QUE_3_4_1</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_3_5" title="3.5">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">La función de inspección de materiales y equipos:</mattext>
+          </material>
+          <response_lid ident="QUE_3_5_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_3_5_1">
+                <material>
+                  <mattext texttype="text/html">Se encarga de realizar el seguimiento de los pedidos para que se cumpla la fecha prevista de entrega.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_5_2">
+                <material>
+                  <mattext texttype="text/html">Se encarga de que los materiales se entreguen en la obra al menor coste y con la mayor rapidez posible.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_5_3">
+                <material>
+                  <mattext texttype="text/html">Se encarga de asegurar que todos los materiales y equipos cumplan con las especificaciones de los documentos que acompañan a la orden de compra.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_3_5_RL">QUE_3_5_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_3_6" title="3.6">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">El proceso de subcontratación finaliza con:</mattext>
+          </material>
+          <response_lid ident="QUE_3_6_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_3_6_1">
+                <material>
+                  <mattext texttype="text/html">La transferencia de responsabilidades de la realización de las tareas conforme a las especificaciones y plazos acordados al proveedor.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_6_2">
+                <material>
+                  <mattext texttype="text/html">Con el seguimiento del contrato en cuanto a la evaluación de las entregas parciales y la entrega final.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_6_3">
+                <material>
+                  <mattext texttype="text/html">Con el cierre del contrato del Proyecto incluyendo la resolución de cualquier tema abierto.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_3_6_RL">QUE_3_6_1</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_3_7" title="3.7">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Los procesos de Gestión de Compras afectan a otros aspectos del proyecto, como son:</mattext>
+          </material>
+          <response_lid ident="QUE_3_7_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_3_7_1">
+                <material>
+                  <mattext texttype="text/html">La gestión y coordinación de múltiples proveedores necesaria para la Integración del proyecto.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_7_2">
+                <material>
+                  <mattext texttype="text/html">La coordinación de las adquisiciones con otros aspectos del proyecto, como establecer el cronograma e informar el desempeño.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_7_3">
+                <material>
+                  <mattext texttype="text/html">Ambas respuestas son correctas.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_3_7_RL">QUE_3_7_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_3_8" title="3.8">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">El contenido mínimo del contrato de un proyecto debe incluir:</mattext>
+          </material>
+          <response_lid ident="QUE_3_8_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_3_8_1">
+                <material>
+                  <mattext texttype="text/html">Los cambios aprobados en el objeto del proyecto, informes técnicos y la aceptación oficial del contrato.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_8_2">
+                <material>
+                  <mattext texttype="text/html">Los servicios, precios, entregas y plazos, y criterios de éxito del proyecto</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_8_3">
+                <material>
+                  <mattext texttype="text/html">El plan de explotación de resultados y la evaluación general del Proyecto.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_3_8_RL">QUE_3_8_2</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_3_9" title="3.9">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Los contratos llave en mano:</mattext>
+          </material>
+          <response_lid ident="QUE_3_9_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_3_9_1">
+                <material>
+                  <mattext texttype="text/html">Se contratan como un conjunto integrado con responsabilidad completa por parte del suministrador.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_9_2">
+                <material>
+                  <mattext texttype="text/html">La propiedad contrata varios contratistas especializados para cada parte del proyecto.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_9_3">
+                <material>
+                  <mattext texttype="text/html">La propiedad contrata, por un lado, a la ingeniería que le desarrollará el proyecto y, por otro lado, al contratista que desarrollará la obra u objeto del proyecto.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_3_9_RL">QUE_3_9_1</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_3_10" title="3.10">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">El análisis y comparación de las ofertas debe realizarse desde un doble punto de vista: técnico y económico. El análisis económico implica:</mattext>
+          </material>
+          <response_lid ident="QUE_3_10_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_3_10_1">
+                <material>
+                  <mattext texttype="text/html">Comparación del precio de compra</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_10_2">
+                <material>
+                  <mattext texttype="text/html">Comparación del precio de compra y de las condiciones de pago</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_10_3">
+                <material>
+                  <mattext texttype="text/html">Comparación de las condiciones económicas ofrecidas por cada proveedor, teniendo en cuenta también condiciones de operación y mantenimiento.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_3_10_RL">QUE_3_10_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_3_11" title="3.11">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">En un contrato a porcentaje:</mattext>
+          </material>
+          <response_lid ident="QUE_3_11_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_3_11_1">
+                <material>
+                  <mattext texttype="text/html">Se factura por la cantidad de trabajo realizado.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_11_2">
+                <material>
+                  <mattext texttype="text/html">La organización que proyecta percibe un porcentaje de la inversión que realiza el cliente.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_11_3">
+                <material>
+                  <mattext texttype="text/html">La organización que proyecta percibe un porcentaje de la inversión que realiza el cliente pero con un valor máximo limitado.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_3_11_RL">QUE_3_11_2</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_3_12" title="3.12">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Los contratos por administración suelen emplearse cuando:</mattext>
+          </material>
+          <response_lid ident="QUE_3_12_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_3_12_1">
+                <material>
+                  <mattext texttype="text/html">Se trata de proyectos de poca entidad</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_12_2">
+                <material>
+                  <mattext texttype="text/html">En proyectos de alcance muy claramente definido</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_12_3">
+                <material>
+                  <mattext texttype="text/html">En proyectos de alcance poco definido o en aquellos en los que es previsible que surjan cambios</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_3_12_RL">QUE_3_12_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_3_13" title="3.13">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Se considera entrega de un proyecto:</mattext>
+          </material>
+          <response_lid ident="QUE_3_13_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_3_13_1">
+                <material>
+                  <mattext texttype="text/html">Cualquier consecuencia o resultado que se pueda medir, tangible y verificable, que se debe producir para terminar un proyecto o una parte del mismo.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_13_2">
+                <material>
+                  <mattext texttype="text/html">Un documento resultado del diseño del objeto del proyecto.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_13_3">
+                <material>
+                  <mattext texttype="text/html">El objeto técnico del contrato.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_3_13_RL">QUE_3_13_1</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_3_14" title="3.14">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Se considera criterio de éxito de un proyecto contratado:</mattext>
+          </material>
+          <response_lid ident="QUE_3_14_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_3_14_1">
+                <material>
+                  <mattext texttype="text/html">Cumplimiento de las especificaciones técnicas del objeto del proyecto dentro del plazo previsto y con el presupuesto estimado.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_14_2">
+                <material>
+                  <mattext texttype="text/html">Cumplimiento de aspectos formales relacionados con la dirección y gestión del proyecto.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_14_3">
+                <material>
+                  <mattext texttype="text/html">Realización de una correcta gestión del cierre del proyecto.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_3_14_RL">QUE_3_14_1</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_3_15" title="3.15">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">El cierre administrativo del proyecto consiste en:</mattext>
+          </material>
+          <response_lid ident="QUE_3_15_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_3_15_1">
+                <material>
+                  <mattext texttype="text/html">Finalización de la administración del contrato establecido entre la propiedad y la ingeniería.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_15_2">
+                <material>
+                  <mattext texttype="text/html">Finalización de las relaciones contractuales con clientes y proveedores del proyecto.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_15_3">
+                <material>
+                  <mattext texttype="text/html">Reunión, generación, archivo y distribución de la información que formaliza la terminación del proyecto.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_3_15_RL">QUE_3_15_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_3_16" title="3.16">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">La fase de cierre del proyecto incluye:</mattext>
+          </material>
+          <response_lid ident="QUE_3_16_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_3_16_1">
+                <material>
+                  <mattext texttype="text/html">El cierre del contrato y el cierre administrativo.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_16_2">
+                <material>
+                  <mattext texttype="text/html">Informes de seguimiento y control del proyecto.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_3_16_3">
+                <material>
+                  <mattext texttype="text/html">Informes de incidencias surgidas en el proyecto.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_3_16_RL">QUE_3_16_1</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_4_1" title="4.1">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">El registro de interesados se realiza mediante:</mattext>
+          </material>
+          <response_lid ident="QUE_4_1_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_4_1_1">
+                <material>
+                  <mattext texttype="text/html">Un listado de los posibles interesados del proyecto.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_1_2">
+                <material>
+                  <mattext texttype="text/html">La información de identificación de los interesados, la información de evaluación de los interesados y la clasificación de los interesados.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_1_3">
+                <material>
+                  <mattext texttype="text/html">En general, el registro de interesados se va realizando a medida que avanza el proyecto y no necesita planificación.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_4_1_RL">QUE_4_1_2</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_4_2" title="4.2">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">La matriz de poder/interés:</mattext>
+          </material>
+          <response_lid ident="QUE_4_2_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_4_2_1">
+                <material>
+                  <mattext texttype="text/html">Es una matriz donde se registran las responsabilidades de los miembros del equipo del proyecto y las tareas que se les asignan.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_2_2">
+                <material>
+                  <mattext texttype="text/html">Es una técnica para analizar los riesgos del proyecto que pueden ser originadas por los interesados del mismo.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_2_3">
+                <material>
+                  <mattext texttype="text/html">Es una técnica que se utiliza para el análisis de interesados del proyecto.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_4_2_RL">QUE_4_2_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_4_3" title="4.3">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">En un proyecto el contratista es el agente que:</mattext>
+          </material>
+          <response_lid ident="QUE_4_3_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_4_3_1">
+                <material>
+                  <mattext texttype="text/html">Desarrolla el proyecto y contrata los servicios del constructor.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_3_2">
+                <material>
+                  <mattext texttype="text/html">Ejecuta, siguiendo los documentos y las instrucciones del proyectista, los trabajos y las obras para realizar el objeto.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_3_3">
+                <material>
+                  <mattext texttype="text/html">Realiza la inversión y contrata los servicios de la ingeniería para redactar el proyecto.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_4_3_RL">QUE_4_3_1</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_4_4" title="4.4">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Según la norma ISO 21500, el proceso “identificar las partes interesadas” pertenece al tipo:</mattext>
+          </material>
+          <response_lid ident="QUE_4_4_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_4_4_1">
+                <material>
+                  <mattext texttype="text/html">Inicio</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_4_2">
+                <material>
+                  <mattext texttype="text/html">Planificación</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_4_3">
+                <material>
+                  <mattext texttype="text/html">Implementación</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_4_4_RL">QUE_4_4_1</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_4_5" title="4.5">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Planificar las comunicaciones tiene como finalidad:</mattext>
+          </material>
+          <response_lid ident="QUE_4_5_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_4_5_1">
+                <material>
+                  <mattext texttype="text/html">Determinar las necesidades de comunicación e información de las partes interesadas.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_5_2">
+                <material>
+                  <mattext texttype="text/html">Determinar quién necesita qué información, la frecuencia de distribución, cómo se hará ésta y quién será responsable de hacerlo.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_5_3">
+                <material>
+                  <mattext texttype="text/html">Ambas respuestas son correctas.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_4_5_RL">QUE_4_5_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_4_6" title="4.6">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Los procesos de Gestión de las Comunicaciones del Proyecto, son:</mattext>
+          </material>
+          <response_lid ident="QUE_4_6_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_4_6_1">
+                <material>
+                  <mattext texttype="text/html">Planificar, gestionar y controlar las comunicaciones del proyecto.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_6_2">
+                <material>
+                  <mattext texttype="text/html">Planificar, distribuir y controlar las comunicaciones del proyecto.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_6_3">
+                <material>
+                  <mattext texttype="text/html">Planificar y gestionar las comunicaciones, ya que no es necesario el control posterior de éstas.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_4_6_RL">QUE_4_6_1</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_4_7" title="4.7">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">La relación entre la gestión de los interesados y la gestión de las comunicaciones es muy estrecha porque:</mattext>
+          </material>
+          <response_lid ident="QUE_4_7_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_4_7_1">
+                <material>
+                  <mattext texttype="text/html">La gestión de los interesados se basa en los procesos de comunicación.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_7_2">
+                <material>
+                  <mattext texttype="text/html">Gestionar las comunicaciones debe lograr que la información requerida esté disponible para las partes interesadas.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_7_3">
+                <material>
+                  <mattext texttype="text/html">Ambas respuestas son correctas.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_4_7_RL">QUE_4_7_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_4_8" title="4.8">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Los interesados del Proyecto:</mattext>
+          </material>
+          <response_lid ident="QUE_4_8_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_4_8_1">
+                <material>
+                  <mattext texttype="text/html">Son personas o grupos que están interesados en la realización o éxito de un proyecto o que están obligados por el proyecto.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_8_2">
+                <material>
+                  <mattext texttype="text/html">Son personas, grupos u organizaciones cuyas expectativas e impacto en el proyecto hay que analizar.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_8_3">
+                <material>
+                  <mattext texttype="text/html">Ambas son correctas.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_4_8_RL">QUE_4_8_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_4_9" title="4.9">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">El Director del Proyecto:</mattext>
+          </material>
+          <response_lid ident="QUE_4_9_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_4_9_1">
+                <material>
+                  <mattext texttype="text/html">Es el integrador de los esfuerzos internos y externos a la organización, para encaminarlos hacia el éxito del mismo.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_9_2">
+                <material>
+                  <mattext texttype="text/html">Es quien detecta la necesidad, fija los objetivos, establece los límites de coste, plazo y calidad.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_9_3">
+                <material>
+                  <mattext texttype="text/html">Es quien tiene la necesidad que origina el proyecto.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_4_9_RL">QUE_4_9_1</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_4_10" title="4.10">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">La Comunicación entre los miembros de equipo del Proyecto y partes interesadas debe centrarse en:</mattext>
+          </material>
+          <response_lid ident="QUE_4_10_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_4_10_1">
+                <material>
+                  <mattext texttype="text/html">Aumentar la comprensión del trabajo en equipo entre las diferentes partes interesadas a través de buenas comunicaciones.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_10_2">
+                <material>
+                  <mattext texttype="text/html">Suministrar información oportuna, exacta e imparcial.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_10_3">
+                <material>
+                  <mattext texttype="text/html">Ambas son correctas.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_4_10_RL">QUE_4_10_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_4_11" title="4.11">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Una comunicación eficaz crea un puente entre diferentes interesados porque:</mattext>
+          </material>
+          <response_lid ident="QUE_4_11_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_4_11_1">
+                <material>
+                  <mattext texttype="text/html">Pueden tener diferentes antecedentes culturales y organizacionales.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_11_2">
+                <material>
+                  <mattext texttype="text/html">Pueden tener diferentes niveles de experiencia, y diferentes perspectivas e intereses.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_11_3">
+                <material>
+                  <mattext texttype="text/html">Ambas son correctas.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_4_11_RL">QUE_4_11_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_4_12" title="4.12">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Controlar las comunicaciones consiste en :</mattext>
+          </material>
+          <response_lid ident="QUE_4_12_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_4_12_1">
+                <material>
+                  <mattext texttype="text/html">El proceso que asegura que se satisfagan las necesidades de información de los interesados del proyecto.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_12_2">
+                <material>
+                  <mattext texttype="text/html">El proceso control de cambios en el registro de interesados.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_12_3">
+                <material>
+                  <mattext texttype="text/html">Establecer un plan de reuniones actualizado.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_4_12_RL">QUE_4_12_1</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_4_13" title="4.13">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Planificar la Gestión de las Comunicaciones consiste en :</mattext>
+          </material>
+          <response_lid ident="QUE_4_13_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_4_13_1">
+                <material>
+                  <mattext texttype="text/html">El proceso que asegura que se satisfagan las necesidades de los interesados del proyecto</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_13_2">
+                <material>
+                  <mattext texttype="text/html">Desarrollar un enfoque y un plan adecuados para las comunicaciones del proyecto sobre la base de las necesidades.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_13_3">
+                <material>
+                  <mattext texttype="text/html">Distribuir, almacenar, recuperar y realizar la disposición final de la información.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_4_13_RL">QUE_4_13_2</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+      <item ident="QUE_4_14" title="4.14">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>cc_profile</fieldlabel>
+              <fieldentry>cc.multiple_choice.v0p1</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Sobre las habilidades de Comunicación puede decirse que:</mattext>
+          </material>
+          <response_lid ident="QUE_4_14_RL" rcardinality="Single">
+            <render_choice>
+              <response_label ident="QUE_4_14_1">
+                <material>
+                  <mattext texttype="text/html">Son comunes a la dirección general y a la dirección de proyectos.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_14_2">
+                <material>
+                  <mattext texttype="text/html">Incluye escuchar de manera activa y eficaz.</mattext>
+                </material>
+              </response_label>
+              <response_label ident="QUE_4_14_3">
+                <material>
+                  <mattext texttype="text/html">Ambas son correctas.</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="1.0" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <varequal case="Yes" respident="QUE_4_14_RL">QUE_4_14_3</varequal>
+            </conditionvar>
+            <setvar action="Set" varname="SCORE">100</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+    </section>
+  </assessment>
+</questestinterop>

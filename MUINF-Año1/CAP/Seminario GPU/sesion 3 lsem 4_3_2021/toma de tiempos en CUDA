@@ -1,0 +1,13 @@
+cudaEvent_t start, stop;  
+cudaEventCreate(&start) ;  
+cudaEventCreate(&stop) ;
+
+…
+ cudaEventRecord(start, NULL) ;
+
+… hacer algo en la GPU  
+
+ cudaEventRecord(stop, NULL) ; 
+ cudaEventSynchronize(stop) ;  
+cudaEventElapsedTime(&msecCPU, start, stop);
+printf("GPU time = %.2f msec.\n",msecGPU);

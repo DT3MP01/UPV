@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-example
+spec:
+  containers:
+  - name: hola-pod
+    image: ubuntu:trusty
+    command: ["echo"]
+    args: ["Hola mundo"]
+  restartPolicy: Never
+

@@ -1,0 +1,9 @@
+Modificaciones a introducir en el script de evaluación de SemEval (eval.pl disponible en http://alt.qcri.org/semeval2016/task6/index.php?id=data-and-tools)
+
+- Línea 51: cambiar por 
+
+my @cats = ("FAVOR", "AGAINST", "NEUTRAL", "NONE", "UNKNOWN");
+
+- Línea 140: cambiar por
+
+if($cat eq "FAVOR" || $cat eq "AGAINST" || $cat eq "NEUTRAL"){

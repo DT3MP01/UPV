@@ -1,0 +1,22 @@
+# Written by MakeHuman 1.2.0 final
+version v1.2.0
+name Male
+camera 34.5 354.0 1.0 0.9991194339266243 -0.9485529490496548 0.8750000000000001
+modifier breast/BreastSize 0.500000
+modifier breast/BreastFirmness 0.500000
+modifier macrodetails/Gender 1.000000
+modifier macrodetails/Age 0.500000
+modifier macrodetails/African 0.333333
+modifier macrodetails/Asian 0.333333
+modifier macrodetails/Caucasian 0.333333
+modifier macrodetails-universal/Muscle 0.729000
+modifier macrodetails-universal/Weight 0.665000
+modifier macrodetails-height/Height 0.500000
+modifier macrodetails-proportions/BodyProportions 0.613000
+skeleton default.mhskel
+eyes HighPolyEyes 2c12f43b-1303-432c-b7ce-d78346baf2e6
+clothes mens_trouser_short_elv1crf 9863faed-e9f1-4eec-a0f7-ef235b681539
+clothesHideFaces True
+skinMaterial skins/old_asian_male/old_asian_male.mhmat
+material HighPolyEyes 2c12f43b-1303-432c-b7ce-d78346baf2e6 eyes/materials/brown.mhmat
+subdivide False
