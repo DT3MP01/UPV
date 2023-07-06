@@ -1,0 +1,15 @@
+(defrule seleccion
+    (declare (salience -1) )
+    ?f <- (vehiculo (identificador ?id) (distancia ?dis) (velocidad ?vel) (fuerza-aceleracion-momentum ?famo)
+     (fuerza-aceleracion-maximum ?fama) (presion-freno-momentum ?pfmo) (presion-freno-maximum ?pfma)
+    =>
+        (printout t "Vehiculo con tal id y lo demas " ?id crlf)
+        (bind ?a (momentum-defuzzify ?f))
+        (bind ?e (momentum-defuzzify ?f))
+        (bind ?i (maximum-defuzzify ?f))
+        (bind ?o (maximum-defuzzify ?f))
+        (modify ?famo )
+        (modify ?fama )
+        (modify ?pfmo )
+        (modify ?pfma )
+)

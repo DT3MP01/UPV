@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=TestUnionLPI
+comment0.text=\r\n\ Programa\ \ para\ probar\ el\ codigo\ de\ la\ clase\ UnionLPI\r\n\ \r\n\ @author\ (EDA)\ \r\n\ @version\ (Marzo\ 2016)\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=librerias.estructurasDeDatos.modelos.ListaConPI\ crearLPI()
+numComments=3

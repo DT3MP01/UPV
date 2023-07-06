@@ -1,0 +1,14 @@
+./matrix1
+n = 8, 0.512 Gflop/s
+n = 16, 0.819 Gflop/s
+n = 32, 0.790 Gflop/s
+n = 64, 0.714 Gflop/s
+n = 128, 0.664 Gflop/s
+n = 256, 1.648 Gflop/s
+n = 512, 1.278 Gflop/s
+n = 1024, 0.616 Gflop/s
+n = 2048, 0.287 Gflop/s
+Caché L1d:                           32K
+Caché L1i:                           32K
+Caché L2:                            1024K
+Caché L3:                            19712K

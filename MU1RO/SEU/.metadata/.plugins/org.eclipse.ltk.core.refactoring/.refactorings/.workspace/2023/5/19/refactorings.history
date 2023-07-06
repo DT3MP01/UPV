@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;Proy_SEU_S5_23_00PROF06_PPB&apos; to &apos;Proy_SEU_S5_23_00PROF07_PPB&apos;" description="Rename resource &apos;Proy_SEU_S5_23_00PROF06_PPB&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/Proy_SEU_S5_23_00PROF06_PPB" name="Proy_SEU_S5_23_00PROF07_PPB" stamp="1683739064349" updateReferences="true"/>&#x0A;<refactoring comment="Delete resource &apos;Proy_SEU_S5_23_00PROF07_PPB&apos;" deleteContents="false" description="Delete resource &apos;Proy_SEU_S5_23_00PROF07_PPB&apos;" element1="/Proy_SEU_S5_23_00PROF07_PPB" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1683739540932"/>
+</session>

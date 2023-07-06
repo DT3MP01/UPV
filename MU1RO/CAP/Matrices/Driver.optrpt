@@ -1,0 +1,139 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+
+Begin optimization report for: main()
+
+    Report from: Vector optimizations [vec]
+
+
+
+Non-optimizable loops:
+
+
+LOOP BEGIN at Driver.c(146,2)
+   remark #15543: loop was not vectorized: loop with function call not considered an optimization candidate.
+LOOP END
+===========================================================================
+
+Begin optimization report for: printsum..0(int, double *)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at Driver.c(82,2)
+<Peeled loop for vectorization>
+LOOP END
+
+LOOP BEGIN at Driver.c(82,2)
+   remark #15300: LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at Driver.c(82,2)
+<Remainder loop for vectorization>
+   remark #15301: REMAINDER LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at Driver.c(82,2)
+<Remainder loop for vectorization>
+LOOP END
+===========================================================================
+
+Begin optimization report for: printsum(int, double *)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at Driver.c(82,2)
+<Peeled loop for vectorization>
+LOOP END
+
+LOOP BEGIN at Driver.c(82,2)
+   remark #15300: LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at Driver.c(82,2)
+<Remainder loop for vectorization>
+LOOP END
+===========================================================================
+
+Begin optimization report for: init_matrix..0(int, int, double, double (*)[501])
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at Driver.c(55,2)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at Driver.c(56,3)
+   <Peeled loop for vectorization>
+   LOOP END
+
+   LOOP BEGIN at Driver.c(56,3)
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at Driver.c(56,3)
+   <Remainder loop for vectorization>
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: init_array..0(int, double, double *)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at Driver.c(70,2)
+<Peeled loop for vectorization>
+LOOP END
+
+LOOP BEGIN at Driver.c(70,2)
+   remark #15300: LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at Driver.c(70,2)
+<Remainder loop for vectorization>
+LOOP END
+===========================================================================
+
+Begin optimization report for: init_array(int, double, double *)
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at Driver.c(70,2)
+<Peeled loop for vectorization>
+LOOP END
+
+LOOP BEGIN at Driver.c(70,2)
+   remark #15300: LOOP WAS VECTORIZED
+LOOP END
+
+LOOP BEGIN at Driver.c(70,2)
+<Remainder loop for vectorization>
+LOOP END
+===========================================================================
+
+Begin optimization report for: init_matrix(int, int, double, double (*)[501])
+
+    Report from: Vector optimizations [vec]
+
+
+LOOP BEGIN at Driver.c(55,2)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at Driver.c(56,3)
+   <Peeled loop for vectorization>
+   LOOP END
+
+   LOOP BEGIN at Driver.c(56,3)
+      remark #15300: LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at Driver.c(56,3)
+   <Remainder loop for vectorization>
+   LOOP END
+LOOP END
+===========================================================================

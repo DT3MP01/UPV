@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Proy_SEU_Ent2_23_00PROF06_PPB/Core/Src/task_getRequest.c&apos; to &apos;task_GETREQUEST.c&apos;" description="Rename resource &apos;task_getRequest.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Src/task_getRequest.c" name="task_GETREQUEST.c" stamp="1685121122167" updateReferences="true"/>
+</session>

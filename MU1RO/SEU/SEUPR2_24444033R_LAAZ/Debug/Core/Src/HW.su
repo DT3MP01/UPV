@@ -1,0 +1,6 @@
+../Core/Src/HW.c:15:6:put_leds_uint	16	static
+../Core/Src/HW.c:53:6:put_leds	24	static
+../Core/Src/HW.c:90:7:Valor_pot	16	static
+../Core/Src/HW.c:102:7:Valor_temp	40	static
+../Core/Src/HW.c:111:7:Valor_lum	16	static
+../Core/Src/HW.c:118:10:ConvertidorA_D	40	static

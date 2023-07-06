@@ -1,0 +1,36 @@
+clean-tweets.sh training_tweets_es.txt > training_tweets_es_clean.txt
+
+FEMALE
+
+cut -d ":" -f 7 training_truth_es.txt | paste -d " " - training_tweets_es_clean.txt | grep "^FEMALE" | sed "s/^FEMALE //g" > training_tweets_es_clean-FEMALE.txt
+
+cat training_tweets_es_clean-FEMALE.txt | ngram-count -text - -lm female_es.darpa -order 3 -write-vocab vocf_es -unk
+
+awk 'BEGIN{print "<eps>\t0"}{printf("%s\t%d\n",$1,NR);}' vocf_es > vocf_es.tmp 
+
+mv vocf_es.tmp vocf_es
+
+
+cat female_es.darpa | arpa2fst - | fstprint | fstcompile --isymbols=vocf_es --osymbols=vocf_es --keep_isymbols=true --keep_osymbols=true > female_es.fst
+
+
+
+
+
+
+
+MALE
+
+cut -d ":" -f 7 training_truth_es.txt | paste -d " " - training_tweets_es_clean.txt | grep "^MALE" | sed "s/^MALE //g" > training_tweets_es_clean-MALE.txt
+
+cat training_tweets_es_clean-MALE.txt | ngram-count -text - -lm male_es.darpa -order 3 -write-vocab vocm_es -unk
+
+awk 'BEGIN{print "<eps>\t0"}{printf("%s\t%d\n",$1,NR);}' vocm_es > vocm_es.tmp 
+
+mv vocm_es.tmp vocm_es
+
+
+cat male_es.darpa | arpa2fst - | fstprint | fstcompile --isymbols=vocm_es --osymbols=vocm_es --keep_isymbols=true --keep_osymbols=true > male_es.fst
+
+
+

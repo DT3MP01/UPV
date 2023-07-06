@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;SEUPR2_24444033R_LAAZ&apos; to &apos;SEU_EN1_LAAZ_24444033R&apos;" description="Rename resource &apos;SEUPR2_24444033R_LAAZ&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/SEUPR2_24444033R_LAAZ" name="SEU_EN1_LAAZ_24444033R" stamp="1680718489141" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;SEU_EN1_LAAZ_24444033R&apos; to &apos;SEUPR2_24444033R_LAAZ&apos;" description="Rename resource &apos;SEU_EN1_LAAZ_24444033R&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/SEU_EN1_LAAZ_24444033R" name="SEUPR2_24444033R_LAAZ" stamp="1680718777729" updateReferences="true"/>
+</session>

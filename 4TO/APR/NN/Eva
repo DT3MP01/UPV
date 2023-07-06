@@ -1,0 +1,15 @@
+500-300
+asa de error en entrenamiento: 0.05%
+Tasa de error en validación: 1.57%
+
+500-150
+Tasa de error en entrenamiento: 0.08%
+Tasa de error en validación: 1.62%
+
+
+
+500-300
+Tasa de error en entrenamiento: 0.17%
+Tasa de error en validación: 1.85%
+Intervalo : 0.264111%
+

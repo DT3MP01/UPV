@@ -1,0 +1,14 @@
+19:10:50 **** Incremental Build of configuration Debug for project Proy_SEU_Ent2_23_00PROF06_PPB ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/task_HW.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG '-DPASCU_PRJ="Proy_SEU_Ent2_23_00PROF06_PPB.elf"' -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/task_HW.d" -MT"Core/Src/task_HW.o"  -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/task_HW.o"
+../Core/Src/task_HW.c: In function 'test':
+../Core/Src/task_HW.c:321:35: error: 'sensor_sel' undeclared (first use in this function); did you mean 'sensor_t'?
+  321 |  nleds=trunc((global_sensor_level[sensor_sel]-global_sensor_level_min[sensor_sel])/(global_sensor_level_max[sensor_sel]-global_sensor_level_min[sensor_sel])*7.4);
+      |                                   ^~~~~~~~~~
+      |                                   sensor_t
+../Core/Src/task_HW.c:321:35: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:67: Core/Src/task_HW.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+
+19:10:52 Build Failed. 2 errors, 0 warnings. (took 1s.439ms)
+

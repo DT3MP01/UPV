@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=UsuarioExistente
+comment0.text=\ Ejercicio\ 14\ (b)\:\ clase\ de\ la\ excepcion\ que\ lanza\ el\ modulo\ de\ \r\n\ \ autorizacion\ cuando\ un\ usuario\ intenta\ registrarse\ con\ un\ password\r\n\ \ distinto\ del\ autorizado\r\n
+comment1.params=
+comment1.target=UsuarioExistente()
+comment2.params=msg
+comment2.target=UsuarioExistente(java.lang.String)
+numComments=3

@@ -1,0 +1,5 @@
+../Core/Src/comunicaciones.c:15:5:_write	32	static
+../Core/Src/comunicaciones.c:29:6:ESP8266_RESET	16	static
+../Core/Src/comunicaciones.c:58:6:ESP8266_Boot	16	static
+../Core/Src/comunicaciones.c:125:5:CHECK_IP	16	static
+../Core/Src/comunicaciones.c:142:6:Open_HTTP	1064	static

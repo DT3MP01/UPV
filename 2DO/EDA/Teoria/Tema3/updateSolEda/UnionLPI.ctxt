@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=UnionLPI
+comment0.text=\r\n\ Ejercicio\ 11,\ Tema\ 3-S4\:\ dadas\ dos\ Listas\ Con\ Punto\ de\ interes\ l1\ y\ l2,\ \r\n\ implementar\ un\ metodo\ eficiente\ que\ obtenga\ un\ String\ en\ el\ que\ aparecen\ \r\n\ cada\ uno\ de\ los\ elementos\ que\ conforman\ la\ union\ de\ l1\ y\ l2\ seguido\ del\ \r\n\ numero\ de\ veces\ que\ este\ aparece\ repetido\ en\ las\ listas\r\n\ \r\n\ @author\ (EDA)\ \r\n\ @version\ (2018)\r\n
+comment1.params=l1\ l2
+comment1.target=java.lang.String\ unionLenta(librerias.estructurasDeDatos.modelos.ListaConPI,\ librerias.estructurasDeDatos.modelos.ListaConPI)
+comment2.params=l1\ l2
+comment2.target=java.lang.String\ union(librerias.estructurasDeDatos.modelos.ListaConPI,\ librerias.estructurasDeDatos.modelos.ListaConPI)
+numComments=3

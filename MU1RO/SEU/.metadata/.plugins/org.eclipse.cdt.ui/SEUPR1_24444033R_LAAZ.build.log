@@ -1,0 +1,10 @@
+20:25:02 **** Build of configuration Debug for project SEUPR1_24444033R_LAAZ ****
+make -j12 all 
+arm-none-eabi-size   SEUPR1_24444033R_LAAZ.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7836	     20	   1636	   9492	   2514	SEUPR1_24444033R_LAAZ.elf
+Finished building: default.size.stdout
+ 
+
+20:25:03 Build Finished. 0 errors, 0 warnings. (took 469ms)
+

@@ -1,0 +1,65 @@
+
+Adam-ReLU-500x300
+Tamaño de epocas: 50
+Tasa de error en entrenamiento: 0.00%
+Tasa de error en validación: 1.40%
+
+Adam-Sigmoid-500x300
+Tamaño de epocas: 50
+Tasa de error en entrenamiento: 0.00%
+Tasa de error en validación: 1.83%
+
+
+Adam-Tanh-500x300
+Tamaño de epocas: 50
+Tasa de error en entrenamiento: 0.00%
+Tasa de error en validación: 1.83%
+
+
+
+Adam-Mish-500x300
+Tamaño de epocas: 50
+Tasa de error en entrenamiento: 0.03%
+Tasa de error en validación: 1.53%
+
+
+
+
+Adam-ReLU-1000
+Tamaño de epocas: 50
+Tasa de error en entrenamiento: 0.01%
+Tasa de error en validación: 1.58%
+
+Adam-Sigmoid-1000
+Tamaño de epocas: 50
+Tasa de error en entrenamiento: 0.00%
+Tasa de error en validación: 1.47%
+
+Adam-Tanh-1000
+Tamaño de epocas: 50
+Tasa de error en entrenamiento: 0.00%
+Tasa de error en validación: 1.88%
+
+
+Adam-Mish-1000
+Tamaño de epocas: 50
+Tasa de error en entrenamiento: 0.13%
+Tasa de error en validación: 2.10%
+
+
+
+Adam-ReLU-300
+Tasa de error en entrenamiento: 0.00%
+Tasa de error en validación: 1.98%
+
+Adam-Sigmoid-300
+Tamaño de epocas: 50
+Tasa de error en entrenamiento: 0.00%
+Tasa de error en validación: 2.02%
+
+Adam-Tanh-300
+Tamaño de epocas: 50
+Tasa de error en entrenamiento: 0.00%
+Tasa de error en validación: 1.85%
+
+

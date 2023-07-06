@@ -1,0 +1,45 @@
+Tamaño de epocas: 10
+Tasa de error en entrenamiento: 0.49%
+Tasa de error en validación: 2.37%
+Tamaño de epocas: 20
+Tasa de error en entrenamiento: 0.15%
+Tasa de error en validación: 1.83%
+Tamaño de epocas: 30
+Tasa de error en entrenamiento: 0.40%
+Tasa de error en validación: 2.03%
+Tamaño de epocas: 40
+Tasa de error en entrenamiento: 0.00%
+Tasa de error en validación: 1.42%
+Tamaño de epocas: 50
+Tasa de error en entrenamiento: 0.00%
+Tasa de error en validación: 1.40%
+Tamaño de epocas: 60
+Tasa de error en entrenamiento: 0.05%
+Tasa de error en validación: 1.67%
+Tamaño de epocas: 70
+Tasa de error en entrenamiento: 0.00%
+Tasa de error en validación: 1.58%
+Tamaño de epocas: 80
+Tasa de error en entrenamiento: 0.00%
+Tasa de error en validación: 1.53%
+Tamaño de epocas: 90
+Tasa de error en entrenamiento: 0.00%
+Tasa de error en validación: 1.53%
+Tamaño de epocas: 100
+Tasa de error en entrenamiento: 0.00%
+Tasa de error en validación: 1.57%
+Tamaño de epocas: 150
+ Tasa de error en entrenamiento: 0.00%
+Tamaño de epocas: 200
+Tasa de error en entrenamiento: 0.58%
+Tasa de error en validación: 2.52%
+Tamaño de epocas: 300
+Tasa de error en entrenamiento: 0.00%
+Tasa de error en validación: 1.43%
+Tamaño de epocas: 400
+Tasa de error en entrenamiento: 0.00%
+Tasa de error en validación: 1.42%
+Tamaño de epocas: 500
+Tasa de error en entrenamiento: 0.00%
+Tasa de error en validación: 1.52%
+

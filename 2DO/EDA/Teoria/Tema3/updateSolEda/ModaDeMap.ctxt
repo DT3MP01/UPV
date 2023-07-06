@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=ModaDeMap
+comment0.text=\r\n\ Ejercicio\ 11,\ Tema\ 3-S4\:\ usando\ un\ Map,\ dise\u00F1a\ un\ m\u00E9todo\ (est\u00E1tico)\ \ \r\n\ modaDe\ que\ obtenga\ la\ moda\ de\ un\ array\ gen\u00E9rico\ v,\ \ i.e.\ que\ devuelva\ \ \r\n\ el\ primer\ elemento\ de\ un\ array\ v\ que\ se\ repite\ m\u00E1s\ veces\r\n\ \r\n\ @author\ (EDA)\ \r\n\ @version\ (2018)\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=java.lang.Integer[]\ crearArray()
+comment3.params=a
+comment3.target=java.lang.String\ mostrarArray(java.lang.Integer[])
+comment4.params=a
+comment4.target=java.lang.Object\ modaDe(java.lang.Object[])
+numComments=5

@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Test2Map
+comment0.text=\ Ejercicio\ 1,\ Tema\ 3-S1\:\ Test2Map\ es\ un\ programa\ que\ lee\ un\ texto\ de\ \r\n\ \ teclado\ y\ muestra\ por\ pantalla\ la\ talla\ del\ vocabulario\ del\ texto,\ \r\n\ \ o\ numero\ de\ palabras\ distintas\ que\ contiene.\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+numComments=2

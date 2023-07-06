@@ -1,0 +1,9 @@
+universe = vanilla
+executable = intsin
+input = in.$(Process)
+output = out.$(Process)
+error = err.$(Process)
+log = intsin.log
+should_transfer_files = Yes
+when_to_transfer_output = ON_EXIT_OR_EVICT
+queue 50

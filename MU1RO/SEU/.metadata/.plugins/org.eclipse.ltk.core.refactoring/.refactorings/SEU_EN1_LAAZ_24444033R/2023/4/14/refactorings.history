@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;SEU_EN1_LAAZ_24444033R/SEUPR2_24444033R_LAAZ.ioc&apos; to &apos;SEU_EN1_LAAZ_24444033R.ioc&apos;" description="Rename resource &apos;SEUPR2_24444033R_LAAZ.ioc&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="SEUPR2_24444033R_LAAZ.ioc" name="SEU_EN1_LAAZ_24444033R.ioc" stamp="1680718899815" updateReferences="true"/>
+</session>

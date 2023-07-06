@@ -1,0 +1,5 @@
+../Core/Src/tareas.c:22:6:CONFIGURACION_INICIAL	24	static
+../Core/Src/tareas.c:59:6:Task_HW	48	static
+../Core/Src/tareas.c:88:6:Task_WIFI	16	static
+../Core/Src/tareas.c:110:6:Task_COMM	16	static
+../Core/Src/tareas.c:137:6:Task_TIME	16	static

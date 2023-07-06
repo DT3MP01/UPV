@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;SEUPR1_24444033R_LAAZ/Core/Src/smartLED&apos; to &apos;smartLED.c&apos;" description="Rename resource &apos;smartLED&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Src/smartLED" name="smartLED.c" stamp="1678469149950" updateReferences="true"/>
+</session>

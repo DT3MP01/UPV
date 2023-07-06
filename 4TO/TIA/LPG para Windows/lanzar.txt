@@ -1,0 +1,1 @@
+lpg-td.exe –o multimodal-mercancia.pddl –f problem.pddl –n 5

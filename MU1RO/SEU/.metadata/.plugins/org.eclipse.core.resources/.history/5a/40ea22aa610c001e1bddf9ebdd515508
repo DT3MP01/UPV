@@ -1,0 +1,140 @@
+#include <stdint.h>
+#include "task_COMM.h"
+#include "FreeRTOS.h"
+#include <stdio.h>
+#include "cmsis_os.h"
+#include <stdlib.h>
+#include "semphr.h"
+#include "tareas.h"
+#include <stdio.h>
+#include "cmsis_os.h"
+#include <stdlib.h>
+
+#include "semphr.h"
+#include <string.h>
+
+#include <task.h>
+#include "task_CONSOLE.h"
+#include "task_GETREQUEST.h"
+#include "task_HW.h"
+#include "cJSON.h"
+
+
+
+
+void Task_GETREQUEST_init(void){
+
+	BaseType_t res_task;
+
+	res_task=xTaskCreate( Task_GETREQUEST,"GETREQUEST",2048,NULL,	NORMAL_PRIORITY,NULL);
+	if( res_task != pdPASS ){
+		bprintf("PANIC: Error al crear Tarea GETREQUEST\r\n");
+		fflush(NULL);
+		while(1);
+	}
+
+}
+
+
+void Task_GETREQUEST( void *pvParameters ){
+
+	int signal;
+	CJSON_PUBLIC(cJSON *) jsons1;
+
+ 	cJSON *name = NULL;
+
+	while (1) {
+
+		signal=1;
+		do {
+			if (xSemaphoreTake(COMM_xSem, 20000/portTICK_RATE_MS  ) != pdTRUE ){// si en 20 segundos no he continuado entrado en orion mmm mal rollito harakiri
+				bprintf("\r\n\n\nHARAKIRI!!\n\n\n");
+		   		HAL_NVIC_SystemReset();
+			}
+
+			// aquí tengo la exclusión mutua asegurada.
+			if (COMM_request.command==0){ //nada quiere nada
+				if(global_mode==1){
+					COMM_request.command=1;
+					COMM_request.result=0;
+					COMM_request.type=global_mode;
+					// now structure access is secure
+					COMM_request.dst_port=1026;
+					COMM_request.dst_address=(uint8_t *)"pperez-seu-or.disca.upv.es";
+					char buff_sprintf_body[1024]="";
+					char buff_sprintf_header[2048]="";
+					sprintf(buff_sprintf_body,UPDATE_BODY_TEMP,global_sensor_level[0],global_sensor_level[1],global_buzzer?'T':'F');
+			        sprintf(buff_sprintf_header,"%s%d\r\n\r\n%s ",UPDATE_HEADER,strlen(buff_sprintf_body),buff_sprintf_body);
+			        COMM_request.HTTP_request=(	uint8_t *) buff_sprintf_header;
+					signal=0;
+				}
+				else if(global_mode==2){
+					COMM_request.command=1;
+					COMM_request.result=0;
+					COMM_request.type=global_mode;
+					// now structure access is secure
+					COMM_request.dst_port=1026;
+					COMM_request.dst_address=(uint8_t *)"pperez-seu-or.disca.upv.es";
+					char buff_sprintf_body[1024]="";
+					char buff_sprintf_header[2048]="";
+					sprintf(buff_sprintf_body,UPDATE_BODY_TEMP,global_sensor_level[0],global_sensor_level[1],global_buzzer?'T':'F');
+			        sprintf(buff_sprintf_header,"%s%d\r\n\r\n%s ",UPDATE_HEADER,strlen(buff_sprintf_body),buff_sprintf_body);
+			        COMM_request.HTTP_request=(	uint8_t *) buff_sprintf_header;
+					signal=0;
+				}
+				else{bprintf("Otro modo\r\n");}
+
+			}
+		    xSemaphoreGive(COMM_xSem); // i’m going out critical section
+
+		    // AÑADIR RETARDO!!!!!!!!!!!!!!!
+		}while(signal);
+
+
+        //bprintf("%s\r\n",COMM_request.HTTP_request);
+
+  		// Here you must parse json response in COMM_request.response item
+		do
+		{
+			if (xSemaphoreTake(COMM_xSem, 20000/portTICK_RATE_MS  ) != pdTRUE ){// si en 20 segundos no he continuado entrado en orion mmm mal rollito harakiri
+			bprintf("\r\n\n\nHARAKIRI!!\n\n\n");
+			HAL_NVIC_SystemReset();
+			}
+
+			while (COMM_request.result==0){
+				xSemaphoreGive(COMM_xSem); // i’m going out critical section
+				vTaskDelay(100/portTICK_RATE_MS );
+				if (xSemaphoreTake(COMM_xSem, 20000/portTICK_RATE_MS  ) != pdTRUE ){// si en 20 segundos no he continuado entrado en orion mmm mal rollito harakiri
+					bprintf("\r\n\n\nHARAKIRI!!\n\n\n");
+					HAL_NVIC_SystemReset();
+				}
+			}
+		}
+		while(COMM_request.result==0);
+	//bprintf("%s\r\n",COMM_request.HTTP_response);
+
+
+	jsons1 = cJSON_Parse((const char *)COMM_request.HTTP_response);
+
+	if (jsons1) {
+				// name = cJSON_GetObjectItem(jsons1, "utc_datetime");
+				// bprintf("%s \r\n",name->valuestring);
+				// cJSON_Delete(jsons1);
+//		bprintf("%s",COMM_request.HTTP_response);
+		bprintf("POSTEADO \r\n");
+	}
+	else
+		bprintf("%s",jsons1);
+		//bprintf("Response error \r\n");
+
+////
+
+		COMM_request.command=0;
+		COMM_request.result=0;
+
+		xSemaphoreGive(COMM_xSem); // i’m going out critical section
+
+		vTaskDelay((rand() % (1000 + 1 - 0) )/portTICK_RATE_MS );
+
+	}
+}

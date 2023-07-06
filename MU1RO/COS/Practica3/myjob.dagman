@@ -1,0 +1,5 @@
+JOB  PREP  prep.condor
+JOB  INTSIN  intsin.condor
+JOB  SUM  sum.condor
+PARENT PREP CHILD INTSIN
+PARENT INTSIN CHILD SUM

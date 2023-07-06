@@ -1,0 +1,40 @@
+20:32:36 **** Incremental Build of configuration Debug for project SEU_EN1_LAAZ_24444033R ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/HW.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/HW.d" -MT"Core/Src/HW.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/HW.o"
+../Core/Src/HW.c: In function 'Check_buzzer':
+../Core/Src/HW.c:106:3: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  106 |   printf("PII\r\n");
+      |   ^~~~~~
+../Core/Src/HW.c:106:3: warning: incompatible implicit declaration of built-in function 'printf'
+../Core/Src/HW.c:8:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+    7 | #include <HW.h>
+  +++ |+#include <stdio.h>
+    8 | #ifndef min
+../Core/Src/HW.c:112:8: warning: incompatible implicit declaration of built-in function 'printf'
+  112 |        printf("%d\r\n",(*count));
+      |        ^~~~~~
+../Core/Src/HW.c:112:8: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/HW.c: In function 'Boton_izquierdo':
+../Core/Src/HW.c:125:8: warning: incompatible implicit declaration of built-in function 'printf'
+  125 |        printf("Boton1 Cambiando al anterior modo \r\n");
+      |        ^~~~~~
+../Core/Src/HW.c:125:8: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/HW.c: In function 'Boton_derecho':
+../Core/Src/HW.c:139:4: warning: incompatible implicit declaration of built-in function 'printf'
+  139 |    printf("Boton2 pulsado cambiando al siguiente modo \r\n");
+      |    ^~~~~~
+../Core/Src/HW.c:139:4: note: include '<stdio.h>' or provide a declaration of 'printf'
+arm-none-eabi-gcc -o "SEU_EN1_LAAZ_24444033R.elf" @"objects.list"   -mcpu=cortex-m4 -T"W:\MU1RO\SEU\SEU_EN1_LAAZ_24444033R\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SEU_EN1_LAAZ_24444033R.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SEU_EN1_LAAZ_24444033R.elf
+ 
+arm-none-eabi-size   SEU_EN1_LAAZ_24444033R.elf 
+arm-none-eabi-objdump -h -S  SEU_EN1_LAAZ_24444033R.elf  > "SEU_EN1_LAAZ_24444033R.list"
+   text	   data	    bss	    dec	    hex	filename
+  28892	    492	   1732	  31116	   798c	SEU_EN1_LAAZ_24444033R.elf
+Finished building: default.size.stdout
+ 
+Finished building: SEU_EN1_LAAZ_24444033R.list
+ 
+
+20:32:38 Build Finished. 0 errors, 5 warnings. (took 1s.906ms)
+

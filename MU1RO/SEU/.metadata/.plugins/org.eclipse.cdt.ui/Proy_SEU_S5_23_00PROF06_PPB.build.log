@@ -1,0 +1,29 @@
+19:49:34 **** Incremental Build of configuration Debug for project Proy_SEU_S5_23_00PROF06_PPB ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/tareas.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG '-DPASCU_PRJ="Proy_SEU_S5_23_00PROF06_PPB.elf"' -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/tareas.d" -MT"Core/Src/tareas.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/tareas.o"
+../Core/Src/tareas.c: In function 'Task_HW':
+../Core/Src/tareas.c:83:4: warning: implicit declaration of function 'osDelay' [-Wimplicit-function-declaration]
+   83 |    osDelay(120);
+      |    ^~~~~~~
+../Core/Src/tareas.c: In function 'Task_WIFI':
+../Core/Src/tareas.c:96:2: warning: implicit declaration of function 'ESP8266_Boot' [-Wimplicit-function-declaration]
+   96 |  ESP8266_Boot();
+      |  ^~~~~~~~~~~~
+../Core/Src/tareas.c: In function 'Task_COMM':
+../Core/Src/tareas.c:126:6: warning: implicit declaration of function 'Open_HTTP' [-Wimplicit-function-declaration]
+  126 |      Open_HTTP( COMM_req.dst,COMM_req.port,COMM_req.request);
+      |      ^~~~~~~~~
+arm-none-eabi-gcc -o "Proy_SEU_S5_23_00PROF06_PPB.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\luialza1\Downloads\s5_res\Proy_SEU_S5_23_00PROF06_PPB\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Proy_SEU_S5_23_00PROF06_PPB.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Proy_SEU_S5_23_00PROF06_PPB.elf
+ 
+arm-none-eabi-size   Proy_SEU_S5_23_00PROF06_PPB.elf 
+arm-none-eabi-objdump -h -S  Proy_SEU_S5_23_00PROF06_PPB.elf  > "Proy_SEU_S5_23_00PROF06_PPB.list"
+   text	   data	    bss	    dec	    hex	filename
+  61336	    516	  89820	 151672	  25078	Proy_SEU_S5_23_00PROF06_PPB.elf
+Finished building: default.size.stdout
+ 
+Finished building: Proy_SEU_S5_23_00PROF06_PPB.list
+ 
+
+19:49:35 Build Finished. 0 errors, 3 warnings. (took 609ms)
+

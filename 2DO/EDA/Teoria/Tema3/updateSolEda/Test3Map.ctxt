@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Test3Map
+comment0.text=\ Ejercicio\ 2,\ Tema\ 3-S1\:\ Test3Map\ es\ un\ programa\ que\ lee\ un\ texto\ \ \r\n\ \ de\ teclado\ y\ muestra\ por\ pantalla\ un\ listado\ en\ el\ que\ en\ cada\ \r\n\ \ linea\ contiene\ una\ palabra\ repetida\ de\ dicho\ texto\ (que\ aparezca\ \r\n\ \ mas\ de\ una\ vez)\ junto\ con\ su\ frecuencia\ de\ aparicion\ en\ el\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+numComments=2

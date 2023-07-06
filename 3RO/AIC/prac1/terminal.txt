@@ -1,0 +1,856 @@
+xvdir.c:1590:21: warning: ignoring return value of ‘chdir’, declared with attribute warn_unused_result [-Wunused-result]
+   if (strlen(path)) chdir(path);
+                     ^~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvbutt.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvpbm.c
+xvpbm.c: In function ‘WritePBM’:
+xvpbm.c:611:4: warning: format not a string literal and no format arguments [-Wformat-security]
+    if (*pix) fprintf(fp,str1);
+    ^~
+xvpbm.c:612:9: warning: format not a string literal and no format arguments [-Wformat-security]
+         else fprintf(fp,str0);
+         ^~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvxbm.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvgam.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvbmp.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvdial.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvgraf.c
+xvgraf.c: In function ‘CreateGraf’:
+xvgraf.c:86:23: warning: ‘%.5g’ directive writing between 1 and 12 bytes into a region of size 9 [-Wformat-overflow=]
+   sprintf(gp->gvstr, "%.5g", gp->gamma);
+                       ^~~~
+xvgraf.c:86:22: note: assuming directive output of 11 bytes
+   sprintf(gp->gvstr, "%.5g", gp->gamma);
+                      ^~~~~~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvgraf.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output between 2 and 13 bytes into a destination of size 9
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvsunras.c
+xvsunras.c: In function ‘LoadSunRas’:
+xvsunras.c:146:5: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+     fread (pinfo->r, (size_t) 1, (size_t) sunheader.ras_maplength/3, fp);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvsunras.c:147:5: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+     fread (pinfo->g, (size_t) 1, (size_t) sunheader.ras_maplength/3, fp);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvsunras.c:148:5: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+     fread (pinfo->b, (size_t) 1, (size_t) sunheader.ras_maplength/3, fp);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvjpeg.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvps.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvpopup.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvdflt.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvtiff.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvtiffwr.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvpds.c
+xvpds.c: In function ‘LoadPDS’:
+xvpds.c:341:7: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+       fread(rtbuff, (size_t) ((teco%2 ? teco+1 : teco) - 11),(size_t) 1, zf);
+       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvpds.c:727:5: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+     fread(scanbuff, (size_t) labelsize, (size_t) 1, zf);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvrle.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xviris.c
+xviris.c: In function ‘getshort’:
+xviris.c:724:3: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+   fread(buf, (size_t) 2, (size_t) 1,inf);
+   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xviris.c: In function ‘getimagedata’:
+xviris.c:321:4: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+    fread(rledat, (size_t) lengthtab[y+z*ysize], (size_t) 1, fp);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xviris.c:337:4: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+    fread(rledat, (size_t) lengthtab[y+z*ysize], (size_t) 1, fp);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xviris.c:363:2: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+  fread(verdat, (size_t) xsize, (size_t) 1,fp);
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xviris.c: In function ‘getlong’:
+xviris.c:733:3: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+   fread(buf, (size_t) 4, (size_t) 1,inf);
+   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvgrab.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c vprintf.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvbrowse.c
+xvbrowse.c: In function ‘updateIcons’:
+xvbrowse.c:3930:63: warning: format ‘%d’ expects argument of type ‘int’, but argument 7 has type ‘__time_t {aka long int}’ [-Wformat=]
+      fprintf(stderr,"icon made:fname='%s' thfname='%s' %d,%d,%d,%d\n",
+                                                              ~^
+                                                              %ld
+xvbrowse.c:3930:66: warning: format ‘%d’ expects argument of type ‘int’, but argument 8 has type ‘__time_t {aka long int}’ [-Wformat=]
+      fprintf(stderr,"icon made:fname='%s' thfname='%s' %d,%d,%d,%d\n",
+                                                                 ~^
+                                                                 %ld
+xvbrowse.c: In function ‘recurseUpdate’:
+xvbrowse.c:4456:5: warning: ignoring return value of ‘chdir’, declared with attribute warn_unused_result [-Wunused-result]
+     chdir(orgDir);
+     ^~~~~~~~~~~~~
+xvbrowse.c:4463:5: warning: ignoring return value of ‘chdir’, declared with attribute warn_unused_result [-Wunused-result]
+     chdir(orgDir);
+     ^~~~~~~~~~~~~
+xvbrowse.c:4498:5: warning: ignoring return value of ‘chdir’, declared with attribute warn_unused_result [-Wunused-result]
+     chdir(orgDir);
+     ^~~~~~~~~~~~~
+xvbrowse.c: In function ‘setSelInfoStr’:
+xvbrowse.c:1320:18: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 256 [-Wformat-overflow=]
+    sprintf(buf, "%s%s", br->path, bf->name);  /* build filename */
+                  ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output 1 or more bytes (assuming 4098) into a destination of size 256
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c: In function ‘scanFile’:
+xvbrowse.c:3671:21: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 512 [-Wformat-overflow=]
+   sprintf(thFname, "%s%s/%s", br->path, THUMBDIR, bf->name);
+                     ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output 9 or more bytes (assuming 4106) into a destination of size 512
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c: In function ‘cdBrow’:
+xvbrowse.c:2588:36: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 495 [-Wformat-overflow=]
+     sprintf(str, "Unable to cd to '%s'\n", br->path);
+                                    ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output between 20 and 4117 bytes into a destination of size 512
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c: In function ‘makeThumbDir’:
+xvbrowse.c:3850:21: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 512 [-Wformat-overflow=]
+   sprintf(thFname, "%s%s", br->path, THUMBDIRNAME);
+                     ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output between 8 and 4105 bytes into a destination of size 512
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c:3854:23: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 512 [-Wformat-overflow=]
+     sprintf(thFname, "%s.", br->path);
+                       ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output between 2 and 4099 bytes into a destination of size 512
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c:3859:23: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 512 [-Wformat-overflow=]
+     sprintf(thFname, "%s%s", br->path, THUMBDIRNAME);
+                       ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output between 8 and 4105 bytes into a destination of size 512
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c: In function ‘writeThumbFile’:
+xvbrowse.c:3779:21: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 512 [-Wformat-overflow=]
+   sprintf(thFname, "%s%s", br->path, bf->name);
+                     ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output 1 or more bytes (assuming 4098) into a destination of size 512
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c:3786:21: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 512 [-Wformat-overflow=]
+   sprintf(thFname, "%s%s/%s", br->path, THUMBDIR, bf->name);
+                     ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output 9 or more bytes (assuming 4106) into a destination of size 512
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c: In function ‘updateIcons’:
+xvbrowse.c:3964:28: warning: ‘%s’ directive writing up to 255 bytes into a region of size 248 [-Wformat-overflow=]
+       sprintf(thfname, "%s/%s", THUMBDIR, dp->d_name);
+                            ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output between 9 and 264 bytes into a destination of size 256
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c: In function ‘doubleClick’:
+xvbrowse.c:2162:19: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 512 [-Wformat-overflow=]
+     sprintf(buf, "%s%s", br->path, br->bfList[sel].name);
+                   ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output 1 or more bytes (assuming 4098) into a destination of size 512
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c:2183:19: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 512 [-Wformat-overflow=]
+     sprintf(buf, "%s%s", br->path, br->bfList[sel].name);
+                   ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output 1 or more bytes (assuming 4098) into a destination of size 512
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c: In function ‘keyIconWin’:
+xvbrowse.c:2350:18: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 256 [-Wformat-overflow=]
+    sprintf(foo, "%s%s", br->path, br->bfList[i].name);
+                  ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output 1 or more bytes (assuming 4098) into a destination of size 256
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c:2365:18: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 4096 [-Wformat-overflow=]
+  sprintf(fname, "%s%s", br->path, br->bfList[i].name);
+                  ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output 1 or more bytes (assuming 4098) into a destination of size 4096
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvtext.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvpcx.c
+xvpcx.c: In function ‘LoadPCX’:
+xvpcx.c:76:3: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+   fread(hdr, (size_t) 128, (size_t) 1, fp);
+   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xviff.c
+xviff.c: In function ‘LoadIFF’:
+xviff.c:106:3: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+   fread(databuf, (size_t) filesize, (size_t) 1, fp);
+   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvtarga.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvxpm.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvcut.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvxwd.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvfits.c
+cc -o xv -O  -DDOJPEG -Ijpeg   -DDOPDS         xv.o xvevent.o xvroot.o xvmisc.o xvimage.o xvcolor.o xvsmooth.o xv24to8.o xvgif.o xvpm.o xvinfo.o xvctrl.o xvscrl.o xvalg.o xvgifwr.o xvdir.o xvbutt.o xvpbm.o xvxbm.o xvgam.o xvbmp.o xvdial.o xvgraf.o xvsunras.o xvjpeg.o xvps.o xvpopup.o xvdflt.o xvtiff.o xvtiffwr.o xvpds.o xvrle.o xviris.o xvgrab.o vprintf.o xvbrowse.o xvtext.o xvpcx.o xviff.o xvtarga.o xvxpm.o xvcut.o xvxwd.o xvfits.o -lX11 jpeg/libjpeg.a  -lm
+xv.o: En la función `add_filelist_to_namelist':
+xv.c:(.text+0x201b): aviso: `sys_errlist' is deprecated; use `strerror' or `strerror_r' instead
+xvmisc.o: En la función `xv_getwd':
+xvmisc.c:(.text+0x23d3): aviso: the `getwd' function is dangerous and should not be used.
+xv.o: En la función `UncompressFile':
+xv.c:(.text+0x333f): aviso: the use of `mktemp' is dangerous, better use `mkstemp' or `mkdtemp'
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -o bggen bggen.c -lX11 jpeg/libjpeg.a  -lm
+bggen.c: In function ‘main’:
+bggen.c:106:32: warning: implicit declaration of function ‘atoi’; did you mean ‘atan’? [-Wimplicit-function-declaration]
+       i++;  if (i<argc) high = atoi(argv[i]);
+                                ^~~~
+                                atan
+bggen.c:139:14: warning: implicit declaration of function ‘isdigit’ [-Wimplicit-function-declaration]
+     else if (isdigit(argv[i][0])) {
+              ^~~~~~~
+bggen.c:221:21: warning: implicit declaration of function ‘malloc’ [-Wimplicit-function-declaration]
+   rpic24 = (byte *) malloc(rptwide * rpthigh * 3 * sizeof(byte));
+                     ^~~~~~
+bggen.c:221:21: warning: incompatible implicit declaration of built-in function ‘malloc’
+bggen.c:221:21: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+bggen.c:229:5: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+     exit(1);
+     ^~~~
+bggen.c:229:5: warning: incompatible implicit declaration of built-in function ‘exit’
+bggen.c:229:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+bggen.c: In function ‘usage’:
+bggen.c:319:3: warning: incompatible implicit declaration of built-in function ‘exit’
+   exit(1);
+   ^~~~
+bggen.c:319:3: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -o vdcomp vdcomp.c
+vdcomp.c: In function ‘get_files’:
+vdcomp.c:435:5: warning: implicit declaration of function ‘gets’; did you mean ‘fgets’? [-Wimplicit-function-declaration]
+     gets (inname);
+     ^~~~
+     fgets
+vdcomp.c:459:8: warning: ignoring return value of ‘read’, declared with attribute warn_unused_result [-Wunused-result]
+        read(infile,&shortint, (size_t) 2);
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/tmp/ccJajrlH.o: En la función `get_files':
+vdcomp.c:(.text+0xcc): aviso: the `gets' function is dangerous and should not be used.
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -o xcmap xcmap.c -lX11 jpeg/libjpeg.a  -lm
+xcmap.c: In function ‘Syntax’:
+xcmap.c:235:3: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+   exit(1);
+   ^~~~
+xcmap.c:235:3: warning: incompatible implicit declaration of built-in function ‘exit’
+xcmap.c:235:3: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+xcmap.c: In function ‘FatalError’:
+xcmap.c:244:3: warning: incompatible implicit declaration of built-in function ‘exit’
+   exit(-1);
+   ^~~~
+xcmap.c:244:3: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+xcmap.c: In function ‘Quit’:
+xcmap.c:251:3: warning: incompatible implicit declaration of built-in function ‘exit’
+   exit(0);
+   ^~~~
+xcmap.c:251:3: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+xcmap.c: In function ‘CreateMainWindow’:
+xcmap.c:279:47: warning: implicit declaration of function ‘abs’ [-Wimplicit-function-declaration]
+     x = XDisplayWidth(theDisp,theScreen)-WIDE-abs(x);
+                                               ^~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -o xvpictoppm xvpictoppm.c
+
+real	0m23,374s
+user	0m13,077s
+sys	0m3,133s
+luialza1@alumno.upv.es@ldisca-vdi04:~/W/3RO/AIC/prac1/xv-310a$ cd prac1
+bash: cd: prac1: No existe el archivo o el directorio
+luialza1@alumno.upv.es@ldisca-vdi04:~/W/3RO/AIC/prac1/xv-310a$ make clean
+rm -f xv.o xvevent.o xvroot.o xvmisc.o xvimage.o xvcolor.o xvsmooth.o xv24to8.o xvgif.o xvpm.o xvinfo.o xvctrl.o xvscrl.o xvalg.o xvgifwr.o xvdir.o xvbutt.o xvpbm.o xvxbm.o xvgam.o xvbmp.o xvdial.o xvgraf.o xvsunras.o xvjpeg.o xvps.o xvpopup.o xvdflt.o xvtiff.o xvtiffwr.o xvpds.o xvrle.o xviris.o xvgrab.o vprintf.o xvbrowse.o xvtext.o xvpcx.o xviff.o xvtarga.o xvxpm.o xvcut.o xvxwd.o xvfits.o xv
+rm -f bggen vdcomp xcmap xvpictoppm
+cd jpeg; make clean
+make[1]: se entra en el directorio '/home/alumno.upv.es/luialza1/W/3RO/AIC/prac1/xv-310a/jpeg'
+rm -f *.o cjpeg djpeg libjpeg.a rdjpgcom wrjpgcom ansi2knr
+rm -f core testout.* config.log config.status
+make[1]: se sale del directorio '/home/alumno.upv.es/luialza1/W/3RO/AIC/prac1/xv-310a/jpeg'
+rm -f jpeg/jconfig.h jpeg/Makefile
+luialza1@alumno.upv.es@ldisca-vdi04:~/W/3RO/AIC/prac1/xv-310a$ time make
+cd jpeg ; ./configure CC='cc'
+checking for gcc... cc
+checking whether we are using GNU C... yes
+checking whether cc accepts -O... yes
+checking how to run the C preprocessor... cc -E
+checking whether cross-compiling... no
+checking for function prototypes... yes
+checking for stddef.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for size_t... yes
+checking for type unsigned char... yes
+checking for type unsigned short... yes
+checking for type void... yes
+checking for working const... yes
+checking for inline... inline
+checking for broken incomplete types... ok
+checking for short external names... ok
+checking to see if char is signed... yes
+checking to see if right shift is signed... yes
+checking to see if fopen accepts b spec... yes
+checking for a BSD compatible install... /usr/bin/install -c
+checking for ranlib... ranlib
+creating ./config.status
+creating Makefile
+creating jconfig.h
+cd jpeg ; make
+make[1]: se entra en el directorio '/home/alumno.upv.es/luialza1/W/3RO/AIC/prac1/xv-310a/jpeg'
+make[1]: Atención: El archivo 'Makefile' tiene una hora de modificación 0,59 s en el futuro
+cc -O  -I.   -c -o jcapi.o jcapi.c
+cc -O  -I.   -c -o jcparam.o jcparam.c
+cc -O  -I.   -c -o jdatadst.o jdatadst.c
+cc -O  -I.   -c -o jcmaster.o jcmaster.c
+cc -O  -I.   -c -o jcmarker.o jcmarker.c
+cc -O  -I.   -c -o jcmainct.o jcmainct.c
+cc -O  -I.   -c -o jcprepct.o jcprepct.c
+cc -O  -I.   -c -o jccoefct.o jccoefct.c
+cc -O  -I.   -c -o jccolor.o jccolor.c
+cc -O  -I.   -c -o jcsample.o jcsample.c
+cc -O  -I.   -c -o jchuff.o jchuff.c
+cc -O  -I.   -c -o jcdctmgr.o jcdctmgr.c
+cc -O  -I.   -c -o jfdctfst.o jfdctfst.c
+cc -O  -I.   -c -o jfdctflt.o jfdctflt.c
+cc -O  -I.   -c -o jfdctint.o jfdctint.c
+cc -O  -I.   -c -o jdapi.o jdapi.c
+cc -O  -I.   -c -o jdatasrc.o jdatasrc.c
+cc -O  -I.   -c -o jdmaster.o jdmaster.c
+cc -O  -I.   -c -o jdmarker.o jdmarker.c
+cc -O  -I.   -c -o jdmainct.o jdmainct.c
+cc -O  -I.   -c -o jdcoefct.o jdcoefct.c
+cc -O  -I.   -c -o jdpostct.o jdpostct.c
+cc -O  -I.   -c -o jddctmgr.o jddctmgr.c
+cc -O  -I.   -c -o jidctfst.o jidctfst.c
+cc -O  -I.   -c -o jidctflt.o jidctflt.c
+cc -O  -I.   -c -o jidctint.o jidctint.c
+cc -O  -I.   -c -o jidctred.o jidctred.c
+cc -O  -I.   -c -o jdhuff.o jdhuff.c
+cc -O  -I.   -c -o jdsample.o jdsample.c
+cc -O  -I.   -c -o jdcolor.o jdcolor.c
+cc -O  -I.   -c -o jquant1.o jquant1.c
+cc -O  -I.   -c -o jquant2.o jquant2.c
+cc -O  -I.   -c -o jdmerge.o jdmerge.c
+cc -O  -I.   -c -o jcomapi.o jcomapi.c
+cc -O  -I.   -c -o jutils.o jutils.c
+cc -O  -I.   -c -o jerror.o jerror.c
+cc -O  -I.   -c -o jmemmgr.o jmemmgr.c
+cc -O  -I.   -c -o jmemnobs.o jmemnobs.c
+rm -f libjpeg.a
+ar rc libjpeg.a  jcapi.o jcparam.o jdatadst.o jcmaster.o jcmarker.o jcmainct.o jcprepct.o jccoefct.o jccolor.o jcsample.o jchuff.o jcdctmgr.o jfdctfst.o jfdctflt.o jfdctint.o jdapi.o jdatasrc.o jdmaster.o jdmarker.o jdmainct.o jdcoefct.o jdpostct.o jddctmgr.o jidctfst.o jidctflt.o jidctint.o jidctred.o jdhuff.o jdsample.o jdcolor.o jquant1.o jquant2.o jdmerge.o jcomapi.o jutils.o jerror.o jmemmgr.o jmemnobs.o
+ranlib libjpeg.a
+cc -O  -I.   -c -o cjpeg.o cjpeg.c
+cc -O  -I.   -c -o rdppm.o rdppm.c
+cc -O  -I.   -c -o rdgif.o rdgif.c
+cc -O  -I.   -c -o rdtarga.o rdtarga.c
+cc -O  -I.   -c -o rdrle.o rdrle.c
+cc -O  -I.   -c -o rdbmp.o rdbmp.c
+cc  -o cjpeg cjpeg.o rdppm.o rdgif.o rdtarga.o rdrle.o rdbmp.o libjpeg.a 
+cc -O  -I.   -c -o djpeg.o djpeg.c
+cc -O  -I.   -c -o wrppm.o wrppm.c
+cc -O  -I.   -c -o wrgif.o wrgif.c
+cc -O  -I.   -c -o wrtarga.o wrtarga.c
+cc -O  -I.   -c -o wrrle.o wrrle.c
+cc -O  -I.   -c -o wrbmp.o wrbmp.c
+cc -O  -I.   -c -o rdcolmap.o rdcolmap.c
+cc  -o djpeg djpeg.o wrppm.o wrgif.o wrtarga.o wrrle.o wrbmp.o rdcolmap.o libjpeg.a 
+cc -O  -I.   -c -o rdjpgcom.o rdjpgcom.c
+cc  -o rdjpgcom rdjpgcom.o 
+cc -O  -I.   -c -o wrjpgcom.o wrjpgcom.c
+cc  -o wrjpgcom wrjpgcom.o 
+make[1]: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
+make[1]: se sale del directorio '/home/alumno.upv.es/luialza1/W/3RO/AIC/prac1/xv-310a/jpeg'
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xv.c
+xv.c: In function ‘main’:
+xv.c:624:57: warning: ‘%s’ directive writing 42 bytes into a region of size 7 [-Wformat-overflow=]
+      "couldn't open the following fonts:\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s",
+                                                         ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xv.c:11:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output 177 bytes into a destination of size 128
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvevent.c
+xvevent.c: In function ‘SelectWindowMB’:
+xvevent.c:858:28: warning: ignoring return value of ‘chdir’, declared with attribute warn_unused_result [-Wunused-result]
+     if (strlen(searchdir)) chdir(searchdir);
+                            ^~~~~~~~~~~~~~~~
+xvevent.c:859:10: warning: ignoring return value of ‘chdir’, declared with attribute warn_unused_result [-Wunused-result]
+     else chdir(initdir);
+          ^~~~~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvroot.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvmisc.c
+xvmisc.c: In function ‘xv_getwd’:
+xvmisc.c:995:3: warning: ‘getwd’ is deprecated [-Wdeprecated-declarations]
+   rv = (char *) getwd(buf);
+   ^~
+In file included from /usr/include/features.h:424:0,
+                 from /usr/include/x86_64-linux-gnu/sys/types.h:25,
+                 from /usr/include/X11/Xos.h:42,
+                 from xv.h:72,
+                 from xvmisc.c:37:
+/usr/include/x86_64-linux-gnu/bits/unistd.h:221:1: note: declared here
+ __NTH (getwd (char *__buf))
+ ^
+In file included from /usr/include/unistd.h:1172:0,
+                 from /usr/include/X11/Xos.h:89,
+                 from xv.h:72,
+                 from xvmisc.c:37:
+In function ‘getwd’,
+    inlined from ‘xv_getwd’ at xvmisc.c:995:6:
+/usr/include/x86_64-linux-gnu/bits/unistd.h:225:10: warning: call to ‘__getwd_warn’ declared with attribute warning: please use getcwd instead, as getwd doesn't specify buffer size
+   return __getwd_warn (__buf);
+          ^~~~~~~~~~~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvimage.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvcolor.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvsmooth.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xv24to8.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvgif.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvpm.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvinfo.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvctrl.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvscrl.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvalg.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvgifwr.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvdir.c
+xvdir.c: In function ‘InitPoll’:
+xvdir.c:1985:71: warning: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘__time_t {aka long int}’ [-Wformat=]
+       if (DEBUG) fprintf(stderr," origStat.size=%ld,  origStat.mtime=%d\n",
+                                                                      ~^
+                                                                      %ld
+xvdir.c: In function ‘CheckPoll’:
+xvdir.c:2010:59: warning: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘__time_t {aka long int}’ [-Wformat=]
+       if (DEBUG) fprintf(stderr," st.size=%ld,  st.mtime=%d\n",
+                                                          ~^
+                                                          %ld
+xvdir.c: In function ‘LoadCurrentDirectory’:
+xvdir.c:647:5: warning: ignoring return value of ‘chdir’, declared with attribute warn_unused_result [-Wunused-result]
+     chdir(path);
+     ^~~~~~~~~~~
+xvdir.c: In function ‘OpenOutFile’:
+xvdir.c:1590:21: warning: ignoring return value of ‘chdir’, declared with attribute warn_unused_result [-Wunused-result]
+   if (strlen(path)) chdir(path);
+                     ^~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvbutt.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvpbm.c
+xvpbm.c: In function ‘WritePBM’:
+xvpbm.c:611:4: warning: format not a string literal and no format arguments [-Wformat-security]
+    if (*pix) fprintf(fp,str1);
+    ^~
+xvpbm.c:612:9: warning: format not a string literal and no format arguments [-Wformat-security]
+         else fprintf(fp,str0);
+         ^~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvxbm.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvgam.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvbmp.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvdial.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvgraf.c
+xvgraf.c: In function ‘CreateGraf’:
+xvgraf.c:86:23: warning: ‘%.5g’ directive writing between 1 and 12 bytes into a region of size 9 [-Wformat-overflow=]
+   sprintf(gp->gvstr, "%.5g", gp->gamma);
+                       ^~~~
+xvgraf.c:86:22: note: assuming directive output of 11 bytes
+   sprintf(gp->gvstr, "%.5g", gp->gamma);
+                      ^~~~~~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvgraf.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output between 2 and 13 bytes into a destination of size 9
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvsunras.c
+xvsunras.c: In function ‘LoadSunRas’:
+xvsunras.c:146:5: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+     fread (pinfo->r, (size_t) 1, (size_t) sunheader.ras_maplength/3, fp);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvsunras.c:147:5: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+     fread (pinfo->g, (size_t) 1, (size_t) sunheader.ras_maplength/3, fp);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvsunras.c:148:5: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+     fread (pinfo->b, (size_t) 1, (size_t) sunheader.ras_maplength/3, fp);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvjpeg.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvps.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvpopup.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvdflt.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvtiff.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvtiffwr.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvpds.c
+xvpds.c: In function ‘LoadPDS’:
+xvpds.c:341:7: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+       fread(rtbuff, (size_t) ((teco%2 ? teco+1 : teco) - 11),(size_t) 1, zf);
+       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvpds.c:727:5: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+     fread(scanbuff, (size_t) labelsize, (size_t) 1, zf);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvrle.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xviris.c
+xviris.c: In function ‘getshort’:
+xviris.c:724:3: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+   fread(buf, (size_t) 2, (size_t) 1,inf);
+   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xviris.c: In function ‘getimagedata’:
+xviris.c:321:4: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+    fread(rledat, (size_t) lengthtab[y+z*ysize], (size_t) 1, fp);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xviris.c:337:4: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+    fread(rledat, (size_t) lengthtab[y+z*ysize], (size_t) 1, fp);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xviris.c:363:2: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+  fread(verdat, (size_t) xsize, (size_t) 1,fp);
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xviris.c: In function ‘getlong’:
+xviris.c:733:3: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+   fread(buf, (size_t) 4, (size_t) 1,inf);
+   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvgrab.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c vprintf.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvbrowse.c
+xvbrowse.c: In function ‘updateIcons’:
+xvbrowse.c:3930:63: warning: format ‘%d’ expects argument of type ‘int’, but argument 7 has type ‘__time_t {aka long int}’ [-Wformat=]
+      fprintf(stderr,"icon made:fname='%s' thfname='%s' %d,%d,%d,%d\n",
+                                                              ~^
+                                                              %ld
+xvbrowse.c:3930:66: warning: format ‘%d’ expects argument of type ‘int’, but argument 8 has type ‘__time_t {aka long int}’ [-Wformat=]
+      fprintf(stderr,"icon made:fname='%s' thfname='%s' %d,%d,%d,%d\n",
+                                                                 ~^
+                                                                 %ld
+xvbrowse.c: In function ‘recurseUpdate’:
+xvbrowse.c:4456:5: warning: ignoring return value of ‘chdir’, declared with attribute warn_unused_result [-Wunused-result]
+     chdir(orgDir);
+     ^~~~~~~~~~~~~
+xvbrowse.c:4463:5: warning: ignoring return value of ‘chdir’, declared with attribute warn_unused_result [-Wunused-result]
+     chdir(orgDir);
+     ^~~~~~~~~~~~~
+xvbrowse.c:4498:5: warning: ignoring return value of ‘chdir’, declared with attribute warn_unused_result [-Wunused-result]
+     chdir(orgDir);
+     ^~~~~~~~~~~~~
+xvbrowse.c: In function ‘setSelInfoStr’:
+xvbrowse.c:1320:18: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 256 [-Wformat-overflow=]
+    sprintf(buf, "%s%s", br->path, bf->name);  /* build filename */
+                  ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output 1 or more bytes (assuming 4098) into a destination of size 256
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c: In function ‘scanFile’:
+xvbrowse.c:3671:21: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 512 [-Wformat-overflow=]
+   sprintf(thFname, "%s%s/%s", br->path, THUMBDIR, bf->name);
+                     ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output 9 or more bytes (assuming 4106) into a destination of size 512
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c: In function ‘cdBrow’:
+xvbrowse.c:2588:36: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 495 [-Wformat-overflow=]
+     sprintf(str, "Unable to cd to '%s'\n", br->path);
+                                    ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output between 20 and 4117 bytes into a destination of size 512
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c: In function ‘makeThumbDir’:
+xvbrowse.c:3850:21: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 512 [-Wformat-overflow=]
+   sprintf(thFname, "%s%s", br->path, THUMBDIRNAME);
+                     ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output between 8 and 4105 bytes into a destination of size 512
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c:3854:23: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 512 [-Wformat-overflow=]
+     sprintf(thFname, "%s.", br->path);
+                       ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output between 2 and 4099 bytes into a destination of size 512
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c:3859:23: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 512 [-Wformat-overflow=]
+     sprintf(thFname, "%s%s", br->path, THUMBDIRNAME);
+                       ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output between 8 and 4105 bytes into a destination of size 512
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c: In function ‘writeThumbFile’:
+xvbrowse.c:3779:21: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 512 [-Wformat-overflow=]
+   sprintf(thFname, "%s%s", br->path, bf->name);
+                     ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output 1 or more bytes (assuming 4098) into a destination of size 512
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c:3786:21: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 512 [-Wformat-overflow=]
+   sprintf(thFname, "%s%s/%s", br->path, THUMBDIR, bf->name);
+                     ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output 9 or more bytes (assuming 4106) into a destination of size 512
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c: In function ‘updateIcons’:
+xvbrowse.c:3964:28: warning: ‘%s’ directive writing up to 255 bytes into a region of size 248 [-Wformat-overflow=]
+       sprintf(thfname, "%s/%s", THUMBDIR, dp->d_name);
+                            ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output between 9 and 264 bytes into a destination of size 256
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c: In function ‘doubleClick’:
+xvbrowse.c:2162:19: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 512 [-Wformat-overflow=]
+     sprintf(buf, "%s%s", br->path, br->bfList[sel].name);
+                   ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output 1 or more bytes (assuming 4098) into a destination of size 512
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c:2183:19: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 512 [-Wformat-overflow=]
+     sprintf(buf, "%s%s", br->path, br->bfList[sel].name);
+                   ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output 1 or more bytes (assuming 4098) into a destination of size 512
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c: In function ‘keyIconWin’:
+xvbrowse.c:2350:18: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 256 [-Wformat-overflow=]
+    sprintf(foo, "%s%s", br->path, br->bfList[i].name);
+                  ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output 1 or more bytes (assuming 4098) into a destination of size 256
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+xvbrowse.c:2365:18: warning: ‘%s’ directive writing up to 4097 bytes into a region of size 4096 [-Wformat-overflow=]
+  sprintf(fname, "%s%s", br->path, br->bfList[i].name);
+                  ^~
+In file included from /usr/include/stdio.h:862:0,
+                 from xv.h:103,
+                 from xvbrowse.c:21:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:33:10: note: ‘__builtin___sprintf_chk’ output 1 or more bytes (assuming 4098) into a destination of size 4096
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvtext.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvpcx.c
+xvpcx.c: In function ‘LoadPCX’:
+xvpcx.c:76:3: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+   fread(hdr, (size_t) 128, (size_t) 1, fp);
+   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xviff.c
+xviff.c: In function ‘LoadIFF’:
+xviff.c:106:3: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+   fread(databuf, (size_t) filesize, (size_t) 1, fp);
+   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvtarga.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvxpm.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvcut.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvxwd.c
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -c xvfits.c
+cc -o xv -O  -DDOJPEG -Ijpeg   -DDOPDS         xv.o xvevent.o xvroot.o xvmisc.o xvimage.o xvcolor.o xvsmooth.o xv24to8.o xvgif.o xvpm.o xvinfo.o xvctrl.o xvscrl.o xvalg.o xvgifwr.o xvdir.o xvbutt.o xvpbm.o xvxbm.o xvgam.o xvbmp.o xvdial.o xvgraf.o xvsunras.o xvjpeg.o xvps.o xvpopup.o xvdflt.o xvtiff.o xvtiffwr.o xvpds.o xvrle.o xviris.o xvgrab.o vprintf.o xvbrowse.o xvtext.o xvpcx.o xviff.o xvtarga.o xvxpm.o xvcut.o xvxwd.o xvfits.o -lX11 jpeg/libjpeg.a  -lm
+xv.o: En la función `add_filelist_to_namelist':
+xv.c:(.text+0x201b): aviso: `sys_errlist' is deprecated; use `strerror' or `strerror_r' instead
+xvmisc.o: En la función `xv_getwd':
+xvmisc.c:(.text+0x23d3): aviso: the `getwd' function is dangerous and should not be used.
+xv.o: En la función `UncompressFile':
+xv.c:(.text+0x333f): aviso: the use of `mktemp' is dangerous, better use `mkstemp' or `mkdtemp'
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -o bggen bggen.c -lX11 jpeg/libjpeg.a  -lm
+bggen.c: In function ‘main’:
+bggen.c:106:32: warning: implicit declaration of function ‘atoi’; did you mean ‘atan’? [-Wimplicit-function-declaration]
+       i++;  if (i<argc) high = atoi(argv[i]);
+                                ^~~~
+                                atan
+bggen.c:139:14: warning: implicit declaration of function ‘isdigit’ [-Wimplicit-function-declaration]
+     else if (isdigit(argv[i][0])) {
+              ^~~~~~~
+bggen.c:221:21: warning: implicit declaration of function ‘malloc’ [-Wimplicit-function-declaration]
+   rpic24 = (byte *) malloc(rptwide * rpthigh * 3 * sizeof(byte));
+                     ^~~~~~
+bggen.c:221:21: warning: incompatible implicit declaration of built-in function ‘malloc’
+bggen.c:221:21: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+bggen.c:229:5: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+     exit(1);
+     ^~~~
+bggen.c:229:5: warning: incompatible implicit declaration of built-in function ‘exit’
+bggen.c:229:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+bggen.c: In function ‘usage’:
+bggen.c:319:3: warning: incompatible implicit declaration of built-in function ‘exit’
+   exit(1);
+   ^~~~
+bggen.c:319:3: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -o vdcomp vdcomp.c
+vdcomp.c: In function ‘get_files’:
+vdcomp.c:435:5: warning: implicit declaration of function ‘gets’; did you mean ‘fgets’? [-Wimplicit-function-declaration]
+     gets (inname);
+     ^~~~
+     fgets
+vdcomp.c:459:8: warning: ignoring return value of ‘read’, declared with attribute warn_unused_result [-Wunused-result]
+        read(infile,&shortint, (size_t) 2);
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/tmp/ccQdN13z.o: En la función `get_files':
+vdcomp.c:(.text+0xcc): aviso: the `gets' function is dangerous and should not be used.
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -o xcmap xcmap.c -lX11 jpeg/libjpeg.a  -lm
+xcmap.c: In function ‘Syntax’:
+xcmap.c:235:3: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+   exit(1);
+   ^~~~
+xcmap.c:235:3: warning: incompatible implicit declaration of built-in function ‘exit’
+xcmap.c:235:3: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+xcmap.c: In function ‘FatalError’:
+xcmap.c:244:3: warning: incompatible implicit declaration of built-in function ‘exit’
+   exit(-1);
+   ^~~~
+xcmap.c:244:3: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+xcmap.c: In function ‘Quit’:
+xcmap.c:251:3: warning: incompatible implicit declaration of built-in function ‘exit’
+   exit(0);
+   ^~~~
+xcmap.c:251:3: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+xcmap.c: In function ‘CreateMainWindow’:
+xcmap.c:279:47: warning: implicit declaration of function ‘abs’ [-Wimplicit-function-declaration]
+     x = XDisplayWidth(theDisp,theScreen)-WIDE-abs(x);
+                                               ^~~
+cc -O  -DDOJPEG -Ijpeg   -DDOPDS         -o xvpictoppm xvpictoppm.c
+
+real	0m21,635s
+user	0m12,905s
+sys	0m3,212s
+luialza1@alumno.upv.es@ldisca-vdi04:~/W/3RO/AIC/prac1/xv-310a$ cd prac1
+bash: cd: prac1: No existe el archivo o el directorio
+luialza1@alumno.upv.es@ldisca-vdi04:~/W/3RO/AIC/prac1/xv-310a$ cd ..
+luialza1@alumno.upv.es@ldisca-vdi04:~/W/3RO/AIC/prac1$ time xv-310a/xv -wait 5 mundo.jpg
+
+real	0m8,810s
+user	0m2,073s
+sys	0m0,239s
+luialza1@alumno.upv.es@ldisca-vdi04:~/W/3RO/AIC/prac1$ ^C
+luialza1@alumno.upv.es@ldisca-vdi04:~/W/3RO/AIC/prac1$ ^C
+luialza1@alumno.upv.es@ldisca-vdi04:~/W/3RO/AIC/prac1$ cat terminal.txt
+cat: terminal.txt: No existe el archivo o el directorio
+luialza1@alumno.upv.es@ldisca-vdi04:~/W/3RO/AIC/prac1$ 
+

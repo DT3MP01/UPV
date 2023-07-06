@@ -1,0 +1,9 @@
+../Core/Src/HW.c:20:6:pot_led_threshold	24	static
+../Core/Src/HW.c:43:6:put_leds	24	static
+../Core/Src/HW.c:80:7:Valor_pot	16	static
+../Core/Src/HW.c:86:7:Valor_temp	40	static
+../Core/Src/HW.c:95:7:Valor_lum	16	static
+../Core/Src/HW.c:103:6:Check_buzzer	24	static
+../Core/Src/HW.c:124:6:Boton_izquierdo	24	static
+../Core/Src/HW.c:138:6:Boton_derecho	32	static
+../Core/Src/HW.c:156:10:ConvertidorA_D	40	static

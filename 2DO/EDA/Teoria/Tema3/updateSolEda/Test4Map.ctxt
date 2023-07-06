@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Test4Map
+comment0.text=\r\n\ Ejercicio\ 4,\ Tema\ 3-S1\:\ Traduccion\ Bilingue,\ Palabra\ a\ Palabra,\ de\ un\ texto\r\n\ Para\ ello,\ la\ clase\ proporciona\ dos\ metodos\:\r\n\ \ 1.-\ cargarDiccionario\:\ crea\ y\ devuelve\ el\ Map\ que\ se\ usa\ en\ la\ traduccion,\ \r\n\ \ \ \ \ \ leyendo\ sus\ Entradas\ del\ fichero\ diccioSpaEng.txt\ ubicado\ en\ eda\r\n\ \ 2.-\ traducir\:\ traduce\ la\ frase\ textoC\ palabra\ a\ palabra\ usando\ el\ Map\ m\ \r\n\ \ \ \ \ \ Cuando\ m\ no\ contenga\ la\ traduccion\ para\ una\ palabra\ de\ textoC,\ el\ \r\n\ \ \ \ \ \ String\ resultado\ de\ traducir\ debe\ contener\ el\ literal\ "<error>"\ en\ \ \r\n\ \ \ \ \ \ lugar\ de\ su\ traduccion\r\n\ \ \ \ \ \ \r\n\ @author\ (prof\ EDA)\ \r\n\ @version\ (Curso\ 2018-2019)\r\n
+comment1.params=
+comment1.target=librerias.estructurasDeDatos.modelos.Map\ cargarDiccionario()
+comment2.params=textoC\ m
+comment2.target=java.lang.String\ traducir(java.lang.String,\ librerias.estructurasDeDatos.modelos.Map)
+numComments=3

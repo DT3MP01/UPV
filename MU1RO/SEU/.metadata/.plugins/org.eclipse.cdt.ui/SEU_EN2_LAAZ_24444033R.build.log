@@ -1,0 +1,10 @@
+18:35:35 **** Build of configuration Debug for project SEU_EN2_LAAZ_24444033R ****
+make -j12 all 
+arm-none-eabi-size   SEU_EN2_LAAZ_24444033R.elf 
+   text	   data	    bss	    dec	    hex	filename
+  61232	    516	  89820	 151568	  25010	SEU_EN2_LAAZ_24444033R.elf
+Finished building: default.size.stdout
+ 
+
+18:35:36 Build Finished. 0 errors, 0 warnings. (took 859ms)
+

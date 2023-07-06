@@ -1,0 +1,6 @@
+../Core/Src/HW.c:17:6:pot_led_threshold	24	static
+../Core/Src/HW.c:40:6:put_leds	24	static
+../Core/Src/HW.c:77:7:Valor_pot	16	static
+../Core/Src/HW.c:83:7:Valor_temp	40	static
+../Core/Src/HW.c:92:7:Valor_lum	16	static
+../Core/Src/HW.c:102:10:ConvertidorA_D	40	static
